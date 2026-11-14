@@ -56,10 +56,16 @@ import {
 import {
   PauseGlyphIcon,
   PlantSpeciesIcon,
-  ResetGlyphIcon,
   SoundWaveIcon,
   VerdantResonanceEmblem,
 } from './components/BotanicalIcons';
+import {
+  getLiveSelfHostOrganismState,
+  importLiveOrganismSporeBundle,
+  rollbackLiveOrganismToGenesis,
+  subscribeSelfHostOrganismState,
+  type LiveSelfHostOrganismState,
+} from './selfhost/browserSelfHostEngine';
 const LazyPrismInspectorModal = React.lazy(() =>
   import('./components/PrismInspectorModal').then((m) => ({
     default: m.PrismInspectorModal,
@@ -97,9 +103,50 @@ export default function App() {
   const [isMuted, setIsMuted] = useState<boolean>(initialAnamnesisPayload?.isMuted ?? false);
   const [dockCollapsed, setDockCollapsed] = useState<boolean>(false);
   const [recentBanner, setRecentBanner] = useState<string | null>(null);
+  const [selfHostState, setSelfHostState] = useState<LiveSelfHostOrganismState>(() =>
+    getLiveSelfHostOrganismState(),
+  );
   const [tunedWaystoneDegrees, setTunedWaystoneDegrees] = useState<readonly number[] | undefined>(
     () => initialAnamnesisPayload?.tunedWaystoneDegrees,
   );
+  const [archivedSessionMeta, setArchivedSessionMeta] = useState<{
+    merkleDigestHex?: string;
+    selfHostGenerationId?: string;
+    selfHostTreeKappa?: string;
+  } | null>(() =>
+    initialAnamnesis.verified && initialAnamnesis.envelope
+      ? {
+          merkleDigestHex: initialAnamnesis.envelope.merkleDigestHex,
+          selfHostGenerationId: initialAnamnesis.envelope.payload.selfHostGenerationId,
+          selfHostTreeKappa: initialAnamnesis.envelope.payload.selfHostTreeKappa,
+        }
+      : null,
+  );
+
+  const effectiveSelfHostLineage = useMemo(() => {
+    const parseGenRank = (g?: string) => {
+      const m = g ? /^gen-(\d+)$/.exec(g) : null;
+      return m ? Number(m[1]) : -1;
+    };
+    const liveRank = parseGenRank(selfHostState.headGenerationId);
+    const archivedRank = parseGenRank(archivedSessionMeta?.selfHostGenerationId);
+    if (archivedRank > liveRank && archivedSessionMeta?.selfHostGenerationId) {
+      return {
+        generationId: archivedSessionMeta.selfHostGenerationId,
+        treeKappa: archivedSessionMeta.selfHostTreeKappa ?? selfHostState.headManifest?.treeKappa,
+      };
+    }
+    return {
+      generationId: selfHostState.headGenerationId,
+      treeKappa: selfHostState.headManifest?.treeKappa,
+    };
+  }, [
+    archivedSessionMeta,
+    selfHostState.headGenerationId,
+    selfHostState.headManifest?.treeKappa,
+  ]);
+
+  useEffect(() => subscribeSelfHostOrganismState((st) => setSelfHostState(st)), []);
 
   const alphaSeed = initialAnamnesisPayload?.alphaSeed ?? 1;
   const [plants, setPlants] = useState(() => {
@@ -241,6 +288,8 @@ export default function App() {
         tunedWaystoneDegrees:
           gardenHandleRef.current?.getTunedWaystoneDegrees() ?? tunedWaystoneDegrees,
         coEvolutionState: serializeLiveCoEvolutionStateForAnamnesis(liveCoEvo),
+        selfHostGenerationId: effectiveSelfHostLineage.generationId,
+        selfHostTreeKappa: effectiveSelfHostLineage.treeKappa,
       });
       persistAnamnesisEnvelopeToStorage(envelope);
     }, 420);
@@ -251,6 +300,8 @@ export default function App() {
     isMuted,
     plants,
     tunedWaystoneDegrees,
+    effectiveSelfHostLineage.generationId,
+    effectiveSelfHostLineage.treeKappa,
     telemetry.attunedCount,
     telemetry.exploredBiomes,
     telemetry.liveCoEvolution,
@@ -362,10 +413,12 @@ export default function App() {
 
   const handleRestart = useCallback(() => {
     clearAnamnesisStorage();
+    void rollbackLiveOrganismToGenesis();
     if (typeof window !== 'undefined' && window.location.hash.startsWith('#uorc=')) {
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
     }
     setTunedWaystoneDegrees(undefined);
+    setArchivedSessionMeta(null);
     const resetPlants = generateGardenPlants({ alphaSeed });
     setPlants(resetPlants);
     gardenHandleRef.current?.setAlphaSeed(alphaSeed, resetPlants);
@@ -471,8 +524,15 @@ export default function App() {
           telemetry.neuromorphic.observer.conservatoryCuration.consolidatedMemories,
         tunedWaystoneDegrees: liveWaystoneDegrees,
         coEvolutionState: serializeLiveCoEvolutionStateForAnamnesis(liveCoEvo),
+        selfHostGenerationId: effectiveSelfHostLineage.generationId,
+        selfHostTreeKappa: effectiveSelfHostLineage.treeKappa,
       });
       persistAnamnesisEnvelopeToStorage(envelope);
+      setArchivedSessionMeta({
+        merkleDigestHex: envelope.merkleDigestHex,
+        selfHostGenerationId: effectiveSelfHostLineage.generationId,
+        selfHostTreeKappa: effectiveSelfHostLineage.treeKappa,
+      });
       const link = encodeShareableUorcGardenHash(envelope);
       if (typeof window !== 'undefined') {
         window.history.replaceState(null, '', link.hashFragment);
@@ -489,6 +549,8 @@ export default function App() {
       isMuted,
       plants,
       tunedWaystoneDegrees,
+      effectiveSelfHostLineage.generationId,
+      effectiveSelfHostLineage.treeKappa,
       telemetry.exploredBiomes,
       telemetry.liveCoEvolution,
       telemetry.neuromorphic.universalManifold,
@@ -496,13 +558,26 @@ export default function App() {
     ],
   );
 
+  const handleSporeFileDrop = useCallback(async (e: React.DragEvent<HTMLElement>) => {
+    e.preventDefault();
+    const file = e.dataTransfer?.files?.[0];
+    if (!file || !file.name.endsWith('.uorc')) return;
+    const buf = new Uint8Array(await file.arrayBuffer());
+    const res = await importLiveOrganismSporeBundle(buf);
+    setRecentBanner(
+      res.ok
+        ? `✦ Garden Spore Restored (${res.generationId})`
+        : `Spore Unreadable · ${res.error ?? 'Invalid Archive'}`,
+    );
+  }, []);
+
   useEffect(() => {
     if (!recentBanner) return;
     const timer = window.setTimeout(() => setRecentBanner(null), 2600);
     return () => clearTimeout(timer);
   }, [recentBanner]);
 
-  // Global keyboard shortcuts for Title -> Start, Field Guide [P/Escape], Mute [M], Reset [R], Sky [L], Hide Dock [H]
+  // Global keyboard shortcuts for Title -> Start, Field Guide [P/Escape], Mute [M], Hide Dock [H], Optional Sky [L]
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (
@@ -513,7 +588,6 @@ export default function App() {
         return;
       }
 
-      // Suppress OS key-repeat events (`e.repeat`) across all global shortcuts
       if (e.repeat) return;
 
       if (gameState === 'title') {
@@ -530,24 +604,18 @@ export default function App() {
       } else if (e.code === 'KeyM') {
         e.preventDefault();
         handleToggleMute();
-      } else if (e.code === 'KeyR' && gameState === 'playing') {
-        e.preventDefault();
-        handleRestart();
       } else if (e.code === 'KeyL' && gameState === 'playing') {
         e.preventDefault();
         cycleAtmosphere();
       } else if (e.code === 'KeyH' && gameState === 'playing') {
         e.preventDefault();
         setDockCollapsed((prev) => !prev);
-      } else if (e.code === 'KeyU' && gameState === 'playing') {
-        e.preventDefault();
-        handleShareUorcGarden();
       }
     };
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [gameState, startGame, handleToggleMute, handleRestart, cycleAtmosphere, handleShareUorcGarden]);
+  }, [gameState, startGame, handleToggleMute, cycleAtmosphere]);
 
   // Mindful exploration never force-terminates gameplay at 100% Harmony.
   // Only extreme unmindful agitation (sustained rapid key mashing during refractory cooldowns >= 100%)
@@ -575,7 +643,11 @@ export default function App() {
   const biomeMastery = evaluateBiomeMasteryAndGuilds(telemetry.biome, plants);
 
   return (
-    <main className="relative w-full h-full overflow-hidden select-none">
+    <main
+      className="relative w-full h-full overflow-hidden select-none"
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={handleSporeFileDrop}
+    >
       {/* Isolated 3D WebGL Procedural Garden Viewport */}
       <GardenCanvas
         gameState={gameState}
@@ -587,6 +659,7 @@ export default function App() {
         onPlantAttuned={handlePlantAttuned}
         onWaystoneTuned={handleWaystoneTuned}
         onOffshootColonized={handleOffshootColonized}
+        onCircadianAtmosphereAdvance={cycleAtmosphere}
         handleRef={gardenHandleRef}
       />
 
@@ -682,7 +755,7 @@ export default function App() {
 
           {/* Single Flat Borderless Control Hint Line in Bottom Safe Margin */}
           <div className="text-xs font-mono text-emerald-200/80 hud-text-shadow">
-            WASD / Arrows Move · Mouse Drag / Q-E Look · Space Attune · T Touch · C Stillness · G Stroll · L Sky · 1-5 Biomes · P Guide
+            WASD / Arrows Walk · Mouse Drag / Q-E Look · Space Attune · T Touch · C Stillness · P Field Guide
           </div>
         </div>
       )}
@@ -827,8 +900,8 @@ export default function App() {
                 <div className="text-[11px] font-medium text-amber-200" data-testid="hud-prism-outcome">
                   {outcomeProfile.label} · {outcomeProfile.timbre}
                 </div>
-                <div className="text-[10px] font-mono text-emerald-300/80" data-testid="hud-soundtrack-status">
-                  {activeBiomeCfg.tuningLabel} · {telemetry.environmentalLifecycle.label}
+                <div className="text-[10px] font-mono text-emerald-300/80 flex items-center gap-1.5" data-testid="hud-soundtrack-status">
+                  <span>{activeBiomeCfg.tuningLabel} · {activeAtmosphereCfg.name}</span>
                 </div>
               </div>
 
@@ -920,31 +993,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Compact Square <svg> Utility Buttons (Share UORC [U], Mute [M], Field Guide / Pause [P], Reset [R]) */}
+            {/* Calm Minimal Utility Icons (Mute [M] & Field Guide [P]) */}
             <div className="flex items-center gap-1.5">
-              <button
-                type="button"
-                tabIndex={-1}
-                aria-label="Share UORC Garden Link [U]"
-                title="Copy Shareable UORC Garden Link [U]"
-                onClick={handleShareUorcGarden}
-                className="w-10 h-10 rounded-lg border hover:bg-emerald-900/70 text-emerald-100 flex items-center justify-center shadow-lg transition-colors cursor-pointer"
-                style={{
-                  backgroundColor: 'var(--prism-surface-bg)',
-                  borderColor: 'var(--prism-border-hairline)',
-                }}
-              >
-                <svg viewBox="0 0 20 20" fill="none" className="w-4 h-4" aria-hidden="true">
-                  <path
-                    d="M8.5 11.5L11.5 8.5M7 13L5.6 14.4a2.83 2.83 0 01-4-4L3 9m10-2l1.4-1.4a2.83 2.83 0 014 4L17 11"
-                    stroke="currentColor"
-                    strokeWidth="1.65"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </button>
-
               <button
                 type="button"
                 tabIndex={-1}
@@ -974,23 +1024,6 @@ export default function App() {
                 }}
               >
                 <PauseGlyphIcon className="w-4 h-4" />
-              </button>
-
-              <button
-                type="button"
-                tabIndex={-1}
-                aria-label="Reset Garden [R]"
-                onClick={(e) => {
-                  e.currentTarget.blur();
-                  handleRestart();
-                }}
-                className="w-10 h-10 rounded-lg border hover:bg-emerald-900/70 text-emerald-100 flex items-center justify-center shadow-lg transition-colors cursor-pointer"
-                style={{
-                  backgroundColor: 'var(--prism-surface-bg)',
-                  borderColor: 'var(--prism-border-hairline)',
-                }}
-              >
-                <ResetGlyphIcon className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -1147,66 +1180,6 @@ export default function App() {
                       />
                     )}
                   </button>
-
-                  <button
-                    type="button"
-                    tabIndex={-1}
-                    onClick={cycleAtmosphere}
-                    className="px-3 py-1.5 rounded-lg border border-teal-400/30 bg-teal-950/70 hover:bg-teal-900/80 text-teal-100 font-mono text-xs transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-                  >
-                    Sky: {activeAtmosphereCfg.name} [L]
-                  </button>
-
-                  <button
-                    type="button"
-                    tabIndex={-1}
-                    onClick={(e) => {
-                      e.currentTarget.blur();
-                      gardenHandleRef.current?.toggleGuidedStroll();
-                    }}
-                    className={`px-3 py-1.5 rounded-lg border font-mono text-xs transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                      telemetry.guidedStroll
-                        ? 'border-amber-300/60 bg-amber-400/25 text-amber-200'
-                        : 'border-emerald-400/30 bg-emerald-950/80 hover:bg-emerald-900 text-emerald-100'
-                    }`}
-                  >
-                    {telemetry.guidedStroll ? 'Guided Stroll: On [G]' : 'Guided Stroll [G]'}
-                  </button>
-                </div>
-
-                <div className="h-5 w-px bg-emerald-400/20 hidden sm:block" />
-
-                {/* 5 Biome Sanctuary Waypoints */}
-                <div className="flex items-center gap-1" role="group" aria-label="Biome Sanctuary Waypoints">
-                  {(
-                    [
-                      ['meadow', '1 Meadow'],
-                      ['grove', '2 Grove'],
-                      ['crystal', '3 Crystal'],
-                      ['wetland', '4 Wetland'],
-                      ['sanctuary', '5 Sanctuary'],
-                    ] as [BiomeId, string][]
-                  ).map(([biomeId, label]) => {
-                    const isActive = telemetry.biome === biomeId;
-                    return (
-                      <button
-                        key={biomeId}
-                        type="button"
-                        tabIndex={-1}
-                        onClick={(e) => {
-                          e.currentTarget.blur();
-                          gardenHandleRef.current?.teleportToBiome(biomeId);
-                        }}
-                        className={`px-2.5 py-1.5 rounded-md text-xs font-mono transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                          isActive
-                            ? 'bg-emerald-500/30 text-amber-200 border border-emerald-400/40'
-                            : 'text-emerald-200/75 hover:text-emerald-100 hover:bg-emerald-900/40'
-                        }`}
-                      >
-                        {label}
-                      </button>
-                    );
-                  })}
                 </div>
               </div>
             )}
@@ -1226,11 +1199,13 @@ export default function App() {
             telemetry={telemetry}
             plants={plants}
             soundEngine={soundEngine}
+            tunedWaystoneDegrees={
+              gardenHandleRef.current?.getTunedWaystoneDegrees() ?? tunedWaystoneDegrees
+            }
+            archivedSessionMeta={archivedSessionMeta}
             onResume={() => setGameState('playing')}
             onRestart={handleRestart}
-            onReturnTitle={() => setGameState('title')}
-            onTeleportBiome={(biomeId) => gardenHandleRef.current?.teleportToBiome(biomeId)}
-            onSelectAtmosphere={setAtmosphere}
+            onShareGarden={handleShareUorcGarden}
           />
         </Suspense>
       )}

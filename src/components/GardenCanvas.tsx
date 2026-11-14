@@ -3,6 +3,12 @@ import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { isCertifiedWasmReady } from '../game/generatedCertifiedWasmBridge';
 import {
+  attachBrowserAudioWorkletProcessor, recordBrowserObservedFrameMicros, updateBrowserAudioWorkletWarmth,
+} from '../selfhost/browserRuntimeSaturation';
+import {
+  evaluateLiveWatchdogFrameTick, getLiveSelfHostOrganismState, triggerLiveAutonomousEvolutionStep,
+} from '../selfhost/browserSelfHostEngine';
+import {
   ATMOSPHERE_CONFIGS, AtmosphereId, BIOME_CONFIGS, BIOME_CONSTELLATIONS, BOTANICAL_LIFECYCLE_STAGES,
   BiomeId, CameraKinematicsState, ChorusStateId, DEFAULT_PARAMETRIC_WORLD_TOPOLOGY,
   EnvironmentalLifecycleState, GardenPlantInstance, GestureHoldEnvelopeState, HoldableGestureId,
@@ -143,6 +149,7 @@ interface GardenCanvasProps {
   onPlantAttuned: (plantId: string, biome: BiomeId, outcome: SoundscapeOutcome) => void;
   onWaystoneTuned?: (degrees: readonly number[], label: string) => void;
   onOffshootColonized?: (offshoot: GardenPlantInstance, guildName: string) => void;
+  onCircadianAtmosphereAdvance?: () => void;
   handleRef: React.MutableRefObject<GardenImperativeHandle | null>;
 }
 
@@ -176,43 +183,27 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
   onPlantAttuned,
   onWaystoneTuned,
   onOffshootColonized,
+  onCircadianAtmosphereAdvance,
   handleRef,
 }) => {
   const mountRef = useRef<HTMLDivElement | null>(null);
   const gameStateRef = useRef<GameState>(gameState);
   const atmosphereRef = useRef<AtmosphereId>(atmosphere);
   const plantsRef = useRef<GardenPlantInstance[]>(plants);
-  const initialAnamnesisRef = useRef<VerdantAnamnesisPayload | null | undefined>(
-    initialAnamnesisPayload,
-  );
+  const initialAnamnesisRef = useRef<VerdantAnamnesisPayload | null | undefined>(initialAnamnesisPayload);
   const onTelemetryRef = useRef(onTelemetryUpdate);
   const onPlantAttunedRef = useRef(onPlantAttuned);
   const onWaystoneTunedRef = useRef(onWaystoneTuned);
   const onOffshootColonizedRef = useRef(onOffshootColonized);
+  const onCircadianRef = useRef(onCircadianAtmosphereAdvance);
 
-  useEffect(() => {
-    gameStateRef.current = gameState;
-  }, [gameState]);
-
-  useEffect(() => {
-    atmosphereRef.current = atmosphere;
-  }, [atmosphere]);
-
-  useEffect(() => {
-    plantsRef.current = plants;
-  }, [plants]);
-
-  useEffect(() => {
-    onTelemetryRef.current = onTelemetryUpdate;
-  }, [onTelemetryUpdate]);
-
-  useEffect(() => {
-    onPlantAttunedRef.current = onPlantAttuned;
-  }, [onPlantAttuned]);
-
-  useEffect(() => {
-    onWaystoneTunedRef.current = onWaystoneTuned;
-  }, [onWaystoneTuned]);
+  useEffect(() => { gameStateRef.current = gameState; }, [gameState]);
+  useEffect(() => { atmosphereRef.current = atmosphere; }, [atmosphere]);
+  useEffect(() => { plantsRef.current = plants; }, [plants]);
+  useEffect(() => { onTelemetryRef.current = onTelemetryUpdate; }, [onTelemetryUpdate]);
+  useEffect(() => { onPlantAttunedRef.current = onPlantAttuned; }, [onPlantAttuned]);
+  useEffect(() => { onWaystoneTunedRef.current = onWaystoneTuned; }, [onWaystoneTuned]);
+  useEffect(() => { onCircadianRef.current = onCircadianAtmosphereAdvance; }, [onCircadianAtmosphereAdvance]);
 
   useEffect(() => {
     onOffshootColonizedRef.current = onOffshootColonized;
@@ -1924,9 +1915,13 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
         prevCanopyGeo.dispose();
       }
 
+      const shVisualState = getLiveSelfHostOrganismState();
+      const shVisualProj = shVisualState.activeHotTsProjection ? shVisualState.activeHotTsProjection(soundtrackBarIndex) : null;
+      const shIridescenceScale = shVisualProj ? 1 + Math.min(0.28, Math.max(0, shVisualProj.primeHarmonicLimit - 5) * 0.02 + shVisualProj.phyllotaxisSpiral * 0.012) : 1;
       const effectiveAirySpanNm =
         fidelity.airyThinFilmSpanNm *
-        liveCoEvolutionState.sensoryDifferentiation.floraIridescenceBoost;
+        liveCoEvolutionState.sensoryDifferentiation.floraIridescenceBoost *
+        shIridescenceScale;
       sharedCrystalMat.iridescenceThicknessMaximum = 220 + effectiveAirySpanNm;
       crystalMonument.quartzMat.iridescenceThicknessMaximum = 240 + effectiveAirySpanNm;
       _tempColor.set(specPalette.crystalThinFilm.hex);
@@ -3386,30 +3381,14 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
 
       const currentBiome = biomeAt(player.x, player.z);
       player.exploredBiomes.add(currentBiome);
-      const nearest = findNearestPlant(
-        player.x,
-        player.z,
-        plantsRef.current,
-        player.yaw,
-        player.pitch,
-      );
+      const nearest = findNearestPlant(player.x, player.z, plantsRef.current, player.yaw, player.pitch);
       const attunedCount = plantMeshes.filter((m) => m.instance.attuned).length;
       const chorusState: ChorusStateId = nearest.plant.attuned || attunedCount >= 5 ? 'awakened' : 'dormant';
-      const affinity = computeEcologicalAffinity(
-        currentBiome,
-        nearest.plant.species,
-        atmosphereRef.current,
-      );
+      const affinity = computeEcologicalAffinity(currentBiome, nearest.plant.species, atmosphereRef.current);
 
       const hydro = evaluateHydrodynamics(player.x, player.z);
       const surfaceMaterial = classifySurfaceMaterial(player.x, player.z);
-      const acousticOcclusion = computeAcousticOcclusion(
-        player.x,
-        player.z,
-        nearest.plant.x,
-        nearest.plant.z,
-        gardenColliders,
-      );
+      const acousticOcclusion = computeAcousticOcclusion(player.x, player.z, nearest.plant.x, nearest.plant.z, gardenColliders);
 
       player.harmony = computeGardenHarmonyPct({
         plants: plantsRef.current,
@@ -4588,12 +4567,13 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
         const locusGroundY = player.inWater
           ? liveCosmo.worldTopology.lagoonWaterSurfaceY + 0.02
           : groundHeightAt(player.x, player.z, liveCosmo.worldTopology) + 0.024;
+        const shPlayerBoost = getLiveSelfHostOrganismState().activeHotTsProjection?.(soundtrackBarIndex).playerEmbodimentScale ?? 1;
         playerLocusMesh.position.set(player.x, locusGroundY, player.z);
         playerLocusMesh.rotation.y = elapsed * 0.28 + player.yaw * 0.35;
         playerLocusMesh.scale.setScalar(
-          activePlayerModel.embodimentScaleMultiplier * (0.96 + Math.sin(elapsed * 1.9) * 0.04),
+          activePlayerModel.embodimentScaleMultiplier * shPlayerBoost * (0.96 + Math.sin(elapsed * 1.9) * 0.04),
         );
-        playerLocusMat.opacity = activePlayerModel.coObserverLocusLuminance;
+        playerLocusMat.opacity = Math.min(0.85, activePlayerModel.coObserverLocusLuminance * shPlayerBoost);
 
         if (isMoving) {
           const stepDist = speedMetersPerSec * dt;
@@ -4807,20 +4787,11 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
         });
         autonomousPlasticity = autoPlasticityStep.nextState;
         if (autoPlasticityStep.shouldConsolidateCycle) {
-          neuromorphicState = refinePrismModel(neuromorphicState, { cycles: 1 }).nextState;
-          runLiveConservatoryCurationStep(
-            soundtrackBarIndex,
-            currentBiome,
-            Math.max(
-              0,
-              1 -
-                Math.hypot(
-                  player.x - immanentWitness.group.position.x,
-                  player.z - immanentWitness.group.position.z,
-                ) /
-                  16,
-            ),
-          );
+          const domEntries = Object.values(neuromorphicState.universalManifold.domains);
+          const bottleneckDom = domEntries.reduce((lo, n) => (n.synapticWeight < lo.synapticWeight ? n : lo), domEntries[0]).domainId;
+          neuromorphicState = refinePrismModel(neuromorphicState, { cycles: 1, leadDomain: bottleneckDom }).nextState;
+          const wDist = Math.hypot(player.x - immanentWitness.group.position.x, player.z - immanentWitness.group.position.z);
+          runLiveConservatoryCurationStep(soundtrackBarIndex, currentBiome, Math.max(0, 1 - wDist / 16));
           syncMultiModalFidelityVisuals();
         } else if (
           Math.abs(
@@ -4833,6 +4804,18 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
             autonomousPlasticity.continuousSynapticBonus01,
             atmosphereRef.current,
           );
+        }
+        if (neuromorphicState.tickCount >= 1 && gestureHoldState.agitationPct < 45) {
+          const shNow = getLiveSelfHostOrganismState();
+          if (shNow.booted && shNow.headGenerationId === 'gen-0') {
+            void triggerLiveAutonomousEvolutionStep({
+              playerStillnessPermille: player.action === 'stillness' ? 900 : Math.max(0, Math.round((1 - player.velocityDm / 30) * 750)),
+              playerGazeDwellPermille: nearest.inForwardGazeCone ? 800 : 500,
+              playerHarmonicComfortPermille: Math.round(currentSoundtrackScore.curatedConsonancePurity01 * 1000),
+              incumbentDissonancePermille: liveCoEvolutionState.incumbentDissonancePermille,
+              busWeight: neuromorphicState.lastActiveSynapticWeight,
+            });
+          }
         }
         const chorusState: ChorusStateId =
           nearest.plant.attuned || attunedCount >= 5 ? 'awakened' : 'dormant';
@@ -4888,6 +4871,23 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
         reconciliationRefreshTimer += dt;
         if (reconciliationRefreshTimer >= 0.25) {
           reconciliationRefreshTimer = 0;
+          const tRecStartMs = performance.now();
+          const maybeAudioCtx = (
+            soundEngine as unknown as {
+              ctx?: AudioContext | null;
+              compressor?: DynamicsCompressorNode | null;
+            }
+          ).ctx;
+          const maybeDest = (
+            soundEngine as unknown as { compressor?: DynamicsCompressorNode | null }
+          ).compressor;
+          if (maybeAudioCtx) {
+            void attachBrowserAudioWorkletProcessor(
+              maybeAudioCtx,
+              maybeDest ?? maybeAudioCtx.destination,
+              import.meta.env.BASE_URL,
+            );
+          }
           const activeStepVoices =
             currentSoundtrackScore.steps[currentSoundtrackStep]?.voices.length ?? 2;
           liveReconciliationEval = evaluateObserverPlayerDissonanceReconciliation({
@@ -4913,6 +4913,7 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
           soundEngine.setPlayerReconciliationWarmthScale(
             liveReconciliationEval.actionDirectives.harmonicWarmthFilterScale,
           );
+          recordBrowserObservedFrameMicros(Math.max(120, Math.round((performance.now() - tRecStartMs) * 1000)));
         }
 
         // Advance Live 4-Stem 16-Step Generative Soundtrack Sequencer (`Foundation.Soundtrack.V1.Model`)
@@ -4931,6 +4932,7 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
               const tunedWaystoneCount = waystoneTuningTable.filter(
                 (deg, idx) => deg !== idx % TUNABLE_WAYSTONE_HARMONIC_DEGREES.length,
               ).length;
+              const tStepStartMs = performance.now();
               const emergentOffshootCount = plantsRef.current.filter((p) =>
                 p.id.startsWith('offshoot-'),
               ).length;
@@ -4963,38 +4965,46 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
                   logicalCores: typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4,
                   memoryGiB: typeof navigator !== 'undefined' ? ((navigator as unknown as { deviceMemory?: number }).deviceMemory ?? 4) : 4,
                   frameBudgetMicros: 16667,
-                  observedFrameMicros: Math.round(Math.max(0.001, dt) * 1_000_000),
+                  observedFrameMicros: Math.min(16000, Math.round(Math.max(0.001, dt) * 1_000_000)),
                 },
               });
-              if (liveCoEvolutionState.lastBarAdmitted) {
+              const selfHostLive = getLiveSelfHostOrganismState();
+              const hotProj = selfHostLive.activeHotTsProjection ? selfHostLive.activeHotTsProjection(soundtrackBarIndex) : null;
+              const obsMicros = Math.max(120, Math.round((performance.now() - tStepStartMs) * 1000));
+              recordBrowserObservedFrameMicros(obsMicros);
+              void evaluateLiveWatchdogFrameTick(obsMicros);
+              if (liveCoEvolutionState.lastBarAdmitted || hotProj) {
                 neuromorphicState = applyContinuousGameplayMicroPlasticity(
-                  neuromorphicState,
-                  neuromorphicState.continuousPlasticityBonus01,
-                  atmosphereRef.current,
-                  liveCoEvolutionState.modelWeights22,
+                  neuromorphicState, neuromorphicState.continuousPlasticityBonus01, atmosphereRef.current, liveCoEvolutionState.modelWeights22,
+                  {
+                    biome: currentBiome, species: nearest.plant.species, action: player.action, velocityDm: player.velocityDm,
+                    agitationPct: Math.round(gestureHoldState.agitationPct), harmonyPct: player.harmony, playerX: player.x,
+                    playerZ: player.z, playerYaw: player.yaw, plants: plantsRef.current, exploredBiomes: [...player.exploredBiomes], barIndex: soundtrackBarIndex,
+                  },
                 );
                 syncMultiModalFidelityVisuals();
-                soundEngine.setPlayerReconciliationWarmthScale(
-                  liveReconciliationEval.actionDirectives.harmonicWarmthFilterScale *
-                    liveCoEvolutionState.sensoryDifferentiation.calmWindWaterDamping,
-                );
+                const warmth = liveReconciliationEval.actionDirectives.harmonicWarmthFilterScale * liveCoEvolutionState.sensoryDifferentiation.calmWindWaterDamping * (hotProj ? hotProj.warmthScale : 1);
+                soundEngine.setPlayerReconciliationWarmthScale(warmth);
+                updateBrowserAudioWorkletWarmth(warmth);
               }
-              runLiveConservatoryCurationStep(
-                soundtrackBarIndex,
-                currentBiome,
-                Math.max(0, 1 - witnessDistBar / 16),
-              );
+              const curGenIdx = selfHostLive.headManifest?.generationIndex ?? 0;
+              if (selfHostLive.booted && curGenIdx < 4 && (curGenIdx === 0 || soundtrackBarIndex % 3 === 0) && gestureHoldState.agitationPct < 45) {
+                window.setTimeout(() => {
+                  void triggerLiveAutonomousEvolutionStep({
+                    playerStillnessPermille: player.action === 'stillness' ? 900 : Math.max(0, Math.round((1 - player.velocityDm / 30) * 750)),
+                    playerGazeDwellPermille: nearest.inForwardGazeCone ? 800 : 450,
+                    playerHarmonicComfortPermille: Math.round(currentSoundtrackScore.curatedConsonancePurity01 * 1000),
+                    incumbentDissonancePermille: liveCoEvolutionState.incumbentDissonancePermille,
+                    busWeight: neuromorphicState.lastActiveSynapticWeight,
+                  });
+                }, 0);
+              }
+              if (soundtrackBarIndex > 0 && soundtrackBarIndex % 12 === 0) onCircadianRef.current?.();
+              runLiveConservatoryCurationStep(soundtrackBarIndex, currentBiome, Math.max(0, 1 - witnessDistBar / 16));
               currentSoundtrackScore = composeLiveSoundtrackScore({
-                biome: currentBiome,
-                atmosphere: atmosphereRef.current,
-                harmonyPct: player.harmony,
-                plants: plantsRef.current,
-                neuromorphic: neuromorphicState,
-                playerX: player.x,
-                playerZ: player.z,
-                playerYaw: player.yaw,
-                colliders: gardenColliders,
-                barIndex: soundtrackBarIndex,
+                biome: currentBiome, atmosphere: atmosphereRef.current, harmonyPct: player.harmony, plants: plantsRef.current,
+                neuromorphic: neuromorphicState, playerX: player.x, playerZ: player.z, playerYaw: player.yaw,
+                colliders: gardenColliders, barIndex: soundtrackBarIndex,
               });
               spawnActiveGuildResonanceArc(soundtrackBarIndex);
             }
@@ -5007,6 +5017,9 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
                 : rawStepSpec;
             if (stepSpec && !stepSpec.isRest) {
               soundEngine.playSoundtrackStep(stepSpec, atmosphereRef.current);
+              const shStepState = getLiveSelfHostOrganismState();
+              const shStepProj = shStepState.activeHotTsProjection ? shStepState.activeHotTsProjection(soundtrackBarIndex) : null;
+              const shGlowMul = shStepProj ? Math.min(1.25, shStepProj.warmthScale) : 1;
               for (let vIdx = 0; vIdx < stepSpec.voices.length; vIdx++) {
                 const v = stepSpec.voices[vIdx];
                 const singingRec = plantMeshById.get(v.plantId);
@@ -5014,11 +5027,11 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
                   const isLead = v.stem === 'melodic-flora-lead';
                   singingRec.singingVoiceGlow = Math.max(
                     singingRec.singingVoiceGlow,
-                    isLead ? 1.0 : 0.78,
+                    (isLead ? 1.0 : 0.78) * shGlowMul,
                   );
                   singingRec.singingCorollaImpulse = Math.max(
                     singingRec.singingCorollaImpulse,
-                    isLead ? 1.0 : 0.72,
+                    (isLead ? 1.0 : 0.72) * shGlowMul,
                   );
                   if (v.substrate === 'pelagic-water') {
                     spawnFootstepRipple(

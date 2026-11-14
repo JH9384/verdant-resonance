@@ -954,8 +954,12 @@ const EIGHT_CAUSAL_STRATA_SEEDS: readonly CausalStratumSeed[] = [
     whoAgencyFlags: [true, true, false],
     whereBoundaryPole: 0,
     whenTemporalRegime: 2,
-    howLogosMechanism: 'Foundation.Physics.V1.Model & Foundation.Infrastructure.V1.Model fixed-point kinematics',
-    groundedModules: ['Foundation.Physics.V1.Model', 'Foundation.Infrastructure.V1.Model'],
+    howLogosMechanism: 'Foundation.Physics.V1.Model, Foundation.Infrastructure.V1.Model & Foundation.Host.V1.Model host saturation & kinematics',
+    groundedModules: [
+      'Foundation.Physics.V1.Model',
+      'Foundation.Infrastructure.V1.Model',
+      'Foundation.Host.V1.Model',
+    ],
   },
   {
     rank: 2,

@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { writeFileIfChanged } from './extractPrismArtifacts.ts';
@@ -250,6 +251,10 @@ const FILE_LEXLEAN_BINDING: Record<string, string> = {
   'src/game/standardModelEngine.ts': 'Foundation.Chemistry.V1.Model',
   'src/game/teleologyEngine.ts': 'Foundation.Teleology.V1.Model',
   'src/game/vedantaDharmaEngine.ts': 'Foundation.Vedanta.V1.Model',
+  'src/selfhost/browserCapabilityProbes.ts': 'Foundation.Host.V1.Model',
+  'src/selfhost/browserLexLeanWasmCompiler.ts': 'Foundation.Host.V1.Model',
+  'src/selfhost/browserRuntimeSaturation.ts': 'Foundation.Host.V1.Model',
+  'src/selfhost/browserSelfHostEngine.ts': 'Foundation.Host.V1.Model',
 };
 
 function classifyFunctionRouteAndLift(fn: ExtractedTsFunction): {
@@ -484,7 +489,7 @@ export const EXTERNAL_AUTHORITIES_REGISTER: readonly ExternalAuthorityRecord[] =
   {
     id: 'AUTH-07',
     citation: 'Lean 4 Theorem Prover (`leanprover/lean4:v4.32.1`) & LexLean 1.2 Kernel',
-    scopeInVerdant: 'Machine-checked `decide{}` and `linear_arithmetic{}` proofs across all 27 `.lex.tex` modules plus certified Rust production preservation.',
+    scopeInVerdant: 'Machine-checked `decide{}` and `linear_arithmetic{}` proofs across all 30 `.lex.tex` modules plus certified Rust production preservation.',
     pinDigestOrReason: 'Pinned in prism/lean-toolchain & prism/lexlean.lock',
   },
   {
@@ -572,8 +577,18 @@ export function buildConformanceReport(
   driftFileCount: number = 0,
 ): ConformanceBuildReport {
   const { scenarios, orphanClaimTags } = extractExecutedTestsFromSuite(projectRoot);
+  const liveLexModuleCount = collectLexFilesRecursive(path.join(projectRoot, 'prism', 'src')).length;
+  const dynamicAuthorities: readonly ExternalAuthorityRecord[] = EXTERNAL_AUTHORITIES_REGISTER.map(
+    (auth) =>
+      auth.id === 'AUTH-07'
+        ? {
+            ...auth,
+            scopeInVerdant: `Machine-checked \`decide{}\` and \`linear_arithmetic{}\` proofs across all ${liveLexModuleCount} \`.lex.tex\` modules plus certified Rust production preservation.`,
+          }
+        : auth,
+  );
 
-  const someTrueClaims: EpistemicClaimInput[] = EXTERNAL_AUTHORITIES_REGISTER.map((auth) => ({
+  const someTrueClaims: EpistemicClaimInput[] = dynamicAuthorities.map((auth) => ({
     id: auth.id,
     level: 'some-true',
     authorityId: auth.id,
@@ -676,7 +691,7 @@ export function buildConformanceReport(
     '',
     '| ID | External Authority | Scope in Verdant Resonance | Pin / Provenance |',
     '| --- | --- | --- | --- |',
-    ...EXTERNAL_AUTHORITIES_REGISTER.map(
+    ...dynamicAuthorities.map(
       (a) => `| \`${a.id}\` | ${a.citation} | ${a.scopeInVerdant} | ${a.pinDigestOrReason} |`,
     ),
     '',
@@ -820,6 +835,7 @@ export function measureHandwrittenAndAxiomRatchetState(
     'Foundation.MetaModel.V1.Model',
     'Foundation.Physics.V1.Model',
     'Foundation.Infrastructure.V1.Model',
+    'Foundation.Host.V1.Model',
     'Foundation.Chemistry.V1.Model',
     'Foundation.Morphogenesis.V1.Model',
     'Foundation.Botany.V1.Model',
@@ -1078,6 +1094,152 @@ export function renderEngineWorkflowYamlFromLexLean(): string {
   return lines.join('\n');
 }
 
+function encodeUleb128Sync(val: number): Buffer {
+  let v = BigInt(Math.max(0, Math.floor(val)));
+  const bytes: number[] = [];
+  do {
+    let b = Number(v & 0x7fn);
+    v >>= 7n;
+    if (v !== 0n) b |= 0x80;
+    bytes.push(b);
+  } while (v !== 0n);
+  return Buffer.from(bytes);
+}
+
+function sha256BufferSync(input: Buffer | string): Buffer {
+  return crypto.createHash('sha256').update(input).digest();
+}
+
+export function buildGen0SelfHostSporeArtifacts(projectRoot: string): {
+  readonly archiveBuffer: Buffer;
+  readonly manifestJson: string;
+  readonly fileCount: number;
+} {
+  const relSet = new Set<string>();
+  if (fs.existsSync(path.join(projectRoot, 'prism', 'spec.json'))) {
+    relSet.add('prism/spec.json');
+  }
+  if (fs.existsSync(path.join(projectRoot, 'prism', 'handwritten-ratchet.json'))) {
+    relSet.add('prism/handwritten-ratchet.json');
+  }
+  for (const lexFull of collectLexFilesRecursive(path.join(projectRoot, 'prism', 'src'))) {
+    relSet.add(path.relative(projectRoot, lexFull).replace(/\\/g, '/'));
+  }
+  for (const prodRel of collectProductFiles(projectRoot)) {
+    relSet.add(prodRel);
+  }
+
+  const sortedRelPaths = [...relSet].sort((a, b) => a.localeCompare(b));
+  const objects: Buffer[] = [];
+  const fileEntries: Array<{
+    readonly index: number;
+    readonly path: string;
+    readonly bytes: number;
+    readonly sha256Kappa: string;
+  }> = [];
+  let totalSourceBytes = 0;
+
+  for (let i = 0; i < sortedRelPaths.length; i++) {
+    const rel = sortedRelPaths[i];
+    const buf = fs.readFileSync(path.join(projectRoot, rel));
+    const kappaHex = sha256BufferSync(buf).toString('hex');
+    objects.push(buf);
+    totalSourceBytes += buf.length;
+    fileEntries.push({
+      index: i,
+      path: rel,
+      bytes: buf.length,
+      sha256Kappa: kappaHex,
+    });
+  }
+
+  // Deterministic Raw + κ-Reference `UORC\x01` multi-object archive (100% compatible with `decompressUorcArchive`)
+  const seenByKappa = new Map<string, number>();
+  const frames: Buffer[] = [];
+  for (let idx = 0; idx < objects.length; idx++) {
+    const obj = objects[idx];
+    const objKappa = fileEntries[idx].sha256Kappa;
+    const prevIdx = seenByKappa.get(objKappa);
+    if (prevIdx !== undefined && objects[prevIdx].equals(obj)) {
+      frames.push(
+        Buffer.concat([
+          Buffer.from([1]),
+          encodeUleb128Sync(prevIdx),
+          encodeUleb128Sync(obj.length),
+        ]),
+      );
+    } else {
+      seenByKappa.set(objKappa, idx);
+      frames.push(
+        Buffer.concat([Buffer.from([0]), encodeUleb128Sync(obj.length), obj]),
+      );
+    }
+  }
+
+  const wirePrefix = Buffer.concat([
+    Buffer.from([0x55, 0x4f, 0x52, 0x43, 0x01]),
+    encodeUleb128Sync(objects.length),
+    ...frames,
+  ]);
+  const trailer = sha256BufferSync(
+    Buffer.concat([
+      Buffer.from('UORC-SHA256-CHAIN-v1', 'utf8'),
+      wirePrefix,
+      ...objects.map((o) => sha256BufferSync(o)),
+    ]),
+  );
+  const archiveBuffer = Buffer.concat([wirePrefix, trailer]);
+
+  const corpusParts: Buffer[] = [
+    Buffer.from('UORC-CORPUS-v1:', 'utf8'),
+    encodeUleb128Sync(objects.length),
+  ];
+  for (let i = 0; i < objects.length; i++) {
+    corpusParts.push(encodeUleb128Sync(objects[i].length));
+    corpusParts.push(sha256BufferSync(objects[i]));
+  }
+  const corpusKappa = sha256BufferSync(Buffer.concat(corpusParts)).toString('hex');
+
+  const treeCanonical = fileEntries.map((e) => `${e.path}:${e.sha256Kappa}`).join('\n');
+  const treeKappa = sha256BufferSync(
+    Buffer.from(`VERDANT-GEN-TREE-v1\n${treeCanonical}`, 'utf8'),
+  ).toString('hex');
+
+  const wasmPath = path.join(projectRoot, 'public', 'wasm', 'verdant_certified_runtime.wasm');
+  const compiledWasmBytes = fs.existsSync(wasmPath) ? fs.statSync(wasmPath).size : 65536;
+
+  const manifest = {
+    schema: 'verdant-resonance/self-host-gen-manifest/1' as const,
+    generationId: 'gen-0',
+    generationIndex: 0,
+    parentGenerationId: null,
+    fileCount: fileEntries.length,
+    totalSourceBytes,
+    archiveBytes: archiveBuffer.length,
+    corpusKappa,
+    treeKappa,
+    telosLoss: 180,
+    computeSteps: 4096,
+    compiledWasmBytes,
+    evolvedCoordinates: {
+      alphaSeed: 108,
+      primeCeilingRank: 3,
+      modalDensityRank: 5,
+      warmthShiftSign: 0,
+      warmthShiftMagnitude: 0,
+      cadenceTargetRank: 4,
+      phyllotaxisIndex: 8,
+    },
+    files: fileEntries,
+  };
+
+  return {
+    archiveBuffer,
+    manifestJson: `${JSON.stringify(manifest, null, 2)}\n`,
+    fileCount: fileEntries.length,
+  };
+}
+
 export interface UorMechanizationCheckSummary {
   readonly liftRegisterPath: string;
   readonly conformanceMdPath: string;
@@ -1234,6 +1396,31 @@ export function syncOrCheckUorMechanizationArtifacts(
     } else {
       driftDetails.push(
         `${engineWorkflowRel} differs from formal LexLean CI workload projection in Foundation.Mechanization.V1.Model`,
+      );
+    }
+  }
+
+  // 4b. Project & byte-check canonical `gen-0` browser self-hosting spore (`public/genesis/verdant_gen0_sources.uorc`)
+  const genesisDir = path.join(projectRoot, 'public', 'genesis');
+  const gen0UorcPath = path.join(genesisDir, 'verdant_gen0_sources.uorc');
+  const gen0ManifestPath = path.join(genesisDir, 'verdant_gen0_manifest.json');
+  const gen0Spore = buildGen0SelfHostSporeArtifacts(projectRoot);
+  const currentGen0Uorc = fs.existsSync(gen0UorcPath) ? fs.readFileSync(gen0UorcPath) : null;
+  const currentGen0Manifest = fs.existsSync(gen0ManifestPath)
+    ? fs.readFileSync(gen0ManifestPath, 'utf8')
+    : '';
+  const gen0InSync =
+    currentGen0Uorc !== null &&
+    currentGen0Uorc.equals(gen0Spore.archiveBuffer) &&
+    currentGen0Manifest === gen0Spore.manifestJson;
+  if (!gen0InSync) {
+    if (options.write) {
+      fs.mkdirSync(genesisDir, { recursive: true });
+      fs.writeFileSync(gen0UorcPath, gen0Spore.archiveBuffer);
+      writeFileIfChanged(gen0ManifestPath, gen0Spore.manifestJson);
+    } else {
+      driftDetails.push(
+        'public/genesis/verdant_gen0_sources.uorc or verdant_gen0_manifest.json differs from live gen-0 repository projection',
       );
     }
   }

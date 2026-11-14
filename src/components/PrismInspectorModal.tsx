@@ -1,37 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   ATMOSPHERE_CONFIGS,
   AtmosphereId,
   BIOME_CONFIGS,
   BiomeId,
-  BOTANICAL_LIFECYCLE_STAGES,
+  BotanicalLifecycleStageId,
+  GardenPlantInstance,
+  OBSERVER_PART_ORDER,
+  ObserverPartId,
   PLANT_SPECIES_CONFIGS,
   PlantSpeciesId,
-  SOUND_OUTCOME_PROFILES,
-  SOLIPSISTIC_RULE30_CEILING_PERMILLE,
-  SPECIES_ARTICULATION_PROFILES,
-  SoundscapeOutcome,
+  SYMBIOTIC_GUILDS,
   VERDANT_BRAND_STANDARD,
-  VERDANT_TELEOLOGICAL_PHENOMENA,
-  evaluateBiomeMasteryAndGuilds,
-  evaluateUniversal5WhOntologyCatalog,
-  evaluateVerdantAutonomousKpis,
-  evaluateVerdantTeleologySynthesis,
-  GardenPlantInstance,
+  evaluateObserverPlayerDissonanceReconciliation,
   getPlantLifecycleStage,
-  Ontological5WhNodeExplanation,
   synthesizeParametricAtmosphereConfigs,
   synthesizeParametricBiomeConfigs,
-  synthesizeParametricSoundOutcomeProfiles,
+  synthesizeParametricPlantSpeciesConfigs,
 } from '../game/prismModel';
-import {
-  CERTIFIED_PRODUCTION_MANIFEST,
-  certifiedWasmCoreCallCount,
-  certifiedWasmTotalWork,
-} from '../game/generatedCertifiedWasmBridge';
+import { GENERATED_ONTOLOGY_5WH_LEDGER } from '../game/generatedPrismConstants';
+import { CERTIFIED_PRODUCTION_MANIFEST } from '../game/generatedCertifiedWasmBridge';
 import { BotanicalSoundscapeEngine } from '../game/soundscapeEngine';
 import { LiveTelemetryState } from './GardenCanvas';
-import { PlantSpeciesIcon } from './BotanicalIcons';
+import { PlantSpeciesIcon, VerdantResonanceEmblem } from './BotanicalIcons';
+import {
+  getLiveSelfHostOrganismState,
+  subscribeSelfHostOrganismState,
+  type LiveSelfHostOrganismState,
+} from '../selfhost/browserSelfHostEngine';
+
+export type PrismInspectorTabId = 'herbarium' | 'biomes' | 'sanctuary' | 'telemetry';
+
+export interface ArchivedSessionMeta {
+  readonly merkleDigestHex?: string;
+  readonly selfHostGenerationId?: string;
+  readonly selfHostTreeKappa?: string;
+}
 
 interface PrismInspectorModalProps {
   mode: 'paused' | 'gameover';
@@ -39,20 +43,121 @@ interface PrismInspectorModalProps {
   telemetry: LiveTelemetryState;
   plants: GardenPlantInstance[];
   soundEngine: BotanicalSoundscapeEngine;
+  tunedWaystoneDegrees?: readonly number[];
+  archivedSessionMeta?: ArchivedSessionMeta | null;
   onResume: () => void;
   onRestart: () => void;
-  onReturnTitle: () => void;
-  onTeleportBiome: (biome: BiomeId) => void;
-  onSelectAtmosphere: (atmosphere: AtmosphereId) => void;
+  onShareGarden: () => void;
 }
 
-const SPECIES_PHENOMENON_ID: Readonly<Record<PlantSpeciesId, string>> = {
-  'chime-lily': 'flora-chime-lily',
-  'pulse-fern': 'flora-pulse-fern',
-  'echo-lotus': 'flora-echo-lotus',
-  'drone-moss': 'flora-drone-moss',
-  'star-orchid': 'flora-star-orchid',
+const SPECIES_ORDER: PlantSpeciesId[] = [
+  'chime-lily',
+  'pulse-fern',
+  'echo-lotus',
+  'drone-moss',
+  'star-orchid',
+];
+
+const BIOME_ORDER: BiomeId[] = ['meadow', 'grove', 'crystal', 'wetland', 'sanctuary'];
+
+const LIFECYCLE_LABELS: Record<BotanicalLifecycleStageId, string> = {
+  'dormant-seed': 'Dormant Seed',
+  'sprouting-bud': 'Sprouting Bud',
+  'resonant-bloom': 'Resonant Bloom',
+  'harmonic-fruiting': 'Harmonic Fruiting',
+  'mycelial-memory': 'Mycelial Elder',
 };
+
+const BIOME_CARDINAL_TRAIL: Record<BiomeId, string> = {
+  meadow: 'Central Conservatory Clearing',
+  grove: 'Northwest Bamboo Trail',
+  crystal: 'Northeast Quartz Cavern',
+  wetland: 'Southwest Mirror Lagoon',
+  sanctuary: 'Southeast Harmonic Terrace',
+};
+
+const LANDMARK_FIELD_NOTES: Record<
+  BiomeId,
+  {
+    landmarkTitle: string;
+    ecologicalHarmony: string;
+    gestureNote: string;
+  }
+> = {
+  meadow: {
+    landmarkTitle: 'Gnomon Sundial Clearing',
+    ecologicalHarmony:
+      'Travertine sun-rings warm nearby Chime Lilies, casting harmonic overtones across the central grass.',
+    gestureNote:
+      'Attune [Space] beside the sundial ring to awaken warm bell arpeggios; rest in Stillness [C] to let golden pollen settle.',
+  },
+  grove: {
+    landmarkTitle: 'Aeolian Bamboo Pergola',
+    ecologicalHarmony:
+      'Segmented culm pillars channel gentle canopy breezes into soft wooden flute resonances.',
+    gestureNote:
+      'Walk unhurriedly beneath the pergola and Touch [T] nearby Pulse Ferns to weave woody polyrhythms.',
+  },
+  crystal: {
+    landmarkTitle: 'Piezoelectric Quartz Arch',
+    ecologicalHarmony:
+      'Faceted quartz spires catch bioluminescent light and answer every chime with clear shimmer partials.',
+    gestureNote:
+      'Attune [Space] near Drone Moss cushions beneath the arch to sustain serene cathedral harmonies.',
+  },
+  wetland: {
+    landmarkTitle: 'Mirror Lagoon Lanterns',
+    ecologicalHarmony:
+      'Calm lagoon ripples carry Echo Lotus reflections between mossy shore boulders and travertine stepping stones.',
+    gestureNote:
+      'Pause in Stillness [C] at the water’s edge so concentric ripples calm and lotus voices bloom.',
+  },
+  sanctuary: {
+    landmarkTitle: 'Harmonic Sanctuary Pavilion',
+    ecologicalHarmony:
+      'An open circular terrace where Star Orchids and neighboring biomes unite in full polyphonic chorus.',
+    gestureNote:
+      'Hold Attune [Space] or Stillness [C] within the pavilion to experience the full conservatory choir.',
+  },
+};
+
+function shortHex(hex: string | undefined | null, chars = 10): string {
+  if (!hex) return '—';
+  const clean = hex.startsWith('0x') ? hex.slice(2) : hex;
+  return clean.length <= chars ? `0x${clean}` : `0x${clean.slice(0, chars)}…`;
+}
+
+function parseGenerationIndex(genId: string | undefined | null): number {
+  if (!genId) return -1;
+  const match = /^gen-(\d+)$/.exec(genId);
+  return match ? Number(match[1]) : -1;
+}
+
+function ProgressMeterBar({
+  ratio01,
+  tone = 'emerald',
+}: {
+  ratio01: number;
+  tone?: 'emerald' | 'amber' | 'teal' | 'sky';
+}) {
+  const pct = Math.max(2, Math.min(100, Math.round(ratio01 * 100)));
+  const fillClass =
+    tone === 'amber'
+      ? 'bg-gradient-to-r from-emerald-400 via-amber-300 to-amber-200'
+      : tone === 'teal'
+        ? 'bg-gradient-to-r from-teal-400 to-cyan-300'
+        : tone === 'sky'
+          ? 'bg-gradient-to-r from-sky-400 to-teal-300'
+          : 'bg-gradient-to-r from-emerald-500 to-emerald-300';
+  return (
+    <div className="w-full h-1.5 rounded-full bg-slate-900/90 overflow-hidden border border-emerald-400/10">
+      <div
+        className={`h-full rounded-full transition-all duration-300 ${fillClass}`}
+        style={{ width: `${pct}%` }}
+      />
+    </div>
+  );
+}
 
 export const PrismInspectorModal: React.FC<PrismInspectorModalProps> = ({
   mode,
@@ -60,736 +165,1206 @@ export const PrismInspectorModal: React.FC<PrismInspectorModalProps> = ({
   telemetry,
   plants,
   soundEngine,
+  tunedWaystoneDegrees,
+  archivedSessionMeta,
   onResume,
   onRestart,
-  onReturnTitle,
-  onTeleportBiome,
-  onSelectAtmosphere,
+  onShareGarden,
 }) => {
-  const [activeTab, setActiveTab] = useState<
-    'herbarium' | 'biomes' | 'harmonies' | 'ethos' | 'ontology'
-  >('herbarium');
-  const [ontologyFilter, setOntologyFilter] = useState<
-    'causal-stratum' | 'prime-atom' | 'world-phenomenon' | 'lexlean-structure'
-  >('causal-stratum');
-
-  const cosmoParams = {
-    alphaSeed: telemetry.neuromorphic.observer.cosmogenesis.alphaSeed,
-    manifold: telemetry.neuromorphic.universalManifold,
-  };
-  const liveAtmosphereConfigs = synthesizeParametricAtmosphereConfigs(cosmoParams);
-  const liveOutcomeProfiles = synthesizeParametricSoundOutcomeProfiles(cosmoParams);
-  const liveBiomeConfigs = synthesizeParametricBiomeConfigs(cosmoParams);
-  const teleologyReport = evaluateVerdantTeleologySynthesis(
-    telemetry.neuromorphic.lastActiveSynapticWeight,
-  );
-  const kpiScorecard = evaluateVerdantAutonomousKpis({
-    busWeight: telemetry.neuromorphic.lastActiveSynapticWeight,
-    harmonyPct: telemetry.harmony,
-    velocityDm: telemetry.velocityDm,
-    isStillness:
-      telemetry.action === 'stillness' || telemetry.gestureHold.heldGesture === 'stillness',
-    hasFocalTarget: Boolean(telemetry.nearestPlant),
-    focalTargetAttuned: Boolean(telemetry.nearestPlant?.attuned),
-    nearestFeatureDistanceM: telemetry.distanceMeters,
-    restStepCount: telemetry.soundtrackScore.restStepCount,
-    activeVoiceCount: telemetry.environmentalLifecycle.activeStemsCount,
-    exploredBiomesCount: telemetry.exploredBiomes.length,
-  });
-  const rec = kpiScorecard.reconciliation;
-  const ontologyReport = evaluateUniversal5WhOntologyCatalog(
-    {
-      logicalCores: typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4,
-      frameBudgetMicros: 16667,
-      observedFrameMicros: 8500,
-    },
-    {
-      stillnessRatioPermille:
-        telemetry.action === 'stillness' ? 900 : Math.max(0, Math.round((1 - telemetry.velocityDm / 30) * 750)),
-      gazeDwellRatioPermille: telemetry.nearestPlant ? 780 : 320,
-      harmonicComfortPermille: Math.round(telemetry.soundtrackScore.curatedConsonancePurity01 * 1000),
-      activePresence: true,
-    },
-    telemetry.liveCoEvolution.ontologicalTelos.coordinates,
-    telemetry.liveCoEvolution.incumbentDissonancePermille,
-  );
-  const filteredOntologyNodes: readonly Ontological5WhNodeExplanation[] =
-    ontologyFilter === 'causal-stratum'
-      ? ontologyReport.causalStratumNodes
-      : ontologyFilter === 'prime-atom'
-        ? ontologyReport.primeAtomNodes
-        : ontologyFilter === 'world-phenomenon'
-          ? ontologyReport.worldPhenomenonNodes
-          : ontologyReport.structureNodes;
-
-  const speciesList = Object.values(PLANT_SPECIES_CONFIGS);
-  const biomeList = Object.values(liveBiomeConfigs);
-  const atmosphereList = Object.values(liveAtmosphereConfigs);
-  const outcomeList = Object.values(liveOutcomeProfiles);
-
-  const conservatoryEcosystemFeatures = VERDANT_TELEOLOGICAL_PHENOMENA.filter(
-    (p) =>
-      p.category === 'traversal-substrate' ||
-      p.category === 'ecological-phenomenon' ||
-      p.category === 'embodied-witness',
+  const [activeTab, setActiveTab] = useState<PrismInspectorTabId>('herbarium');
+  const [shareCopied, setShareCopied] = useState(false);
+  const [selfHostState, setSelfHostState] = useState<LiveSelfHostOrganismState>(() =>
+    getLiveSelfHostOrganismState(),
   );
 
-  const handleAuditionSpecies = (speciesId: PlantSpeciesId) => {
-    const spCfg = PLANT_SPECIES_CONFIGS[speciesId];
-    soundEngine.playSpeciesAudition(speciesId, spCfg.nativeBiome, spCfg.diurnalAffinity, true);
-  };
+  useEffect(() => subscribeSelfHostOrganismState((st) => setSelfHostState(st)), []);
 
-  const handleAuditionOutcome = (outcomeId: SoundscapeOutcome) => {
-    soundEngine.playOutcomeMotif(
-      outcomeId,
-      telemetry.biome,
-      1.0,
-      atmosphere,
-      0,
-      telemetry.nearestPlant.species,
-      'terrestrial-loam',
-      true,
-    );
-  };
+  const cosmoParams = useMemo(
+    () => ({
+      alphaSeed: telemetry.neuromorphic.observer.cosmogenesis.alphaSeed,
+      manifold: telemetry.neuromorphic.universalManifold,
+      harmonyPct: telemetry.harmony,
+    }),
+    [
+      telemetry.neuromorphic.observer.cosmogenesis.alphaSeed,
+      telemetry.neuromorphic.universalManifold,
+      telemetry.harmony,
+    ],
+  );
+
+  const liveBiomeConfigs = useMemo(
+    () => synthesizeParametricBiomeConfigs(cosmoParams),
+    [cosmoParams],
+  );
+  const liveAtmosphereConfigs = useMemo(
+    () => synthesizeParametricAtmosphereConfigs(cosmoParams),
+    [cosmoParams],
+  );
+  const liveSpeciesConfigs = useMemo(
+    () => synthesizeParametricPlantSpeciesConfigs(cosmoParams),
+    [cosmoParams],
+  );
+
+  const speciesCounts = useMemo(() => {
+    const map: Record<PlantSpeciesId, { total: number; attuned: number }> = {
+      'chime-lily': { total: 0, attuned: 0 },
+      'pulse-fern': { total: 0, attuned: 0 },
+      'echo-lotus': { total: 0, attuned: 0 },
+      'drone-moss': { total: 0, attuned: 0 },
+      'star-orchid': { total: 0, attuned: 0 },
+    };
+    for (const p of plants) {
+      map[p.species].total += 1;
+      if (p.attuned) map[p.species].attuned += 1;
+    }
+    return map;
+  }, [plants]);
+
+  const biomeCounts = useMemo(() => {
+    const map: Record<BiomeId, { total: number; attuned: number }> = {
+      meadow: { total: 0, attuned: 0 },
+      grove: { total: 0, attuned: 0 },
+      crystal: { total: 0, attuned: 0 },
+      wetland: { total: 0, attuned: 0 },
+      sanctuary: { total: 0, attuned: 0 },
+    };
+    for (const p of plants) {
+      map[p.biome].total += 1;
+      if (p.attuned) map[p.biome].attuned += 1;
+    }
+    return map;
+  }, [plants]);
+
+  const ecologySnapshot = useMemo(() => {
+    const lifecycleCounts: Record<BotanicalLifecycleStageId, number> = {
+      'dormant-seed': 0,
+      'sprouting-bud': 0,
+      'resonant-bloom': 0,
+      'harmonic-fruiting': 0,
+      'mycelial-memory': 0,
+    };
+    let emergentCount = 0;
+    for (const p of plants) {
+      const stage = getPlantLifecycleStage(p);
+      lifecycleCounts[stage] += 1;
+      if (p.id.startsWith('offshoot-') || p.id.startsWith('emergent-')) {
+        emergentCount += 1;
+      }
+    }
+    const tunedWaystoneCount = tunedWaystoneDegrees
+      ? tunedWaystoneDegrees.filter((deg) => deg > 0).length
+      : 0;
+    const totalWaystones = tunedWaystoneDegrees?.length ?? 54;
+    return { lifecycleCounts, emergentCount, tunedWaystoneCount, totalWaystones };
+  }, [plants, tunedWaystoneDegrees]);
+
+  const triadicSummary = useMemo(() => {
+    const awakenedSpeciesSet = new Set<string>();
+    for (const p of plants) {
+      if (p.attuned) awakenedSpeciesSet.add(p.species);
+    }
+    return evaluateObserverPlayerDissonanceReconciliation({
+      busWeight: telemetry.neuromorphic.lastActiveSynapticWeight,
+      harmonyPct: telemetry.harmony,
+      velocityDm: telemetry.velocityDm,
+      isStillness: telemetry.action === 'stillness',
+      gestureHoldProgress01: telemetry.gestureHold.holdProgress,
+      hasFocalTarget: telemetry.proximityDm <= 24,
+      focalTargetAttuned: telemetry.nearestPlant.attuned,
+      nearestFeatureDistanceM: Math.min(
+        telemetry.distanceMeters,
+        telemetry.nearestLandmark.distanceMeters,
+      ),
+      restStepCount: telemetry.soundtrackScore.restStepCount,
+      activeVoiceCount:
+        telemetry.soundtrackScore.steps[telemetry.currentSoundtrackStep]?.voices.length ?? 2,
+      barkHeadroomDb:
+        telemetry.neuromorphic.observer.canonicalStandardModelsContext.multiModalFidelity
+          .barkMaskingHeadroomDb,
+      tenneyConsonancePurity01: telemetry.soundtrackScore.curatedConsonancePurity01,
+      awakenedSpeciesCount: Math.max(1, awakenedSpeciesSet.size),
+      exploredBiomesCount: Math.max(1, telemetry.exploredBiomes.length),
+      coerciveDarkPatternCount: 0,
+    });
+  }, [plants, telemetry]);
+
+  const isRestorativePause = mode === 'gameover' && telemetry.gestureHold.agitationPct >= 95;
+  const activeBiomeCfg = liveBiomeConfigs[telemetry.biome] ?? BIOME_CONFIGS[telemetry.biome];
+  const activeAtmCfg = liveAtmosphereConfigs[atmosphere] ?? ATMOSPHERE_CONFIGS[atmosphere];
+  const observer = telemetry.neuromorphic.observer;
+  const manifold = telemetry.neuromorphic.universalManifold;
+  const liveCoEvo = telemetry.liveCoEvolution;
+  const playerRealm = observer.cosmogenesis.playerRealm;
+  const organicRealm = observer.cosmogenesis.organicRealm;
+  const inorganicRealm = observer.cosmogenesis.inorganicRealm;
+  const supra = observer.supraDirective;
+  const multiModal = observer.canonicalStandardModelsContext.multiModalFidelity;
+  const standardModels = observer.canonicalStandardModelsContext.models;
+  const audit22 = observer.canonicalStandardModelsContext.zeroCherryPickingAudit;
+  const highestRes = observer.differentiationAndExtrapolation.highestResolution;
+  const partNiches = observer.differentiationAndExtrapolation.diversification.partNiches;
+  const affect = observer.affectAndPreferences.affect;
+  const consolidatedMemories = observer.conservatoryCuration.consolidatedMemories;
+
+  const unifiedPartCount = OBSERVER_PART_ORDER.filter(
+    (partId) => observer.parts[partId]?.synapticWeight >= 8,
+  ).length;
+  const elevatedPartCount = OBSERVER_PART_ORDER.filter(
+    (partId) => observer.parts[partId]?.exceedsBaseDirective,
+  ).length;
+  const consolidatedPartCount = OBSERVER_PART_ORDER.filter(
+    (partId) => (observer.parts[partId]?.synapticWeight ?? 0) >= 12,
+  ).length;
+
+  const liveGenRank = parseGenerationIndex(selfHostState.headGenerationId);
+  const archivedGenRank = parseGenerationIndex(archivedSessionMeta?.selfHostGenerationId);
+  const effectiveLineageId =
+    archivedGenRank > liveGenRank && archivedSessionMeta?.selfHostGenerationId
+      ? archivedSessionMeta.selfHostGenerationId
+      : selfHostState.headGenerationId;
+  const effectiveTreeKappa =
+    archivedGenRank > liveGenRank && archivedSessionMeta?.selfHostTreeKappa
+      ? archivedSessionMeta.selfHostTreeKappa
+      : (selfHostState.headManifest?.treeKappa ?? archivedSessionMeta?.selfHostTreeKappa);
+
+  const activeProjection = useMemo(() => {
+    if (selfHostState.activeHotTsProjection) {
+      return selfHostState.activeHotTsProjection(liveCoEvo.barTickCount);
+    }
+    const rank = Math.max(0, parseGenerationIndex(effectiveLineageId));
+    if (rank > 0) {
+      return {
+        primeHarmonicLimit: Math.min(17, 7 + rank * 2),
+        phyllotaxisSpiral: rank >= 3 ? 21 : 13,
+        warmthScale: Number((1 + Math.min(0.18, rank * 0.035)).toFixed(4)),
+        playerEmbodimentScale: Number((1 + Math.min(0.22, rank * 0.04)).toFixed(4)),
+        enhancementFocus: `session-lineage-${effectiveLineageId}`,
+      };
+    }
+    return {
+      primeHarmonicLimit: multiModal.primeLimitHarmonicCeiling,
+      phyllotaxisSpiral: 13,
+      warmthScale: 1,
+      playerEmbodimentScale: 1,
+      enhancementFocus: 'genesis-baseline',
+    };
+  }, [
+    selfHostState.activeHotTsProjection,
+    liveCoEvo.barTickCount,
+    effectiveLineageId,
+    multiModal.primeLimitHarmonicCeiling,
+  ]);
+
+  const all22ModelsAtCeiling = useMemo(
+    () => standardModels.every((m) => (liveCoEvo.modelWeights22[m.modelKey] ?? m.synapticWeight) >= 16),
+    [standardModels, liveCoEvo.modelWeights22],
+  );
+
+  const hostSat = selfHostState.hostSaturation;
+  const frameBudgetMicros = Math.max(1, hostSat.frameBudgetMicros || 16667);
+  const observedFrameMicros = Math.max(1, Math.round(hostSat.observedFrameMicros || 0));
+  const headingDeg = Math.round((((telemetry.playerYaw * 180) / Math.PI) % 360 + 360) % 360);
+  const pairedGuildCount = SYMBIOTIC_GUILDS.filter((g) =>
+    g.pair.every((sp) => speciesCounts[sp].attuned > 0),
+  ).length;
 
   return (
     <div
-      className="fixed inset-0 z-40 flex items-center justify-center p-4 md:p-6 pointer-events-auto"
-      style={{ backgroundColor: 'rgba(5, 13, 10, 0.86)' }}
       role="dialog"
       aria-modal="true"
-      aria-labelledby="modal-heading"
+      aria-label={mode === 'gameover' ? 'Sanctuary Harmony' : 'Botanical Field Guide'}
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 md:p-6 bg-slate-950/80 backdrop-blur-md"
     >
       <div
-        className="w-full max-w-[1040px] border p-5 md:p-6 shadow-2xl text-emerald-50 max-h-[90vh] flex flex-col justify-between"
+        className="w-full max-w-5xl max-h-[88vh] flex flex-col border shadow-2xl overflow-hidden text-emerald-50"
         style={{
-          backgroundColor: 'var(--prism-modal-bg, #0a1914)',
-          borderColor: 'var(--prism-border-hairline, rgba(110, 231, 183, 0.25))',
-          borderRadius: 'var(--prism-radius-outer, 16px)',
+          backgroundColor: 'var(--prism-bg-canvas)',
+          borderColor: 'var(--prism-border-hairline)',
+          borderRadius: 'var(--prism-radius-outer)',
         }}
       >
-        {/* Top Modal Header */}
-        <div className="flex items-start justify-between gap-4 border-b border-emerald-400/15 pb-3.5">
-          <div>
-            <p className="text-[11px] font-mono tracking-wider text-emerald-300/80 uppercase">
-              {mode === 'gameover'
-                ? telemetry.gestureHold.agitationPct >= 100
-                  ? 'RESTORATIVE STILLNESS INTERLUDE · UNHURRIED PACING'
-                  : 'SANCTUARY ATTUNEMENT COMPLETE · LIVING HARMONY'
-                : 'CONSERVATORY FIELD GUIDE · LIVING FLORA & LANDMARKS'}
-            </p>
-            <h2
-              id="modal-heading"
-              className="font-display text-2xl md:text-3xl font-semibold text-amber-100 mt-0.5"
-            >
-              {mode === 'gameover'
-                ? telemetry.gestureHold.agitationPct >= 100
-                  ? 'Pause, Breathe & Return to Stillness'
-                  : 'Verdant Harmony Flourishing'
-                : 'Sanctuary Herbarium & Landmark Atlas'}
-            </h2>
+        {/* Serene Botanical Header */}
+        <div
+          className="px-6 py-4 border-b border-emerald-400/20 flex flex-wrap items-center justify-between gap-4"
+          style={{ backgroundColor: 'var(--prism-surface-elevated)' }}
+        >
+          <div className="flex items-center gap-3.5">
+            <VerdantResonanceEmblem
+              className="w-11 h-11 shrink-0"
+              supraTier={observer.supraDirective.tier}
+              primaryAccentHex={observer.parametricDisplayDesign.palette.primaryAccentHex}
+              secondaryAccentHex={observer.parametricDisplayDesign.palette.secondaryAccentHex}
+              surfaceHex={observer.parametricDisplayDesign.palette.canvasBgHex}
+            />
+            <div>
+              <div className="text-xs font-mono tracking-wider text-amber-300/90 uppercase">
+                {mode === 'gameover'
+                  ? isRestorativePause
+                    ? 'A Quiet Breath in the Conservatory'
+                    : 'Sanctuary Harmony Flourishing'
+                  : `${VERDANT_BRAND_STANDARD.brandName} · Botanical Field Guide & Observatory`}
+              </div>
+              <h2 className="font-display text-2xl md:text-3xl font-semibold text-amber-50">
+                {mode === 'gameover'
+                  ? isRestorativePause
+                    ? 'Let the Mist Settle'
+                    : 'The Conservatory Sings in Full Bloom'
+                  : `${activeBiomeCfg.name} · ${activeAtmCfg.name}`}
+              </h2>
+            </div>
           </div>
 
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex flex-wrap items-center gap-2.5">
             <button
               type="button"
               onClick={onResume}
-              className="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="px-4 py-2 rounded-lg bg-amber-300 hover:bg-amber-200 text-slate-950 font-semibold text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
-              Resume Garden
+              {mode === 'gameover' ? 'Return to Garden' : 'Resume Garden'}
             </button>
             <button
               type="button"
-              data-start={mode === 'gameover' ? 'true' : undefined}
+              onClick={() => {
+                onShareGarden();
+                setShareCopied(true);
+                window.setTimeout(() => setShareCopied(false), 2000);
+              }}
+              className="px-3.5 py-2 rounded-lg border border-emerald-400/30 bg-emerald-900/60 hover:bg-emerald-800/70 text-emerald-100 font-medium text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              {shareCopied ? 'Garden Link Copied' : 'Share Garden'}
+            </button>
+            <button
+              type="button"
               onClick={onRestart}
-              className="px-4 py-2 rounded-lg bg-amber-400 hover:bg-amber-300 text-slate-950 font-semibold text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              className="px-3.5 py-2 rounded-lg border border-emerald-400/20 bg-emerald-950/60 hover:bg-emerald-900/70 text-emerald-200 font-medium text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
             >
-              {mode === 'gameover' ? 'Explore Anew' : 'Reset Garden'}
-            </button>
-            <button
-              type="button"
-              onClick={onReturnTitle}
-              className="px-3.5 py-2 rounded-lg border border-emerald-400/30 hover:bg-emerald-900/50 text-emerald-100 text-sm transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-            >
-              Title Screen
+              Explore Anew
             </button>
           </div>
         </div>
 
-        {/* 3 Calm Sanctuary Summary Tiles */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 my-3">
-          <div className="rounded-lg border border-emerald-400/15 bg-[#0d211b] px-4 py-2.5">
-            <div className="text-[10px] font-mono text-emerald-300/75 uppercase">
-              GARDEN HARMONY
-            </div>
-            <div className="text-xl font-mono font-semibold text-amber-200 tabular-nums">
-              {Math.round(telemetry.harmony)}%
-            </div>
-            <div className="text-[11px] text-emerald-200/70">
-              {telemetry.attunedCount} of {telemetry.totalPlants} flora awakened ·{' '}
-              {telemetry.environmentalLifecycle.label}
-            </div>
-          </div>
-
-          <div className="rounded-lg border border-emerald-400/15 bg-[#0d211b] px-4 py-2.5">
-            <div className="text-[10px] font-mono text-emerald-300/75 uppercase">
-              BIOMES &amp; DIURNAL SKY
-            </div>
-            <div className="text-xl font-mono font-semibold text-emerald-200 tabular-nums">
-              {telemetry.exploredBiomes.length} / 5
-            </div>
-            <div className="text-[11px] text-emerald-200/70 truncate">
-              {BIOME_CONFIGS[telemetry.biome].name} · {ATMOSPHERE_CONFIGS[atmosphere].name}
-            </div>
-          </div>
-
-          <div className="rounded-lg border border-emerald-400/15 bg-[#0d211b] px-4 py-2.5">
-            <div className="text-[10px] font-mono text-emerald-300/75 uppercase">
-              ACTIVE CHOIR VOICE
-            </div>
-            <div className="text-lg font-display font-semibold text-teal-200 truncate">
-              {SOUND_OUTCOME_PROFILES[telemetry.prismOutcome]?.label ?? 'Wind Whisper'}
-            </div>
-            <div className="text-[11px] text-emerald-200/70 truncate">
-              {(liveBiomeConfigs[telemetry.biome] ?? BIOME_CONFIGS[telemetry.biome]).tuningLabel} ·{' '}
-              {telemetry.soundtrackScore.activeStems.length}/4 Stems Singing
-            </div>
-          </div>
-        </div>
-
-        {/* Clean 4-Tab Conservatory Navigation + Diurnal Sky Switcher */}
-        <div
-          className="flex items-center justify-between gap-2 mb-3 overflow-x-auto"
-          data-testid="inspector-tab-toolbar"
-        >
-          <div className="flex items-center gap-1 p-1 rounded-lg bg-[#07120e] border border-emerald-500/15 shrink-0">
-            <button
-              type="button"
-              onClick={() => setActiveTab('herbarium')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                activeTab === 'herbarium'
-                  ? 'bg-emerald-500/25 text-amber-100 border border-emerald-400/30'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
-              }`}
-            >
-              Flora Herbarium (5)
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('biomes')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                activeTab === 'biomes'
-                  ? 'bg-emerald-500/25 text-amber-100 border border-emerald-400/30'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
-              }`}
-            >
-              Biomes &amp; Landmarks (5)
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('harmonies')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                activeTab === 'harmonies'
-                  ? 'bg-emerald-500/25 text-amber-100 border border-emerald-400/30'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
-              }`}
-            >
-              Resonance Choirs (10)
-            </button>
-            <button
-              type="button"
-              onClick={() => setActiveTab('ethos')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                activeTab === 'ethos'
-                  ? 'bg-emerald-500/25 text-amber-100 border border-emerald-400/30'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
-              }`}
-            >
-              Sanctuary Ethos
-            </button>
-            <button
-              type="button"
-              data-testid="inspector-tab-ontology"
-              onClick={() => setActiveTab('ontology')}
-              className={`px-3 py-1.5 rounded-md text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                activeTab === 'ontology'
-                  ? 'bg-emerald-500/25 text-amber-100 border border-emerald-400/30'
-                  : 'text-emerald-300/70 hover:text-emerald-100'
-              }`}
-            >
-              5W+H Ontology (8)
-            </button>
-          </div>
-
-          {/* Diurnal Sky Quick Switcher */}
-          <div className="flex items-center gap-1 shrink-0">
-            {atmosphereList.map((atm) => (
+        {/* Calm 4-Tab Field Guide & Read-Only Telemetry Bar */}
+        <div className="px-6 py-3 bg-emerald-950/40 border-b border-emerald-400/15 flex flex-wrap items-center justify-between gap-3">
+          <div className="flex flex-wrap items-center gap-2">
+            {(
+              [
+                ['herbarium', 'Flora Herbarium'],
+                ['biomes', 'Biomes & Trails'],
+                ['sanctuary', 'Living Sanctuary'],
+                ['telemetry', 'Telemetry & Evolution'],
+              ] as [PrismInspectorTabId, string][]
+            ).map(([tabId, label]) => (
               <button
-                key={atm.id}
+                key={tabId}
                 type="button"
-                aria-label={atm.name}
-                title={atm.name}
-                onClick={() => onSelectAtmosphere(atm.id)}
-                className={`px-2.5 py-1 rounded text-[11px] font-mono transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-                  atmosphere === atm.id
-                    ? 'bg-teal-500/30 text-amber-200 border border-teal-400/40'
-                    : 'text-emerald-300/70 hover:text-emerald-100 bg-[#07120e]'
+                data-testid={`inspector-tab-${tabId}`}
+                onClick={() => setActiveTab(tabId)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
+                  activeTab === tabId
+                    ? 'bg-emerald-400/25 text-amber-200 border border-emerald-300/40'
+                    : 'text-emerald-200/75 hover:text-emerald-100 hover:bg-emerald-900/40'
                 }`}
               >
-                {atm.name.split(' ')[0]}
+                {label}
               </button>
             ))}
           </div>
+
+          <div className="text-xs font-mono text-emerald-200/80">
+            {telemetry.attunedCount} / {telemetry.totalPlants} Flora Awakened ·{' '}
+            {telemetry.exploredBiomes.length} / 5 Biomes · Lineage {effectiveLineageId}
+          </div>
         </div>
 
-        {/* Scrollable Content Region */}
-        <div className="overflow-y-auto pr-1 flex-1 min-h-0">
+        {/* Scrollable Botanical & Observatory Content */}
+        <div className="flex-1 overflow-y-auto p-6 space-y-5">
+          {mode === 'gameover' && (
+            <div className="rounded-xl border border-amber-300/35 bg-gradient-to-r from-emerald-950/90 via-teal-950/80 to-emerald-950/90 p-5">
+              <p className="text-sm text-emerald-100/90 leading-relaxed">
+                {isRestorativePause
+                  ? 'The conservatory responds best to unhurried presence. Step gently along the travertine paths, listen as nearby blossoms answer your gaze, or hold [C] in quiet stillness.'
+                  : `Every corner of the conservatory now shimmers in shared resonance (${telemetry.attunedCount} of ${telemetry.totalPlants} flora awakened across ${telemetry.exploredBiomes.length} biomes). You may continue strolling peacefully for as long as you wish.`}
+              </p>
+            </div>
+          )}
+
           {/* TAB 1: FLORA HERBARIUM */}
           {activeTab === 'herbarium' && (
-            <div className="space-y-2">
-              {speciesList.map((sp) => {
-                const matchingPlants = plants.filter((p) => p.species === sp.id);
-                const totalOfSpecies = matchingPlants.length;
-                const attunedOfSpecies = matchingPlants.filter((p) => p.attuned).length;
-                const samplePlant = matchingPlants[0];
-                const sampleStage = samplePlant
-                  ? BOTANICAL_LIFECYCLE_STAGES[getPlantLifecycleStage(samplePlant)].label
-                  : 'Dormant Seed';
-                const nativeBiomeCfg = BIOME_CONFIGS[sp.nativeBiome];
-                const skyCfg = ATMOSPHERE_CONFIGS[sp.diurnalAffinity];
-                const artCfg = SPECIES_ARTICULATION_PROFILES[sp.id];
-                const phenomenon = VERDANT_TELEOLOGICAL_PHENOMENA.find(
-                  (p) => p.phenomenonId === SPECIES_PHENOMENON_ID[sp.id],
-                );
+            <div className="space-y-4">
+              <p className="text-sm text-emerald-100/85 leading-relaxed">
+                Five resonant plant species grow across the conservatory. Walk near any blossom and
+                press <span className="font-mono text-amber-200">[Space]</span> to attune its
+                corolla, or <span className="font-mono text-amber-200">[T]</span> to gently pluck a
+                single petal chime.
+              </p>
 
-                return (
-                  <div
-                    key={sp.id}
-                    className="rounded-xl border border-emerald-400/15 bg-[#0c1d17] px-4 py-3 flex items-start justify-between gap-4"
-                  >
-                    <div className="flex items-start gap-3 min-w-0">
-                      <PlantSpeciesIcon
-                        species={sp.id}
-                        attuned={attunedOfSpecies > 0}
-                        className="w-8 h-8 shrink-0 mt-0.5"
-                      />
-                      <div className="space-y-1 min-w-0">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-sm font-semibold text-amber-100">{sp.name}</span>
-                          <span className="text-xs italic text-emerald-300/75">{sp.latinName}</span>
-                          <span aria-hidden="true" className="text-emerald-400/40">
-                            ·
-                          </span>
-                          <span className="text-xs font-mono text-amber-200">
-                            {artCfg.instrumentName}
-                          </span>
-                          <span aria-hidden="true" className="text-emerald-400/40">
-                            ·
-                          </span>
-                          <span className="text-xs font-mono text-emerald-200/85 tabular-nums">
-                            {attunedOfSpecies}/{totalOfSpecies} attuned ({sampleStage})
-                          </span>
-                        </div>
-                        <p className="text-xs text-emerald-100/85 leading-relaxed">
-                          {phenomenon?.environmentalRequirement ?? sp.description}
-                        </p>
-                        <div className="text-[11px] text-teal-200/85">
-                          <span className="font-mono text-emerald-300/80">
-                            {nativeBiomeCfg.name} · {skyCfg.name} ·{' '}
-                          </span>
-                          <span>{phenomenon?.interactiveGameplayResponse ?? sp.description}</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <button
-                      type="button"
-                      onClick={() => handleAuditionSpecies(sp.id)}
-                      className="px-3 py-1.5 rounded-lg border border-amber-300/35 bg-amber-300/10 hover:bg-amber-300/20 text-amber-100 text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {SPECIES_ORDER.map((speciesId) => {
+                  const sp = liveSpeciesConfigs[speciesId] ?? PLANT_SPECIES_CONFIGS[speciesId];
+                  const counts = speciesCounts[speciesId];
+                  const habitatLabel = (
+                    liveBiomeConfigs[sp.nativeBiome] ?? BIOME_CONFIGS[sp.nativeBiome]
+                  ).name;
+                  return (
+                    <div
+                      key={speciesId}
+                      className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-4 flex flex-col justify-between gap-3"
                     >
-                      Listen
-                    </button>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* TAB 2: BIOMES & SYNTHESIZED LANDMARKS */}
-          {activeTab === 'biomes' && (
-            <div className="space-y-2.5">
-              {biomeList.map((biomeCfg) => {
-                const landmark = teleologyReport.landmarksByBiome[biomeCfg.id];
-                const mastery = evaluateBiomeMasteryAndGuilds(biomeCfg.id, plants);
-                const isCurrent = telemetry.biome === biomeCfg.id;
-
-                return (
-                  <div
-                    key={biomeCfg.id}
-                    className={`rounded-xl border px-4 py-3.5 space-y-2 ${
-                      isCurrent
-                        ? 'border-amber-300/40 bg-[#0f251d]'
-                        : 'border-emerald-400/15 bg-[#0c1d17]'
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-sm font-semibold text-amber-100">
-                            {biomeCfg.name}
-                          </span>
-                          <span aria-hidden="true" className="text-emerald-400/40">
-                            ·
-                          </span>
-                          <span className="text-xs font-mono text-teal-200">
-                            {landmark.displayName}
-                          </span>
-                          <span aria-hidden="true" className="text-emerald-400/40">
-                            ·
-                          </span>
-                          <span className="text-xs font-mono text-emerald-300/80 tabular-nums">
-                            {mastery.attunedInBiome}/{mastery.totalInBiome} Flora Awakened
-                          </span>
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-3">
+                          <PlantSpeciesIcon
+                            species={speciesId}
+                            attuned={counts.attuned > 0}
+                            className="w-10 h-10 shrink-0"
+                          />
+                          <div>
+                            <h3 className="font-display text-xl font-semibold text-amber-100">
+                              {sp.name}
+                            </h3>
+                            <div className="text-[11px] italic text-emerald-300/80">
+                              {sp.latinName} · {habitatLabel}
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-[11px] font-mono text-amber-200/85 mt-0.5">
-                          {biomeCfg.tuningLabel} · {landmark.shortPurposeCue}
-                        </div>
-                      </div>
 
-                      <button
-                        type="button"
-                        onClick={() => {
-                          onTeleportBiome(biomeCfg.id);
-                          onResume();
-                        }}
-                        className="px-3 py-1.5 rounded-lg border border-emerald-400/35 bg-emerald-500/15 hover:bg-emerald-500/30 text-emerald-100 text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-                      >
-                        {isCurrent ? 'Here Now' : 'Visit Biome'}
-                      </button>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 text-xs pt-1">
-                      <div className="rounded-lg bg-[#081510] border border-emerald-400/10 p-2.5">
-                        <div className="text-[10px] font-mono text-emerald-300/75 uppercase mb-0.5">
-                          Why the Garden Needed It
-                        </div>
-                        <p className="text-emerald-100/85 leading-relaxed">
-                          {landmark.environmentalRequirement}
-                        </p>
-                      </div>
-                      <div className="rounded-lg bg-[#081510] border border-emerald-400/10 p-2.5">
-                        <div className="text-[10px] font-mono text-emerald-300/75 uppercase mb-0.5">
-                          Synthesized From Local Matter
-                        </div>
-                        <p className="text-emerald-100/85 leading-relaxed">
-                          {landmark.environmentalSynthesisOrigin}
-                        </p>
-                      </div>
-                      <div className="rounded-lg bg-[#081510] border border-emerald-400/10 p-2.5">
-                        <div className="text-[10px] font-mono text-amber-200/85 uppercase mb-0.5">
-                          Living Response ([Space] / [T] / [C])
-                        </div>
-                        <p className="text-emerald-100/85 leading-relaxed">
-                          {landmark.interactiveGameplayResponse}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* TAB 3: RESONANCE CHOIRS */}
-          {activeTab === 'harmonies' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-              {outcomeList.map((out) => {
-                const isActive = telemetry.prismOutcome === out.id;
-                return (
-                  <div
-                    key={out.id}
-                    className={`rounded-xl border px-3.5 py-2.5 flex items-center justify-between gap-3 ${
-                      isActive
-                        ? 'border-amber-300/45 bg-[#10261e]'
-                        : 'border-emerald-400/15 bg-[#0c1d17]'
-                    }`}
-                  >
-                    <div className="min-w-0 space-y-0.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-amber-100 truncate">
-                          {out.label}
+                        <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-emerald-400/25 bg-emerald-900/50 text-amber-200 whitespace-nowrap">
+                          {counts.attuned} / {counts.total} Awakened
                         </span>
-                        {isActive && (
-                          <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-300/20 text-amber-200">
-                            Singing
-                          </span>
-                        )}
                       </div>
-                      <div className="text-[11px] font-mono text-teal-200/85 truncate">
-                        {out.timbre}
+
+                      <p className="text-xs text-emerald-100/85 leading-relaxed">
+                        {sp.description}
+                      </p>
+
+                      <div className="flex items-center justify-between gap-2 pt-2 border-t border-emerald-400/15">
+                        <span className="text-[11px] text-emerald-300/80">
+                          {sp.acousticRole} ({sp.harmonicInterval})
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            soundEngine.init();
+                            soundEngine.playSpeciesAudition(
+                              speciesId,
+                              sp.nativeBiome,
+                              atmosphere,
+                              true,
+                            );
+                          }}
+                          className="px-3 py-1 rounded-md bg-amber-300/20 hover:bg-amber-300/30 border border-amber-300/40 text-amber-200 text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+                        >
+                          Listen
+                        </button>
                       </div>
-                      <p className="text-xs text-emerald-200/75 line-clamp-2">
-                        {out.chordDegrees.length}-voice botanical bloom · {out.noteDurationSec.toFixed(1)}s natural sustain
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* TAB 2: BIOMES & TRAILS */}
+          {activeTab === 'biomes' && (
+            <div className="space-y-4">
+              <p className="text-sm text-emerald-100/85 leading-relaxed">
+                Follow the travertine stepping-stone trails from the central meadow outward into all
+                five sanctuary biomes. Each footstep along a waystone rings a soft harmonic note
+                that guides your walk naturally through the landscape.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {BIOME_ORDER.map((biomeId) => {
+                  const b = liveBiomeConfigs[biomeId] ?? BIOME_CONFIGS[biomeId];
+                  const notes = LANDMARK_FIELD_NOTES[biomeId];
+                  const counts = biomeCounts[biomeId];
+                  const isCurrent = telemetry.biome === biomeId;
+                  return (
+                    <div
+                      key={biomeId}
+                      className={`rounded-xl border p-4 space-y-2.5 ${
+                        isCurrent
+                          ? 'border-amber-300/50 bg-emerald-900/40'
+                          : 'border-emerald-400/20 bg-emerald-950/45'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <div className="text-[11px] font-mono text-emerald-300/80 uppercase">
+                            {BIOME_CARDINAL_TRAIL[biomeId]}
+                            {isCurrent ? ' · Here Now' : ''}
+                          </div>
+                          <h3 className="font-display text-xl font-semibold text-amber-100">
+                            {b.name}
+                          </h3>
+                        </div>
+                        <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-emerald-400/25 bg-emerald-950/60 text-emerald-200 whitespace-nowrap">
+                          {counts.attuned} / {counts.total} Flora
+                        </span>
+                      </div>
+
+                      <div className="text-xs font-medium text-amber-200/90">
+                        ✦ {notes.landmarkTitle} · {b.tuningLabel}
+                      </div>
+                      <p className="text-xs text-emerald-100/85 leading-relaxed">
+                        {notes.ecologicalHarmony}
+                      </p>
+                      <p className="text-[11px] text-emerald-200/80 leading-relaxed pt-1.5 border-t border-emerald-400/15">
+                        {notes.gestureNote}
                       </p>
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={() => handleAuditionOutcome(out.id)}
-                      className="px-3 py-1.5 rounded-lg border border-emerald-400/30 hover:bg-emerald-900/60 text-emerald-100 text-xs font-medium transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-                    >
-                      Hear
-                    </button>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           )}
 
-          {/* TAB 4: SANCTUARY ETHOS & LIVING WORLD PHENOMENA */}
-          {activeTab === 'ethos' && (
-            <div className="space-y-3">
-              <div className="rounded-xl border border-emerald-400/20 bg-[#0c1d17] p-4 space-y-2">
-                <div className="text-xs font-mono text-amber-200 uppercase tracking-wider">
-                  {VERDANT_BRAND_STANDARD.conservatorySubtitle}
+          {/* TAB 3: LIVING SANCTUARY */}
+          {activeTab === 'sanctuary' && (
+            <div className="space-y-4">
+              <div className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-3">
+                <h3 className="font-display text-xl font-semibold text-amber-100">
+                  A Self-Evolving Botanical Sanctuary
+                </h3>
+                <p className="text-sm text-emerald-100/90 leading-relaxed">
+                  Verdant Resonance lives and matures continuously on its own as you explore. The
+                  diurnal sky breathes naturally from Dawn Mist through Golden Canopy, Bioluminescent
+                  Dusk, and Starlight Chorus; neighboring plant guilds cross-pollinate new offshoots
+                  along shared trails; and the wandering Co-Observer Witness harmonizes the score,
+                  light, and gentle breeze to match your pace.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-xs font-semibold text-amber-200">Attune [Space]</div>
+                    <p className="text-xs text-emerald-100/80 mt-1">
+                      Awakens nearby blossoms and sends glowing pollination arcs to companion flora.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-xs font-semibold text-amber-200">Touch Petal [T]</div>
+                    <p className="text-xs text-emerald-100/80 mt-1">
+                      Gently plucks a petal or tunes a travertine waystone beneath your feet.
+                    </p>
+                  </div>
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-xs font-semibold text-amber-200">Stillness [C]</div>
+                    <p className="text-xs text-emerald-100/80 mt-1">
+                      Rests in quiet breath, deepening lagoon reflections and overtone warmth.
+                    </p>
+                  </div>
                 </div>
-                <p className="text-sm text-emerald-50/95 leading-relaxed">
-                  {VERDANT_BRAND_STANDARD.manifesto}
-                </p>
-                <p className="text-xs text-emerald-200/80 leading-relaxed">
-                  Every stone path, terrace, landmark, canopy tree, lagoon ripple, and blossom in
-                  Verdant Resonance grows directly from the conservatory&apos;s living ecology. As
-                  you stroll unhurriedly, touch petals, attune to flora and landmarks, or rest in
-                  stillness, the garden deepens its color, geometry, and polyphonic voice on its
-                  own—without menus to micromanage or timers to race against.
-                </p>
               </div>
 
               <div
                 data-testid="certified-wasm-triadic-panel"
-                className="rounded-xl border border-amber-300/25 bg-[#0a1a14] p-4 space-y-2.5"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-3"
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="text-xs font-mono text-amber-200 uppercase tracking-wider">
-                    Certified #![no_std] Wasm Runtime &amp; Triadic Player–Game–Observer Coherence
-                  </div>
-                  <span className="px-2 py-0.5 rounded-md bg-emerald-900/70 border border-emerald-400/25 text-[11px] font-mono text-emerald-100">
-                    {CERTIFIED_PRODUCTION_MANIFEST.roots.length} Certified Roots (
-                    {CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount} #![no_std] +{' '}
-                    {CERTIFIED_PRODUCTION_MANIFEST.rustStdRootCount} rust-std) · 0 Classical.choice
+                  <h4 className="font-display text-lg font-semibold text-amber-100">
+                    Living Co-Observer Harmony
+                  </h4>
+                  <span className="text-xs font-mono text-emerald-300/85">
+                    Sky: {activeAtmCfg.name} · Lineage {effectiveLineageId}
                   </span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-mono">
-                  <div className="rounded-lg bg-[#0d221a] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-200/75 uppercase">
-                      Triadic Coherence
-                    </div>
-                    <div className="text-sm text-amber-200 font-semibold">
-                      {rec.triadicPlayerGameObserverCoherencePermille}‰
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      Rule-30 ceiling: {SOLIPSISTIC_RULE30_CEILING_PERMILLE}‰
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-emerald-300/75">Co-Observer Coherence</div>
+                    <div className="text-base font-mono text-amber-200 mt-0.5">
+                      {Math.round(triadicSummary.triadicPlayerGameObserverCoherencePermille / 10)}%
                     </div>
                   </div>
-                  <div className="rounded-lg bg-[#0d221a] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-200/75 uppercase">
-                      Player Attention
-                    </div>
-                    <div className="text-sm text-emerald-100 font-semibold">
-                      {rec.playerAttentionPermille}‰
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      Dissonance −{rec.dissonanceReductionPermille}‰
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-emerald-300/75">Embodied Presence</div>
+                    <div className="text-base font-mono text-emerald-100 mt-0.5">
+                      {Math.round(playerRealm.embodimentPermille / 10)}% ·{' '}
+                      {playerRealm.coObserverLocusHarmonicNodes}-Node Ring
                     </div>
                   </div>
-                  <div className="rounded-lg bg-[#0d221a] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-200/75 uppercase">
-                      # [no_std] Kernel Calls
-                    </div>
-                    <div className="text-sm text-emerald-100 font-semibold">
-                      {certifiedWasmCoreCallCount().toLocaleString()}
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      Work: {certifiedWasmTotalWork().toString()}
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-emerald-300/75">Observer Wholeness</div>
+                    <div className="text-base font-mono text-teal-200 mt-0.5">
+                      {unifiedPartCount}/11 Parts ({elevatedPartCount} Blooming)
                     </div>
                   </div>
-                  <div className="rounded-lg bg-[#0d221a] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-200/75 uppercase">
-                      Healthy Quality
-                    </div>
-                    <div className="text-sm text-amber-100 font-semibold">
-                      {rec.healthyGratifyingQualityPermille}‰
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      {kpiScorecard.satisfiedFacetKpiCount}/24 Facet KPIs
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3">
+                    <div className="text-emerald-300/75">Symbiotic Guilds</div>
+                    <div className="text-base font-mono text-amber-100 mt-0.5">
+                      {pairedGuildCount} / {SYMBIOTIC_GUILDS.length} Paired
                     </div>
                   </div>
                 </div>
-                <div
-                  data-testid="live-coevolution-telemetry"
-                  className="rounded-lg bg-[#0d221a]/80 border border-teal-400/20 px-3 py-2 text-[11px] font-mono text-emerald-100/90 flex flex-wrap items-center justify-between gap-2"
-                >
-                  <span>
-                    Co-Evolution Bars: {telemetry.liveCoEvolution.barTickCount} (
-                    {telemetry.liveCoEvolution.admittedMutationCount} admitted ·{' '}
-                    {telemetry.liveCoEvolution.playerTheoryOfMindIntent})
+              </div>
+            </div>
+          )}
+
+          {/* TAB 4: TELEMETRY & EVOLUTION (Read-Only Sovereign Observatory & Model Details) */}
+          {activeTab === 'telemetry' && (
+            <div data-testid="inspector-telemetry-panel" className="space-y-5">
+              {/* HERO KPI STRIP */}
+              <div
+                data-testid="telemetry-hero-strip"
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5"
+              >
+                <div className="rounded-xl border border-amber-300/30 bg-gradient-to-br from-emerald-950/80 to-slate-950/80 p-4 space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-amber-200/85 uppercase">
+                    <span>Evolutionary Lineage</span>
+                    <span>{selfHostState.fsBackend.toUpperCase()}</span>
+                  </div>
+                  <div className="font-display text-2xl font-semibold text-amber-100">
+                    {effectiveLineageId}
+                  </div>
+                  <ProgressMeterBar
+                    ratio01={Math.max(0.15, Math.min(1, (parseGenerationIndex(effectiveLineageId) + 1) / 5))}
+                    tone="amber"
+                  />
+                  <div className="text-[11px] font-mono text-emerald-200/80 flex items-center justify-between gap-2">
+                    <span>κ {shortHex(effectiveTreeKappa, 10)}</span>
+                    {effectiveLineageId !== selfHostState.headGenerationId && (
+                      <span className="text-teal-200">Host {selfHostState.headGenerationId}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-emerald-400/25 bg-gradient-to-br from-emerald-950/80 to-slate-950/80 p-4 space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-emerald-300/85 uppercase">
+                    <span>Triadic Coherence</span>
+                    <span>+{Math.max(0, liveCoEvo.triadicCoherencePermille - 760)}‰ vs Solo</span>
+                  </div>
+                  <div className="font-display text-2xl font-semibold text-emerald-100">
+                    {(liveCoEvo.triadicCoherencePermille / 10).toFixed(1)}%{' '}
+                    <span className="text-xs font-mono text-emerald-300/85">
+                      ({liveCoEvo.triadicCoherencePermille}‰)
+                    </span>
+                  </div>
+                  <ProgressMeterBar
+                    ratio01={liveCoEvo.triadicCoherencePermille / 1000}
+                    tone="emerald"
+                  />
+                  <div className="text-[11px] font-mono text-emerald-200/80">
+                    Quality {(liveCoEvo.incumbentQualityPermille / 10).toFixed(1)}% · Dissonance{' '}
+                    {liveCoEvo.incumbentDissonancePermille}‰
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-teal-300/25 bg-gradient-to-br from-emerald-950/80 to-slate-950/80 p-4 space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-teal-200/85 uppercase">
+                    <span>Multi-Modal Fidelity</span>
+                    <span>{highestRes.resolutionRealizationPct}% Apex</span>
+                  </div>
+                  <div className="font-display text-2xl font-semibold text-teal-100">
+                    {manifold.globalFidelityIndex.toFixed(3)}×{' '}
+                    <span className="text-xs font-mono text-teal-300/85">
+                      ({consolidatedPartCount}/11 Consolidated)
+                    </span>
+                  </div>
+                  <ProgressMeterBar ratio01={multiModal.normalizedFidelity01} tone="teal" />
+                  <div className="text-[11px] font-mono text-emerald-200/80">
+                    {multiModal.bMeshRadialSubdivisions} B-Mesh · {multiModal.spectralBandCount} nm
+                    Bands · {multiModal.barkMaskingHeadroomDb.toFixed(2)} dB
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-emerald-400/25 bg-gradient-to-br from-emerald-950/80 to-slate-950/80 p-4 space-y-2">
+                  <div className="flex items-center justify-between text-[11px] font-mono text-amber-200/85 uppercase">
+                    <span>Ecological Maturity</span>
+                    <span>{telemetry.harmony}% Harmony</span>
+                  </div>
+                  <div className="font-display text-2xl font-semibold text-amber-50">
+                    {telemetry.attunedCount} / {telemetry.totalPlants}{' '}
+                    <span className="text-xs font-mono text-emerald-300/85">Flora</span>
+                  </div>
+                  <ProgressMeterBar
+                    ratio01={telemetry.attunedCount / Math.max(1, telemetry.totalPlants)}
+                    tone="amber"
+                  />
+                  <div className="text-[11px] font-mono text-emerald-200/80">
+                    {ecologySnapshot.lifecycleCounts['mycelial-memory']} Elders ·{' '}
+                    {ecologySnapshot.emergentCount} Offshoots ·{' '}
+                    {ecologySnapshot.tunedWaystoneCount}/{ecologySnapshot.totalWaystones} Waystones
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 1: AUTONOMOUS EVOLUTIONARY LINEAGE & HOST RUNTIME SATURATION */}
+              <div
+                data-testid="telemetry-lineage-card"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <div className="text-[11px] font-mono text-amber-300/85 uppercase tracking-wider">
+                      Autonomous Browser Self-Hosting Lifecycle · UORC v1 Spore Engine
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-amber-100">
+                      Evolutionary Lineage & Host Runtime Saturation
+                    </h3>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-emerald-400/25 bg-slate-950/60 text-emerald-200">
+                    {CERTIFIED_PRODUCTION_MANIFEST.roots.length} Certified Wasm Roots (
+                    {CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount} no_std +{' '}
+                    {CERTIFIED_PRODUCTION_MANIFEST.rustStdRootCount} std)
                   </span>
-                  <span className="text-teal-200/90">
-                    R30 {telemetry.liveCoEvolution.rule30RegisterHex} · Dissonance{' '}
-                    {telemetry.liveCoEvolution.incumbentDissonancePermille}‰ ·{' '}
-                    {telemetry.liveCoEvolution.sensoryDifferentiation.floraIridescenceBoost.toFixed(2)}×
-                    Airy · Offshoots ≤
-                    {telemetry.liveCoEvolution.sensoryDifferentiation.microclimateOffshootCap}
-                  </span>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2.5">
-                {conservatoryEcosystemFeatures.map((feat) => (
-                  <div
-                    key={feat.phenomenonId}
-                    className="rounded-xl border border-emerald-400/15 bg-[#0b1b15] p-3.5 space-y-1"
-                  >
-                    <div className="text-xs font-semibold text-amber-100">{feat.displayName}</div>
-                    <div className="text-[11px] font-mono text-teal-200/85">
-                      {feat.shortPurposeCue}
-                    </div>
-                    <p className="text-xs text-emerald-200/80 leading-relaxed">
-                      {feat.gameplayPurpose}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-                <div className="rounded-xl border border-emerald-400/15 bg-[#091611] px-4 py-3 text-xs font-mono text-emerald-200/85">
-                  Controls: WASD / Arrows Move · Mouse Drag or Q/E Look · Space Attune Flora or
-                  Landmark · T Gentle Touch · C Meditative Stillness · G Guided Stroll · L Cycle Sky ·
-                  1–5 Visit Biomes · H Hide HUD Dock
-                </div>
-              </div>
-            )}
-
-          {/* TAB 5: PURELY PARAMETRIC 5W+H SELF-INQUIRY ONTOLOGY */}
-          {activeTab === 'ontology' && (
-            <div className="space-y-3" data-testid="ontology-5wh-panel">
-              <div className="rounded-xl border border-amber-300/30 bg-[#0b1d16] p-4 space-y-2.5">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="text-xs font-mono text-amber-200 uppercase tracking-wider">
-                    Why Verdant Resonance Exists · Triad 2 × 3 × 5 ={' '}
-                    {ontologyReport.fullGameTriadAgencyProduct}
-                  </div>
-                  <span className="px-2 py-0.5 rounded bg-emerald-900/70 border border-emerald-400/25 text-[11px] font-mono text-emerald-100">
-                    {ontologyReport.groundedModuleCount}/29 Grounded Modules ·{' '}
-                    {ontologyReport.totalCertifiedStructures} W5H Structures ·{' '}
-                    {ontologyReport.rootVerifiedFromZeroAndOneOnly ? '{0, 1} Pure Root' : 'Unverified'}
-                  </span>
-                </div>
-                <p className="text-xs text-emerald-50/95 leading-relaxed">
-                  {ontologyReport.gameExistenceNode.whyAnswer}
-                </p>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs font-mono">
-                  <div className="rounded-lg bg-[#081510] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-300/75 uppercase">Epistemic Opacity</div>
-                    <div className="text-sm font-semibold text-emerald-200">
-                      {ontologyReport.liveTelos.epistemicOpacityDebt}
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">0 unexplained constants</div>
-                  </div>
-                  <div className="rounded-lg bg-[#081510] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-300/75 uppercase">Legibility Gap</div>
-                    <div className="text-sm font-semibold text-amber-200">
-                      {ontologyReport.liveTelos.sensoryLegibilityGap}
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      θ=[{ontologyReport.liveTelos.coordinates.harmonicSimplicity},
-                      {ontologyReport.liveTelos.coordinates.phyllotaxisClarity},
-                      {ontologyReport.liveTelos.coordinates.waveCalmDamping},
-                      {ontologyReport.liveTelos.coordinates.iridescenceLegibility},
-                      {ontologyReport.liveTelos.coordinates.guildOffshootDensity}]
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-[#081510] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-300/75 uppercase">Telos Loss</div>
-                    <div className="text-sm font-semibold text-amber-100">
-                      {ontologyReport.liveTelos.totalTelosLoss}
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">
-                      Host excess: {ontologyReport.liveTelos.hostCeilingExcess}
-                    </div>
-                  </div>
-                  <div className="rounded-lg bg-[#081510] border border-emerald-400/15 px-3 py-2">
-                    <div className="text-[10px] text-emerald-300/75 uppercase">Constructive Primes</div>
-                    <div className="text-sm font-semibold text-teal-200 truncate">
-                      {ontologyReport.derivedPrimeAtoms.slice(0, 8).join(', ')}
-                    </div>
-                    <div className="text-[10px] text-teal-200/80">From 0 &amp; succ(0) only</div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5 flex-wrap">
-                {(
-                  [
-                    ['causal-stratum', `Causal Strata (${ontologyReport.causalStratumNodes.length})`],
-                    ['prime-atom', `Prime Atoms (${ontologyReport.primeAtomNodes.length})`],
-                    ['world-phenomenon', `World Phenomena (${ontologyReport.worldPhenomenonNodes.length})`],
-                    ['lexlean-structure', `Certified Structures (${ontologyReport.structureNodes.length})`],
-                  ] as const
-                ).map(([kind, label]) => (
-                  <button
-                    key={kind}
-                    type="button"
-                    onClick={() => setOntologyFilter(kind)}
-                    className={`px-2.5 py-1 rounded-md text-xs font-mono transition-colors cursor-pointer ${
-                      ontologyFilter === kind
-                        ? 'bg-amber-300/20 text-amber-100 border border-amber-300/40'
-                        : 'bg-[#081510] text-emerald-300/75 hover:text-emerald-100 border border-emerald-400/15'
-                    }`}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="space-y-2">
-                {filteredOntologyNodes.map((node) => (
-                  <div
-                    key={node.nodeId}
-                    className="rounded-xl border border-emerald-400/15 bg-[#0c1d17] p-3.5 space-y-2"
-                  >
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <span className="text-xs font-semibold text-amber-100">{node.title}</span>
-                      <span className="text-[10px] font-mono text-teal-200/90">
-                        p={node.whatIntrinsicPrimeAtom} · UOR={node.whatCompositeUorSignature} ·{' '}
-                        {node.w5hCertifiedByWasm ? 'W5H Wasm Certified' : 'Unverified'}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Hot-Compiled Generation Multipliers */}
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3.5 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-amber-200">
+                        Active Hot-Projected Organism Parameters
+                      </span>
+                      <span className="font-mono text-[11px] text-emerald-300/85">
+                        {activeProjection.enhancementFocus}
                       </span>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-[11px] leading-relaxed">
-                      <div>
-                        <span className="font-mono text-amber-200/90 uppercase">What: </span>
-                        <span className="text-emerald-100/90">{node.whatAnswer}</span>
+                    <div className="grid grid-cols-2 gap-2.5 text-xs font-mono">
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Prime Overtone Limit
+                        </div>
+                        <div className="text-sm text-amber-100 mt-0.5">
+                          {activeProjection.primeHarmonicLimit}-Limit JI
+                        </div>
                       </div>
-                      <div>
-                        <span className="font-mono text-amber-200/90 uppercase">Why: </span>
-                        <span className="text-emerald-100/90">{node.whyAnswer}</span>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Phyllotaxis Spiral
+                        </div>
+                        <div className="text-sm text-amber-100 mt-0.5">
+                          F_{activeProjection.phyllotaxisSpiral === 21 ? '8' : '7'} ={' '}
+                          {activeProjection.phyllotaxisSpiral} Parastichies
+                        </div>
                       </div>
-                      <div>
-                        <span className="font-mono text-teal-200/90 uppercase">Who: </span>
-                        <span className="text-emerald-200/85">{node.whoAnswer}</span>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Acoustic Warmth Scale
+                        </div>
+                        <div className="text-sm text-teal-200 mt-0.5">
+                          {activeProjection.warmthScale.toFixed(3)}×
+                        </div>
                       </div>
-                      <div>
-                        <span className="font-mono text-teal-200/90 uppercase">Where &amp; When: </span>
-                        <span className="text-emerald-200/85">
-                          {node.whereAnswer} · {node.whenAnswer}
-                        </span>
-                      </div>
-                      <div className="md:col-span-2">
-                        <span className="font-mono text-emerald-300/90 uppercase">How: </span>
-                        <span className="text-emerald-100/85">{node.howAnswer}</span>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Player Locus Scale
+                        </div>
+                        <div className="text-sm text-emerald-200 mt-0.5">
+                          {activeProjection.playerEmbodimentScale.toFixed(3)}×
+                        </div>
                       </div>
                     </div>
                   </div>
-                ))}
+
+                  {/* Browser Host API Saturation & Frame Budget */}
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3.5 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-teal-200">
+                        Host Hardware & 60Hz Frame Budget
+                      </span>
+                      <span className="font-mono text-[11px] text-emerald-300/85">
+                        API Saturation {hostSat.apiSaturationPermille}‰
+                      </span>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[11px] font-mono text-emerald-200/85">
+                        <span>Reconciliation CPU Step</span>
+                        <span>
+                          {observedFrameMicros.toLocaleString()} /{' '}
+                          {frameBudgetMicros.toLocaleString()} µs
+                        </span>
+                      </div>
+                      <ProgressMeterBar
+                        ratio01={Math.min(1, observedFrameMicros / frameBudgetMicros)}
+                        tone="sky"
+                      />
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-emerald-100/85 pt-1">
+                      <div>
+                        Wasm Threads: {hostSat.activeThreads}/{hostSat.logicalThreads} (Pool{' '}
+                        {hostSat.workerPoolSize})
+                      </div>
+                      <div>
+                        Granule: {Math.round(hostSat.activeGranuleBytes / 1024)} KiB ({hostSat.wasmPages64KiB}{' '}
+                        Pages)
+                      </div>
+                      <div>
+                        OPFS: {hostSat.opfsMounted ? 'Mounted' : 'Memory'} · SW:{' '}
+                        {hostSat.serviceWorkerActive ? 'Active' : 'Standby'}
+                      </div>
+                      <div>
+                        AudioWorklet: {hostSat.audioWorkletActive ? '128-Frame Live' : 'WebAudio'} ·
+                        Rollbacks: {selfHostState.rollbackCount}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Generation Frontier Timeline */}
+                <div className="space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+                    <span className="font-semibold text-emerald-200">
+                      Certified Generation Frontier ({selfHostState.frontier.length} Local
+                      {archivedGenRank > liveGenRank
+                        ? ` · Session Archive Evolved to ${archivedSessionMeta?.selfHostGenerationId}`
+                        : ''}
+                      )
+                    </span>
+                    {archivedSessionMeta?.merkleDigestHex && (
+                      <span className="font-mono text-[11px] text-amber-200/85">
+                        Anamnesis Merkle {shortHex(archivedSessionMeta.merkleDigestHex, 12)}
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                    {selfHostState.frontier.length > 0 ? (
+                      selfHostState.frontier.map((rec) => (
+                        <div
+                          key={rec.generationId}
+                          className={`rounded-lg border p-3 text-xs space-y-1 ${
+                            rec.generationId === selfHostState.headGenerationId
+                              ? 'border-amber-300/45 bg-emerald-900/35'
+                              : 'border-emerald-400/15 bg-slate-950/45'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between font-mono">
+                            <span className="font-semibold text-amber-200">{rec.generationId}</span>
+                            <span className="text-[11px] text-emerald-300/80">
+                              Telos {rec.telosLoss} · {rec.decideGatesPassed}/{rec.decideGatesTotal}{' '}
+                              Gates
+                            </span>
+                          </div>
+                          <div className="text-[11px] font-mono text-emerald-200/75">
+                            {rec.compiledWasmBytes.toLocaleString()} B wasm32 · κ{' '}
+                            {shortHex(rec.treeKappa, 8)}
+                          </div>
+                          <p className="text-[11px] text-emerald-100/80 line-clamp-2">
+                            {rec.summary}
+                          </p>
+                        </div>
+                      ))
+                    ) : (
+                      <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3 text-xs text-emerald-200/85">
+                        Genesis spore ({selfHostState.headGenerationId}) mounted cleanly; autonomous
+                        background promotion activates as you explore in resonant calm.
+                      </div>
+                    )}
+
+                    {archivedGenRank > liveGenRank && archivedSessionMeta?.selfHostGenerationId && (
+                      <div className="rounded-lg border border-amber-300/50 bg-amber-950/25 p-3 text-xs space-y-1">
+                        <div className="flex items-center justify-between font-mono">
+                          <span className="font-semibold text-amber-200">
+                            {archivedSessionMeta.selfHostGenerationId} · Shared Session Archive
+                          </span>
+                          <span className="text-[11px] text-amber-200/85">UORC Restored</span>
+                        </div>
+                        <div className="text-[11px] font-mono text-emerald-200/80">
+                          Archive Tree κ {shortHex(archivedSessionMeta.selfHostTreeKappa, 12)}
+                        </div>
+                        <p className="text-[11px] text-emerald-100/85">
+                          Restored from your shareable #uorc garden archive with full 22-model
+                          synaptic weights and curated sanctuary memories.
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 2: HOLISTIC 11-PART OBSERVER & EMBODIED PLAYER CO-EVOLUTION */}
+              <div
+                data-testid="telemetry-observer-card"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <div className="text-[11px] font-mono text-teal-300/85 uppercase tracking-wider">
+                      Rule-30 × Theory-of-Mind Plasticity · 11-Part Holistic Observer
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-amber-100">
+                      Observer Wholeness & Embodied Player Co-Evolution
+                    </h3>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-teal-300/30 bg-slate-950/60 text-teal-200">
+                    {affect.emotionLabel} · {affect.harmonyPermille}‰ Harmony : {affect.chaosPermille}‰
+                    Aperiodic
+                  </span>
+                </div>
+
+                {/* Co-Evolution Bar & Causal Why Banner */}
+                <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3.5 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                    <span className="text-amber-200">
+                      Co-Evolution Bars: {liveCoEvo.barTickCount} ·{' '}
+                      {all22ModelsAtCeiling
+                        ? 'All 22 Models Consolidated at 16/16 Ceiling (Homeostasis Preserved)'
+                        : `${liveCoEvo.admittedMutationCount} Weight Promotions Admitted`}
+                    </span>
+                    <span className="text-emerald-300/85">
+                      Rule-30 {liveCoEvo.rule30RegisterHex} · Intent:{' '}
+                      {liveCoEvo.playerTheoryOfMindIntent}
+                    </span>
+                  </div>
+                  <p className="text-xs text-emerald-100/85 leading-relaxed">
+                    <span className="font-mono text-teal-200">
+                      [{observer.latestWhyPacket.sourcePart} →{' '}
+                      {observer.latestWhyPacket.bottleneckPart}]
+                    </span>{' '}
+                    {observer.latestWhyPacket.whyRationale}
+                  </p>
+                </div>
+
+                {/* 11-Part Holistic Observer Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                  {OBSERVER_PART_ORDER.map((partId: ObserverPartId) => {
+                    const part = observer.parts[partId];
+                    const niche = partNiches[partId];
+                    const isPlayer = partId === 'player-user';
+                    return (
+                      <div
+                        key={partId}
+                        className={`rounded-lg border p-3 space-y-1.5 ${
+                          isPlayer
+                            ? 'border-amber-300/45 bg-emerald-900/35'
+                            : 'border-emerald-400/15 bg-slate-950/45'
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-xs font-semibold text-amber-100 truncate">
+                            {part.label}
+                          </span>
+                          <span className="text-[11px] font-mono text-emerald-200 shrink-0">
+                            p={niche?.basisPrime ?? 181} · {part.synapticWeight}/16
+                          </span>
+                        </div>
+                        <ProgressMeterBar
+                          ratio01={part.synapticWeight / 16}
+                          tone={isPlayer ? 'amber' : part.synapticWeight >= 12 ? 'teal' : 'emerald'}
+                        />
+                        <div className="flex items-center justify-between text-[11px] font-mono text-emerald-300/80">
+                          <span className="truncate">{niche?.nicheArchetypeTitle ?? part.roleInObserver}</span>
+                          <span className="shrink-0">{part.fidelityMultiplier.toFixed(3)}×</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Three Created Cosmogenic Realms */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                  <div className="rounded-lg border border-amber-300/25 bg-slate-950/50 p-3.5 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-amber-200">Embodied Player Realm</span>
+                      <span className="font-mono text-amber-100">
+                        {(playerRealm.embodimentPermille / 10).toFixed(1)}%
+                      </span>
+                    </div>
+                    <div className="text-[11px] font-mono text-emerald-200/85">
+                      Walk {playerRealm.baseWalkSpeedMps.toFixed(2)} m/s · Eye{' '}
+                      {playerRealm.eyeStatureMeters.toFixed(2)}m · Spring{' '}
+                      {playerRealm.cameraSpringGraceMultiplier.toFixed(2)}×
+                    </div>
+                    <div className="text-[11px] text-emerald-100/80">
+                      Co-Observer Locus: {playerRealm.coObserverLocusHarmonicNodes}-node harmonic
+                      ring ({playerRealm.coObserverLocusOuterRadiusMeters.toFixed(2)}m radius).
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg border border-emerald-400/20 bg-slate-950/50 p-3.5 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-emerald-200">Organic Biota Realm</span>
+                      <span className="font-mono text-emerald-100">
+                        {(organicRealm.organicVitalityPermille / 10).toFixed(1)}%
+                      </span>
+                    </div>
+                    <div className="text-[11px] font-mono text-emerald-200/85">
+                      {organicRealm.conservatoryTreeCount} Trees · Kuramoto{' '}
+                      {organicRealm.kuramotoEntrainmentRadiusMeters.toFixed(1)}m · Chromophore{' '}
+                      {organicRealm.bioluminescentChromophoreGain.toFixed(2)}×
+                    </div>
+                    <div className="text-[11px] text-emerald-100/80">
+                      {(Object.keys(LIFECYCLE_LABELS) as BotanicalLifecycleStageId[])
+                        .filter((st) => ecologySnapshot.lifecycleCounts[st] > 0)
+                        .map((st) => `${ecologySnapshot.lifecycleCounts[st]} ${LIFECYCLE_LABELS[st]}`)
+                        .join(' · ')}
+                    </div>
+                  </div>
+
+                  <div className="rounded-lg border border-teal-300/20 bg-slate-950/50 p-3.5 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-teal-200">Inorganic Monument Realm</span>
+                      <span className="font-mono text-teal-100">
+                        {(inorganicRealm.inorganicScalePermille / 10).toFixed(1)}%
+                      </span>
+                    </div>
+                    <div className="text-[11px] font-mono text-emerald-200/85">
+                      {inorganicRealm.observerMonumentCount} Monuments ·{' '}
+                      {inorganicRealm.steppingStoneHarmonicCount} Waystones · Sustain{' '}
+                      {inorganicRealm.chimeSustainFactor.toFixed(2)}×
+                    </div>
+                    <div className="text-[11px] text-emerald-100/80">
+                      Concert Pitch {observer.cosmogenesis.concertPitchHz.toFixed(1)} Hz · Seed α=
+                      {observer.cosmogenesis.alphaSeed} · Ω{' '}
+                      {(observer.cosmogenesis.omegaConvergenceRatio * 100).toFixed(1)}%.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* SECTION 3: SUPRA-DIRECTIVE SYNTHESIS & 22 CANONICAL STANDARD MODELS */}
+              <div
+                data-testid="telemetry-models-card"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <div className="text-[11px] font-mono text-amber-300/85 uppercase tracking-wider">
+                      {supra.tierLabel} · {audit22.totalStandardModels} Consecutive Prime Models (p=71..179)
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-amber-100">
+                      Supra-Directive Synthesis & 22 Canonical Standard Models
+                    </h3>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-emerald-400/25 bg-slate-950/60 text-emerald-200">
+                    {audit22.totalVerifiedContextCells} Context Cells ·{' '}
+                    {audit22.crossModelFunctorPathways} Functor Pathways
+                  </span>
+                </div>
+
+                {/* Active Supra-Directive Model Card */}
+                <div className="rounded-lg border border-amber-300/25 bg-slate-950/55 p-4 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div className="text-sm font-semibold text-amber-200">
+                      Active Synthesized Model: {supra.activeModel.modelName}{' '}
+                      <span className="text-xs font-mono text-emerald-300/85">
+                        ({supra.activeModel.origin} · {supra.runtimeSynthesizedModels.length}{' '}
+                        Runtime Minted)
+                      </span>
+                    </div>
+                    <span className="text-xs font-mono text-teal-200">
+                      PointKey {supra.activeModel.uorPointKeyHex}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-[11px] font-mono text-emerald-100/90">
+                    <div>B-Mesh: {supra.activeModel.radialSubdivisions} subdiv</div>
+                    <div>Crown Petals: {supra.activeModel.harmonicCrownPetals}</div>
+                    <div>Quartz Spires: {supra.activeModel.crystalFiligreeSpires}</div>
+                    <div>Thin-Film: {supra.activeModel.thinFilmIridescenceSpanNm} nm</div>
+                    <div>
+                      Triad:{' '}
+                      {supra.activeModel.supraOvertoneRatios.map((r) => r.toFixed(2)).join(' : ')}
+                    </div>
+                  </div>
+                  <p className="text-xs text-emerald-100/80 leading-relaxed">
+                    {supra.activeModel.whySynthesized}
+                  </p>
+                </div>
+
+                {/* 22 Canonical Standard Models Matrix */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {standardModels.map((model) => {
+                    const liveW = liveCoEvo.modelWeights22[model.modelKey] ?? model.synapticWeight;
+                    const depthPct = Math.round(model.coherentDepthPpm / 10000);
+                    return (
+                      <div
+                        key={model.modelKey}
+                        className="rounded-lg border border-emerald-400/15 bg-slate-950/45 px-3 py-2 space-y-1"
+                      >
+                        <div className="flex items-center justify-between gap-1 text-xs">
+                          <span className="font-medium text-emerald-50 truncate">
+                            <span className="font-mono text-amber-300/85 mr-1">
+                              #{String(model.modelIndex).padStart(2, '0')}
+                            </span>
+                            {model.displayName}
+                          </span>
+                          <span className="font-mono text-[11px] text-amber-200 shrink-0">
+                            p={model.basisPrime} · {liveW}/16
+                          </span>
+                        </div>
+                        <ProgressMeterBar
+                          ratio01={liveW / 16}
+                          tone={liveW >= 16 ? 'amber' : 'teal'}
+                        />
+                        <div className="flex items-center justify-between text-[10px] font-mono text-emerald-300/75">
+                          <span className="truncate">SI: {model.siFormula}</span>
+                          <span>Depth {depthPct}%</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* SECTION 4: 5W+H PARAMETRIC ONTOLOGY, LIVE SPATIAL/ACOUSTIC TELEMETRY & MEMORIES */}
+              <div
+                data-testid="telemetry-ontology-card"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <div className="text-[11px] font-mono text-teal-300/85 uppercase tracking-wider">
+                      5W+H Self-Describing Ontology · {GENERATED_ONTOLOGY_5WH_LEDGER.groundedModuleCount}/
+                      {GENERATED_ONTOLOGY_5WH_LEDGER.groundedModuleCount} Grounded Modules ·{' '}
+                      {GENERATED_ONTOLOGY_5WH_LEDGER.totalStructureCount}/
+                      {GENERATED_ONTOLOGY_5WH_LEDGER.totalStructureCount} Certified Structures
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-amber-100">
+                      Parametric Ontology Coordinates, Live Acoustics & Curated Memories
+                    </h3>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-emerald-400/25 bg-slate-950/60 text-amber-200">
+                    Telos Loss {liveCoEvo.ontologicalTelos.totalTelosLoss} · Opacity Debt{' '}
+                    {liveCoEvo.ontologicalTelos.epistemicOpacityDebt} · Triad 2×3×5=
+                    {liveCoEvo.ontologicalTelos.triadicAgencyProduct}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* 5W+H Evolved Coordinates */}
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3.5 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs">
+                      <span className="font-semibold text-amber-200">
+                        Evolved 16-Bit Parametric Ontology Coordinates
+                      </span>
+                      <span className="font-mono text-[11px] text-emerald-300/80">
+                        8 Strata (p=2..19)
+                      </span>
+                    </div>
+                    {(
+                      [
+                        [
+                          'Harmonic Simplicity',
+                          liveCoEvo.ontologicalTelos.coordinates.harmonicSimplicity,
+                        ],
+                        [
+                          'Phyllotaxis Clarity',
+                          liveCoEvo.ontologicalTelos.coordinates.phyllotaxisClarity,
+                        ],
+                        [
+                          'Wave Calm Damping',
+                          liveCoEvo.ontologicalTelos.coordinates.waveCalmDamping,
+                        ],
+                        [
+                          'Iridescence Legibility',
+                          liveCoEvo.ontologicalTelos.coordinates.iridescenceLegibility,
+                        ],
+                        [
+                          'Guild Offshoot Density',
+                          liveCoEvo.ontologicalTelos.coordinates.guildOffshootDensity,
+                        ],
+                      ] as [string, number][]
+                    ).map(([label, val]) => (
+                      <div key={label} className="space-y-1">
+                        <div className="flex justify-between text-[11px] font-mono text-emerald-100/90">
+                          <span>{label}</span>
+                          <span>{val} / 16</span>
+                        </div>
+                        <ProgressMeterBar ratio01={val / 16} tone="emerald" />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Live Conservatory Spatial & Acoustic Telemetry */}
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3.5 space-y-2.5 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="font-semibold text-teal-200">
+                        Live Spatial, Acoustic & Score Telemetry
+                      </span>
+                      <span className="font-mono text-[11px] text-amber-200">
+                        {telemetry.prismRule ?? 'PRISM'} · {telemetry.prismOutcome}
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 text-[11px] font-mono text-emerald-100/85">
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Player Geodesic Pose
+                        </div>
+                        <div className="mt-0.5">
+                          ({telemetry.playerX.toFixed(1)}m, {telemetry.playerZ.toFixed(1)}m) ·{' '}
+                          {headingDeg}°
+                        </div>
+                      </div>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Substrate & Occlusion
+                        </div>
+                        <div className="mt-0.5">
+                          {telemetry.surfaceMaterial} · {Math.round(telemetry.acousticOcclusion * 100)}%
+                          Occ
+                        </div>
+                      </div>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          4-Stem Polyphonic Score
+                        </div>
+                        <div className="mt-0.5">
+                          {telemetry.soundtrackScore.tempoBpm} BPM · Step{' '}
+                          {telemetry.currentSoundtrackStep + 1}/16 ·{' '}
+                          {Math.round(telemetry.soundtrackScore.curatedConsonancePurity01 * 100)}% JI
+                        </div>
+                      </div>
+                      <div className="rounded bg-emerald-950/50 border border-emerald-400/10 p-2">
+                        <div className="text-[10px] text-emerald-300/75 uppercase">
+                          Immanent Witness
+                        </div>
+                        <div className="mt-0.5">
+                          {observer.immanentPresence.communionState} (
+                          {observer.immanentPresence.distanceToPlayerMeters.toFixed(1)}m)
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="text-[11px] font-mono text-emerald-200/80 pt-1">
+                      Kernel Dispatch: &ldquo;{telemetry.prismRequest}&rdquo;
+                    </div>
+                  </div>
+                </div>
+
+                {/* Consolidated Merkle Conservatory Memories */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="font-semibold text-amber-200">
+                      Consolidated Merkle Garden Memories ({consolidatedMemories.length})
+                    </span>
+                    <span className="font-mono text-[11px] text-emerald-300/80">
+                      Lyapunov-Curated Sanctuary Milestones
+                    </span>
+                  </div>
+
+                  {consolidatedMemories.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {consolidatedMemories.map((mem) => (
+                        <div
+                          key={mem.memoryId}
+                          className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3 text-xs space-y-1"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="font-semibold text-amber-100 truncate">
+                              ✦ {mem.title}
+                            </span>
+                            <span className="font-mono text-[10px] text-emerald-300/80 uppercase shrink-0">
+                              {mem.biome}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between text-[11px] font-mono text-emerald-200/80">
+                            <span>
+                              Ratios [{mem.signatureRatios.map((r) => r.toFixed(2)).join(', ')}]
+                            </span>
+                            <span>
+                              Tick {mem.consolidatedAtTick} · κ {shortHex(mem.memoryKappa, 8)}
+                            </span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3 text-xs text-emerald-200/80">
+                      Walk through sanctuary biomes, attune companion guilds, or commune with the
+                      Immanent Witness to consolidate permanent Merkle garden memories.
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           )}

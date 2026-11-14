@@ -1,0 +1,390 @@
+\begin{lexlean}{Foundation.Host.V1.Model}
+\useglossary{lexlean.std.bool@1.2.0}
+\useglossary{lexlean.std.nat@1.2.0}
+\useglossary{prism.arch@1.0.0}
+\importmodule{Foundation.Ontology.V1.Model}
+\title{Text application model}
+\begin{semanticmodule}
+structure{
+  name: HostCacheRegion,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: level, type: Nat},
+    {name: capacityBytes, type: Nat}
+  ]
+}
+
+structure{
+  name: BrowserHostRuntime,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: logicalThreads, type: Nat},
+    {name: workerPoolSize, type: Nat},
+    {name: wasmPages64KiB, type: Nat},
+    {name: pageGranuleBytes, type: Nat},
+    {name: largePageGranuleBytes, type: Nat},
+    {name: cacheLineBytes, type: Nat},
+    {name: opfsMounted, type: Bool},
+    {name: serviceWorkerActive, type: Bool},
+    {name: audioWorkletActive, type: Bool},
+    {name: stepRatePerSec, type: Nat},
+    {name: memoryRateBytesPerSec, type: Nat}
+  ]
+}
+
+structure{
+  name: GenerationCandidateReceipt,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: generationIndex, type: Nat},
+    {name: parentKappaHead32, type: Nat},
+    {name: candidateKappaHead32, type: Nat},
+    {name: compiledWasmBytes, type: Nat},
+    {name: decideGatesPassed, type: Nat},
+    {name: decideGatesTotal, type: Nat},
+    {name: foundryResidueCount, type: Nat},
+    {name: telosLossCandidate, type: Nat},
+    {name: telosLossIncumbent, type: Nat},
+    {name: candidateSteps, type: Nat},
+    {name: incumbentSteps, type: Nat},
+    {name: frameTimeMicros, type: Nat},
+    {name: frameBudgetMicros, type: Nat},
+    {name: coercivePatternCount, type: Nat}
+  ]
+}
+
+structure{
+  name: RuntimeCapabilityProbeSpec,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: capabilityOrdinal, type: Nat},
+    {name: isolatedProfileMask, type: Nat},
+    {name: requiresPerRootFalsifier, type: Bool},
+    {name: requestMaximumBytes, type: Nat},
+    {name: guestAllocationMaximumBytes, type: Nat},
+    {name: responseMaximumBytes, type: Nat}
+  ]
+}
+
+structure{
+  name: BoundCapabilityReceipt,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: buildKappaHead32, type: Nat},
+    {name: verifyKappaHead32, type: Nat},
+    {name: acceptanceKappaHead32, type: Nat},
+    {name: manifestKappaHead32, type: Nat},
+    {name: sourceKappaHead32, type: Nat},
+    {name: semanticKappaHead32, type: Nat},
+    {name: baselinePassed, type: Bool},
+    {name: falsifierRejected, type: Bool},
+    {name: oracleFooterVerified, type: Bool},
+    {name: confinedPathVerified, type: Bool}
+  ]
+}
+
+definition{
+  name: powConstructive,
+  parameters: [base : Nat, exp : Nat],
+  result: Nat,
+  body: (match exp
+    | Nat.zero => 1
+    | Nat.succ rest => (prim multiply base (powConstructive base rest) : Nat)),
+  axioms: [],
+  recursive_argument: exp,
+  executable: true
+}
+
+definition{
+  name: nanosPerSecondFromZeroOne,
+  parameters: [unitScale : Nat],
+  result: Nat,
+  body: (let ten : Nat := ((Foundation.Ontology.V1.Model::pow2Constructive ((1 + 1) + 1)) + (1 + 1)); (let nine : Nat := (prim subtract ten 1 : Nat); (prim multiply (if (unitScale =? 0) then 1 else unitScale) (powConstructive ten nine) : Nat))),
+  axioms: [],
+  executable: true
+}
+
+definition{
+  name: hostGranuleBytes,
+  parameters: [page : Nat, largePage : Nat, workingSet : Nat],
+  result: Nat,
+  body: (if ((0 <? largePage) && (largePage <=? workingSet)) then largePage else page),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: hostRoundUp,
+  parameters: [amount : Nat, rate : Nat],
+  result: Nat,
+  body: (if (rate =? 0) then 0 else (prim quotient (prim subtract (amount + rate) 1 : Nat) rate 0 : Nat)),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow], targets: [rust-core]}
+}
+
+definition{
+  name: hostMovedBytes,
+  parameters: [lineBytes : Nat, tableBytes : Nat, outerCacheBytes : Nat],
+  result: Nat,
+  body: (if (outerCacheBytes <? tableBytes) then lineBytes else 0),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: hostSlowerNanos,
+  parameters: [computeNanos : Nat, transportNanos : Nat],
+  result: Nat,
+  body: (if (computeNanos <=? transportNanos) then transportNanos else computeNanos),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: hostStepNanos,
+  parameters: [steps : Nat, threads : Nat, stepRate : Nat],
+  result: Nat,
+  body: (hostRoundUp (prim multiply steps (nanosPerSecondFromZeroOne 1) : Nat) (prim multiply threads stepRate : Nat)),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: hostLineNanos,
+  parameters: [lineBytes : Nat, memoryRate : Nat],
+  result: Nat,
+  body: (hostRoundUp (prim multiply lineBytes (nanosPerSecondFromZeroOne 1) : Nat) memoryRate),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: hostCeilingNanos,
+  parameters: [steps : Nat, lineBytes : Nat, threads : Nat, stepRate : Nat, memoryRate : Nat],
+  result: Nat,
+  body: (hostSlowerNanos (hostStepNanos steps threads stepRate) (hostLineNanos lineBytes memoryRate)),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: hostSaturationDistanceNanos,
+  parameters: [ceilingNanos : Nat, observedNanos : Nat],
+  result: Nat,
+  body: (prim subtract observedNanos ceilingNanos : Nat),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: optimalBrowserWorkerCount,
+  parameters: [logicalThreads : Nat],
+  result: Nat,
+  body: (let maxWorkers : Nat := (Foundation.Ontology.V1.Model::pow2Constructive ((1 + 1) + 1)); (if (logicalThreads <=? (1 + 1)) then 1 else (let cand : Nat := (prim subtract logicalThreads 1 : Nat); (if (maxWorkers <? cand) then maxWorkers else cand)))),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: computeBrowserApiSaturationPermille,
+  parameters: [activeThreads : Nat, logicalThreads : Nat, opfsMounted : Bool, serviceWorkerActive : Bool, audioWorkletActive : Bool, wasmReady : Bool],
+  result: Nat,
+  body: (let five : Nat := ((Foundation.Ontology.V1.Model::pow2Constructive (1 + 1)) + 1); (let ten : Nat := (five + five); (let permilleCap : Nat := (powConstructive ten ((1 + 1) + 1)); (if (not wasmReady) then 0 else (let safeLogical : Nat := (if (logicalThreads =? 0) then 1 else logicalThreads); (let clampedActive : Nat := (if (safeLogical <? activeThreads) then safeLogical else activeThreads); (let fiveHundred : Nat := (prim multiply (Foundation.Ontology.V1.Model::pow2Constructive (1 + 1)) (powConstructive five ((1 + 1) + 1)) : Nat); (let threadScore : Nat := (prim quotient (prim multiply clampedActive fiveHundred : Nat) safeLogical 0 : Nat); (let oneHundred : Nat := (powConstructive ten (1 + 1)); (let twoHundred : Nat := (oneHundred + oneHundred); (let total : Nat := (((threadScore + (if opfsMounted then twoHundred else 0)) + (if serviceWorkerActive then oneHundred else 0)) + (if audioWorkletActive then twoHundred else 0)); (if (permilleCap <? total) then permilleCap else total)))))))))))),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: verifyBrowserGenerationAdmission,
+  parameters: [decidePassed : Nat, decideTotal : Nat, foundryResidueCount : Nat, coercivePatternCount : Nat, compiledWasmBytes : Nat, frameMicros : Nat, frameBudgetMicros : Nat, candTelosLoss : Nat, incTelosLoss : Nat, candSteps : Nat, incSteps : Nat],
+  result: Bool,
+  body: (let gatesOk : Bool := ((0 <? decideTotal) && (decidePassed =? decideTotal)); (let hygieneOk : Bool := (((foundryResidueCount =? 0) && (coercivePatternCount =? 0)) && ((0 <? compiledWasmBytes) && (frameMicros <=? frameBudgetMicros))); (let dominates : Bool := ((candTelosLoss <? incTelosLoss) || ((candTelosLoss =? incTelosLoss) && (candSteps <? incSteps))); ((gatesOk && hygieneOk) && dominates)))),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: shouldRollbackGenerationWatchdog,
+  parameters: [consecutiveOverbudgetFrames : Nat, maxAllowedFrames : Nat, runtimeFaultCount : Nat],
+  result: Bool,
+  body: ((0 <? runtimeFaultCount) || (maxAllowedFrames <? consecutiveOverbudgetFrames)),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: verifyCheckedU64NoOverflow,
+  parameters: [lhs : Nat, rhs : Nat, u64MaxCap : Nat],
+  result: Bool,
+  body: ((lhs <=? u64MaxCap) && (rhs <=? (prim subtract u64MaxCap lhs : Nat))),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: verifyIndependentQuotaCaps,
+  parameters: [reqBytes : Nat, reqMax : Nat, guestBytes : Nat, guestMax : Nat, respBytes : Nat, respMax : Nat],
+  result: Bool,
+  body: (((reqBytes <=? reqMax) && (guestBytes <=? guestMax)) && (respBytes <=? respMax)),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: classifyCapabilityReceiptError,
+  parameters: [contractUnique : Bool, identityLocked : Bool, workerHealthy : Bool, symbolBound : Bool, buildIdsMatch : Bool, falsifierRejected : Bool, oracleFooterOk : Bool, pathConfined : Bool, noDuplicateObs : Bool],
+  result: Nat,
+  body: (if (not contractUnique) then 1 else (if (not identityLocked) then (1 + 1) else (if (not workerHealthy) then ((1 + 1) + 1) else (if (not symbolBound) then (((1 + 1) + 1) + 1) else (if (not (((buildIdsMatch && falsifierRejected) && oracleFooterOk) && pathConfined)) then ((((1 + 1) + 1) + 1) + 1) else (if (not noDuplicateObs) then (((((1 + 1) + 1) + 1) + 1) + 1) else 0)))))),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow], targets: [rust-core]}
+}
+
+definition{
+  name: verifyIsolatedCapabilitySaturation,
+  parameters: [saturatedCount : Nat, requiredCount : Nat, falsifiersRejectedCount : Nat, receiptErrorCode : Nat],
+  result: Bool,
+  body: ((((0 <? requiredCount) && (saturatedCount =? requiredCount)) && (falsifiersRejectedCount =? requiredCount)) && (receiptErrorCode =? 0)),
+  axioms: [],
+  executable: true,
+  production: {effects: [], targets: [rust-core]}
+}
+
+definition{
+  name: breaksGranuleAndCacheMovementBounds,
+  parameters: [page : Nat, largePage : Nat, workingSet : Nat, lineBytes : Nat, tableBytes : Nat, outerCacheBytes : Nat],
+  result: Bool,
+  body: (((page <=? workingSet) && (workingSet <? (hostGranuleBytes page largePage workingSet))) || (((tableBytes <=? outerCacheBytes) && (0 <? (hostMovedBytes lineBytes tableBytes outerCacheBytes))) || ((outerCacheBytes <? tableBytes) && (not ((hostMovedBytes lineBytes tableBytes outerCacheBytes) =? lineBytes)))))
+}
+
+theorem{
+  name: granuleWithinWorkingSetAndCacheMovementExact,
+  parameters: [page : Nat, largePage : Nat, workingSet : Nat, lineBytes : Nat, tableBytes : Nat, outerCacheBytes : Nat],
+  statement: ((breaksGranuleAndCacheMovementBounds page largePage workingSet lineBytes tableBytes outerCacheBytes) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      breaksGranuleAndCacheMovementBounds,
+      hostGranuleBytes,
+      hostMovedBytes
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksHostCeilingAndSaturationDistance,
+  parameters: [computeNanos : Nat, transportNanos : Nat, observedNanos : Nat],
+  result: Bool,
+  body: (let ceil : Nat := (hostSlowerNanos computeNanos transportNanos); (((ceil <? computeNanos) || (ceil <? transportNanos)) || ((observedNanos <=? ceil) && (0 <? (hostSaturationDistanceNanos ceil observedNanos)))))
+}
+
+theorem{
+  name: ceilingCoversBothLanesAndZeroesDistanceAtCeiling,
+  parameters: [computeNanos : Nat, transportNanos : Nat, observedNanos : Nat],
+  statement: ((breaksHostCeilingAndSaturationDistance computeNanos transportNanos observedNanos) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      breaksHostCeilingAndSaturationDistance,
+      hostSaturationDistanceNanos,
+      hostSlowerNanos
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksGenerationAdmissionSafetyAndDominance,
+  parameters: [decidePassed : Nat, decideTotal : Nat, residueCount : Nat, coerciveCount : Nat, wasmBytes : Nat, frameMicros : Nat, budgetMicros : Nat, candLoss : Nat, incLoss : Nat, candSteps : Nat, incSteps : Nat],
+  result: Bool,
+  body: (let admitted : Bool := (verifyBrowserGenerationAdmission decidePassed decideTotal residueCount coerciveCount wasmBytes frameMicros budgetMicros candLoss incLoss candSteps incSteps); (admitted && (((((0 <? residueCount) || (0 <? coerciveCount)) || ((wasmBytes =? 0) || (budgetMicros <? frameMicros))) || (not (decidePassed =? decideTotal))) || ((incLoss <? candLoss) || ((candLoss =? incLoss) && (incSteps <=? candSteps))))))
+}
+
+theorem{
+  name: browserGenerationAdmissionEnforcesZeroResidueNonCoercionAndDominance,
+  parameters: [decidePassed : Nat, decideTotal : Nat, residueCount : Nat, coerciveCount : Nat, wasmBytes : Nat, frameMicros : Nat, budgetMicros : Nat, candLoss : Nat, incLoss : Nat, candSteps : Nat, incSteps : Nat],
+  statement: ((breaksGenerationAdmissionSafetyAndDominance decidePassed decideTotal residueCount coerciveCount wasmBytes frameMicros budgetMicros candLoss incLoss candSteps incSteps) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      breaksGenerationAdmissionSafetyAndDominance,
+      verifyBrowserGenerationAdmission
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+definition{
+  name: breaksWatchdogFaultImmediateRollback,
+  parameters: [overbudgetFrames : Nat, maxAllowedFrames : Nat, runtimeFaults : Nat],
+  result: Bool,
+  body: (((0 <? runtimeFaults) || (maxAllowedFrames <? overbudgetFrames)) && (not (shouldRollbackGenerationWatchdog overbudgetFrames maxAllowedFrames runtimeFaults)))
+}
+
+theorem{
+  name: watchdogTriggersImmediateRollbackOnFaultOrFrameOverrun,
+  parameters: [overbudgetFrames : Nat, maxAllowedFrames : Nat, runtimeFaults : Nat],
+  statement: ((breaksWatchdogFaultImmediateRollback overbudgetFrames maxAllowedFrames runtimeFaults) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      breaksWatchdogFaultImmediateRollback,
+      shouldRollbackGenerationWatchdog
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+theorem{
+  name: hostRuntimeSaturationAndWorkerPoolVectorsHold,
+  parameters: [],
+  statement: ((((((powConstructive (1 + 1) ((1 + 1) + 1)) =? (Foundation.Ontology.V1.Model::pow2Constructive ((1 + 1) + 1))) && ((optimalBrowserWorkerCount 1) =? 1)) && (((optimalBrowserWorkerCount (Foundation.Ontology.V1.Model::pow2Constructive (1 + 1))) =? ((1 + 1) + 1)) && ((computeBrowserApiSaturationPermille 1 1 true true true true) =? (powConstructive ((Foundation.Ontology.V1.Model::pow2Constructive ((1 + 1) + 1)) + (1 + 1)) ((1 + 1) + 1))))) && ((verifyBrowserGenerationAdmission 1 1 0 0 1 1 1 0 1 1 1) && (not (verifyBrowserGenerationAdmission 1 1 1 0 1 1 1 0 1 1 1)))) = true),
+  proof: decide{},
+  axioms: []
+}
+
+definition{
+  name: breaksIndependentQuotaCapIsolation,
+  parameters: [reqBytes : Nat, reqMax : Nat, guestBytes : Nat, guestMax : Nat, respBytes : Nat, respMax : Nat],
+  result: Bool,
+  body: ((verifyIndependentQuotaCaps reqBytes reqMax guestBytes guestMax respBytes respMax) && (((reqMax <? reqBytes) || (guestMax <? guestBytes)) || (respMax <? respBytes)))
+}
+
+theorem{
+  name: quotaPolicyRejectsSingleLaneOverrunEvenWhenSumFits,
+  parameters: [reqBytes : Nat, reqMax : Nat, guestBytes : Nat, guestMax : Nat, respBytes : Nat, respMax : Nat],
+  statement: ((breaksIndependentQuotaCapIsolation reqBytes reqMax guestBytes guestMax respBytes respMax) = false),
+  proof: linear_arithmetic{
+    definitions: [
+      breaksIndependentQuotaCapIsolation,
+      verifyIndependentQuotaCaps
+    ]
+  },
+  axioms: [Quot.sound, propext]
+}
+
+theorem{
+  name: capabilityReceiptAndFalsifierPolicyVectorsHold,
+  parameters: [],
+  statement: (((((((classifyCapabilityReceiptError true true true true true true true true true) =? 0) && ((classifyCapabilityReceiptError false true true true true true true true true) =? 1)) && (((classifyCapabilityReceiptError true true true true true false true true true) =? ((((1 + 1) + 1) + 1) + 1)) && ((classifyCapabilityReceiptError true true true true true true true true false) =? (((((1 + 1) + 1) + 1) + 1) + 1)))) && ((verifyIsolatedCapabilitySaturation ((1 + 1) + 1) ((1 + 1) + 1) ((1 + 1) + 1) 0) && (not (verifyIsolatedCapabilitySaturation ((1 + 1) + 1) ((1 + 1) + 1) (1 + 1) 0)))) && ((verifyCheckedU64NoOverflow 1 1 (1 + 1)) && (not (verifyCheckedU64NoOverflow (1 + 1) 1 (1 + 1))))) = true),
+  proof: decide{},
+  axioms: []
+}
+\end{semanticmodule}
+\end{lexlean}

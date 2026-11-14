@@ -43,10 +43,17 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
   </head>
   <body style="margin: 0; padding: 0; background-color: #0b1612; color: #f0f5f1; overflow: hidden;">
-    <div id="root"></div>
+    <div id="root">
+      <div style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font-family: Georgia, serif; color: #fde68a; letter-spacing: 0.04em;">
+        <div style="font-size: 1.5rem;">Verdant Resonance</div>
+        <div style="font-family: monospace; font-size: 0.75rem; color: #a7f3d0; opacity: 0.8;">Awakening certified Wasm conservatory…</div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

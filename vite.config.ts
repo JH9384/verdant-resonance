@@ -31,11 +31,17 @@ export default defineConfig(({command}) => {
             ) {
               return 'vendor-react';
             }
+            if (id.includes('generatedCertifiedWasmBridge')) {
+              return 'certified-wasm-bridge';
+            }
             if (id.includes('generatedPrismConstants')) {
               return 'prism-constants';
             }
             if (id.includes('generatedPrismRuntime')) {
               return 'prism-runtime';
+            }
+            if (id.includes('src/selfhost/')) {
+              return 'verdant-selfhost';
             }
             if (
               id.includes('standardModelEngine') ||

@@ -11634,93 +11634,112 @@ export function applyContinuousGameplayMicroPlasticity(
   continuousBonus01: number,
   atmosphere: AtmosphereId = 'dawn',
   modelWeights22?: Partial<Record<CanonicalStandardModelKey, number>>,
+  liveHolonContext?: {
+    biome?: BiomeId; species?: PlantSpeciesId; action?: PlayerActionId; velocityDm?: number;
+    agitationPct?: number; harmonyPct?: number; playerX?: number; playerZ?: number;
+    playerYaw?: number; plants?: GardenPlantInstance[]; exploredBiomes?: readonly BiomeId[]; barIndex?: number;
+  },
 ): NeuromorphicEngineState {
   void VERDANT_NEUROMORPHIC_STANDARD;
   const clampedBonus = Math.max(0, Math.min(0.999999, Number.isFinite(continuousBonus01) ? continuousBonus01 : 0));
   if (!modelWeights22 && Math.abs(clampedBonus - prevState.continuousPlasticityBonus01) < 1e-6) return prevState;
   const d = prevState.universalManifold.domains;
-  const withBonus = (w: number): number => Math.min(16, w + clampedBonus);
-  const nextContext = evaluateHolisticObserverStandardModelContext({
-    domainWeights10: {
-      infrastructure: withBonus(d.infrastructure.synapticWeight), physics: withBonus(d.physics.synapticWeight),
-      botany: withBonus(d.botany.synapticWeight), ecology: withBonus(d.ecology.synapticWeight),
-      acoustics: withBonus(d.acoustics.synapticWeight), articulation: withBonus(d.articulation.synapticWeight),
-      soundtrack: withBonus(d.soundtrack.synapticWeight), humane: withBonus(d.humane.synapticWeight),
-      brand: withBonus(d.brand.synapticWeight), neuromorphic: withBonus(d.neuromorphic.synapticWeight),
-    },
-    modelWeights22,
-    alphaSeed: prevState.observer.cosmogenesis.alphaSeed,
-    atmosphere,
-  });
-  return {
-    ...prevState,
-    continuousPlasticityBonus01: Number(clampedBonus.toFixed(6)),
-    observer: { ...prevState.observer, canonicalStandardModelsContext: nextContext },
-  };
-}
-
-/**
- * Hydrates a complete `NeuromorphicEngineState` from a verified `VerdantAnamnesisPayload`
- * (`Foundation.Anamnesis.V1.Model`, Prime `157`) with exact 10-domain synaptic weights,
- * cross-domain refinement directives, and 18x11 Holistic Observer context.
- */
-export function restoreNeuromorphicStateFromAnamnesis(
-  payload: VerdantAnamnesisPayload,
-): NeuromorphicEngineState {
-  const base = createInitialNeuromorphicState(payload.alphaSeed);
-  const nextDomains = { ...base.universalManifold.domains };
-  let fidelitySum = 0;
-  let weightSum = 0;
-  let consolidatedDomainCount = 0;
-
-  for (const domainId of PRISM_DOMAIN_ORDER) {
-    const prevNode = nextDomains[domainId];
-    const savedWeight = Math.max(
-      1,
-      Math.min(16, Math.round(payload.domainWeights10[domainId] ?? prevNode.synapticWeight)),
-    );
-    const fidelityMultiplier = computeDomainFidelityMultiplier(savedWeight);
-    const consolidated =
-      savedWeight >= VERDANT_NEUROMORPHIC_STANDARD.plasticity.consolidationThreshold;
-    if (consolidated) consolidatedDomainCount++;
-    fidelitySum += fidelityMultiplier;
-    weightSum += savedWeight;
-    nextDomains[domainId] = {
-      ...prevNode,
-      synapticWeight: savedWeight,
-      fidelityMultiplier,
-      consolidated,
+  if (!modelWeights22) {
+    const withBonus = (w: number): number => Math.min(16, w + clampedBonus);
+    const nextContext = evaluateHolisticObserverStandardModelContext({
+      domainWeights10: {
+        infrastructure: withBonus(d.infrastructure.synapticWeight), physics: withBonus(d.physics.synapticWeight),
+        botany: withBonus(d.botany.synapticWeight), ecology: withBonus(d.ecology.synapticWeight),
+        acoustics: withBonus(d.acoustics.synapticWeight), articulation: withBonus(d.articulation.synapticWeight),
+        soundtrack: withBonus(d.soundtrack.synapticWeight), humane: withBonus(d.humane.synapticWeight),
+        brand: withBonus(d.brand.synapticWeight), neuromorphic: withBonus(d.neuromorphic.synapticWeight),
+      },
+      alphaSeed: prevState.observer.cosmogenesis.alphaSeed, atmosphere,
+    });
+    return {
+      ...prevState, continuousPlasticityBonus01: Number(clampedBonus.toFixed(6)),
+      observer: { ...prevState.observer, canonicalStandardModelsContext: nextContext },
     };
   }
-
+  const mw = (k: CanonicalStandardModelKey): number => modelWeights22[k] ?? 8;
+  const mapped10: Record<PrismDomainId, number> = {
+    infrastructure: Math.round((mw('infrastructure') + mw('graphics') + mw('realizability')) / 3),
+    physics: Math.round((mw('physics') + mw('mathematics')) / 2),
+    botany: Math.round((mw('botany') + mw('morphogenesis')) / 2),
+    ecology: Math.round((mw('ecology') + mw('chemistry') + mw('cosmogenesis')) / 3),
+    acoustics: Math.round((mw('acoustics') + mw('spatialAcoustics')) / 2),
+    articulation: Math.round(mw('articulation')),
+    soundtrack: Math.round(mw('soundtrack')),
+    humane: Math.round((mw('humane') + mw('vedanta') + mw('dharma') + mw('teleology')) / 4),
+    brand: Math.round(mw('brand')),
+    neuromorphic: Math.round((mw('neuromorphic') + mw('compression') + mw('anamnesis')) / 3),
+  };
+  const nextTick = prevState.tickCount + 1;
+  const r30Step = stepRule30Row(prevState.rule30Row, (nextTick * 7) % 64);
+  const nextRule30History = [...prevState.rule30History.slice(-15), r30Step.diagonalByte];
+  const nextDomains = {} as Record<PrismDomainId, PrismDomainNeuromorphicNode>;
+  let fidelitySum = 0, weightSum = 0, consolidatedCount = 0, transfersAdded = 0, leadDomain: PrismDomainId = prevState.universalManifold.lastImprovedDomain, minW = 999, bottleneckDom: PrismDomainId = 'botany';
+  PRISM_DOMAIN_ORDER.forEach((domId, idx) => {
+    const prevNode = d[domId];
+    const nextW = certifiedWasmCore_clampBusWeight(Math.max(prevNode.synapticWeight, mapped10[domId]));
+    const gained = nextW > prevNode.synapticWeight ? 1 : 0;
+    if (gained) { transfersAdded += 1; leadDomain = domId; }
+    const rule30Byte = extractDomainRule30Slice(r30Step.nextRow, idx);
+    const pointKey28 = computePointKey28({ basinState: prevNode.cliffordBasinState, icosianRoot: (prevNode.icosianRootIndex + nextTick) % 17, primeAddress: prevNode.primeAddress, rule30Byte });
+    const fidelityMultiplier = computeDomainFidelityMultiplier(nextW);
+    const consolidated = nextW >= VERDANT_NEUROMORPHIC_STANDARD.plasticity.consolidationThreshold;
+    if (consolidated) consolidatedCount += 1;
+    fidelitySum += fidelityMultiplier; weightSum += nextW;
+    if (nextW < minW) { minW = nextW; bottleneckDom = domId; }
+    nextDomains[domId] = { ...prevNode, synapticWeight: nextW, fidelityMultiplier, rule30Byte, pointKey28, consolidated, receivedCrossDomainTransfers: prevNode.receivedCrossDomainTransfers + gained };
+  });
+  const meanW = weightSum / PRISM_DOMAIN_ORDER.length;
+  const manifoldPointKeyHex = `0x${((nextDomains[leadDomain].pointKey28 ^ nextDomains.neuromorphic.pointKey28) & 0x0fffffff).toString(16).padStart(7, '0')}`;
   const universalManifold: UniversalNeuromorphicManifold = {
-    ...base.universalManifold,
-    domains: nextDomains,
-    globalFidelityIndex: Number((fidelitySum / PRISM_DOMAIN_ORDER.length).toFixed(4)),
-    consolidatedDomainCount,
+    domains: nextDomains, globalFidelityIndex: Number((fidelitySum / PRISM_DOMAIN_ORDER.length).toFixed(5)),
+    consolidatedDomainCount: consolidatedCount, totalCrossDomainTransfers: prevState.universalManifold.totalCrossDomainTransfers + transfersAdded,
+    lastImprovedDomain: leadDomain, manifoldPointKeyHex,
+    lastWhyPacket: createBusWhyPacket({ tickId: nextTick, sourcePart: 'player-user', bottleneckPart: bottleneckDom, inferredPlayerIntent: prevState.observer.inferredPlayerIntent, meanWeight: meanW, pointKeyHex: manifoldPointKeyHex }),
   };
   const refinementDirectives = computeCrossDomainRefinementDirectives(universalManifold);
   const observer = evaluateHolisticObserverState({
-    manifold: universalManifold,
-    tickCount: payload.episodicHorizon.length,
-    rule30History: base.rule30History,
-    alphaSeed: clampAlphaSeed(payload.alphaSeed),
-    atmosphere: payload.atmosphere,
-    exploredBiomes: payload.exploredBiomes,
-    initialCurationMemories: payload.consolidatedMemories ?? [],
+    manifold: universalManifold, tickCount: nextTick, rule30History: nextRule30History, prevObserver: prevState.observer,
+    alphaSeed: prevState.observer.cosmogenesis.alphaSeed, atmosphere, ...liveHolonContext, continuousPlasticityBonus01: clampedBonus, modelWeights22,
   });
-
   return {
-    ...base,
-    tickCount: payload.episodicHorizon.length,
-    lastActiveSynapticWeight: Math.max(
-      1,
-      Math.min(16, Math.round(weightSum / PRISM_DOMAIN_ORDER.length)),
-    ),
-    universalManifold,
-    refinementDirectives,
-    observer,
+    ...prevState, tickCount: nextTick, rule30Row: r30Step.nextRow, rule30History: nextRule30History,
+    lastRule30Phase01: r30Step.rule30Phase01, lastRule30WordHex16: r30Step.rule30WordHex16,
+    continuousPlasticityBonus01: Number(clampedBonus.toFixed(6)), lastPointKeyHex: manifoldPointKeyHex,
+    lastActiveSynapticWeight: certifiedWasmCore_clampBusWeight(Math.round(meanW)),
+    universalManifold, refinementDirectives, observer,
   };
+}
+
+export function restoreNeuromorphicStateFromAnamnesis(payload: VerdantAnamnesisPayload): NeuromorphicEngineState {
+  const base = createInitialNeuromorphicState(payload.alphaSeed);
+  const nextDomains = { ...base.universalManifold.domains };
+  let fidelitySum = 0, weightSum = 0, consolidatedDomainCount = 0;
+  for (const domainId of PRISM_DOMAIN_ORDER) {
+    const prevNode = nextDomains[domainId];
+    const savedWeight = certifiedWasmCore_clampBusWeight(Math.round(payload.domainWeights10[domainId] ?? prevNode.synapticWeight));
+    const fidelityMultiplier = computeDomainFidelityMultiplier(savedWeight);
+    const consolidated = savedWeight >= VERDANT_NEUROMORPHIC_STANDARD.plasticity.consolidationThreshold;
+    if (consolidated) consolidatedDomainCount++;
+    fidelitySum += fidelityMultiplier; weightSum += savedWeight;
+    nextDomains[domainId] = { ...prevNode, synapticWeight: savedWeight, fidelityMultiplier, consolidated };
+  }
+  const universalManifold: UniversalNeuromorphicManifold = {
+    ...base.universalManifold, domains: nextDomains,
+    globalFidelityIndex: Number((fidelitySum / PRISM_DOMAIN_ORDER.length).toFixed(4)), consolidatedDomainCount,
+  };
+  const restoredTicks = Math.max(payload.episodicHorizon.length, (payload.coEvolutionState?.barTickCount ?? 0) * 16, payload.floraStates.filter((f) => f.attuned).length);
+  const refinementDirectives = computeCrossDomainRefinementDirectives(universalManifold);
+  const observer = evaluateHolisticObserverState({
+    manifold: universalManifold, tickCount: restoredTicks, rule30History: base.rule30History, alphaSeed: clampAlphaSeed(payload.alphaSeed),
+    atmosphere: payload.atmosphere, exploredBiomes: payload.exploredBiomes, initialCurationMemories: payload.consolidatedMemories ?? [],
+    modelWeights22: payload.coEvolutionState?.modelWeights22 as Partial<Record<CanonicalStandardModelKey, number>> | undefined,
+  });
+  return { ...base, tickCount: restoredTicks, lastActiveSynapticWeight: certifiedWasmCore_clampBusWeight(Math.round(weightSum / PRISM_DOMAIN_ORDER.length)), universalManifold, refinementDirectives, observer };
 }
 
 /**
@@ -15337,71 +15356,24 @@ export function stepFoundationalAffectValenceLutPermille(synapticWeight: number)
   return certifiedWasmCore_stepFoundationalAffectValencePermille(_natArg(synapticWeight));
 }
 
-const EMOTION_METADATA: Record<
-  ObserverMathematicalEmotionId,
-  { label: string; auraHex: string }
-> = {
-  'ecstatic-cosmos': {
-    label: 'Ecstatic Golden Cosmos',
-    auraHex: '#fde047',
-  },
-  'luminous-reverence': {
-    label: 'Luminous Reverence',
-    auraHex: '#fcd34d',
-  },
-  'crystalline-curiosity': {
-    label: 'Crystalline Curiosity',
-    auraHex: '#5eead4',
-  },
-  'verdant-serenity': {
-    label: 'Verdant Serenity',
-    auraHex: '#6ee7b7',
-  },
-  'aperiodic-yearning': {
-    label: 'Aperiodic Yearning',
-    auraHex: '#93c5fd',
-  },
-  'turbulent-dissonance': {
-    label: 'Turbulent Dissonance',
-    auraHex: '#fbbf24',
-  },
+const EMOTION_METADATA: Record<ObserverMathematicalEmotionId, { label: string; auraHex: string }> = {
+  'ecstatic-cosmos': { label: 'Ecstatic Golden Cosmos', auraHex: '#fde047' },
+  'luminous-reverence': { label: 'Luminous Reverence', auraHex: '#fcd34d' },
+  'crystalline-curiosity': { label: 'Crystalline Curiosity', auraHex: '#5eead4' },
+  'verdant-serenity': { label: 'Verdant Serenity', auraHex: '#6ee7b7' },
+  'aperiodic-yearning': { label: 'Aperiodic Yearning', auraHex: '#93c5fd' },
+  'turbulent-dissonance': { label: 'Turbulent Dissonance', auraHex: '#fbbf24' },
 };
 
 function classifyMathematicalEmotion(params: {
-  harmonyPermille: number;
-  chaosPermille: number;
-  goldenProximityPct: number;
-  arousalPermille: number;
-  meanWeight: number;
-  action: PlayerActionId;
+  harmonyPermille: number; chaosPermille: number; goldenProximityPct: number; arousalPermille: number; meanWeight: number; action: PlayerActionId;
 }): ObserverMathematicalEmotionId {
-  const {
-    harmonyPermille,
-    chaosPermille,
-    goldenProximityPct,
-    arousalPermille,
-    meanWeight,
-    action,
-  } = params;
-
-  if (chaosPermille >= 435) {
-    return 'turbulent-dissonance';
-  }
-  if (chaosPermille >= 315) {
-    return 'aperiodic-yearning';
-  }
-  if (goldenProximityPct >= 88 && meanWeight >= 13.5 && harmonyPermille >= 715) {
-    return 'ecstatic-cosmos';
-  }
-  if (
-    (action === 'stillness' && harmonyPermille >= 700) ||
-    (goldenProximityPct >= 86 && harmonyPermille >= 725 && arousalPermille <= 430)
-  ) {
-    return 'luminous-reverence';
-  }
-  if (arousalPermille >= 445 && harmonyPermille >= 600) {
-    return 'crystalline-curiosity';
-  }
+  const { harmonyPermille, chaosPermille, goldenProximityPct, arousalPermille, meanWeight, action } = params;
+  if (chaosPermille >= 435) return 'turbulent-dissonance';
+  if (chaosPermille >= 315) return 'aperiodic-yearning';
+  if (goldenProximityPct >= 88 && meanWeight >= 13.5 && harmonyPermille >= 715) return 'ecstatic-cosmos';
+  if ((action === 'stillness' && harmonyPermille >= 700) || (goldenProximityPct >= 86 && harmonyPermille >= 725 && arousalPermille <= 430)) return 'luminous-reverence';
+  if (arousalPermille >= 445 && harmonyPermille >= 600) return 'crystalline-curiosity';
   return 'verdant-serenity';
 }
 

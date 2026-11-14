@@ -114,6 +114,8 @@ export interface VerdantAnamnesisPayload {
   readonly episodicHorizon: readonly EpisodicMemoryTraceEntry[];
   readonly consolidatedMemories?: readonly ConsolidatedGardenMemory[];
   readonly coEvolutionState?: PersistedLiveCoEvolutionState;
+  readonly selfHostGenerationId?: string;
+  readonly selfHostTreeKappa?: string;
 }
 
 export interface ContentAddressedAnamnesisEnvelope {
@@ -220,26 +222,18 @@ export function serializeAnamnesisSnapshot(params: {
   readonly episodicHorizon?: readonly EpisodicMemoryTraceEntry[];
   readonly consolidatedMemories?: readonly ConsolidatedGardenMemory[];
   readonly coEvolutionState?: PersistedLiveCoEvolutionState;
+  readonly selfHostGenerationId?: string;
+  readonly selfHostTreeKappa?: string;
   readonly savedAtIso?: string;
 }): ContentAddressedAnamnesisEnvelope {
   const clampW = (v: number) => Math.max(1, Math.min(16, Math.round(v)));
   const dom = params.manifold.domains;
-  const wAnam = clampW(
-    (dom.infrastructure.synapticWeight +
-      dom.neuromorphic.synapticWeight +
-      dom.ecology.synapticWeight) /
-      3,
-  );
+  const wAnam = clampW((dom.infrastructure.synapticWeight + dom.neuromorphic.synapticWeight + dom.ecology.synapticWeight) / 3);
   const maxHorizon = computeEpisodicMemoryHorizonCapacity(wAnam);
   const boundedHorizon = (params.episodicHorizon ?? []).slice(-maxHorizon);
-  const memoryCap =
-    GENERATED_PRISM_STANDARDS.autonomousConservatoryCuration?.consolidatedMemorySlotCap ?? 16;
-  const boundedMemories =
-    params.consolidatedMemories && params.consolidatedMemories.length > 0
-      ? params.consolidatedMemories.slice(0, memoryCap)
-      : undefined;
-  const maxOffshoots =
-    GENERATED_PRISM_STANDARDS.teleology?.purposeAndAutonomy?.maxEmergentMicroclimateOffshoots ?? 12;
+  const memoryCap = GENERATED_PRISM_STANDARDS.autonomousConservatoryCuration?.consolidatedMemorySlotCap ?? 16;
+  const boundedMemories = params.consolidatedMemories && params.consolidatedMemories.length > 0 ? params.consolidatedMemories.slice(0, memoryCap) : undefined;
+  const maxOffshoots = GENERATED_PRISM_STANDARDS.teleology?.purposeAndAutonomy?.maxEmergentMicroclimateOffshoots ?? 12;
   const emergentRecords: PersistedEmergentOffshootRecord[] = params.plants
     .filter((p) => p.id.startsWith('emergent-') || p.id.startsWith('offshoot-'))
     .slice(0, maxOffshoots)
@@ -300,6 +294,8 @@ export function serializeAnamnesisSnapshot(params: {
     episodicHorizon: boundedHorizon,
     ...(boundedMemories ? { consolidatedMemories: boundedMemories } : {}),
     ...(params.coEvolutionState ? { coEvolutionState: params.coEvolutionState } : {}),
+    ...(params.selfHostGenerationId ? { selfHostGenerationId: params.selfHostGenerationId } : {}),
+    ...(params.selfHostTreeKappa ? { selfHostTreeKappa: params.selfHostTreeKappa } : {}),
   };
 
   const digest = computeAnamnesisMerkleDigest(payload);

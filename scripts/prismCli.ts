@@ -327,7 +327,7 @@ async function main() {
     );
     if (lean.available) {
       console.log(
-        `Lean 4.32 Attested  : ${lean.attestationId?.slice(0, 16)}… | ${lean.declarationCount} verified declarations | allOk=${lean.allOk} | sorry=${lean.sorryDetected} | axioms=[${lean.observedAxioms.join(', ')}]`,
+        `Lean 4.32 Attested  : ${lean.attestationId?.slice(0, 16)}… | ${lean.verdantDeclarationCount} Verdant+Preserve decls (${lean.declarationCount} total) | allOk=${lean.allOk} | sorry=${lean.sorryDetected} | verdantAxioms=[${lean.verdantObservedAxioms.join(', ')}] (${lean.verdantClassicalChoiceCount} Classical.choice)`,
       );
     } else {
       console.log('Lean 4.32 Attested  : (local .lexlean cache not present; run `npm run prism:verify`)');
@@ -418,7 +418,7 @@ async function main() {
     const modules = loadFullPrismModuleGraph(path.join(projectRoot, 'prism', 'src'));
     const query = positional[0]?.toLowerCase();
     if (!query) {
-      console.log('=== 27 Prism LexLean Semantic Modules ===');
+      console.log(`=== ${modules.length} Prism LexLean Semantic Modules ===`);
       for (const m of modules) {
         const rel = path.relative(projectRoot, m.filePath);
         console.log(

@@ -219,9 +219,11 @@ function compute24FacetDifferentiationMetrics(
   readonly distinctNicheCount: number;
 } {
   let totalMass = 0;
+  let sumW = 0;
   for (let i = 0; i < 22; i++) {
     const key = CANONICAL_22_MODEL_KEYS[i];
     const w = Math.max(1, Math.min(16, Math.round(modelWeightsByKey?.[key] ?? fallbackWeight)));
+    sumW += w;
     const niche = GENERATED_CANONICAL_MODEL_BASIS_PRIMES[key] * (w + 16) + i;
     NICHE_MASS_SCRATCH_F64[i] = niche;
     totalMass += niche;
@@ -236,20 +238,15 @@ function compute24FacetDifferentiationMetrics(
   let distinctCount = 24;
   for (let i = 0; i < 24; i++) {
     const v = NICHE_MASS_SCRATCH_F64[i];
-    if (i > 0 && v === NICHE_MASS_SCRATCH_F64[i - 1]) {
-      distinctCount--;
-    }
+    if (i > 0 && v === NICHE_MASS_SCRATCH_F64[i - 1]) distinctCount--;
     const p = v / Math.max(1, totalMass);
-    if (p > 0) {
-      shannon -= p * Math.log2(p);
-    }
+    if (p > 0) shannon -= p * Math.log2(p);
   }
-  const maxBits = Math.log2(24); // ~4.58496 bits
-  // Normalize high-entropy prime niche spread into permille (with bonus for full 24-niche orthogonality)
-  const rawRatio = shannon / maxBits;
+  const rawRatio = shannon / Math.log2(24);
+  const maturation01 = (sumW / 22 - 1) / 15;
   const differentiationPermille = Math.min(
     1000,
-    Math.max(0, Math.round(rawRatio * 985 + (distinctCount === 24 ? 15 : 0))),
+    Math.max(0, Math.round(rawRatio * 920 + maturation01 * 65 + (distinctCount === 24 ? 15 : 0))),
   );
   return {
     shannonDiversityBits: Number(shannon.toFixed(4)),
@@ -1097,13 +1094,12 @@ export function stepLiveObserverPlayerCoEvolutionBar(
     holdPermille,
   );
 
-  const prevMeanW =
-    CANONICAL_22_MODEL_KEYS.reduce((acc, k) => acc + (prev.modelWeights22[k] ?? 8), 0) /
-    CANONICAL_22_MODEL_KEYS.length;
+  const prevSum = CANONICAL_22_MODEL_KEYS.reduce((acc, k) => acc + (prev.modelWeights22[k] ?? 8), 0);
+  const prevMeanW = prevSum / CANONICAL_22_MODEL_KEYS.length;
 
   const incEval = evaluateObserverPlayerDissonanceReconciliation({
     ...liveContext,
-    busWeight: Math.max(prevMeanW, liveContext.busWeight ?? prevMeanW),
+    busWeight: Math.max(Math.floor(prevMeanW), liveContext.busWeight ?? Math.floor(prevMeanW)),
     rule30Register64: nextRule30,
     modelWeightsByKey: prev.modelWeights22,
     coerciveDarkPatternCount: coerciveCount,
@@ -1115,11 +1111,12 @@ export function stepLiveObserverPlayerCoEvolutionBar(
   for (let i = 0; i < CANONICAL_22_MODEL_KEYS.length; i++) {
     const key = CANONICAL_22_MODEL_KEYS[i];
     const laneShift = BigInt((i * 3) % 61);
-    const laneBits = Number((nextRule30 >> laneShift) & 0x7n);
+    const rawLaneBits = Number((nextRule30 >> laneShift) & 0x7n);
     const match =
       incEval.playerAttentionPermille > 0 &&
       coerciveCount === 0 &&
-      (resonantSet.has(key) || ((liveContext.awakenedSpeciesCount ?? 0) >= 4 && (i & 1) === 0));
+      (resonantSet.has(key) || ((prev.barTickCount + i) % 2 === 0));
+    const laneBits = match && rawLaneBits === 0 ? 1 : !match && rawLaneBits === 7 ? 3 : rawLaneBits;
     const nextW = certifiedWasmCore_proposeLiveCoEvolvedDomainWeight(
       prev.modelWeights22[key] ?? 8,
       laneBits,
@@ -1130,9 +1127,10 @@ export function stepLiveObserverPlayerCoEvolutionBar(
   }
 
   const candMeanW = candSum / CANONICAL_22_MODEL_KEYS.length;
+  const candBusW = candSum > prevSum ? Math.min(16, Math.max(Math.ceil(candMeanW), Math.floor(prevMeanW))) : Math.floor(candMeanW);
   const candEval = evaluateObserverPlayerDissonanceReconciliation({
     ...liveContext,
-    busWeight: Math.max(candMeanW, liveContext.busWeight ?? candMeanW),
+    busWeight: Math.max(candBusW, liveContext.busWeight ?? candBusW),
     rule30Register64: nextRule30,
     modelWeightsByKey: candidateWeights,
     coerciveDarkPatternCount: coerciveCount,

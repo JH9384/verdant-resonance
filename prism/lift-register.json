@@ -2,16 +2,16 @@
   "schema": "verdant-resonance/lift-register/1",
   "domain": "verdant-resonance/function/1",
   "summary": {
-    "totalFunctions": 383,
-    "liftedCount": 347,
+    "totalFunctions": 431,
+    "liftedCount": 382,
     "residueCount": 0,
     "foreignCount": 31,
-    "effectCount": 5,
-    "unliftedOpenDistance": 36
+    "effectCount": 18,
+    "unliftedOpenDistance": 49
   },
   "rows": [
     {
-      "kappa": "e0b82f0194af617f2e143daf45cb4d52f70bd6f41ac464902e68480576108165",
+      "kappa": "a7c15957c521ff59bc813f39642bdef284426513e676119a2d3d526b39c6b276",
       "functionPath": "src/App.tsx::App",
       "routeId": "VR-R07",
       "status": "effect",
@@ -179,7 +179,7 @@
       "effect": "dom-BrowserEnvironmentIo"
     },
     {
-      "kappa": "17342b4f9de354211aea1ad493a9b4a9eeb1d47a5d7b1ae3e9b686f0d6e4a7c5",
+      "kappa": "035370df3877ac9d49d05450e598a2e28f5d7e71642295332de10b518df6e380",
       "functionPath": "src/game/anamnesisEngine.ts::serializeAnamnesisSnapshot",
       "routeId": "VR-R04",
       "status": "lifted",
@@ -242,7 +242,7 @@
       "definition": "Foundation.Teleology.V1.Model (certifiedWasmCore_clampBusWeight)"
     },
     {
-      "kappa": "9df06a76725875638a7de6bd24850d449258bdacf14a493b0a79238bb76426ff",
+      "kappa": "3231aa69f7f733d029f609cbe120aa7f9cc8f6f5c95e62fc1065d5ac6feb2fdf",
       "functionPath": "src/game/autonomousObjectivesEngine.ts::stepLiveObserverPlayerCoEvolutionBar",
       "routeId": "VR-R04",
       "status": "lifted",
@@ -606,11 +606,11 @@
       "definition": "VerdantResonance (certifiedWasmCore_advanceLifecycleStage)"
     },
     {
-      "kappa": "6f13591a73fc0869b8af2a9f48d2f71e9261d5f91a888936c615e4a68aa908ba",
+      "kappa": "ed5f29df8d82b144f01feeae76b527e903dab4163e1cf4710421d25971c639ca",
       "functionPath": "src/game/prismModel.ts::applyContinuousGameplayMicroPlasticity",
       "routeId": "VR-R04",
       "status": "lifted",
-      "definition": "VerdantResonance::formalProjectionTable"
+      "definition": "VerdantResonance (certifiedWasmCore_clampBusWeight)"
     },
     {
       "kappa": "256e16944dc7101954490c3d40695d08dc731ce54dacfa2566d707193abbe94f",
@@ -1306,11 +1306,11 @@
       "definition": "VerdantResonance::formalProjectionTable"
     },
     {
-      "kappa": "370b2c07bc77883403c870871b2e5f1f7aa8015e20c96ef84f0e04acd3e57869",
+      "kappa": "29ef69a8da8ea30654324113a6d0cc6075b9f009697a35b7d3649557dabd59c0",
       "functionPath": "src/game/prismModel.ts::restoreNeuromorphicStateFromAnamnesis",
       "routeId": "VR-R04",
       "status": "lifted",
-      "definition": "VerdantResonance::formalProjectionTable"
+      "definition": "VerdantResonance (certifiedWasmCore_clampBusWeight)"
     },
     {
       "kappa": "ffc4ad442d48618b111b67575cbcab3167b900d410abd1c9d74dc0c9bb07c717",
@@ -2690,6 +2690,342 @@
       "routeId": "VR-R04",
       "status": "lifted",
       "definition": "Foundation.Vedanta.V1.Model (certifiedWasmCore_stepRtaCosmicOrderPermille)"
+    },
+    {
+      "kappa": "2ed3e8eabe7ddfd04de742571c851e67a8121cc54b5101f011d66e0a0542ddc2",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::checkedAddU64Browser",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyCheckedU64NoOverflow)"
+    },
+    {
+      "kappa": "75f8bab0fd64f283c8e4a911a2b8685f5ea40a064f2dd178e74e861d0e81452f",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::confineBrowserCapabilityPath",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "e56921a4d548104f99547629139bf7c5b40e82c7d65e94e3b75d1582252e9a16",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::createPersistentU64ByteStore",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "29b09a78758de1b60d0aa28b82129921871f8c81285ca631bda882b3eaf5b88f",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::insertPersistentU64Bytes",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "cfd6a178c0b0210743be3852b89dc6be4078c668a6dbe50bee559c68bb7ba529",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::lookupPersistentU64Bytes",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "663b2ea3bcbba7c3154060fbfaefe8cf221f69101066a45c69ae0664f9993afa",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::negateBrowserLexBooleanRoot",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "a585da9691f56e5c35e94a9cac51a162c72ba6986cbf0be8f8892125d7a9925a",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::removePersistentU64Bytes",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "24153c4ec2848e0a53afe22f6241d0655a70f7e05c77875e533ac87adbf3607b",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::runBrowserCapabilitySaturationSuite",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyIsolatedCapabilitySaturation)"
+    },
+    {
+      "kappa": "ee4f8a036b1a4bd83f57bbace8d46be70525cf429c1b6d0d0bd96af9c54f5cb4",
+      "functionPath": "src/selfhost/browserCapabilityProbes.ts::validateBrowserCapabilityReceipt",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_classifyCapabilityReceiptError)"
+    },
+    {
+      "kappa": "b22b23c018a64c0344f6641f1c7c5db0b94c958872db34f6d5915166e00a5a45",
+      "functionPath": "src/selfhost/browserLexLeanWasmCompiler.ts::compileBrowserLexModulesToWasm32",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (GENERATED_ONTOLOGY_5WH_LEDGER)"
+    },
+    {
+      "kappa": "5006b854c5d3feba524dddb28e1b106a9eed107b7d422ffd111e93fd01d3fc60",
+      "functionPath": "src/selfhost/browserLexLeanWasmCompiler.ts::parseBrowserLexModule",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "432e92ee1bbfbd31057c2bdc5f9d136781e5bf730cf4339e18a6005cf6a4d8d3",
+      "functionPath": "src/selfhost/browserLexLeanWasmCompiler.ts::verifyAndInstantiateBrowserLexWasm",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_ulebLength)"
+    },
+    {
+      "kappa": "75dac994a0cec8644cf74baa21595bef45b81e4ba8c42b32d7d0511903b70e59",
+      "functionPath": "src/selfhost/browserLexLeanWasmCompiler.ts::verifyAndTranspileBrowserTypeScriptModule",
+      "routeId": "VR-R08",
+      "status": "effect",
+      "effect": "webaudio-SynthesisAndSpatialGraph"
+    },
+    {
+      "kappa": "0cef494583ad1bd0583ccc02ee2031be1357babf822cdc6d53d125b2a0278a40",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::attachBrowserAudioWorkletProcessor",
+      "routeId": "VR-R08",
+      "status": "effect",
+      "effect": "webaudio-SynthesisAndSpatialGraph"
+    },
+    {
+      "kappa": "11e3e6394aa3b035eaab57c330aed5cdb83115be34a548b8c28583a8c1b5a587",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::broadcastBrowserGenerationSync",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "4e01f1f52925e428a8df977fb2418d62ec09df175afe75b393b38421c5b84196",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::dispatchParallelWasmAbductionSweep",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmRule30Step)"
+    },
+    {
+      "kappa": "3c39ac6b52749f83604d7577b6a0416ce2e8d5c484b98417518c0fd5dc38a2ef",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::evaluateBrowserHostSaturation",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "c1b81c0b7bc8c727a42ebdecced25fb94a39adc405dd14fb17eeb3a4688abdd6",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::initBrowserPerformanceObserver",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "e343bd31e040e19a0c6d351460425d72330cffe4c2592696520b01c3fd86cb9f",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::initBrowserWasmWorkerPool",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "f4eff1839a5ef92af584b6b7195ad9af8a58ba20876d1f31daf94dd7e744a841",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::queryBrowserStorageEstimate",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "21544caec4c42c685add948c36102606ae2cddc0bae1d9276e616f1def1c154b",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::recordBrowserObservedFrameMicros",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_hostSaturationDistanceNanos)"
+    },
+    {
+      "kappa": "3a7fed795123d938e394220b11f3ee732bcc64a5b03673c13897ecc693cdacc7",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::recordBrowserOpfsSaturationState",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "8afd5bc9aa9392cf5a7d5370a3655cda583000802a032d4c42f504b0886f9a06",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::registerSovereignServiceWorker",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "0125873605208fe6ca5d6c65fc24016defbb9426251512b008948ebe2519e438",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::stageArtifactInSovereignServiceWorker",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "1f39cea054ec9cb6bd02e0016bb2db6d65f9ca849b889d52f64168c78d1c5b18",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::updateBrowserAudioWorkletWarmth",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "4f5c1b87b92d937b88e866fbae91ab4109242fbf527a85f3c2ce813844866c59",
+      "functionPath": "src/selfhost/browserRuntimeSaturation.ts::withBrowserWebLock",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "5dd81d1280256a4cbfa37d7acddff13989007945616e16236226263b62d75e68",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::bootBrowserSelfHostOrganism",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "27dbcbd819f0d9fdf3605d885ab4f45f438c58b04e46086c8377b01800d90be4",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::computeGenerationTreeKappa",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (GENERATED_ONTOLOGY_5WH_LEDGER)"
+    },
+    {
+      "kappa": "bfcdbb936b4eeca69f5d2d39c746ea4d63ab05905a67935b4a191c5f599cd24d",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::createMemorySelfHostFs",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "87c670df335585fd87149204164d84811070a19c2a8dc5b144d31b3ef381d310",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::evaluateEvolvedGenProjection",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_nthPrimeConstructive)"
+    },
+    {
+      "kappa": "feae6f7bf3618ad5b6f466141789f702e4ecb9687a4ab22ac25f9ab153c7e98b",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::evaluateLiveWatchdogFrameTick",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_shouldRollbackGenerationWatchdog)"
+    },
+    {
+      "kappa": "60cb0d628d90a48d5e42cbe0d22489bce171cab6c5c69842a02e732384194a0d",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::evaluateSelfHostWatchdogAndRollback",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_shouldRollbackGenerationWatchdog)"
+    },
+    {
+      "kappa": "0985fcabe3a2a92fcc33f29977ac865501a1359029864840c1d7a05b94687765",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::exportGenerationAsUorcSpore",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyUorcArchiveBounds)"
+    },
+    {
+      "kappa": "b6a43db81100334b651e612f86b5fa4aba041411352ac107b013e3103f00939a",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::getLiveSelfHostOrganismState",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "46bd4aba7c761839e4ff6066d4606ba13735bee03da1e6d54fe5fef585f566a8",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::importLiveOrganismSporeBundle",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyUorcArchiveBounds)"
+    },
+    {
+      "kappa": "fac892706759d6595f6d0759a315c9f7730cebe0392bdb6cc9243aa39130c76e",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::importOrganismSporeBundle",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyUorcArchiveBounds)"
+    },
+    {
+      "kappa": "9cc016a61ab9a5b9bc58e1b3ca1878f0dbb6877ffaab1e8ca85d44a19f1425a3",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::mountBrowserOpfsSelfHostFs",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "3cc53e88aaef06b7466011f89cd2df400b1b9dd5d72d0614cce155c54095bbbb",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::proposeAndCertifyBrowserGeneration",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyBrowserGenerationAdmission)"
+    },
+    {
+      "kappa": "51fc4030e13fd0f9ab528091d7f69f34c54cf3594169202021f85cbf45e0de32",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::proposeLiveUserEditGeneration",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "228819da1fd7b81ba01175d7725b88e010b6a710d017085053be0b4805468cb9",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::readLiveSelfHostFile",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "fbfcca1f6a57dfbbb0804c29dd7be184ef49b980c432a4a1f1fc1199b25106de",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::rehydrateHeadGenerationRuntime",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "eb9ea80b88dcb802ff72d3ec2378ce7b3968dfa24bace5a432c7b69d30d870be",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::rollbackLiveOrganismToGenesis",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "bc054da5e935de2de3787949f9169542d3097d9ac1a471e7039210a54ccc9c73",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::runLiveCapabilitySaturationAudit",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "e6b70ce55d5e14ab2d5114d58713f406a3a474a93725f9404092ce26d4293c79",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::stepAutonomousBrowserEvolution",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmRule30Step)"
+    },
+    {
+      "kappa": "4b5f4f3063578b9176f58c0d17e0459762e1dbfdb1bc0fb2e3766ecae43044f7",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::subscribeSelfHostOrganismState",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "c2fcf9fd6ddd8803d8e903330f4dd8114d27ba2bef35c359cd7ae464d7db874e",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::triggerDownloadUorcSporeInBrowser",
+      "routeId": "VR-R04",
+      "status": "effect",
+      "effect": "dom-BrowserEnvironmentIo"
+    },
+    {
+      "kappa": "e5a5b1eebb966c44fc2edd2b0babf491bfbab1037cdd1c1a778718d430451d3c",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::triggerLiveAutonomousEvolutionStep",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_optimalBrowserWorkerCount)"
+    },
+    {
+      "kappa": "5f0ff0f8614eb09512b2d4518f63d2f6e39cd82ff197a64031a30449c8562326",
+      "functionPath": "src/selfhost/browserSelfHostEngine.ts::unpackSporeIntoSelfHostFs",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyUorcArchiveBounds)"
     }
   ]
 }

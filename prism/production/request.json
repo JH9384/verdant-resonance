@@ -951,6 +951,214 @@
     },
     {
       "package": {
+        "name": "verdant_host_classify_capability_receipt_error",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.classifyCapabilityReceiptError",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_compute_browser_api_saturation_permille",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.computeBrowserApiSaturationPermille",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_ceiling_nanos",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostCeilingNanos",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_granule_bytes",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostGranuleBytes",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_line_nanos",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostLineNanos",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_moved_bytes",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostMovedBytes",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_round_up",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostRoundUp",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_saturation_distance_nanos",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostSaturationDistanceNanos",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_slower_nanos",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostSlowerNanos",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_host_step_nanos",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.hostStepNanos",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_optimal_browser_worker_count",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.optimalBrowserWorkerCount",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_should_rollback_generation_watchdog",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.shouldRollbackGenerationWatchdog",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_verify_browser_generation_admission",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyBrowserGenerationAdmission",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_verify_checked_u64_no_overflow",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyCheckedU64NoOverflow",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_verify_independent_quota_caps",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIndependentQuotaCaps",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
+        "name": "verdant_host_verify_isolated_capability_saturation",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIsolatedCapabilitySaturation",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
         "name": "verdant_humane_evaluate_gaze_target_in_forward_cone",
         "version": "0.1.0"
       },

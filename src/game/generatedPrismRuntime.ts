@@ -1671,6 +1671,113 @@ export interface Foundation_Cosmogenesis_V1_Model_HolisticObserverModelRegistry 
   readonly observerSelfKnowledgeComplete: boolean;
 }
 
+export interface Foundation_Ontology_V1_Model_HostEnvelope {
+  readonly logicalCores: bigint;
+  readonly memoryUnits: bigint;
+  readonly frameBudgetMicros: bigint;
+  readonly observedFrameMicros: bigint;
+  readonly audioSampleRateHz: bigint;
+  readonly audioQuantumFrames: bigint;
+}
+
+export interface Foundation_Ontology_V1_Model_WitnessEnvelope {
+  readonly criticalBands: bigint;
+  readonly breathCycleMillis: bigint;
+  readonly stillnessRatio: bigint;
+  readonly gazeDwellRatio: bigint;
+  readonly harmonicComfortRatio: bigint;
+  readonly activePresence: boolean;
+}
+
+export interface Foundation_Ontology_V1_Model_ParametricWorldCoordinates {
+  readonly harmonicSimplicity: bigint;
+  readonly phyllotaxisClarity: bigint;
+  readonly waveCalmDamping: bigint;
+  readonly iridescenceLegibility: bigint;
+  readonly guildOffshootDensity: bigint;
+  readonly precisionBits: bigint;
+}
+
+export interface Foundation_Ontology_V1_Model_W5HCertificate {
+  readonly whatIntrinsicPrime: bigint;
+  readonly whatCompositeUorSig: bigint;
+  readonly whyStratumRank: bigint;
+  readonly whyObstructionWithout: boolean;
+  readonly whyObstructionResolved: boolean;
+  readonly whoAgencyPrimeProduct: bigint;
+  readonly whereBoundaryPole: bigint;
+  readonly whereStructuralArity: bigint;
+  readonly whenTemporalRegime: bigint;
+  readonly howLogosVerified: boolean;
+}
+
+export interface Foundation_Ontology_V1_Model_OntologicalTelosEvaluation {
+  readonly epistemicOpacityDebt: bigint;
+  readonly sensoryLegibilityGap: bigint;
+  readonly playerDissonance: bigint;
+  readonly hostCeilingExcess: bigint;
+  readonly totalTelosLoss: bigint;
+  readonly triadicConnectionActive: boolean;
+}
+
+export interface Foundation_Host_V1_Model_HostCacheRegion {
+  readonly level: bigint;
+  readonly capacityBytes: bigint;
+}
+
+export interface Foundation_Host_V1_Model_BrowserHostRuntime {
+  readonly logicalThreads: bigint;
+  readonly workerPoolSize: bigint;
+  readonly wasmPages64KiB: bigint;
+  readonly pageGranuleBytes: bigint;
+  readonly largePageGranuleBytes: bigint;
+  readonly cacheLineBytes: bigint;
+  readonly opfsMounted: boolean;
+  readonly serviceWorkerActive: boolean;
+  readonly audioWorkletActive: boolean;
+  readonly stepRatePerSec: bigint;
+  readonly memoryRateBytesPerSec: bigint;
+}
+
+export interface Foundation_Host_V1_Model_GenerationCandidateReceipt {
+  readonly generationIndex: bigint;
+  readonly parentKappaHead32: bigint;
+  readonly candidateKappaHead32: bigint;
+  readonly compiledWasmBytes: bigint;
+  readonly decideGatesPassed: bigint;
+  readonly decideGatesTotal: bigint;
+  readonly foundryResidueCount: bigint;
+  readonly telosLossCandidate: bigint;
+  readonly telosLossIncumbent: bigint;
+  readonly candidateSteps: bigint;
+  readonly incumbentSteps: bigint;
+  readonly frameTimeMicros: bigint;
+  readonly frameBudgetMicros: bigint;
+  readonly coercivePatternCount: bigint;
+}
+
+export interface Foundation_Host_V1_Model_RuntimeCapabilityProbeSpec {
+  readonly capabilityOrdinal: bigint;
+  readonly isolatedProfileMask: bigint;
+  readonly requiresPerRootFalsifier: boolean;
+  readonly requestMaximumBytes: bigint;
+  readonly guestAllocationMaximumBytes: bigint;
+  readonly responseMaximumBytes: bigint;
+}
+
+export interface Foundation_Host_V1_Model_BoundCapabilityReceipt {
+  readonly buildKappaHead32: bigint;
+  readonly verifyKappaHead32: bigint;
+  readonly acceptanceKappaHead32: bigint;
+  readonly manifestKappaHead32: bigint;
+  readonly sourceKappaHead32: bigint;
+  readonly semanticKappaHead32: bigint;
+  readonly baselinePassed: boolean;
+  readonly falsifierRejected: boolean;
+  readonly oracleFooterVerified: boolean;
+  readonly confinedPathVerified: boolean;
+}
+
 export interface Foundation_Mechanization_V1_Model_FoundryRouteAndLiftSpec {
   readonly routeSlotCount: bigint;
   readonly derivedRouteMaskLimit: bigint;
@@ -1765,55 +1872,6 @@ export interface Foundation_Mechanization_V1_Model_Outcome {
   readonly strategy: string;
   readonly family: string;
   readonly success: boolean;
-}
-
-export interface Foundation_Ontology_V1_Model_HostEnvelope {
-  readonly logicalCores: bigint;
-  readonly memoryUnits: bigint;
-  readonly frameBudgetMicros: bigint;
-  readonly observedFrameMicros: bigint;
-  readonly audioSampleRateHz: bigint;
-  readonly audioQuantumFrames: bigint;
-}
-
-export interface Foundation_Ontology_V1_Model_WitnessEnvelope {
-  readonly criticalBands: bigint;
-  readonly breathCycleMillis: bigint;
-  readonly stillnessRatio: bigint;
-  readonly gazeDwellRatio: bigint;
-  readonly harmonicComfortRatio: bigint;
-  readonly activePresence: boolean;
-}
-
-export interface Foundation_Ontology_V1_Model_ParametricWorldCoordinates {
-  readonly harmonicSimplicity: bigint;
-  readonly phyllotaxisClarity: bigint;
-  readonly waveCalmDamping: bigint;
-  readonly iridescenceLegibility: bigint;
-  readonly guildOffshootDensity: bigint;
-  readonly precisionBits: bigint;
-}
-
-export interface Foundation_Ontology_V1_Model_W5HCertificate {
-  readonly whatIntrinsicPrime: bigint;
-  readonly whatCompositeUorSig: bigint;
-  readonly whyStratumRank: bigint;
-  readonly whyObstructionWithout: boolean;
-  readonly whyObstructionResolved: boolean;
-  readonly whoAgencyPrimeProduct: bigint;
-  readonly whereBoundaryPole: bigint;
-  readonly whereStructuralArity: bigint;
-  readonly whenTemporalRegime: bigint;
-  readonly howLogosVerified: boolean;
-}
-
-export interface Foundation_Ontology_V1_Model_OntologicalTelosEvaluation {
-  readonly epistemicOpacityDebt: bigint;
-  readonly sensoryLegibilityGap: bigint;
-  readonly playerDissonance: bigint;
-  readonly hostCeilingExcess: bigint;
-  readonly totalTelosLoss: bigint;
-  readonly triadicConnectionActive: boolean;
 }
 
 export interface Foundation_View_Text_V1_Model_TextView {
@@ -5133,6 +5191,230 @@ export function Foundation_Cosmogenesis_V1_Model_breaksObserverCompleteFourteenM
   return ((probe === 0n) && (!Foundation_Cosmogenesis_V1_Model_verifyObserverCompleteFourteenModelRegistry()));
 }
 
+export function Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality: bigint): bigint {
+  return ((cardinality <= 1n) ? 0n : _natSub(cardinality, 1n));
+}
+
+const _memo_Foundation_Ontology_V1_Model_pow2Constructive = new Map<bigint, bigint>();
+export function Foundation_Ontology_V1_Model_pow2Constructive(exp: bigint): bigint {
+  const hit = _memo_Foundation_Ontology_V1_Model_pow2Constructive.get(exp);
+  if (hit !== undefined) return hit;
+  const val = ((_m0) => _m0 <= 0n ? 1n : ((k_1) => (() => { const half = Foundation_Ontology_V1_Model_pow2Constructive(k_1); return ((_dup2) => (_dup2 + _dup2))(half); })())(_m0 - 1n))(exp);
+  _memo_Foundation_Ontology_V1_Model_pow2Constructive.set(exp, val);
+  return val;
+}
+
+export function Foundation_Ontology_V1_Model_bitMaskConstructive(bits: bigint): bigint {
+  return _natSub(Foundation_Ontology_V1_Model_pow2Constructive(bits), 1n);
+}
+
+export function Foundation_Ontology_V1_Model_fibPairStep(fuel: bigint, a: bigint, b: bigint): bigint {
+  return ((_m0) => _m0 <= 0n ? a : ((rest_1) => Foundation_Ontology_V1_Model_fibPairStep(rest_1, b, (a + b)))(_m0 - 1n))(fuel);
+}
+
+export function Foundation_Ontology_V1_Model_fibonacciConstructive(index: bigint): bigint {
+  return Foundation_Ontology_V1_Model_fibPairStep(index, 0n, 1n);
+}
+
+export function Foundation_Ontology_V1_Model_hasDivisorFrom(n: bigint, d: bigint, fuel: bigint): boolean {
+  return ((_m0) => _m0 <= 0n ? false : ((rest_1) => ((n < _natMul(d, d)) ? false : ((_natRem(n, d, 0n) === 0n) ? true : Foundation_Ontology_V1_Model_hasDivisorFrom(n, (d + 1n), rest_1))))(_m0 - 1n))(fuel);
+}
+
+export function Foundation_Ontology_V1_Model_isPrimeConstructive(n: bigint): boolean {
+  return (() => { const two = ((_dup0) => (_dup0 + _dup0))(1n); return ((n < two) ? false : (!Foundation_Ontology_V1_Model_hasDivisorFrom(n, two, n))); })();
+}
+
+export function Foundation_Ontology_V1_Model_seekPrimeFrom(candidate: bigint, fuel: bigint): bigint {
+  return ((_m0) => _m0 <= 0n ? candidate : ((rest_1) => (Foundation_Ontology_V1_Model_isPrimeConstructive(candidate) ? candidate : Foundation_Ontology_V1_Model_seekPrimeFrom((candidate + 1n), rest_1)))(_m0 - 1n))(fuel);
+}
+
+export function Foundation_Ontology_V1_Model_nextPrimeAfter(n: bigint): bigint {
+  return Foundation_Ontology_V1_Model_seekPrimeFrom((n + 1n), (n + 1n));
+}
+
+const _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive = new Map<bigint, bigint>();
+export function Foundation_Ontology_V1_Model_nthPrimeConstructive(rank: bigint): bigint {
+  const hit = _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive.get(rank);
+  if (hit !== undefined) return hit;
+  const val = ((_m0) => _m0 <= 0n ? ((_dup2) => (_dup2 + _dup2))(1n) : ((prev_1) => Foundation_Ontology_V1_Model_nextPrimeAfter(Foundation_Ontology_V1_Model_nthPrimeConstructive(prev_1)))(_m0 - 1n))(rank);
+  _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive.set(rank, val);
+  return val;
+}
+
+export function Foundation_Ontology_V1_Model_harmonicConsonanceComplexity(num: bigint, den: bigint): bigint {
+  return (((num === 0n) || (den === 0n)) ? 0n : (_natSub(num, 1n) + _natSub(den, 1n)));
+}
+
+export function Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean): bigint {
+  return (() => { const pObs = (hasObserver ? Foundation_Ontology_V1_Model_nthPrimeConstructive(0n) : 1n); const pMed = (hasMedium ? Foundation_Ontology_V1_Model_nthPrimeConstructive(1n) : 1n); const pPly = (hasPlayer ? Foundation_Ontology_V1_Model_nthPrimeConstructive(((_dup0) => (_dup0 + _dup0))(1n)) : 1n); return _natMul(_natMul(pObs, pMed), pPly); })();
+}
+
+export function Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct(agencyProduct: bigint): boolean {
+  return (() => { const fullTriad = Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(true, true, true); return ((1n < agencyProduct) && (_natRem(fullTriad, agencyProduct, 0n) === 0n)); })();
+}
+
+export function Foundation_Ontology_V1_Model_stratumObstructionWithout(stratumRank: bigint, stratumPresent: boolean): boolean {
+  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); return ((stratumRank <= maxStratumRank) && (!stratumPresent)); })();
+}
+
+export function Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(stratumRank: bigint, stratumPresent: boolean, hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean): boolean {
+  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); return ((maxStratumRank < stratumRank) ? false : ((!stratumPresent) ? false : ((stratumRank === maxStratumRank) ? ((hasObserver && hasMedium) && hasPlayer) : ((hasObserver || hasMedium) || hasPlayer)))); })();
+}
+
+export function Foundation_Ontology_V1_Model_verifyW5HCertificateComplete(whatIntrinsicPrime: bigint, whatCompositeUorSig: bigint, whyStratumRank: bigint, whoAgencyProduct: bigint, whereBoundaryPole: bigint, whereStructuralArity: bigint, whenTemporalRegime: bigint, howLogosVerified: boolean): boolean {
+  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); const maxBoundaryPole = Foundation_Ontology_V1_Model_bitMaskConstructive(((_dup1) => (_dup1 + _dup1))(1n)); const maxTemporalRegime = Foundation_Ontology_V1_Model_pow2Constructive(((_dup2) => (_dup2 + _dup2))(1n)); return ((((Foundation_Ontology_V1_Model_isPrimeConstructive(whatIntrinsicPrime) && (whatIntrinsicPrime <= whatCompositeUorSig)) && (_natRem(whatCompositeUorSig, whatIntrinsicPrime, 0n) === 0n)) && ((whyStratumRank <= maxStratumRank) && Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct(whoAgencyProduct))) && (((whereBoundaryPole <= maxBoundaryPole) && (1n <= whereStructuralArity)) && ((whenTemporalRegime <= maxTemporalRegime) && howLogosVerified))); })();
+}
+
+export function Foundation_Ontology_V1_Model_synthesizeW5HCertificate(stratumRank: bigint, sigFactor: bigint, hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean, boundaryPole: bigint, structuralArity: bigint, temporalRegime: bigint, logosVerified: boolean): Foundation_Ontology_V1_Model_W5HCertificate {
+  return (() => { const atomPrime = Foundation_Ontology_V1_Model_nthPrimeConstructive(stratumRank); const factorClean = ((sigFactor === 0n) ? 1n : sigFactor); const uorSig = _natMul(atomPrime, factorClean); const agency = Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(hasObserver, hasMedium, hasPlayer); return ({ whatIntrinsicPrime: atomPrime, whatCompositeUorSig: uorSig, whyStratumRank: stratumRank, whyObstructionWithout: Foundation_Ontology_V1_Model_stratumObstructionWithout(stratumRank, false), whyObstructionResolved: Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(stratumRank, true, hasObserver, hasMedium, hasPlayer), whoAgencyPrimeProduct: agency, whereBoundaryPole: boundaryPole, whereStructuralArity: structuralArity, whenTemporalRegime: temporalRegime, howLogosVerified: logosVerified } as Foundation_Ontology_V1_Model_W5HCertificate); })();
+}
+
+export function Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes: bigint, certifiedNodes: bigint, ungroundedModels: bigint, magicRootLiterals: bigint): bigint {
+  return ((_natSub(totalNodes, certifiedNodes) + ungroundedModels) + magicRootLiterals);
+}
+
+export function Foundation_Ontology_V1_Model_computeHostCeilingExcess(frameBudgetMicros: bigint, observedFrameMicros: bigint): bigint {
+  return _natSub(observedFrameMicros, frameBudgetMicros);
+}
+
+export function Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(opacityDebt: bigint, legibilityGap: bigint, playerDissonance: bigint, hostCeilingExcess: bigint): bigint {
+  return (((opacityDebt + legibilityGap) + playerDissonance) + hostCeilingExcess);
+}
+
+export function Foundation_Ontology_V1_Model_evaluateHolonTelosState(host: Foundation_Ontology_V1_Model_HostEnvelope, witness: Foundation_Ontology_V1_Model_WitnessEnvelope, opacityDebt: bigint, legibilityGap: bigint, playerDissonance: bigint): Foundation_Ontology_V1_Model_OntologicalTelosEvaluation {
+  return (() => { const ceilingExcess = Foundation_Ontology_V1_Model_computeHostCeilingExcess(host.frameBudgetMicros, host.observedFrameMicros); const totalLoss = Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(opacityDebt, legibilityGap, playerDissonance, ceilingExcess); return ({ epistemicOpacityDebt: opacityDebt, sensoryLegibilityGap: legibilityGap, playerDissonance: playerDissonance, hostCeilingExcess: ceilingExcess, totalTelosLoss: totalLoss, triadicConnectionActive: ((opacityDebt === 0n) && witness.activePresence) } as Foundation_Ontology_V1_Model_OntologicalTelosEvaluation); })();
+}
+
+export function Foundation_Ontology_V1_Model_clampParametricCoord(val: bigint, minBound: bigint, maxBound: bigint): bigint {
+  return (() => { const hi = (minBound + _natSub(maxBound, minBound)); return ((val <= minBound) ? minBound : ((hi <= val) ? hi : val)); })();
+}
+
+export function Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal: bigint, minBound: bigint, maxBound: bigint, lossAtMinus: bigint, lossAtCurrent: bigint, lossAtPlus: bigint, coerciveCount: bigint): bigint {
+  return (() => { const clamped = Foundation_Ontology_V1_Model_clampParametricCoord(currentVal, minBound, maxBound); return ((0n < coerciveCount) ? clamped : (((lossAtMinus < lossAtCurrent) && (lossAtMinus <= lossAtPlus)) ? Foundation_Ontology_V1_Model_clampParametricCoord(_natSub(clamped, 1n), minBound, maxBound) : ((lossAtPlus < lossAtCurrent) ? Foundation_Ontology_V1_Model_clampParametricCoord((clamped + 1n), minBound, maxBound) : clamped))); })();
+}
+
+const _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo = new Map<bigint, boolean>();
+export function Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo(fuel: bigint): boolean {
+  const hit = _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo.get(fuel);
+  if (hit !== undefined) return hit;
+  const val = ((_m0) => _m0 <= 0n ? Foundation_Ontology_V1_Model_isPrimeConstructive(Foundation_Ontology_V1_Model_nthPrimeConstructive(0n)) : ((prev_1) => ((Foundation_Ontology_V1_Model_isPrimeConstructive(Foundation_Ontology_V1_Model_nthPrimeConstructive((prev_1 + 1n))) && (Foundation_Ontology_V1_Model_nthPrimeConstructive(prev_1) < Foundation_Ontology_V1_Model_nthPrimeConstructive((prev_1 + 1n)))) && Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo(prev_1)))(_m0 - 1n))(fuel);
+  _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo.set(fuel, val);
+  return val;
+}
+
+const _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo = new Map<bigint, boolean>();
+export function Foundation_Ontology_V1_Model_allStrataNecessaryUpTo(fuel: bigint): boolean {
+  const hit = _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo.get(fuel);
+  if (hit !== undefined) return hit;
+  const val = ((_m0) => _m0 <= 0n ? (Foundation_Ontology_V1_Model_stratumObstructionWithout(0n, false) && Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(0n, true, true, true, true)) : ((prev_1) => ((Foundation_Ontology_V1_Model_stratumObstructionWithout((prev_1 + 1n), false) && Foundation_Ontology_V1_Model_verifyStratumObstructionResolved((prev_1 + 1n), true, true, true, true)) && Foundation_Ontology_V1_Model_allStrataNecessaryUpTo(prev_1)))(_m0 - 1n))(fuel);
+  _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo.set(fuel, val);
+  return val;
+}
+
+export function Foundation_Ontology_V1_Model_breaksVoidIndistinguishabilityAndDistinction(cardinality: bigint): boolean {
+  return (((cardinality <= 1n) && (0n < Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality))) || ((((_dup0) => (_dup0 + _dup0))(1n) <= cardinality) && (Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality) === 0n)));
+}
+
+export function Foundation_Ontology_V1_Model_breaksEpistemicOpacityAndTelosDecomposition(totalNodes: bigint, certifiedNodes: bigint, legibilityGap: bigint, playerDissonance: bigint): boolean {
+  return (((certifiedNodes <= totalNodes) && ((Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes, certifiedNodes, 0n, 0n) === 0n) && (!(certifiedNodes === totalNodes)))) || (Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes, certifiedNodes, 0n, 0n), legibilityGap, playerDissonance, 0n) < playerDissonance));
+}
+
+export function Foundation_Ontology_V1_Model_breaksParametricDescentBoundsAndNonCoercion(currentVal: bigint, minBound: bigint, maxBound: bigint, lossMinus: bigint, lossCurrent: bigint, lossPlus: bigint): boolean {
+  return (() => { const stepped = Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal, minBound, maxBound, lossMinus, lossCurrent, lossPlus, 0n); const coercedStep = Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal, minBound, maxBound, lossMinus, lossCurrent, lossPlus, 1n); return (((stepped < minBound) || ((minBound + _natSub(maxBound, minBound)) < stepped)) || (!(coercedStep === Foundation_Ontology_V1_Model_clampParametricCoord(currentVal, minBound, maxBound)))); })();
+}
+
+export function Foundation_Host_V1_Model_powConstructive(base: bigint, exp: bigint): bigint {
+  return ((_m0) => _m0 <= 0n ? 1n : ((rest_1) => _natMul(base, Foundation_Host_V1_Model_powConstructive(base, rest_1)))(_m0 - 1n))(exp);
+}
+
+export function Foundation_Host_V1_Model_nanosPerSecondFromZeroOne(unitScale: bigint): bigint {
+  return (() => { const ten = (Foundation_Ontology_V1_Model_pow2Constructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)) + ((_dup1) => (_dup1 + _dup1))(1n)); const nine = _natSub(ten, 1n); return _natMul(((unitScale === 0n) ? 1n : unitScale), Foundation_Host_V1_Model_powConstructive(ten, nine)); })();
+}
+
+export function Foundation_Host_V1_Model_hostGranuleBytes(page: bigint, largePage: bigint, workingSet: bigint): bigint {
+  return (((0n < largePage) && (largePage <= workingSet)) ? largePage : page);
+}
+
+export function Foundation_Host_V1_Model_hostRoundUp(amount: bigint, rate: bigint): bigint {
+  return ((rate === 0n) ? 0n : _natQuot(_natSub((amount + rate), 1n), rate, 0n));
+}
+
+export function Foundation_Host_V1_Model_hostMovedBytes(lineBytes: bigint, tableBytes: bigint, outerCacheBytes: bigint): bigint {
+  return ((outerCacheBytes < tableBytes) ? lineBytes : 0n);
+}
+
+export function Foundation_Host_V1_Model_hostSlowerNanos(computeNanos: bigint, transportNanos: bigint): bigint {
+  return ((computeNanos <= transportNanos) ? transportNanos : computeNanos);
+}
+
+export function Foundation_Host_V1_Model_hostStepNanos(steps: bigint, threads: bigint, stepRate: bigint): bigint {
+  return Foundation_Host_V1_Model_hostRoundUp(_natMul(steps, Foundation_Host_V1_Model_nanosPerSecondFromZeroOne(1n)), _natMul(threads, stepRate));
+}
+
+export function Foundation_Host_V1_Model_hostLineNanos(lineBytes: bigint, memoryRate: bigint): bigint {
+  return Foundation_Host_V1_Model_hostRoundUp(_natMul(lineBytes, Foundation_Host_V1_Model_nanosPerSecondFromZeroOne(1n)), memoryRate);
+}
+
+export function Foundation_Host_V1_Model_hostCeilingNanos(steps: bigint, lineBytes: bigint, threads: bigint, stepRate: bigint, memoryRate: bigint): bigint {
+  return Foundation_Host_V1_Model_hostSlowerNanos(Foundation_Host_V1_Model_hostStepNanos(steps, threads, stepRate), Foundation_Host_V1_Model_hostLineNanos(lineBytes, memoryRate));
+}
+
+export function Foundation_Host_V1_Model_hostSaturationDistanceNanos(ceilingNanos: bigint, observedNanos: bigint): bigint {
+  return _natSub(observedNanos, ceilingNanos);
+}
+
+export function Foundation_Host_V1_Model_optimalBrowserWorkerCount(logicalThreads: bigint): bigint {
+  return (() => { const maxWorkers = Foundation_Ontology_V1_Model_pow2Constructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); return ((logicalThreads <= ((_dup1) => (_dup1 + _dup1))(1n)) ? 1n : (() => { const cand = _natSub(logicalThreads, 1n); return ((maxWorkers < cand) ? maxWorkers : cand); })()); })();
+}
+
+export function Foundation_Host_V1_Model_computeBrowserApiSaturationPermille(activeThreads: bigint, logicalThreads: bigint, opfsMounted: boolean, serviceWorkerActive: boolean, audioWorkletActive: boolean, wasmReady: boolean): bigint {
+  return (() => { const five = (Foundation_Ontology_V1_Model_pow2Constructive(((_dup0) => (_dup0 + _dup0))(1n)) + 1n); const ten = ((_dup1) => (_dup1 + _dup1))(five); const permilleCap = Foundation_Host_V1_Model_powConstructive(ten, (((_dup2) => (_dup2 + _dup2))(1n) + 1n)); return ((!wasmReady) ? 0n : (() => { const safeLogical = ((logicalThreads === 0n) ? 1n : logicalThreads); const clampedActive = ((safeLogical < activeThreads) ? safeLogical : activeThreads); const fiveHundred = _natMul(Foundation_Ontology_V1_Model_pow2Constructive(((_dup3) => (_dup3 + _dup3))(1n)), Foundation_Host_V1_Model_powConstructive(five, (((_dup4) => (_dup4 + _dup4))(1n) + 1n))); const threadScore = _natQuot(_natMul(clampedActive, fiveHundred), safeLogical, 0n); const oneHundred = Foundation_Host_V1_Model_powConstructive(ten, ((_dup5) => (_dup5 + _dup5))(1n)); const twoHundred = ((_dup6) => (_dup6 + _dup6))(oneHundred); const total = (((threadScore + (opfsMounted ? twoHundred : 0n)) + (serviceWorkerActive ? oneHundred : 0n)) + (audioWorkletActive ? twoHundred : 0n)); return ((permilleCap < total) ? permilleCap : total); })()); })();
+}
+
+export function Foundation_Host_V1_Model_verifyBrowserGenerationAdmission(decidePassed: bigint, decideTotal: bigint, foundryResidueCount: bigint, coercivePatternCount: bigint, compiledWasmBytes: bigint, frameMicros: bigint, frameBudgetMicros: bigint, candTelosLoss: bigint, incTelosLoss: bigint, candSteps: bigint, incSteps: bigint): boolean {
+  return (() => { const gatesOk = ((0n < decideTotal) && (decidePassed === decideTotal)); const hygieneOk = (((foundryResidueCount === 0n) && (coercivePatternCount === 0n)) && ((0n < compiledWasmBytes) && (frameMicros <= frameBudgetMicros))); const dominates = ((candTelosLoss < incTelosLoss) || ((candTelosLoss === incTelosLoss) && (candSteps < incSteps))); return ((gatesOk && hygieneOk) && dominates); })();
+}
+
+export function Foundation_Host_V1_Model_shouldRollbackGenerationWatchdog(consecutiveOverbudgetFrames: bigint, maxAllowedFrames: bigint, runtimeFaultCount: bigint): boolean {
+  return ((0n < runtimeFaultCount) || (maxAllowedFrames < consecutiveOverbudgetFrames));
+}
+
+export function Foundation_Host_V1_Model_verifyCheckedU64NoOverflow(lhs: bigint, rhs: bigint, u64MaxCap: bigint): boolean {
+  return ((lhs <= u64MaxCap) && (rhs <= _natSub(u64MaxCap, lhs)));
+}
+
+export function Foundation_Host_V1_Model_verifyIndependentQuotaCaps(reqBytes: bigint, reqMax: bigint, guestBytes: bigint, guestMax: bigint, respBytes: bigint, respMax: bigint): boolean {
+  return (((reqBytes <= reqMax) && (guestBytes <= guestMax)) && (respBytes <= respMax));
+}
+
+export function Foundation_Host_V1_Model_classifyCapabilityReceiptError(contractUnique: boolean, identityLocked: boolean, workerHealthy: boolean, symbolBound: boolean, buildIdsMatch: boolean, falsifierRejected: boolean, oracleFooterOk: boolean, pathConfined: boolean, noDuplicateObs: boolean): bigint {
+  return ((!contractUnique) ? 1n : ((!identityLocked) ? ((_dup0) => (_dup0 + _dup0))(1n) : ((!workerHealthy) ? (((_dup1) => (_dup1 + _dup1))(1n) + 1n) : ((!symbolBound) ? ((((_dup2) => (_dup2 + _dup2))(1n) + 1n) + 1n) : ((!(((buildIdsMatch && falsifierRejected) && oracleFooterOk) && pathConfined)) ? (((((_dup3) => (_dup3 + _dup3))(1n) + 1n) + 1n) + 1n) : ((!noDuplicateObs) ? ((((((_dup4) => (_dup4 + _dup4))(1n) + 1n) + 1n) + 1n) + 1n) : 0n))))));
+}
+
+export function Foundation_Host_V1_Model_verifyIsolatedCapabilitySaturation(saturatedCount: bigint, requiredCount: bigint, falsifiersRejectedCount: bigint, receiptErrorCode: bigint): boolean {
+  return ((((0n < requiredCount) && (saturatedCount === requiredCount)) && (falsifiersRejectedCount === requiredCount)) && (receiptErrorCode === 0n));
+}
+
+export function Foundation_Host_V1_Model_breaksGranuleAndCacheMovementBounds(page: bigint, largePage: bigint, workingSet: bigint, lineBytes: bigint, tableBytes: bigint, outerCacheBytes: bigint): boolean {
+  return (((page <= workingSet) && (workingSet < Foundation_Host_V1_Model_hostGranuleBytes(page, largePage, workingSet))) || (((tableBytes <= outerCacheBytes) && (0n < Foundation_Host_V1_Model_hostMovedBytes(lineBytes, tableBytes, outerCacheBytes))) || ((outerCacheBytes < tableBytes) && (!(Foundation_Host_V1_Model_hostMovedBytes(lineBytes, tableBytes, outerCacheBytes) === lineBytes)))));
+}
+
+export function Foundation_Host_V1_Model_breaksHostCeilingAndSaturationDistance(computeNanos: bigint, transportNanos: bigint, observedNanos: bigint): boolean {
+  return (() => { const ceil = Foundation_Host_V1_Model_hostSlowerNanos(computeNanos, transportNanos); return (((ceil < computeNanos) || (ceil < transportNanos)) || ((observedNanos <= ceil) && (0n < Foundation_Host_V1_Model_hostSaturationDistanceNanos(ceil, observedNanos)))); })();
+}
+
+export function Foundation_Host_V1_Model_breaksGenerationAdmissionSafetyAndDominance(decidePassed: bigint, decideTotal: bigint, residueCount: bigint, coerciveCount: bigint, wasmBytes: bigint, frameMicros: bigint, budgetMicros: bigint, candLoss: bigint, incLoss: bigint, candSteps: bigint, incSteps: bigint): boolean {
+  return (() => { const admitted = Foundation_Host_V1_Model_verifyBrowserGenerationAdmission(decidePassed, decideTotal, residueCount, coerciveCount, wasmBytes, frameMicros, budgetMicros, candLoss, incLoss, candSteps, incSteps); return (admitted && (((((0n < residueCount) || (0n < coerciveCount)) || ((wasmBytes === 0n) || (budgetMicros < frameMicros))) || (!(decidePassed === decideTotal))) || ((incLoss < candLoss) || ((candLoss === incLoss) && (incSteps <= candSteps))))); })();
+}
+
+export function Foundation_Host_V1_Model_breaksWatchdogFaultImmediateRollback(overbudgetFrames: bigint, maxAllowedFrames: bigint, runtimeFaults: bigint): boolean {
+  return (((0n < runtimeFaults) || (maxAllowedFrames < overbudgetFrames)) && (!Foundation_Host_V1_Model_shouldRollbackGenerationWatchdog(overbudgetFrames, maxAllowedFrames, runtimeFaults)));
+}
+
+export function Foundation_Host_V1_Model_breaksIndependentQuotaCapIsolation(reqBytes: bigint, reqMax: bigint, guestBytes: bigint, guestMax: bigint, respBytes: bigint, respMax: bigint): boolean {
+  return (Foundation_Host_V1_Model_verifyIndependentQuotaCaps(reqBytes, reqMax, guestBytes, guestMax, respBytes, respMax) && (((reqMax < reqBytes) || (guestMax < guestBytes)) || (respMax < respBytes)));
+}
+
 let _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime: bigint | undefined;
 export function Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime(): bigint {
   return _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime !== undefined ? _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime : (_c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime = 193n);
@@ -5818,138 +6100,6 @@ export function Foundation_Mechanization_V1_Model_sameWeights(xs: ReadonlyArray<
 
 export function Foundation_Mechanization_V1_Model_sameStrings(xs: ReadonlyArray<string>, ys: ReadonlyArray<string>): boolean {
   return ((_m0) => _m0.length === 0 ? (BigInt(ys.length) === 0n) : ((head_1, tail_2) => ((_m3) => _m3.length === 0 ? false : ((y_4, rest_5) => (_valEq(head_1, y_4) && Foundation_Mechanization_V1_Model_sameStrings(tail_2, rest_5)))(_m3[0], _m3.slice(1)))(ys))(_m0[0], _m0.slice(1)))(xs);
-}
-
-export function Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality: bigint): bigint {
-  return ((cardinality <= 1n) ? 0n : _natSub(cardinality, 1n));
-}
-
-const _memo_Foundation_Ontology_V1_Model_pow2Constructive = new Map<bigint, bigint>();
-export function Foundation_Ontology_V1_Model_pow2Constructive(exp: bigint): bigint {
-  const hit = _memo_Foundation_Ontology_V1_Model_pow2Constructive.get(exp);
-  if (hit !== undefined) return hit;
-  const val = ((_m0) => _m0 <= 0n ? 1n : ((k_1) => (() => { const half = Foundation_Ontology_V1_Model_pow2Constructive(k_1); return ((_dup2) => (_dup2 + _dup2))(half); })())(_m0 - 1n))(exp);
-  _memo_Foundation_Ontology_V1_Model_pow2Constructive.set(exp, val);
-  return val;
-}
-
-export function Foundation_Ontology_V1_Model_bitMaskConstructive(bits: bigint): bigint {
-  return _natSub(Foundation_Ontology_V1_Model_pow2Constructive(bits), 1n);
-}
-
-export function Foundation_Ontology_V1_Model_fibPairStep(fuel: bigint, a: bigint, b: bigint): bigint {
-  return ((_m0) => _m0 <= 0n ? a : ((rest_1) => Foundation_Ontology_V1_Model_fibPairStep(rest_1, b, (a + b)))(_m0 - 1n))(fuel);
-}
-
-export function Foundation_Ontology_V1_Model_fibonacciConstructive(index: bigint): bigint {
-  return Foundation_Ontology_V1_Model_fibPairStep(index, 0n, 1n);
-}
-
-export function Foundation_Ontology_V1_Model_hasDivisorFrom(n: bigint, d: bigint, fuel: bigint): boolean {
-  return ((_m0) => _m0 <= 0n ? false : ((rest_1) => ((n < _natMul(d, d)) ? false : ((_natRem(n, d, 0n) === 0n) ? true : Foundation_Ontology_V1_Model_hasDivisorFrom(n, (d + 1n), rest_1))))(_m0 - 1n))(fuel);
-}
-
-export function Foundation_Ontology_V1_Model_isPrimeConstructive(n: bigint): boolean {
-  return (() => { const two = ((_dup0) => (_dup0 + _dup0))(1n); return ((n < two) ? false : (!Foundation_Ontology_V1_Model_hasDivisorFrom(n, two, n))); })();
-}
-
-export function Foundation_Ontology_V1_Model_seekPrimeFrom(candidate: bigint, fuel: bigint): bigint {
-  return ((_m0) => _m0 <= 0n ? candidate : ((rest_1) => (Foundation_Ontology_V1_Model_isPrimeConstructive(candidate) ? candidate : Foundation_Ontology_V1_Model_seekPrimeFrom((candidate + 1n), rest_1)))(_m0 - 1n))(fuel);
-}
-
-export function Foundation_Ontology_V1_Model_nextPrimeAfter(n: bigint): bigint {
-  return Foundation_Ontology_V1_Model_seekPrimeFrom((n + 1n), (n + 1n));
-}
-
-const _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive = new Map<bigint, bigint>();
-export function Foundation_Ontology_V1_Model_nthPrimeConstructive(rank: bigint): bigint {
-  const hit = _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive.get(rank);
-  if (hit !== undefined) return hit;
-  const val = ((_m0) => _m0 <= 0n ? ((_dup2) => (_dup2 + _dup2))(1n) : ((prev_1) => Foundation_Ontology_V1_Model_nextPrimeAfter(Foundation_Ontology_V1_Model_nthPrimeConstructive(prev_1)))(_m0 - 1n))(rank);
-  _memo_Foundation_Ontology_V1_Model_nthPrimeConstructive.set(rank, val);
-  return val;
-}
-
-export function Foundation_Ontology_V1_Model_harmonicConsonanceComplexity(num: bigint, den: bigint): bigint {
-  return (((num === 0n) || (den === 0n)) ? 0n : (_natSub(num, 1n) + _natSub(den, 1n)));
-}
-
-export function Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean): bigint {
-  return (() => { const pObs = (hasObserver ? Foundation_Ontology_V1_Model_nthPrimeConstructive(0n) : 1n); const pMed = (hasMedium ? Foundation_Ontology_V1_Model_nthPrimeConstructive(1n) : 1n); const pPly = (hasPlayer ? Foundation_Ontology_V1_Model_nthPrimeConstructive(((_dup0) => (_dup0 + _dup0))(1n)) : 1n); return _natMul(_natMul(pObs, pMed), pPly); })();
-}
-
-export function Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct(agencyProduct: bigint): boolean {
-  return (() => { const fullTriad = Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(true, true, true); return ((1n < agencyProduct) && (_natRem(fullTriad, agencyProduct, 0n) === 0n)); })();
-}
-
-export function Foundation_Ontology_V1_Model_stratumObstructionWithout(stratumRank: bigint, stratumPresent: boolean): boolean {
-  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); return ((stratumRank <= maxStratumRank) && (!stratumPresent)); })();
-}
-
-export function Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(stratumRank: bigint, stratumPresent: boolean, hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean): boolean {
-  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); return ((maxStratumRank < stratumRank) ? false : ((!stratumPresent) ? false : ((stratumRank === maxStratumRank) ? ((hasObserver && hasMedium) && hasPlayer) : ((hasObserver || hasMedium) || hasPlayer)))); })();
-}
-
-export function Foundation_Ontology_V1_Model_verifyW5HCertificateComplete(whatIntrinsicPrime: bigint, whatCompositeUorSig: bigint, whyStratumRank: bigint, whoAgencyProduct: bigint, whereBoundaryPole: bigint, whereStructuralArity: bigint, whenTemporalRegime: bigint, howLogosVerified: boolean): boolean {
-  return (() => { const maxStratumRank = Foundation_Ontology_V1_Model_bitMaskConstructive((((_dup0) => (_dup0 + _dup0))(1n) + 1n)); const maxBoundaryPole = Foundation_Ontology_V1_Model_bitMaskConstructive(((_dup1) => (_dup1 + _dup1))(1n)); const maxTemporalRegime = Foundation_Ontology_V1_Model_pow2Constructive(((_dup2) => (_dup2 + _dup2))(1n)); return ((((Foundation_Ontology_V1_Model_isPrimeConstructive(whatIntrinsicPrime) && (whatIntrinsicPrime <= whatCompositeUorSig)) && (_natRem(whatCompositeUorSig, whatIntrinsicPrime, 0n) === 0n)) && ((whyStratumRank <= maxStratumRank) && Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct(whoAgencyProduct))) && (((whereBoundaryPole <= maxBoundaryPole) && (1n <= whereStructuralArity)) && ((whenTemporalRegime <= maxTemporalRegime) && howLogosVerified))); })();
-}
-
-export function Foundation_Ontology_V1_Model_synthesizeW5HCertificate(stratumRank: bigint, sigFactor: bigint, hasObserver: boolean, hasMedium: boolean, hasPlayer: boolean, boundaryPole: bigint, structuralArity: bigint, temporalRegime: bigint, logosVerified: boolean): Foundation_Ontology_V1_Model_W5HCertificate {
-  return (() => { const atomPrime = Foundation_Ontology_V1_Model_nthPrimeConstructive(stratumRank); const factorClean = ((sigFactor === 0n) ? 1n : sigFactor); const uorSig = _natMul(atomPrime, factorClean); const agency = Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct(hasObserver, hasMedium, hasPlayer); return ({ whatIntrinsicPrime: atomPrime, whatCompositeUorSig: uorSig, whyStratumRank: stratumRank, whyObstructionWithout: Foundation_Ontology_V1_Model_stratumObstructionWithout(stratumRank, false), whyObstructionResolved: Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(stratumRank, true, hasObserver, hasMedium, hasPlayer), whoAgencyPrimeProduct: agency, whereBoundaryPole: boundaryPole, whereStructuralArity: structuralArity, whenTemporalRegime: temporalRegime, howLogosVerified: logosVerified } as Foundation_Ontology_V1_Model_W5HCertificate); })();
-}
-
-export function Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes: bigint, certifiedNodes: bigint, ungroundedModels: bigint, magicRootLiterals: bigint): bigint {
-  return ((_natSub(totalNodes, certifiedNodes) + ungroundedModels) + magicRootLiterals);
-}
-
-export function Foundation_Ontology_V1_Model_computeHostCeilingExcess(frameBudgetMicros: bigint, observedFrameMicros: bigint): bigint {
-  return _natSub(observedFrameMicros, frameBudgetMicros);
-}
-
-export function Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(opacityDebt: bigint, legibilityGap: bigint, playerDissonance: bigint, hostCeilingExcess: bigint): bigint {
-  return (((opacityDebt + legibilityGap) + playerDissonance) + hostCeilingExcess);
-}
-
-export function Foundation_Ontology_V1_Model_evaluateHolonTelosState(host: Foundation_Ontology_V1_Model_HostEnvelope, witness: Foundation_Ontology_V1_Model_WitnessEnvelope, opacityDebt: bigint, legibilityGap: bigint, playerDissonance: bigint): Foundation_Ontology_V1_Model_OntologicalTelosEvaluation {
-  return (() => { const ceilingExcess = Foundation_Ontology_V1_Model_computeHostCeilingExcess(host.frameBudgetMicros, host.observedFrameMicros); const totalLoss = Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(opacityDebt, legibilityGap, playerDissonance, ceilingExcess); return ({ epistemicOpacityDebt: opacityDebt, sensoryLegibilityGap: legibilityGap, playerDissonance: playerDissonance, hostCeilingExcess: ceilingExcess, totalTelosLoss: totalLoss, triadicConnectionActive: ((opacityDebt === 0n) && witness.activePresence) } as Foundation_Ontology_V1_Model_OntologicalTelosEvaluation); })();
-}
-
-export function Foundation_Ontology_V1_Model_clampParametricCoord(val: bigint, minBound: bigint, maxBound: bigint): bigint {
-  return (() => { const hi = (minBound + _natSub(maxBound, minBound)); return ((val <= minBound) ? minBound : ((hi <= val) ? hi : val)); })();
-}
-
-export function Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal: bigint, minBound: bigint, maxBound: bigint, lossAtMinus: bigint, lossAtCurrent: bigint, lossAtPlus: bigint, coerciveCount: bigint): bigint {
-  return (() => { const clamped = Foundation_Ontology_V1_Model_clampParametricCoord(currentVal, minBound, maxBound); return ((0n < coerciveCount) ? clamped : (((lossAtMinus < lossAtCurrent) && (lossAtMinus <= lossAtPlus)) ? Foundation_Ontology_V1_Model_clampParametricCoord(_natSub(clamped, 1n), minBound, maxBound) : ((lossAtPlus < lossAtCurrent) ? Foundation_Ontology_V1_Model_clampParametricCoord((clamped + 1n), minBound, maxBound) : clamped))); })();
-}
-
-const _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo = new Map<bigint, boolean>();
-export function Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo(fuel: bigint): boolean {
-  const hit = _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo.get(fuel);
-  if (hit !== undefined) return hit;
-  const val = ((_m0) => _m0 <= 0n ? Foundation_Ontology_V1_Model_isPrimeConstructive(Foundation_Ontology_V1_Model_nthPrimeConstructive(0n)) : ((prev_1) => ((Foundation_Ontology_V1_Model_isPrimeConstructive(Foundation_Ontology_V1_Model_nthPrimeConstructive((prev_1 + 1n))) && (Foundation_Ontology_V1_Model_nthPrimeConstructive(prev_1) < Foundation_Ontology_V1_Model_nthPrimeConstructive((prev_1 + 1n)))) && Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo(prev_1)))(_m0 - 1n))(fuel);
-  _memo_Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo.set(fuel, val);
-  return val;
-}
-
-const _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo = new Map<bigint, boolean>();
-export function Foundation_Ontology_V1_Model_allStrataNecessaryUpTo(fuel: bigint): boolean {
-  const hit = _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo.get(fuel);
-  if (hit !== undefined) return hit;
-  const val = ((_m0) => _m0 <= 0n ? (Foundation_Ontology_V1_Model_stratumObstructionWithout(0n, false) && Foundation_Ontology_V1_Model_verifyStratumObstructionResolved(0n, true, true, true, true)) : ((prev_1) => ((Foundation_Ontology_V1_Model_stratumObstructionWithout((prev_1 + 1n), false) && Foundation_Ontology_V1_Model_verifyStratumObstructionResolved((prev_1 + 1n), true, true, true, true)) && Foundation_Ontology_V1_Model_allStrataNecessaryUpTo(prev_1)))(_m0 - 1n))(fuel);
-  _memo_Foundation_Ontology_V1_Model_allStrataNecessaryUpTo.set(fuel, val);
-  return val;
-}
-
-export function Foundation_Ontology_V1_Model_breaksVoidIndistinguishabilityAndDistinction(cardinality: bigint): boolean {
-  return (((cardinality <= 1n) && (0n < Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality))) || ((((_dup0) => (_dup0 + _dup0))(1n) <= cardinality) && (Foundation_Ontology_V1_Model_distinctionBitsForCardinality(cardinality) === 0n)));
-}
-
-export function Foundation_Ontology_V1_Model_breaksEpistemicOpacityAndTelosDecomposition(totalNodes: bigint, certifiedNodes: bigint, legibilityGap: bigint, playerDissonance: bigint): boolean {
-  return (((certifiedNodes <= totalNodes) && ((Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes, certifiedNodes, 0n, 0n) === 0n) && (!(certifiedNodes === totalNodes)))) || (Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss(Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt(totalNodes, certifiedNodes, 0n, 0n), legibilityGap, playerDissonance, 0n) < playerDissonance));
-}
-
-export function Foundation_Ontology_V1_Model_breaksParametricDescentBoundsAndNonCoercion(currentVal: bigint, minBound: bigint, maxBound: bigint, lossMinus: bigint, lossCurrent: bigint, lossPlus: bigint): boolean {
-  return (() => { const stepped = Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal, minBound, maxBound, lossMinus, lossCurrent, lossPlus, 0n); const coercedStep = Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate(currentVal, minBound, maxBound, lossMinus, lossCurrent, lossPlus, 1n); return (((stepped < minBound) || ((minBound + _natSub(maxBound, minBound)) < stepped)) || (!(coercedStep === Foundation_Ontology_V1_Model_clampParametricCoord(currentVal, minBound, maxBound)))); })();
 }
 
 let _c_Foundation_View_Text_V1_Model_textApplicationProfile: string | undefined;
@@ -7890,6 +8040,61 @@ export const PRISM_COMPILED_MODULES = {
     "breaksObserverDescriptorComplete": Foundation_Cosmogenesis_V1_Model_breaksObserverDescriptorComplete,
     "breaksObserverCompleteFourteenModelRegistry": Foundation_Cosmogenesis_V1_Model_breaksObserverCompleteFourteenModelRegistry,
   },
+  "Foundation.Ontology.V1.Model": {
+    "distinctionBitsForCardinality": Foundation_Ontology_V1_Model_distinctionBitsForCardinality,
+    "pow2Constructive": Foundation_Ontology_V1_Model_pow2Constructive,
+    "bitMaskConstructive": Foundation_Ontology_V1_Model_bitMaskConstructive,
+    "fibPairStep": Foundation_Ontology_V1_Model_fibPairStep,
+    "fibonacciConstructive": Foundation_Ontology_V1_Model_fibonacciConstructive,
+    "hasDivisorFrom": Foundation_Ontology_V1_Model_hasDivisorFrom,
+    "isPrimeConstructive": Foundation_Ontology_V1_Model_isPrimeConstructive,
+    "seekPrimeFrom": Foundation_Ontology_V1_Model_seekPrimeFrom,
+    "nextPrimeAfter": Foundation_Ontology_V1_Model_nextPrimeAfter,
+    "nthPrimeConstructive": Foundation_Ontology_V1_Model_nthPrimeConstructive,
+    "harmonicConsonanceComplexity": Foundation_Ontology_V1_Model_harmonicConsonanceComplexity,
+    "triadicAgencyPrimeProduct": Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct,
+    "isValidAgencyPrimeProduct": Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct,
+    "stratumObstructionWithout": Foundation_Ontology_V1_Model_stratumObstructionWithout,
+    "verifyStratumObstructionResolved": Foundation_Ontology_V1_Model_verifyStratumObstructionResolved,
+    "verifyW5HCertificateComplete": Foundation_Ontology_V1_Model_verifyW5HCertificateComplete,
+    "synthesizeW5HCertificate": Foundation_Ontology_V1_Model_synthesizeW5HCertificate,
+    "computeEpistemicOpacityDebt": Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt,
+    "computeHostCeilingExcess": Foundation_Ontology_V1_Model_computeHostCeilingExcess,
+    "evaluateOntologicalTelosLoss": Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss,
+    "evaluateHolonTelosState": Foundation_Ontology_V1_Model_evaluateHolonTelosState,
+    "clampParametricCoord": Foundation_Ontology_V1_Model_clampParametricCoord,
+    "stepParametricOntologyCoordinate": Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate,
+    "allPrimeRanksStrictlyAscendingUpTo": Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo,
+    "allStrataNecessaryUpTo": Foundation_Ontology_V1_Model_allStrataNecessaryUpTo,
+    "breaksVoidIndistinguishabilityAndDistinction": Foundation_Ontology_V1_Model_breaksVoidIndistinguishabilityAndDistinction,
+    "breaksEpistemicOpacityAndTelosDecomposition": Foundation_Ontology_V1_Model_breaksEpistemicOpacityAndTelosDecomposition,
+    "breaksParametricDescentBoundsAndNonCoercion": Foundation_Ontology_V1_Model_breaksParametricDescentBoundsAndNonCoercion,
+  },
+  "Foundation.Host.V1.Model": {
+    "powConstructive": Foundation_Host_V1_Model_powConstructive,
+    "nanosPerSecondFromZeroOne": Foundation_Host_V1_Model_nanosPerSecondFromZeroOne,
+    "hostGranuleBytes": Foundation_Host_V1_Model_hostGranuleBytes,
+    "hostRoundUp": Foundation_Host_V1_Model_hostRoundUp,
+    "hostMovedBytes": Foundation_Host_V1_Model_hostMovedBytes,
+    "hostSlowerNanos": Foundation_Host_V1_Model_hostSlowerNanos,
+    "hostStepNanos": Foundation_Host_V1_Model_hostStepNanos,
+    "hostLineNanos": Foundation_Host_V1_Model_hostLineNanos,
+    "hostCeilingNanos": Foundation_Host_V1_Model_hostCeilingNanos,
+    "hostSaturationDistanceNanos": Foundation_Host_V1_Model_hostSaturationDistanceNanos,
+    "optimalBrowserWorkerCount": Foundation_Host_V1_Model_optimalBrowserWorkerCount,
+    "computeBrowserApiSaturationPermille": Foundation_Host_V1_Model_computeBrowserApiSaturationPermille,
+    "verifyBrowserGenerationAdmission": Foundation_Host_V1_Model_verifyBrowserGenerationAdmission,
+    "shouldRollbackGenerationWatchdog": Foundation_Host_V1_Model_shouldRollbackGenerationWatchdog,
+    "verifyCheckedU64NoOverflow": Foundation_Host_V1_Model_verifyCheckedU64NoOverflow,
+    "verifyIndependentQuotaCaps": Foundation_Host_V1_Model_verifyIndependentQuotaCaps,
+    "classifyCapabilityReceiptError": Foundation_Host_V1_Model_classifyCapabilityReceiptError,
+    "verifyIsolatedCapabilitySaturation": Foundation_Host_V1_Model_verifyIsolatedCapabilitySaturation,
+    "breaksGranuleAndCacheMovementBounds": Foundation_Host_V1_Model_breaksGranuleAndCacheMovementBounds,
+    "breaksHostCeilingAndSaturationDistance": Foundation_Host_V1_Model_breaksHostCeilingAndSaturationDistance,
+    "breaksGenerationAdmissionSafetyAndDominance": Foundation_Host_V1_Model_breaksGenerationAdmissionSafetyAndDominance,
+    "breaksWatchdogFaultImmediateRollback": Foundation_Host_V1_Model_breaksWatchdogFaultImmediateRollback,
+    "breaksIndependentQuotaCapIsolation": Foundation_Host_V1_Model_breaksIndependentQuotaCapIsolation,
+  },
   "Foundation.Mechanization.V1.Model": {
     "verdantMechanizationBasisPrime": Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime,
     "coherentClassicalModelTotal": Foundation_Mechanization_V1_Model_coherentClassicalModelTotal,
@@ -8039,36 +8244,6 @@ export const PRISM_COMPILED_MODULES = {
     "portfolioSubsets": Foundation_Mechanization_V1_Model_portfolioSubsets,
     "sameWeights": Foundation_Mechanization_V1_Model_sameWeights,
     "sameStrings": Foundation_Mechanization_V1_Model_sameStrings,
-  },
-  "Foundation.Ontology.V1.Model": {
-    "distinctionBitsForCardinality": Foundation_Ontology_V1_Model_distinctionBitsForCardinality,
-    "pow2Constructive": Foundation_Ontology_V1_Model_pow2Constructive,
-    "bitMaskConstructive": Foundation_Ontology_V1_Model_bitMaskConstructive,
-    "fibPairStep": Foundation_Ontology_V1_Model_fibPairStep,
-    "fibonacciConstructive": Foundation_Ontology_V1_Model_fibonacciConstructive,
-    "hasDivisorFrom": Foundation_Ontology_V1_Model_hasDivisorFrom,
-    "isPrimeConstructive": Foundation_Ontology_V1_Model_isPrimeConstructive,
-    "seekPrimeFrom": Foundation_Ontology_V1_Model_seekPrimeFrom,
-    "nextPrimeAfter": Foundation_Ontology_V1_Model_nextPrimeAfter,
-    "nthPrimeConstructive": Foundation_Ontology_V1_Model_nthPrimeConstructive,
-    "harmonicConsonanceComplexity": Foundation_Ontology_V1_Model_harmonicConsonanceComplexity,
-    "triadicAgencyPrimeProduct": Foundation_Ontology_V1_Model_triadicAgencyPrimeProduct,
-    "isValidAgencyPrimeProduct": Foundation_Ontology_V1_Model_isValidAgencyPrimeProduct,
-    "stratumObstructionWithout": Foundation_Ontology_V1_Model_stratumObstructionWithout,
-    "verifyStratumObstructionResolved": Foundation_Ontology_V1_Model_verifyStratumObstructionResolved,
-    "verifyW5HCertificateComplete": Foundation_Ontology_V1_Model_verifyW5HCertificateComplete,
-    "synthesizeW5HCertificate": Foundation_Ontology_V1_Model_synthesizeW5HCertificate,
-    "computeEpistemicOpacityDebt": Foundation_Ontology_V1_Model_computeEpistemicOpacityDebt,
-    "computeHostCeilingExcess": Foundation_Ontology_V1_Model_computeHostCeilingExcess,
-    "evaluateOntologicalTelosLoss": Foundation_Ontology_V1_Model_evaluateOntologicalTelosLoss,
-    "evaluateHolonTelosState": Foundation_Ontology_V1_Model_evaluateHolonTelosState,
-    "clampParametricCoord": Foundation_Ontology_V1_Model_clampParametricCoord,
-    "stepParametricOntologyCoordinate": Foundation_Ontology_V1_Model_stepParametricOntologyCoordinate,
-    "allPrimeRanksStrictlyAscendingUpTo": Foundation_Ontology_V1_Model_allPrimeRanksStrictlyAscendingUpTo,
-    "allStrataNecessaryUpTo": Foundation_Ontology_V1_Model_allStrataNecessaryUpTo,
-    "breaksVoidIndistinguishabilityAndDistinction": Foundation_Ontology_V1_Model_breaksVoidIndistinguishabilityAndDistinction,
-    "breaksEpistemicOpacityAndTelosDecomposition": Foundation_Ontology_V1_Model_breaksEpistemicOpacityAndTelosDecomposition,
-    "breaksParametricDescentBoundsAndNonCoercion": Foundation_Ontology_V1_Model_breaksParametricDescentBoundsAndNonCoercion,
   },
   "Foundation.View.Text.V1.Model": {
     "textApplicationProfile": Foundation_View_Text_V1_Model_textApplicationProfile,
@@ -8359,12 +8534,12 @@ export const PRISM_COMPILED_MODULES = {
 export type PrismCompiledModuleName = keyof typeof PRISM_COMPILED_MODULES;
 
 export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
-  "sourceTreeDigestSha256": "2af12372a35a8eee65737b3a56861e99a4677a8b9c5a276972d39c21e3355696",
-  "moduleCount": 29,
+  "sourceTreeDigestSha256": "d469e26ae36fdf99a925ec7b77fe4f9a2b4aa168cc7c7123aec990dee9704069",
+  "moduleCount": 30,
   "inductiveCount": 2,
-  "structureCount": 167,
-  "definitionCount": 1181,
-  "theoremCount": 188,
+  "structureCount": 172,
+  "definitionCount": 1204,
+  "theoremCount": 195,
   "modules": [
     {
       "moduleName": "Foundation.MetaModel.V1.Model",
@@ -8669,6 +8844,24 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "theoremCount": 5
     },
     {
+      "moduleName": "Foundation.Ontology.V1.Model",
+      "imports": [],
+      "inductiveCount": 0,
+      "structureCount": 5,
+      "definitionCount": 28,
+      "theoremCount": 6
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "imports": [
+        "Foundation.Ontology.V1.Model"
+      ],
+      "inductiveCount": 0,
+      "structureCount": 5,
+      "definitionCount": 23,
+      "theoremCount": 7
+    },
+    {
       "moduleName": "Foundation.Mechanization.V1.Model",
       "imports": [
         "Foundation.MetaModel.V1.Model",
@@ -8679,14 +8872,6 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "structureCount": 12,
       "definitionCount": 148,
       "theoremCount": 27
-    },
-    {
-      "moduleName": "Foundation.Ontology.V1.Model",
-      "imports": [],
-      "inductiveCount": 0,
-      "structureCount": 5,
-      "definitionCount": 28,
-      "theoremCount": 6
     },
     {
       "moduleName": "Foundation.View.Text.V1.Model",
@@ -8701,6 +8886,7 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "imports": [
         "Foundation.Bytes",
         "Foundation.Ontology.V1.Model",
+        "Foundation.Host.V1.Model",
         "Foundation.View.Text.V1.Model",
         "Foundation.MetaModel.V1.Model",
         "Foundation.Mathematics.V1.Model",
@@ -10673,51 +10859,6 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "resultType": "Bool"
     },
     {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "breaksMonotonicLiftRatchetAndOpenDistance",
-      "parameters": [
-        {
-          "name": "incumbentClass",
-          "lexType": "Nat"
-        },
-        {
-          "name": "candidateClass",
-          "lexType": "Nat"
-        }
-      ],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "breaksSchedulePermutationAndWeightBounds",
-      "parameters": [
-        {
-          "name": "wA",
-          "lexType": "Nat"
-        },
-        {
-          "name": "wB",
-          "lexType": "Nat"
-        }
-      ],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "breaksHomeostasisPartitionAndOooGaugeInvariance",
-      "parameters": [
-        {
-          "name": "budget",
-          "lexType": "Nat"
-        },
-        {
-          "name": "gateMin",
-          "lexType": "Nat"
-        }
-      ],
-      "resultType": "Bool"
-    },
-    {
       "moduleName": "Foundation.Ontology.V1.Model",
       "name": "breaksVoidIndistinguishabilityAndDistinction",
       "parameters": [
@@ -10777,6 +10918,202 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
         },
         {
           "name": "lossPlus",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksGranuleAndCacheMovementBounds",
+      "parameters": [
+        {
+          "name": "page",
+          "lexType": "Nat"
+        },
+        {
+          "name": "largePage",
+          "lexType": "Nat"
+        },
+        {
+          "name": "workingSet",
+          "lexType": "Nat"
+        },
+        {
+          "name": "lineBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "tableBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "outerCacheBytes",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksHostCeilingAndSaturationDistance",
+      "parameters": [
+        {
+          "name": "computeNanos",
+          "lexType": "Nat"
+        },
+        {
+          "name": "transportNanos",
+          "lexType": "Nat"
+        },
+        {
+          "name": "observedNanos",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksGenerationAdmissionSafetyAndDominance",
+      "parameters": [
+        {
+          "name": "decidePassed",
+          "lexType": "Nat"
+        },
+        {
+          "name": "decideTotal",
+          "lexType": "Nat"
+        },
+        {
+          "name": "residueCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "coerciveCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "wasmBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "frameMicros",
+          "lexType": "Nat"
+        },
+        {
+          "name": "budgetMicros",
+          "lexType": "Nat"
+        },
+        {
+          "name": "candLoss",
+          "lexType": "Nat"
+        },
+        {
+          "name": "incLoss",
+          "lexType": "Nat"
+        },
+        {
+          "name": "candSteps",
+          "lexType": "Nat"
+        },
+        {
+          "name": "incSteps",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksWatchdogFaultImmediateRollback",
+      "parameters": [
+        {
+          "name": "overbudgetFrames",
+          "lexType": "Nat"
+        },
+        {
+          "name": "maxAllowedFrames",
+          "lexType": "Nat"
+        },
+        {
+          "name": "runtimeFaults",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksIndependentQuotaCapIsolation",
+      "parameters": [
+        {
+          "name": "reqBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "reqMax",
+          "lexType": "Nat"
+        },
+        {
+          "name": "guestBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "guestMax",
+          "lexType": "Nat"
+        },
+        {
+          "name": "respBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "respMax",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "breaksMonotonicLiftRatchetAndOpenDistance",
+      "parameters": [
+        {
+          "name": "incumbentClass",
+          "lexType": "Nat"
+        },
+        {
+          "name": "candidateClass",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "breaksSchedulePermutationAndWeightBounds",
+      "parameters": [
+        {
+          "name": "wA",
+          "lexType": "Nat"
+        },
+        {
+          "name": "wB",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "breaksHomeostasisPartitionAndOooGaugeInvariance",
+      "parameters": [
+        {
+          "name": "budget",
+          "lexType": "Nat"
+        },
+        {
+          "name": "gateMin",
           "lexType": "Nat"
         }
       ],
@@ -11766,57 +12103,6 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "resultType": "Bool"
     },
     {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "verifyBijectiveConformanceTriangulation",
-      "parameters": [
-        {
-          "name": "registeredIds",
-          "lexType": "Nat"
-        },
-        {
-          "name": "scenarioIds",
-          "lexType": "Nat"
-        },
-        {
-          "name": "executedTestIds",
-          "lexType": "Nat"
-        },
-        {
-          "name": "orphanClaimTags",
-          "lexType": "Nat"
-        },
-        {
-          "name": "driftFileCount",
-          "lexType": "Nat"
-        }
-      ],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "verifyFoundryRouterAndLiftVectors",
-      "parameters": [],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "verifyEpistemicHonestyAndConformanceVectors",
-      "parameters": [],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "verifyPeirceCycleAndOooObserverVectors",
-      "parameters": [],
-      "resultType": "Bool"
-    },
-    {
-      "moduleName": "Foundation.Mechanization.V1.Model",
-      "name": "verifyUnifiedMechanizationModelCoherence",
-      "parameters": [],
-      "resultType": "Bool"
-    },
-    {
       "moduleName": "Foundation.Ontology.V1.Model",
       "name": "verifyStratumObstructionResolved",
       "parameters": [
@@ -11880,6 +12166,181 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
           "lexType": "Bool"
         }
       ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "verifyBrowserGenerationAdmission",
+      "parameters": [
+        {
+          "name": "decidePassed",
+          "lexType": "Nat"
+        },
+        {
+          "name": "decideTotal",
+          "lexType": "Nat"
+        },
+        {
+          "name": "foundryResidueCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "coercivePatternCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "compiledWasmBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "frameMicros",
+          "lexType": "Nat"
+        },
+        {
+          "name": "frameBudgetMicros",
+          "lexType": "Nat"
+        },
+        {
+          "name": "candTelosLoss",
+          "lexType": "Nat"
+        },
+        {
+          "name": "incTelosLoss",
+          "lexType": "Nat"
+        },
+        {
+          "name": "candSteps",
+          "lexType": "Nat"
+        },
+        {
+          "name": "incSteps",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "verifyCheckedU64NoOverflow",
+      "parameters": [
+        {
+          "name": "lhs",
+          "lexType": "Nat"
+        },
+        {
+          "name": "rhs",
+          "lexType": "Nat"
+        },
+        {
+          "name": "u64MaxCap",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "verifyIndependentQuotaCaps",
+      "parameters": [
+        {
+          "name": "reqBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "reqMax",
+          "lexType": "Nat"
+        },
+        {
+          "name": "guestBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "guestMax",
+          "lexType": "Nat"
+        },
+        {
+          "name": "respBytes",
+          "lexType": "Nat"
+        },
+        {
+          "name": "respMax",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "verifyIsolatedCapabilitySaturation",
+      "parameters": [
+        {
+          "name": "saturatedCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "requiredCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "falsifiersRejectedCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "receiptErrorCode",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "verifyBijectiveConformanceTriangulation",
+      "parameters": [
+        {
+          "name": "registeredIds",
+          "lexType": "Nat"
+        },
+        {
+          "name": "scenarioIds",
+          "lexType": "Nat"
+        },
+        {
+          "name": "executedTestIds",
+          "lexType": "Nat"
+        },
+        {
+          "name": "orphanClaimTags",
+          "lexType": "Nat"
+        },
+        {
+          "name": "driftFileCount",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "verifyFoundryRouterAndLiftVectors",
+      "parameters": [],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "verifyEpistemicHonestyAndConformanceVectors",
+      "parameters": [],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "verifyPeirceCycleAndOooObserverVectors",
+      "parameters": [],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Mechanization.V1.Model",
+      "name": "verifyUnifiedMechanizationModelCoherence",
+      "parameters": [],
       "resultType": "Bool"
     },
     {

@@ -2233,8 +2233,12 @@ export interface LeanAttestationSummary {
   attestationId: string | null;
   buildId: string | null;
   declarationCount: number;
+  verdantDeclarationCount: number;
+  preludeDeclarationCount: number;
   allOk: boolean;
   observedAxioms: string[];
+  verdantObservedAxioms: string[];
+  verdantClassicalChoiceCount: number;
   sorryDetected: boolean;
 }
 
@@ -2248,8 +2252,12 @@ export function inspectLeanAttestationStatus(
       attestationId: null,
       buildId: null,
       declarationCount: 0,
+      verdantDeclarationCount: 0,
+      preludeDeclarationCount: 0,
       allOk: false,
       observedAxioms: [],
+      verdantObservedAxioms: [],
+      verdantClassicalChoiceCount: 0,
       sorryDetected: false,
     };
   }
@@ -2271,8 +2279,12 @@ export function inspectLeanAttestationStatus(
       attestationId: null,
       buildId: null,
       declarationCount: 0,
+      verdantDeclarationCount: 0,
+      preludeDeclarationCount: 0,
       allOk: false,
       observedAxioms: [],
+      verdantObservedAxioms: [],
+      verdantClassicalChoiceCount: 0,
       sorryDetected: false,
     };
   }
@@ -2280,14 +2292,36 @@ export function inspectLeanAttestationStatus(
   const latest = JSON.parse(fs.readFileSync(dirs[0].attPath, 'utf8'));
   const declarations: any[] = Array.isArray(latest.declarations) ? latest.declarations : [];
   const axiomSet = new Set<string>();
+  const verdantAxiomSet = new Set<string>();
+  let verdantDeclarationCount = 0;
+  let preludeDeclarationCount = 0;
+  let verdantClassicalChoiceCount = 0;
   let allOk = declarations.length > 0;
   for (const decl of declarations) {
     if (decl.result !== 'ok') allOk = false;
+    const declName = String(decl.name ?? '');
+    const isCompilerPrelude =
+      declName.startsWith('LexLeanRuntime.') || declName.startsWith('LexLeanCollections.');
+    if (isCompilerPrelude) {
+      preludeDeclarationCount++;
+    } else {
+      verdantDeclarationCount++;
+    }
     if (Array.isArray(decl.observed)) {
-      for (const ax of decl.observed) axiomSet.add(String(ax));
+      for (const ax of decl.observed) {
+        const axStr = String(ax);
+        axiomSet.add(axStr);
+        if (!isCompilerPrelude) {
+          verdantAxiomSet.add(axStr);
+          if (axStr === 'Classical.choice') {
+            verdantClassicalChoiceCount++;
+          }
+        }
+      }
     }
   }
   const observedAxioms = [...axiomSet].sort();
+  const verdantObservedAxioms = [...verdantAxiomSet].sort();
   const sorryDetected = observedAxioms.some((a) => a.toLowerCase().includes('sorry'));
 
   return {
@@ -2295,8 +2329,12 @@ export function inspectLeanAttestationStatus(
     attestationId: latest.attestation_id ?? dirs[0].name,
     buildId: latest.build_id ?? null,
     declarationCount: declarations.length,
+    verdantDeclarationCount,
+    preludeDeclarationCount,
     allOk,
     observedAxioms,
+    verdantObservedAxioms,
+    verdantClassicalChoiceCount,
     sorryDetected,
   };
 }

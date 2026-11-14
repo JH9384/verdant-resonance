@@ -1,0 +1,367 @@
+{
+  "schema": "verdant-resonance/self-host-gen-manifest/1",
+  "generationId": "gen-0",
+  "generationIndex": 0,
+  "parentGenerationId": null,
+  "fileCount": 57,
+  "totalSourceBytes": 2840612,
+  "archiveBytes": 2840862,
+  "corpusKappa": "81f0802fed40ded68e38e92c421581c25008244f05a31beb214f11d00bf2eac9",
+  "treeKappa": "0c98ab78c1c676cba29e7d3cb7b3d4f4e54ae8560d1bac9ac89978ad417428b3",
+  "telosLoss": 180,
+  "computeSteps": 4096,
+  "compiledWasmBytes": 85471,
+  "evolvedCoordinates": {
+    "alphaSeed": 108,
+    "primeCeilingRank": 3,
+    "modalDensityRank": 5,
+    "warmthShiftSign": 0,
+    "warmthShiftMagnitude": 0,
+    "cadenceTargetRank": 4,
+    "phyllotaxisIndex": 8
+  },
+  "files": [
+    {
+      "index": 0,
+      "path": "prism/handwritten-ratchet.json",
+      "bytes": 1152,
+      "sha256Kappa": "bd894fa9f5d883a960b0f6f0131ed777a95303f04468acdb8769a1d8bcc64327"
+    },
+    {
+      "index": 1,
+      "path": "prism/spec.json",
+      "bytes": 33075,
+      "sha256Kappa": "630299b5045ff3e74b831c9547e65d08c295ee9cacffe5fafa0ecf4b385cadb9"
+    },
+    {
+      "index": 2,
+      "path": "prism/src/Foundation/Acoustics/V1/Model.lex.tex",
+      "bytes": 13261,
+      "sha256Kappa": "080f06d70c68f0c70f6f2e461499f9ed536b026d2c4120f13c365e3d4eca4a06"
+    },
+    {
+      "index": 3,
+      "path": "prism/src/Foundation/Anamnesis/V1/Model.lex.tex",
+      "bytes": 9099,
+      "sha256Kappa": "cbf39ff2a3f08497c2825d68c2b3f942ecc010f300082917c98249ca3e22616e"
+    },
+    {
+      "index": 4,
+      "path": "prism/src/Foundation/Articulation/V1/Model.lex.tex",
+      "bytes": 14994,
+      "sha256Kappa": "115fe9e60542f673898ec9f763b1f4220ad809d9182a89cdd1a59a7e5a0abdeb"
+    },
+    {
+      "index": 5,
+      "path": "prism/src/Foundation/Botany/V1/Model.lex.tex",
+      "bytes": 17951,
+      "sha256Kappa": "e539dfd92f0a5807e8e1fb82298a5b483c9006f8bd7dfe83cb5c5c56101a8ff5"
+    },
+    {
+      "index": 6,
+      "path": "prism/src/Foundation/Brand/V1/Model.lex.tex",
+      "bytes": 17122,
+      "sha256Kappa": "9884051cfbe4cdf90b74944b0be86252fe20997ad84ef88e37f4c6628976bdae"
+    },
+    {
+      "index": 7,
+      "path": "prism/src/Foundation/Bytes.lex.tex",
+      "bytes": 1514,
+      "sha256Kappa": "26a3043b2622b215bffd9ba9b873c1d3d076ea449c6865eaab647ae504273db3"
+    },
+    {
+      "index": 8,
+      "path": "prism/src/Foundation/Chemistry/V1/Model.lex.tex",
+      "bytes": 13642,
+      "sha256Kappa": "180067ef6eb489a62cc71c4c747aa1a7914db669c99906186107cbb3be7c3c48"
+    },
+    {
+      "index": 9,
+      "path": "prism/src/Foundation/Compression/V1/Model.lex.tex",
+      "bytes": 30024,
+      "sha256Kappa": "02310806a3dc40ecfc7f8c76d820cb1e4e3a37f591aa331b22d05b29ffd0f742"
+    },
+    {
+      "index": 10,
+      "path": "prism/src/Foundation/Cosmogenesis/V1/Model.lex.tex",
+      "bytes": 56284,
+      "sha256Kappa": "f1ccdb8e22cd90836f244674a7a1b08aecf322e288b99292f275ca22c0910d94"
+    },
+    {
+      "index": 11,
+      "path": "prism/src/Foundation/Dharma/V1/Model.lex.tex",
+      "bytes": 16455,
+      "sha256Kappa": "e631651fcc22f55b20421c73aa90e5e09698be4235dfcdfe18644f51223d63e1"
+    },
+    {
+      "index": 12,
+      "path": "prism/src/Foundation/Ecology/V1/Model.lex.tex",
+      "bytes": 19791,
+      "sha256Kappa": "4d88ce085e03228651ebb508356a1afec8ab523fee1711eb43b5f51d0a28505d"
+    },
+    {
+      "index": 13,
+      "path": "prism/src/Foundation/Graphics/V1/Model.lex.tex",
+      "bytes": 11777,
+      "sha256Kappa": "bed4e9bc8031cfb4cc986ec132b1f8324a56335ee2773ec410ccd87a1687c449"
+    },
+    {
+      "index": 14,
+      "path": "prism/src/Foundation/Host/V1/Model.lex.tex",
+      "bytes": 16837,
+      "sha256Kappa": "59c8e47799adab718160d437f391925132cb08b4237a44864283ee7328e00d76"
+    },
+    {
+      "index": 15,
+      "path": "prism/src/Foundation/Humane/V1/Model.lex.tex",
+      "bytes": 16525,
+      "sha256Kappa": "c9053cd204e8c7d7d4b1e623d955c0221f5983bdbdd10cd5225e9aa6cb40206d"
+    },
+    {
+      "index": 16,
+      "path": "prism/src/Foundation/Infrastructure/V1/Model.lex.tex",
+      "bytes": 9179,
+      "sha256Kappa": "f0f9b1ff68666a471e57b752bf04877d7d518e40e961f2340fb3634bd5860754"
+    },
+    {
+      "index": 17,
+      "path": "prism/src/Foundation/Mathematics/V1/Model.lex.tex",
+      "bytes": 7220,
+      "sha256Kappa": "a4f06527d721b16de137b8698ea834528ff4b895308bef7d41f2700e75fe2694"
+    },
+    {
+      "index": 18,
+      "path": "prism/src/Foundation/Mechanization/V1/Model.lex.tex",
+      "bytes": 53379,
+      "sha256Kappa": "ce608749672f4140d852a573308386fb72e41211c778c5bd33f618d7edfa0fdc"
+    },
+    {
+      "index": 19,
+      "path": "prism/src/Foundation/MetaModel/V1/Model.lex.tex",
+      "bytes": 18064,
+      "sha256Kappa": "dc60471648210048129dc5f9966eee4029584397934820907b7d7773e9a12319"
+    },
+    {
+      "index": 20,
+      "path": "prism/src/Foundation/Morphogenesis/V1/Model.lex.tex",
+      "bytes": 9805,
+      "sha256Kappa": "4960109c5a02022840758c6ad254f164b215707c0b84f97daac9f8f9bb3ae4d7"
+    },
+    {
+      "index": 21,
+      "path": "prism/src/Foundation/Neuromorphic/V1/Model.lex.tex",
+      "bytes": 61993,
+      "sha256Kappa": "3cd29baa1a94c3dc5d2ee100324946e8b79818ef643bb527bb7dcac3f4bc8d87"
+    },
+    {
+      "index": 22,
+      "path": "prism/src/Foundation/Ontology/V1/Model.lex.tex",
+      "bytes": 16539,
+      "sha256Kappa": "d164df5c8af53d1834ac4756ab42bfa2972d8a696fe2229985599586ec405577"
+    },
+    {
+      "index": 23,
+      "path": "prism/src/Foundation/Physics/V1/Model.lex.tex",
+      "bytes": 28227,
+      "sha256Kappa": "ecef27e2192abad6f3d63606164e0627a291aac9b7b2b6046ed27390fa2bb1df"
+    },
+    {
+      "index": 24,
+      "path": "prism/src/Foundation/Realizability/V1/Model.lex.tex",
+      "bytes": 10124,
+      "sha256Kappa": "dfdc9baf67844bd389bf98b7a600939c4a82c3eec8e765f8b4b8a93540c9b433"
+    },
+    {
+      "index": 25,
+      "path": "prism/src/Foundation/Soundtrack/V1/Model.lex.tex",
+      "bytes": 16208,
+      "sha256Kappa": "62696bb80b5c239ca3a313a596ac4ee80c71f6c983e1c69f5e6901981d31488f"
+    },
+    {
+      "index": 26,
+      "path": "prism/src/Foundation/SpatialAcoustics/V1/Model.lex.tex",
+      "bytes": 10053,
+      "sha256Kappa": "da0b4631220d19223ce7e0e91d332f598adb3d811577e2c226d88550d493f1ff"
+    },
+    {
+      "index": 27,
+      "path": "prism/src/Foundation/Teleology/V1/Model.lex.tex",
+      "bytes": 35111,
+      "sha256Kappa": "26b1d2f9766d09b85c9e56b6b89292b9f065efc1465fc57a16e35d1cd6e5040b"
+    },
+    {
+      "index": 28,
+      "path": "prism/src/Foundation/Vedanta/V1/Model.lex.tex",
+      "bytes": 16912,
+      "sha256Kappa": "89c65859819b0813c2f06cf8c1812d8bc5de3e493bb1db215c00439fe49dc5c3"
+    },
+    {
+      "index": 29,
+      "path": "prism/src/Foundation/View/Text/V1/Model.lex.tex",
+      "bytes": 1739,
+      "sha256Kappa": "db124343ad8fe1295bc8eb305c7f59f83cf6ad76d46a5cabea500fe66f3ad5dc"
+    },
+    {
+      "index": 30,
+      "path": "prism/src/VerdantResonance.lex.tex",
+      "bytes": 146591,
+      "sha256Kappa": "e228ac51e71bb51657e5b7b9f19633ad46e6773787dfb7695245303cc11c69dc"
+    },
+    {
+      "index": 31,
+      "path": "prism/src/VerdantResonanceProofs.lex.tex",
+      "bytes": 63739,
+      "sha256Kappa": "a156315a66f5bc672fb69fc1a32666dcad26bbd82649c2e8d06b24fd9065f89e"
+    },
+    {
+      "index": 32,
+      "path": "src/App.tsx",
+      "bytes": 50961,
+      "sha256Kappa": "40ca983ce954dacb57179825f2f5b31b3940582db8400c443bc4467b6ce67332"
+    },
+    {
+      "index": 33,
+      "path": "src/components/BotanicalIcons.tsx",
+      "bytes": 8781,
+      "sha256Kappa": "37951d0c52c6568307ba929ea4b8576a8c03ac396923e3bb42e5bcf1cab22532"
+    },
+    {
+      "index": 34,
+      "path": "src/components/GardenCanvas.tsx",
+      "bytes": 226961,
+      "sha256Kappa": "9cf242b79426a4a65304c67d84574053285e0a9071aa18bed351872c39e14f93"
+    },
+    {
+      "index": 35,
+      "path": "src/components/gardenFloraBuilder.ts",
+      "bytes": 32314,
+      "sha256Kappa": "34601137e089b5b852b8ffd0bb1a851ce42332429c88a261600fabbcfb2dd250"
+    },
+    {
+      "index": 36,
+      "path": "src/components/gardenMonuments.ts",
+      "bytes": 35685,
+      "sha256Kappa": "922e806a53bddc2adb7165920c32f21d609d9920b9b4bc828adac37937d1d46e"
+    },
+    {
+      "index": 37,
+      "path": "src/components/PrismInspectorModal.tsx",
+      "bytes": 69265,
+      "sha256Kappa": "5b827032a212373d057ae6967fcda22db433803314d9daff699a669e0cd72a2f"
+    },
+    {
+      "index": 38,
+      "path": "src/game/anamnesisEngine.ts",
+      "bytes": 26024,
+      "sha256Kappa": "b4a30e2ee5daf7db2ade38697ddda92ad3422b65815698b08ad093d8381aa879"
+    },
+    {
+      "index": 39,
+      "path": "src/game/autonomousObjectivesEngine.ts",
+      "bytes": 55549,
+      "sha256Kappa": "39833099535aca47f5b455def781f399443fbe077f07f98b078721fef0576d75"
+    },
+    {
+      "index": 40,
+      "path": "src/game/conservatoryCurationEngine.ts",
+      "bytes": 47040,
+      "sha256Kappa": "8274ba9fe4989990ce71373ae2ddcfe4df20b053bd6411c3dbbaf7377ead1066"
+    },
+    {
+      "index": 41,
+      "path": "src/game/mechanicalReasoningEngine.ts",
+      "bytes": 40004,
+      "sha256Kappa": "8083f94591e5cc7acb2095d1006c72f9b82e6264a8bed890011037ab3cfb5f00"
+    },
+    {
+      "index": 42,
+      "path": "src/game/neuromorphicFunctorBus.ts",
+      "bytes": 41527,
+      "sha256Kappa": "b6b7b0e3f60411dee748178d784930be0597c69d108c061a8f3c728dcb85b121"
+    },
+    {
+      "index": 43,
+      "path": "src/game/parametricCompressionEngine.ts",
+      "bytes": 86031,
+      "sha256Kappa": "2c3407bbfe76d53ddc0cf5cdd4a4ca41215f7387cfece23cc7ef4c50d2d56117"
+    },
+    {
+      "index": 44,
+      "path": "src/game/prismModel.ts",
+      "bytes": 656270,
+      "sha256Kappa": "04a7e9fafbe277431cfff0e69b28cc0fa9d855e251b5aa8a6aba70038ac2bd7d"
+    },
+    {
+      "index": 45,
+      "path": "src/game/proceduralMeshEngine.ts",
+      "bytes": 108913,
+      "sha256Kappa": "80a7d455ea16a07c69d8903e91b28edc73f2ea689026a0bf19e4bb62d8a15224"
+    },
+    {
+      "index": 46,
+      "path": "src/game/realizabilityEngine.ts",
+      "bytes": 27467,
+      "sha256Kappa": "94c00996b93a83ac21a8a27a72e08bba9a84352aafb1f7d8bfd2bd6db3ba6025"
+    },
+    {
+      "index": 47,
+      "path": "src/game/soundscapeEngine.ts",
+      "bytes": 145180,
+      "sha256Kappa": "0ca5f9ad1aebc78146f5638f9396b5224b739170cd979bb5f1ec681b6ab50ebc"
+    },
+    {
+      "index": 48,
+      "path": "src/game/spectralColorEngine.ts",
+      "bytes": 27228,
+      "sha256Kappa": "f32184848af6f2e3e916d12568bb13542ecd3f2711fe1afd7275b3b06681fba9"
+    },
+    {
+      "index": 49,
+      "path": "src/game/standardModelEngine.ts",
+      "bytes": 56339,
+      "sha256Kappa": "8fd1f45a573b808bc7b0f27123feef43251336f2e4b3f8dcfe4fe20bdd392b5c"
+    },
+    {
+      "index": 50,
+      "path": "src/game/teleologyEngine.ts",
+      "bytes": 98024,
+      "sha256Kappa": "8453810a3b7d0dfdbe2d86363796892d29a32d809ecd9cdae6d8318ff64cef6e"
+    },
+    {
+      "index": 51,
+      "path": "src/game/vedantaDharmaEngine.ts",
+      "bytes": 39818,
+      "sha256Kappa": "921cf3f38f48037352aea9e4a63f24bf791b547557c40c3e85d1cf2ad9e82ee4"
+    },
+    {
+      "index": 52,
+      "path": "src/main.tsx",
+      "bytes": 4023,
+      "sha256Kappa": "3466ce7821bb32a771bf641c464cda073a5129a758bf4b7edbac0f7a73113b51"
+    },
+    {
+      "index": 53,
+      "path": "src/selfhost/browserCapabilityProbes.ts",
+      "bytes": 32879,
+      "sha256Kappa": "7c9db5a116733306203df67fe6f88a22ab0c974db5d25434c427dd4c36e42518"
+    },
+    {
+      "index": 54,
+      "path": "src/selfhost/browserLexLeanWasmCompiler.ts",
+      "bytes": 43511,
+      "sha256Kappa": "b7bac013cbc156a05d3bfe31de3a6f413a5d2577fe147871a66f1c1e24ad138c"
+    },
+    {
+      "index": 55,
+      "path": "src/selfhost/browserRuntimeSaturation.ts",
+      "bytes": 23384,
+      "sha256Kappa": "8e85ed282856711382e1aed382ee8c900a8137ff60cac1acd49c311d94be4f5c"
+    },
+    {
+      "index": 56,
+      "path": "src/selfhost/browserSelfHostEngine.ts",
+      "bytes": 63048,
+      "sha256Kappa": "bebc39667d1f149eb2adb8d2a3775cb39bd91e67d99dd52bcfd0c9998af08e89"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 spec = "prismpm/runtime-roots/1"
-lean_modules = ["PrismVerdantResonance.Foundation.Acoustics.V1.Model", "PrismVerdantResonance.Foundation.Anamnesis.V1.Model", "PrismVerdantResonance.Foundation.Articulation.V1.Model", "PrismVerdantResonance.Foundation.Botany.V1.Model", "PrismVerdantResonance.Foundation.Brand.V1.Model", "PrismVerdantResonance.Foundation.Chemistry.V1.Model", "PrismVerdantResonance.Foundation.Compression.V1.Model", "PrismVerdantResonance.Foundation.Cosmogenesis.V1.Model", "PrismVerdantResonance.Foundation.Dharma.V1.Model", "PrismVerdantResonance.Foundation.Ecology.V1.Model", "PrismVerdantResonance.Foundation.Graphics.V1.Model", "PrismVerdantResonance.Foundation.Humane.V1.Model", "PrismVerdantResonance.Foundation.Infrastructure.V1.Model", "PrismVerdantResonance.Foundation.Mathematics.V1.Model", "PrismVerdantResonance.Foundation.Mechanization.V1.Model", "PrismVerdantResonance.Foundation.MetaModel.V1.Model", "PrismVerdantResonance.Foundation.Morphogenesis.V1.Model", "PrismVerdantResonance.Foundation.Neuromorphic.V1.Model", "PrismVerdantResonance.Foundation.Ontology.V1.Model", "PrismVerdantResonance.Foundation.Physics.V1.Model", "PrismVerdantResonance.Foundation.Realizability.V1.Model", "PrismVerdantResonance.Foundation.Soundtrack.V1.Model", "PrismVerdantResonance.Foundation.SpatialAcoustics.V1.Model", "PrismVerdantResonance.Foundation.Teleology.V1.Model", "PrismVerdantResonance.Foundation.Vedanta.V1.Model", "PrismVerdantResonance.VerdantResonance"]
+lean_modules = ["PrismVerdantResonance.Foundation.Acoustics.V1.Model", "PrismVerdantResonance.Foundation.Anamnesis.V1.Model", "PrismVerdantResonance.Foundation.Articulation.V1.Model", "PrismVerdantResonance.Foundation.Botany.V1.Model", "PrismVerdantResonance.Foundation.Brand.V1.Model", "PrismVerdantResonance.Foundation.Chemistry.V1.Model", "PrismVerdantResonance.Foundation.Compression.V1.Model", "PrismVerdantResonance.Foundation.Cosmogenesis.V1.Model", "PrismVerdantResonance.Foundation.Dharma.V1.Model", "PrismVerdantResonance.Foundation.Ecology.V1.Model", "PrismVerdantResonance.Foundation.Graphics.V1.Model", "PrismVerdantResonance.Foundation.Host.V1.Model", "PrismVerdantResonance.Foundation.Humane.V1.Model", "PrismVerdantResonance.Foundation.Infrastructure.V1.Model", "PrismVerdantResonance.Foundation.Mathematics.V1.Model", "PrismVerdantResonance.Foundation.Mechanization.V1.Model", "PrismVerdantResonance.Foundation.MetaModel.V1.Model", "PrismVerdantResonance.Foundation.Morphogenesis.V1.Model", "PrismVerdantResonance.Foundation.Neuromorphic.V1.Model", "PrismVerdantResonance.Foundation.Ontology.V1.Model", "PrismVerdantResonance.Foundation.Physics.V1.Model", "PrismVerdantResonance.Foundation.Realizability.V1.Model", "PrismVerdantResonance.Foundation.Soundtrack.V1.Model", "PrismVerdantResonance.Foundation.SpatialAcoustics.V1.Model", "PrismVerdantResonance.Foundation.Teleology.V1.Model", "PrismVerdantResonance.Foundation.Vedanta.V1.Model", "PrismVerdantResonance.VerdantResonance"]
 ir_module = "PrismVerdantResonance"
 roots = [
   "PrismVerdantResonance.Foundation.Acoustics.V1.Model.stepAcousticsBusModulation",
@@ -75,6 +75,22 @@ roots = [
   "PrismVerdantResonance.Foundation.Ecology.V1.Model.verifyGranularAtomicToEnvironmentalChain",
   "PrismVerdantResonance.Foundation.Graphics.V1.Model.stepGraphicsBusModulation",
   "PrismVerdantResonance.Foundation.Graphics.V1.Model.verifyPassivePbrEnergyConservation",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.classifyCapabilityReceiptError",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.computeBrowserApiSaturationPermille",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostCeilingNanos",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostGranuleBytes",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostLineNanos",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostMovedBytes",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostRoundUp",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostSaturationDistanceNanos",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostSlowerNanos",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.hostStepNanos",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.optimalBrowserWorkerCount",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.shouldRollbackGenerationWatchdog",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.verifyBrowserGenerationAdmission",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.verifyCheckedU64NoOverflow",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIndependentQuotaCaps",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIsolatedCapabilitySaturation",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.evaluateGazeTargetInForwardCone",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.resolveCompassOctantIndex",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.stepDiurnalSkyLuminancePermille",
@@ -618,6 +634,102 @@ name = "PrismVerdantResonance.Foundation.Graphics.V1.Model.verifyPassivePbrEnerg
 package = "verdant_graphics_verify_passive_pbr_energy_conservation"
 targets = ["rust-core"]
 effects = ["overflow"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.classifyCapabilityReceiptError"
+package = "verdant_host_classify_capability_receipt_error"
+targets = ["rust-core"]
+effects = ["overflow"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.computeBrowserApiSaturationPermille"
+package = "verdant_host_compute_browser_api_saturation_permille"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostCeilingNanos"
+package = "verdant_host_host_ceiling_nanos"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostGranuleBytes"
+package = "verdant_host_host_granule_bytes"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostLineNanos"
+package = "verdant_host_host_line_nanos"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostMovedBytes"
+package = "verdant_host_host_moved_bytes"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostRoundUp"
+package = "verdant_host_host_round_up"
+targets = ["rust-core"]
+effects = ["overflow"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostSaturationDistanceNanos"
+package = "verdant_host_host_saturation_distance_nanos"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostSlowerNanos"
+package = "verdant_host_host_slower_nanos"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.hostStepNanos"
+package = "verdant_host_host_step_nanos"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.optimalBrowserWorkerCount"
+package = "verdant_host_optimal_browser_worker_count"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.shouldRollbackGenerationWatchdog"
+package = "verdant_host_should_rollback_generation_watchdog"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyBrowserGenerationAdmission"
+package = "verdant_host_verify_browser_generation_admission"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyCheckedU64NoOverflow"
+package = "verdant_host_verify_checked_u64_no_overflow"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIndependentQuotaCaps"
+package = "verdant_host_verify_independent_quota_caps"
+targets = ["rust-core"]
+effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIsolatedCapabilitySaturation"
+package = "verdant_host_verify_isolated_capability_saturation"
+targets = ["rust-core"]
+effects = []
 
 [[root]]
 name = "PrismVerdantResonance.Foundation.Humane.V1.Model.evaluateGazeTargetInForwardCone"

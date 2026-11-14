@@ -1,9 +1,13 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { ensurePrismMechanizedArtifacts } from '../../scripts/prismMechanizer';
+import {
+  ensurePrismMechanizedArtifacts,
+  inspectLeanAttestationStatus,
+} from '../../scripts/prismMechanizer';
 import { runMechanizedContractSweep } from '../../scripts/prismCli';
 import {
+  buildGen0SelfHostSporeArtifacts,
   ingestProductCodebaseLiftRegister,
   measureHandwrittenAndAxiomRatchetState,
   renderEngineWorkflowYamlFromLexLean,
@@ -87,6 +91,22 @@ import {
   certifiedWasmCore_triadicAgencyPrimeProduct,
   certifiedWasmCore_verifyStratumObstructionResolved,
   certifiedWasmCore_verifyW5HCertificateComplete,
+  certifiedWasmCore_computeBrowserApiSaturationPermille,
+  certifiedWasmCore_hostCeilingNanos,
+  certifiedWasmCore_hostGranuleBytes,
+  certifiedWasmCore_hostLineNanos,
+  certifiedWasmCore_hostMovedBytes,
+  certifiedWasmCore_hostRoundUp,
+  certifiedWasmCore_hostSaturationDistanceNanos,
+  certifiedWasmCore_hostSlowerNanos,
+  certifiedWasmCore_hostStepNanos,
+  certifiedWasmCore_optimalBrowserWorkerCount,
+  certifiedWasmCore_shouldRollbackGenerationWatchdog,
+  certifiedWasmCore_verifyBrowserGenerationAdmission,
+  certifiedWasmCore_classifyCapabilityReceiptError,
+  certifiedWasmCore_verifyCheckedU64NoOverflow,
+  certifiedWasmCore_verifyIndependentQuotaCaps,
+  certifiedWasmCore_verifyIsolatedCapabilitySaturation,
   certifiedWasmCoreCallCount,
   certifiedWasmDecideMint,
   certifiedWasmDispatchText,
@@ -97,6 +117,38 @@ import {
   certifiedWasmTotalWork,
   certifiedWasmTriadicCoherencePermille,
 } from './generatedCertifiedWasmBridge';
+import {
+  compileBrowserLexModulesToWasm32,
+  parseBrowserLexModule,
+  verifyAndInstantiateBrowserLexWasm,
+  verifyAndTranspileBrowserTypeScriptModule,
+} from '../selfhost/browserLexLeanWasmCompiler';
+import {
+  dispatchParallelWasmAbductionSweep,
+  evaluateBrowserHostSaturation,
+} from '../selfhost/browserRuntimeSaturation';
+import {
+  createMemorySelfHostFs,
+  evaluateSelfHostWatchdogAndRollback,
+  exportGenerationAsUorcSpore,
+  importOrganismSporeBundle,
+  proposeAndCertifyBrowserGeneration,
+  rehydrateHeadGenerationRuntime,
+  stepAutonomousBrowserEvolution,
+  unpackSporeIntoSelfHostFs,
+  type GenSporeManifest,
+} from '../selfhost/browserSelfHostEngine';
+import {
+  confineBrowserCapabilityPath,
+  createPersistentU64ByteStore,
+  insertPersistentU64Bytes,
+  lookupPersistentU64Bytes,
+  negateBrowserLexBooleanRoot,
+  removePersistentU64Bytes,
+  runBrowserCapabilitySaturationSuite,
+  UORC_BROWSER_CAPABILITY_CONTRACT,
+  validateBrowserCapabilityReceipt,
+} from '../selfhost/browserCapabilityProbes';
 import {
   admitLiftRegisterCandidate,
   COHERENT_CLASSICAL_REASONING_MODELS,
@@ -1885,7 +1937,7 @@ test('Root Judge calls the 10-Domain Universal Neuromorphic Bus, constructive bo
   const liveExtracted = extractAllPrismArtifacts(prismSrcDir);
   assert.deepEqual(liveExtracted.foundationPurity, GENERATED_PRISM_FOUNDATION_PURITY);
   assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.verified, true);
-  assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.checkedModules, 26);
+  assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.checkedModules, 27);
   assert.deepEqual(liveExtracted.domainBasisPrimes, GENERATED_PRISM_DOMAIN_BASIS_PRIMES);
   assert.deepEqual(liveExtracted.domainBasisPrimes, PRISM_DOMAIN_BASIS_PRIMES);
   assert.deepEqual(liveExtracted.contextPrimes, GENERATED_PRISM_CONTEXT_PRIMES);
@@ -3117,7 +3169,7 @@ test('31. Live Neuromorphic Bus Refinement Advances Observer Cosmogenesis & Modu
 
 test('32. Pure Parametric Canonical Seed, Concert Pitch & World Topology derive deterministically from UOR Primes & Rule-30 Dyadics', () => {
   assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.verified, true);
-  assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.checkedModules, 26);
+  assert.equal(GENERATED_PRISM_FOUNDATION_PURITY.checkedModules, 27);
 
   // Exact UOR prime & Rule-30 dyadic identities at Base Directive w = 8
   assert.equal(synthesizeParametricCanonicalSeed(1, 8), 42026);
@@ -4707,6 +4759,17 @@ test('52. 19th Model Teleological Closure: Zero Unexplained Structures/Features,
     'Extrapolate Highest Resolution',
     'Refine Parametric Cosmos',
     'tab-standard-models',
+    'Manifest Next Generation',
+    'Compile to wasm32',
+    'Verify 10/10 Capabilities',
+    'Rollback to gen-0',
+    'foundry-manifest-next-btn',
+    'inspector-foundry-panel',
+    'hud-selfhost-badge',
+    'Visit Biome',
+    'Guided Stroll [G]',
+    '<textarea',
+    '<select',
   ]) {
     assert.equal(
       appSource.includes(bannedUiToken),
@@ -6812,13 +6875,13 @@ test('62. Modular Scene Builders, Zero-GC 60Hz Biogeochemistry & Strict Compiler
 });
 
 test('63. Universal Prism LexLean-to-TypeScript Mechanizer, Differential Dispatch Parity & Zero-Drift Automation Gate', async () => {
-  // 1. Complete 29-module compilation coverage in generatedPrismRuntime.ts
-  assert.equal(GENERATED_PRISM_MECHANIZED_MANIFEST.moduleCount, 29);
+  // 1. Complete 30-module compilation coverage in generatedPrismRuntime.ts
+  assert.equal(GENERATED_PRISM_MECHANIZED_MANIFEST.moduleCount, 30);
   assert.ok(GENERATED_PRISM_MECHANIZED_MANIFEST.inductiveCount >= 2);
   assert.ok(GENERATED_PRISM_MECHANIZED_MANIFEST.structureCount >= 149);
   assert.ok(GENERATED_PRISM_MECHANIZED_MANIFEST.definitionCount >= 967);
   assert.ok(GENERATED_PRISM_MECHANIZED_MANIFEST.theoremCount >= 154);
-  assert.equal(Object.keys(PRISM_COMPILED_MODULES).length, 29);
+  assert.equal(Object.keys(PRISM_COMPILED_MODULES).length, 30);
 
   // 2. Exact 64-bit BigInt formal kernel parity (beyond IEEE-754 MAX_SAFE_INTEGER 2^53 - 1)
   const Comp = PRISM_COMPILED_MODULES['Foundation.Compression.V1.Model'];
@@ -6883,7 +6946,7 @@ test('63. Universal Prism LexLean-to-TypeScript Mechanizer, Differential Dispatc
 
   // 4. Universal auto-discovered contract sweep (all 87 byte vectors + >=152 breaks* refuters + 34 verify* gates)
   const sweep = await runMechanizedContractSweep();
-  assert.equal(sweep.modulesVerified, 29);
+  assert.equal(sweep.modulesVerified, 30);
   assert.equal(sweep.acceptanceVectorsVerified, 87);
   assert.ok(sweep.counterexamplePredicatesChecked >= 152);
   assert.ok(sweep.counterexampleEvaluations >= 1300);
@@ -7754,11 +7817,11 @@ test('69. Single Certified Wasm Runtime Cutover, Zero-Residue Codebase Lift & Li
     );
   }
 
-  // 177 Certified Production Roots (`174` `#![no_std]` `rust-core` + `3` `rust-std`) with 3-way parity
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 174);
+  // 193 Certified Production Roots (`190` `#![no_std]` `rust-core` + `3` `rust-std`) with 3-way parity
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 190);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustStdRootCount, 3);
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 177);
-  assert.equal(CERTIFIED_WASM_CORE_ROOT_NAMES.length, 174);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 193);
+  assert.equal(CERTIFIED_WASM_CORE_ROOT_NAMES.length, 190);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allKernelChecked, true);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allForbidUnsafeCode, true);
 
@@ -7969,11 +8032,11 @@ test('70. Purely Parametric {0, 1} Root Purity & Certified #![no_std] Wasm Const
   assert.equal(certifiedWasmCore_triadicAgencyPrimeProduct(true, true, true), 30);
 });
 
-test('71. Universal 5W+H Ontology Completeness: 29/29 Grounded Modules, 167/167 Certified Structures & 8-Stratum Obstruction Chain', () => {
+test('71. Universal 5W+H Ontology Completeness: 30/30 Grounded Modules, 172/172 Certified Structures & 8-Stratum Obstruction Chain', () => {
   const ledger = GENERATED_ONTOLOGY_5WH_LEDGER;
-  assert.equal(ledger.groundedModuleCount, 29);
+  assert.equal(ledger.groundedModuleCount, 30);
   assert.equal(ledger.ungroundedModuleCount, 0);
-  assert.equal(ledger.totalStructureCount, 167);
+  assert.equal(ledger.totalStructureCount, 172);
   assert.equal(ledger.uncertifiedStructureCount, 0);
   assert.equal(ledger.eightStrata.length, 8);
 
@@ -8120,8 +8183,680 @@ test('72. Live Parametric OntologicalTelosLoss Coordinate Descent, Non-Coercive 
   );
   assert.deepEqual(restored.ontologicalTelos.coordinates, liveCoEvo.ontologicalTelos.coordinates);
 
-  // Inspector UI surfaces the 5W+H Ontology self-inquiry tab
+  // 5W+H Ontology is integrated autonomously into the live co-evolution lifecycle (zero manual menu clutter)
+  const objectivesSrc = fs.readFileSync('src/game/autonomousObjectivesEngine.ts', 'utf8');
+  assert.equal(objectivesSrc.includes('stepLiveParametricOntologyCoordinates('), true);
   const inspectorSrc = fs.readFileSync('src/components/PrismInspectorModal.tsx', 'utf8');
-  assert.equal(inspectorSrc.includes('evaluateUniversal5WhOntologyCatalog('), true);
-  assert.equal(inspectorSrc.includes('data-testid="ontology-5wh-panel"'), true);
+  assert.equal(inspectorSrc.includes('data-testid="ontology-5wh-panel"'), false);
 });
+
+test('73. Browser Host Runtime API Saturation Laws & 3-Way Certified Wasm Parity (Foundation.Host.V1.Model)', async () => {
+  const hostTheorems = GENERATED_PRISM_THEOREMS_BY_MODULE['Foundation.Host.V1.Model'];
+  assert.equal(hostTheorems.length, 7);
+  assert.deepEqual(hostTheorems, [
+    'granuleWithinWorkingSetAndCacheMovementExact',
+    'ceilingCoversBothLanesAndZeroesDistanceAtCeiling',
+    'browserGenerationAdmissionEnforcesZeroResidueNonCoercionAndDominance',
+    'watchdogTriggersImmediateRollbackOnFaultOrFrameOverrun',
+    'hostRuntimeSaturationAndWorkerPoolVectorsHold',
+    'quotaPolicyRejectsSingleLaneOverrunEvenWhenSumFits',
+    'capabilityReceiptAndFalsifierPolicyVectorsHold',
+  ]);
+
+  const runner = new CertifiedRustRunner(process.cwd());
+  const HostIr = PRISM_COMPILED_MODULES['Foundation.Host.V1.Model'];
+
+  // 1. 3-way parity (`CertifiedRustRunner` CLI == `certifiedWasmCore_*` Wasm == `PRISM_COMPILED_MODULES` IR)
+  assert.equal(certifiedWasmCore_hostGranuleBytes(65536, 2097152, 1048576), 65536);
+  assert.equal(certifiedWasmCore_hostGranuleBytes(65536, 2097152, 4194304), 2097152);
+  assert.equal(
+    Number(runner.evalCoreRoot('hostGranuleBytes', [65536, 2097152, 4194304]).value),
+    2097152,
+  );
+  assert.equal(Number(HostIr.hostGranuleBytes(65536n, 2097152n, 4194304n)), 2097152);
+
+  assert.equal(certifiedWasmCore_hostRoundUp(1000, 64), 16);
+  assert.equal(certifiedWasmCore_hostMovedBytes(64, 8388608, 4194304), 64);
+  assert.equal(certifiedWasmCore_hostMovedBytes(64, 2097152, 4194304), 0);
+  assert.equal(certifiedWasmCore_hostSlowerNanos(120, 45), 120);
+
+  const stepNs = certifiedWasmCore_hostStepNanos(1024, 4, 250_000_000);
+  const lineNs = certifiedWasmCore_hostLineNanos(64, 25_600_000_000);
+  const ceilNs = certifiedWasmCore_hostCeilingNanos(1024, 64, 4, 250_000_000, 25_600_000_000);
+  assert.equal(ceilNs, Math.max(stepNs, lineNs));
+  assert.equal(Number(runner.evalCoreRoot('hostCeilingNanos', [1024, 64, 4, 250_000_000, 25_600_000_000]).value), ceilNs);
+  assert.equal(certifiedWasmCore_hostSaturationDistanceNanos(ceilNs, ceilNs), 0);
+  assert.equal(certifiedWasmCore_hostSaturationDistanceNanos(ceilNs, ceilNs + 25), 25);
+
+  assert.equal(certifiedWasmCore_optimalBrowserWorkerCount(1), 1);
+  assert.equal(certifiedWasmCore_optimalBrowserWorkerCount(4), 3);
+  assert.equal(certifiedWasmCore_optimalBrowserWorkerCount(16), 8);
+
+  // Full saturation across threads + OPFS + ServiceWorker + AudioWorklet + Wasm reaches 1000‰
+  assert.equal(
+    certifiedWasmCore_computeBrowserApiSaturationPermille(8, 8, true, true, true, true),
+    1000,
+  );
+  assert.equal(
+    certifiedWasmCore_computeBrowserApiSaturationPermille(8, 8, true, true, true, false),
+    0,
+  );
+  assert.equal(
+    certifiedWasmCore_verifyBrowserGenerationAdmission(4, 4, 0, 0, 512, 8200, 16667, 110, 150, 1024, 2048),
+    true,
+  );
+  assert.equal(
+    certifiedWasmCore_verifyBrowserGenerationAdmission(4, 4, 1, 0, 512, 8200, 16667, 110, 150, 1024, 2048),
+    false,
+  );
+
+  // Live host saturation snapshot & parallel Rule-30 abduction sweep
+  const sat = evaluateBrowserHostSaturation({
+    logicalThreads: 8,
+    activeWorkers: 7,
+    wasmPages64KiB: 64,
+    opfsMounted: true,
+    serviceWorkerActive: true,
+    audioWorkletActive: true,
+    observedStepNanos: 512,
+  });
+  assert.equal(sat.apiSaturationPermille, 1000);
+  assert.equal(sat.coresUnused, 0);
+  assert.equal(sat.activeGranuleBytes, 2097152);
+
+  const sweep = await dispatchParallelWasmAbductionSweep({
+    seeds: [1n, 3n, 7n, 15n],
+    busWeight: 12,
+    attentionPermille: 850,
+    dissonancePermille: 40,
+  });
+  assert.equal(sweep.length, 4);
+  for (const cand of sweep) {
+    assert.ok(cand.triadicCoherencePermille > SOLIPSISTIC_RULE30_CEILING_PERMILLE);
+  }
+});
+
+test('74. Browser-Resident LexLean-to-wasm32 Binary Compiler, Constructive Verifier & Foundry Hygiene Gate', async () => {
+  const ontRaw = fs.readFileSync('prism/src/Foundation/Ontology/V1/Model.lex.tex', 'utf8');
+  const hostRaw = fs.readFileSync('prism/src/Foundation/Host/V1/Model.lex.tex', 'utf8');
+
+  const ontParsed = parseBrowserLexModule(ontRaw);
+  const hostParsed = parseBrowserLexModule(hostRaw);
+  assert.equal(ontParsed.moduleName, 'Foundation.Ontology.V1.Model');
+  assert.equal(ontParsed.classicalChoiceCount, 0);
+  assert.equal(ontParsed.literalGtOneCount, 0);
+  assert.equal(ontParsed.stringFieldCount, 0);
+  assert.equal(hostParsed.moduleName, 'Foundation.Host.V1.Model');
+  assert.equal(hostParsed.classicalChoiceCount, 0);
+
+  // Compile both `.lex.tex` modules directly into WebAssembly 1.0 (`\0asm\x01\x00\x00\x00`) in-memory
+  const compiled = await verifyAndInstantiateBrowserLexWasm([ontParsed, hostParsed]);
+  assert.equal(compiled.report.ok, true, `Diagnostics: ${compiled.report.diagnostics.join('; ')}`);
+  assert.equal(compiled.report.classicalChoiceCount, 0);
+  assert.equal(compiled.report.foundationPurityOk, true);
+  assert.equal(compiled.report.ontologyRootPurityOk, true);
+  assert.ok(compiled.report.decideGatesTotal >= 4);
+  assert.equal(compiled.report.decideGatesPassed, compiled.report.decideGatesTotal);
+  assert.ok(compiled.report.wasmDifferentialMatches >= 10);
+  assert.deepEqual(Array.from(compiled.bundle.wasmBytes.slice(0, 4)), [0x00, 0x61, 0x73, 0x6d]);
+  assert.ok(compiled.exports !== null);
+
+  // Bit-exact agreement between browser-emitted wasm32 exports and rustc-certified Wasm exports!
+  const browserNthPrime = compiled.exports!.nthPrimeConstructive as (r: bigint) => bigint;
+  const browserOptWorkers = compiled.exports!.optimalBrowserWorkerCount as (t: bigint) => bigint;
+  for (let r = 0; r < 6; r++) {
+    assert.equal(Number(browserNthPrime(BigInt(r))), certifiedWasmCore_nthPrimeConstructive(r));
+  }
+  assert.equal(Number(browserOptWorkers(8n)), certifiedWasmCore_optimalBrowserWorkerCount(8));
+
+  // Planted-defect rejections: Classical.choice, unproved `:= true`, and Foundry TS residue
+  const taintedChoice = parseBrowserLexModule(
+    hostRaw.replace('axioms: []', 'axioms: [Classical.choice]'),
+  );
+  const badChoiceRes = await verifyAndInstantiateBrowserLexWasm([ontParsed, taintedChoice]);
+  assert.equal(badChoiceRes.report.ok, false);
+  assert.ok(badChoiceRes.report.classicalChoiceCount > 0);
+
+  const cleanTs = verifyAndTranspileBrowserTypeScriptModule(
+    'src/selfhost/sample.ts',
+    'export function okFn(x: number): number { return certifiedWasmCore_ulebLength(x); }',
+  );
+  assert.equal(cleanTs.ok, true);
+  assert.equal(cleanTs.residueCount, 0);
+
+  const dirtyTs = verifyAndTranspileBrowserTypeScriptModule(
+    'src/selfhost/sample.ts',
+    'export function unliftedMath(x: number): number { return x * 42 + 7; }',
+  );
+  assert.equal(dirtyTs.ok, false);
+  assert.equal(dirtyTs.residueCount, 1);
+  assert.ok(compileBrowserLexModulesToWasm32([ontParsed]).wasmBytes.length > 32);
+});
+
+test('75. End-to-End Self-Hosting Browser Organism Lifecycle: gen-0 UORC Spore Unpack, Autonomous gen-1 Promotion, Watchdog Rollback & Spore Export', async () => {
+  // 1. Verify canonical `public/genesis/verdant_gen0_sources.uorc` + manifest exist and match live repo
+  const liveSpore = buildGen0SelfHostSporeArtifacts(process.cwd());
+  const diskUorc = new Uint8Array(fs.readFileSync('public/genesis/verdant_gen0_sources.uorc'));
+  const diskManifest = JSON.parse(
+    fs.readFileSync('public/genesis/verdant_gen0_manifest.json', 'utf8'),
+  ) as GenSporeManifest;
+  assert.equal(diskUorc.length, liveSpore.archiveBuffer.length);
+  assert.equal(diskManifest.generationId, 'gen-0');
+  assert.ok(diskManifest.fileCount >= 45);
+
+  // 2. Unpack `gen-0` spore into virtual browser OPFS and verify cryptographic integrity
+  const vfs = createMemorySelfHostFs();
+  const unpackRes = await unpackSporeIntoSelfHostFs(vfs, diskManifest, diskUorc);
+  assert.equal(unpackRes.ok, true, unpackRes.error);
+  assert.equal(unpackRes.unpackedFiles, diskManifest.fileCount);
+  assert.equal(await vfs.readText('HEAD'), 'gen-0');
+  const unpackedHostLex = await vfs.readText('generations/gen-0/files/prism/src/Foundation/Host/V1/Model.lex.tex');
+  assert.ok(unpackedHostLex && unpackedHostLex.includes('verifyBrowserGenerationAdmission'));
+
+  // 3. Refuse regressive or residue-introducing candidate generation (`HEAD` remains `gen-0`)
+  const refused = await proposeAndCertifyBrowserGeneration(vfs, {
+    modifiedFiles: {
+      'src/selfhost/badMutation.ts': 'export function badHelper(n: number): number { return n + 99; }',
+    },
+    candidateTelosLoss: 50,
+    incumbentTelosLoss: 180,
+    candidateSteps: 2048,
+    incumbentSteps: 4096,
+    frameTimeMicros: 8000,
+  });
+  assert.equal(refused.admitted, false);
+  assert.ok(refused.foundryResidueCount > 0);
+  assert.equal(await vfs.readText('HEAD'), 'gen-0');
+
+  // 4. Step autonomous browser evolution (`gen-0 -> gen-1`): synthesizes `.lex.tex`, compiles `wasm32`, verifies & promotes
+  const promoted = await stepAutonomousBrowserEvolution(vfs, {
+    playerStillnessPermille: 880,
+    playerGazeDwellPermille: 840,
+    playerHarmonicComfortPermille: 910,
+    incumbentDissonancePermille: 120,
+    busWeight: 12,
+    observedFrameMicros: 8100,
+  });
+  assert.equal(promoted.admitted, true, `Refusal: ${promoted.refusalReasons.join('; ')}`);
+  assert.equal(promoted.generationId, 'gen-1');
+  assert.equal(await vfs.readText('HEAD'), 'gen-1');
+  assert.ok(promoted.compiledWasmBytes > 64);
+  assert.ok(promoted.telosLossCandidate < promoted.telosLossIncumbent);
+  assert.ok(promoted.hotExports !== null);
+
+  const manifestedGen1Fn = promoted.hotExports!.verifyManifestedGen1Coherence as () => number;
+  assert.equal(manifestedGen1Fn(), 1);
+
+  // 5. Export `gen-1` as a self-contained `.uorc` organism spore and import into a clean second browser FS
+  const exportedSpore = await exportGenerationAsUorcSpore(vfs, 'gen-1');
+  assert.ok(exportedSpore !== null);
+  const secondBrowserFs = createMemorySelfHostFs();
+  const imported = await importOrganismSporeBundle(secondBrowserFs, exportedSpore!.bundleWireBytes);
+  assert.equal(imported.ok, true, imported.error);
+  assert.equal(imported.generationId, 'gen-1');
+  assert.equal(await secondBrowserFs.readText('HEAD'), 'gen-1');
+
+  // 6. Certified `#![no_std]` Wasm Watchdog Rollback (`gen-1 -> gen-0`) on planted runtime fault
+  assert.equal(certifiedWasmCore_shouldRollbackGenerationWatchdog(4, 24, 0), false);
+  assert.equal(certifiedWasmCore_shouldRollbackGenerationWatchdog(0, 24, 1), true);
+  const watchdog = await evaluateSelfHostWatchdogAndRollback(vfs, {
+    consecutiveOverbudgetFrames: 0,
+    runtimeFaultCount: 1,
+  });
+  assert.equal(watchdog.rolledBack, true);
+  assert.equal(watchdog.previousHead, 'gen-1');
+  assert.equal(watchdog.activeHead, 'gen-0');
+  assert.equal(await vfs.readText('HEAD'), 'gen-0');
+
+  // Verify sovereign ServiceWorker, AudioWorklet, and autonomous startup boot are wired without manual Foundry UI clutter
+  assert.equal(fs.existsSync('public/verdant-sw.js'), true);
+  assert.equal(fs.existsSync('public/verdant-audio-worklet.js'), true);
+  const mainSrc = fs.readFileSync('src/main.tsx', 'utf8');
+  assert.equal(mainSrc.includes('bootBrowserSelfHostOrganism('), true);
+  const inspectorSrc = fs.readFileSync('src/components/PrismInspectorModal.tsx', 'utf8');
+  assert.equal(inspectorSrc.includes('data-testid="inspector-tab-foundry"'), false);
+  assert.equal(inspectorSrc.includes('data-testid="inspector-foundry-panel"'), false);
+});
+
+test('76. Uorc.CapabilityContract Formal Laws: Independent Quota Isolation, Checked U64 & CAP0001..CAP0006 Receipt Parity', () => {
+  const runner = new CertifiedRustRunner(process.cwd());
+  const HostIr = PRISM_COMPILED_MODULES['Foundation.Host.V1.Model'];
+
+  // 1. 3-way parity on `verifyCheckedU64NoOverflow`
+  assert.equal(certifiedWasmCore_verifyCheckedU64NoOverflow(10, 5, 15), true);
+  assert.equal(certifiedWasmCore_verifyCheckedU64NoOverflow(10, 6, 15), false);
+  assert.equal(runner.evalCoreRoot('verifyCheckedU64NoOverflow', [10, 5, 15]).value, true);
+  assert.equal(Boolean(HostIr.verifyCheckedU64NoOverflow(10n, 6n, 15n)), false);
+
+  // 2. 3-way parity on `verifyIndependentQuotaCaps` (single-lane overrun rejected even when sum fits!)
+  assert.equal(certifiedWasmCore_verifyIndependentQuotaCaps(8, 8, 8, 8, 64, 64), true);
+  assert.equal(certifiedWasmCore_verifyIndependentQuotaCaps(4, 8, 9, 8, 4, 64), false);
+  assert.equal(runner.evalCoreRoot('verifyIndependentQuotaCaps', [4, 8, 9, 8, 4, 64]).value, false);
+  assert.equal(Boolean(HostIr.verifyIndependentQuotaCaps(4n, 8n, 9n, 8n, 4n, 64n)), false);
+
+  // 3. 3-way parity on `classifyCapabilityReceiptError` across valid `0` and `CAP0001..CAP0006` (`1..6`)
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, true, true, true, true, true, true, true, true),
+    0,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(false, true, true, true, true, true, true, true, true),
+    1,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, false, true, true, true, true, true, true, true),
+    2,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, true, false, true, true, true, true, true, true),
+    3,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, true, true, false, true, true, true, true, true),
+    4,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, true, true, true, true, false, true, true, true),
+    5,
+  );
+  assert.equal(
+    certifiedWasmCore_classifyCapabilityReceiptError(true, true, true, true, true, true, true, true, false),
+    6,
+  );
+  assert.equal(
+    Number(
+      runner.evalCoreRoot('classifyCapabilityReceiptError', [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+      ]).value,
+    ),
+    5,
+  );
+
+  // 4. `verifyIsolatedCapabilitySaturation` refuses partial falsifier coverage
+  assert.equal(certifiedWasmCore_verifyIsolatedCapabilitySaturation(10, 10, 10, 0), true);
+  assert.equal(certifiedWasmCore_verifyIsolatedCapabilitySaturation(10, 10, 9, 0), false);
+  assert.equal(certifiedWasmCore_verifyIsolatedCapabilitySaturation(10, 10, 10, 5), false);
+});
+
+test('77. Isolated 10/10 Browser Runtime Capability Saturation Suite, Mandatory Per-Root Falsifiers & Persistent U64 Store', async () => {
+  assert.equal(UORC_BROWSER_CAPABILITY_CONTRACT.length, 10);
+  const vfs = createMemorySelfHostFs();
+  const report = await runBrowserCapabilitySaturationSuite(vfs);
+
+  assert.equal(report.accepted, true);
+  assert.equal(report.saturatedCount, 10);
+  assert.equal(report.requiredCount, 10);
+  assert.equal(report.falsifiersRejectedCount, 10);
+  assert.equal(report.receiptErrorCode, null);
+  assert.equal(report.capabilities.length, 10);
+  assert.equal(report.observations.length, 40);
+
+  for (const outcome of report.capabilities) {
+    assert.equal(outcome.runtimeStatus, 'passed', `Expected ${outcome.capability.id} to pass`);
+    assert.equal(outcome.falsifierRejected, true, `Expected falsifier rejection on ${outcome.capability.id}`);
+    assert.equal(outcome.receiptErrorCode, null);
+  }
+
+  // Verify `negateBrowserLexBooleanRoot` rejects missing roots with `CAP0001`
+  const missingNeg = negateBrowserLexBooleanRoot(
+    '\\begin{lexlean}{Test.Mod}\n\\begin{semanticmodule}\n\\end{semanticmodule}\n\\end{lexlean}',
+    'nonExistentRoot',
+  );
+  assert.equal(missingNeg.ok, false);
+  if (!missingNeg.ok) {
+    assert.equal(missingNeg.errorCode, 'CAP0001');
+  }
+
+  // Verify `confineBrowserCapabilityPath` rejects `..` and leading `/` with `CAP0005`
+  assert.equal(confineBrowserCapabilityPath('../secret').ok, false);
+  assert.equal(confineBrowserCapabilityPath('../secret').errorCode, 'CAP0005');
+  assert.equal(confineBrowserCapabilityPath('/abs/path').errorCode, 'CAP0005');
+  assert.equal(confineBrowserCapabilityPath('probes/cap08/ok.bin').ok, true);
+
+  // Verify planted missing-falsifier receipt is rejected with `CAP0005`
+  const hex64 = 'a'.repeat(64);
+  const plantedReceipt = validateBrowserCapabilityReceipt({
+    contractIds: ['bytes', 'scan'],
+    observationIds: ['obs.1', 'obs.2'],
+    wasmIdentityLocked: true,
+    workerHealthy: true,
+    symbolBound: true,
+    receipt: {
+      buildId: hex64,
+      verifyBuildId: hex64,
+      acceptanceBuildId: hex64,
+      manifestBuildId: hex64,
+      attestationId: hex64,
+      rawManifestSha256: hex64,
+      sourceId: hex64,
+      semanticId: hex64,
+      baselinePassed: true,
+      falsifierRejected: false,
+      oracleFooterVerified: true,
+      confinedRelativePath: 'probes/cap-bytes/receipt.json',
+    },
+  });
+  assert.equal(plantedReceipt.valid, false);
+  assert.equal(plantedReceipt.errorCode, 'CAP0005');
+
+  // Verify pure persistent UInt64 byte store preserves prior snapshots across U64::MAX
+  const s0 = createPersistentU64ByteStore();
+  const s1 = insertPersistentU64Bytes(s0, 0xffff_ffff_ffff_ffffn, new Uint8Array([7, 8]))!;
+  const s2 = removePersistentU64Bytes(s1, 0xffff_ffff_ffff_ffffn);
+  assert.deepEqual(Array.from(lookupPersistentU64Bytes(s1, 0xffff_ffff_ffff_ffffn)!), [7, 8]);
+  assert.equal(lookupPersistentU64Bytes(s2, 0xffff_ffff_ffff_ffffn), null);
+});
+
+test('78. Fused LexLean + Zero-Residue TypeScript Autonomous Enhancement, Spore Kernel Rehydration & Live 60Hz Loop Coupling', async () => {
+  const diskUorc = new Uint8Array(fs.readFileSync('public/genesis/verdant_gen0_sources.uorc'));
+  const diskManifest = JSON.parse(
+    fs.readFileSync('public/genesis/verdant_gen0_manifest.json', 'utf8'),
+  ) as GenSporeManifest;
+
+  const vfs = createMemorySelfHostFs();
+  const unpacked = await unpackSporeIntoSelfHostFs(vfs, diskManifest, diskUorc);
+  assert.equal(unpacked.ok, true);
+
+  // 1. Autonomous evolution synthesizes BOTH `.lex.tex` (`wasm32` + falsifier check) AND zero-residue `.ts` projection
+  const gen1 = await stepAutonomousBrowserEvolution(vfs, {
+    playerStillnessPermille: 910,
+    playerGazeDwellPermille: 860,
+    playerHarmonicComfortPermille: 480,
+    incumbentDissonancePermille: 160,
+    busWeight: 14,
+    observedFrameMicros: 7900,
+  });
+  assert.equal(gen1.admitted, true, `Refusal: ${gen1.refusalReasons.join('; ')}`);
+  assert.equal(gen1.generationId, 'gen-1');
+  assert.ok(gen1.falsifiersVerifiedCount >= 1);
+  assert.ok(gen1.hotTsProjection !== null);
+
+  const projOut = gen1.hotTsProjection!(4);
+  assert.ok(projOut.primeHarmonicLimit >= 5);
+  assert.ok(projOut.phyllotaxisSpiral >= 1);
+  assert.ok(projOut.warmthScale > 1.0 && projOut.warmthScale <= 1.4);
+  assert.ok(projOut.enhancementFocus.length > 0);
+
+  // 2. Export `gen-1` `.vrspore.uorc`, import into a fresh browser FS, and verify `rehydrateHeadGenerationRuntime`
+  //    recompiles & restores BOTH `hotExports` (`wasm32`) and `hotTsProjection` without GitHub!
+  const spore = await exportGenerationAsUorcSpore(vfs, 'gen-1');
+  assert.ok(spore !== null);
+
+  const freshBrowserFs = createMemorySelfHostFs();
+  const importRes = await importOrganismSporeBundle(freshBrowserFs, spore!.bundleWireBytes);
+  assert.equal(importRes.ok, true);
+  assert.equal(importRes.generationId, 'gen-1');
+
+  const rehydrated = await rehydrateHeadGenerationRuntime(freshBrowserFs);
+  assert.equal(rehydrated.headGenerationId, 'gen-1');
+  assert.ok(rehydrated.hotExports !== null);
+  assert.ok(rehydrated.hotTsProjection !== null);
+  assert.deepEqual(rehydrated.hotTsProjection!(4), projOut);
+
+  // 3. Verify `GardenCanvas.tsx`, `main.tsx` & `App.tsx` close the autonomous 60Hz organism + capability suite loop without menu clutter
+  const canvasSrc = fs.readFileSync('src/components/GardenCanvas.tsx', 'utf8');
+  assert.equal(canvasSrc.includes('evaluateLiveWatchdogFrameTick('), true);
+  assert.equal(canvasSrc.includes('activeHotTsProjection'), true);
+  assert.equal(canvasSrc.includes('triggerLiveAutonomousEvolutionStep('), true);
+  assert.equal(canvasSrc.includes('shPlayerBoost'), true);
+
+  const engineSrc = fs.readFileSync('src/selfhost/browserSelfHostEngine.ts', 'utf8');
+  assert.equal(engineSrc.includes('runBrowserCapabilitySaturationSuite('), true);
+  const appSrc = fs.readFileSync('src/App.tsx', 'utf8');
+  assert.equal(appSrc.includes('importLiveOrganismSporeBundle'), true);
+});
+
+test('79. Zero-Classical-Choice Lean Attestation Provenance, Dynamic 30-Module Conformance & Unified Self-Host Anamnesis Lineage', () => {
+  // 1. Verify Lean 4.32 attestation partitions Verdant+Preserve declarations with 0 Classical.choice and 0 sorry
+  const lean = inspectLeanAttestationStatus(process.cwd());
+  if (lean.available) {
+    assert.equal(lean.allOk, true);
+    assert.equal(lean.sorryDetected, false);
+    assert.equal(lean.verdantClassicalChoiceCount, 0);
+    assert.ok(lean.verdantDeclarationCount >= 1600);
+    for (const ax of lean.verdantObservedAxioms) {
+      assert.ok(
+        ax === 'Quot.sound' || ax === 'propext',
+        `Unexpected non-constructive axiom in Verdant+Preserve declarations: ${ax}`,
+      );
+    }
+  }
+
+  // 2. Verify CONFORMANCE.md dynamically reports all 30 .lex.tex modules in AUTH-07
+  const conformanceMd = fs.readFileSync('CONFORMANCE.md', 'utf8');
+  assert.equal(conformanceMd.includes('across all 30 `.lex.tex` modules'), true);
+
+  // 3. Verify lossless UORC\x01 Anamnesis + `#uorc=` link round-trips selfHostGenerationId & selfHostTreeKappa with 0 drift
+  const neuro = createInitialNeuromorphicState(3);
+  const gardenPlants = generateGardenPlants({ alphaSeed: 3 });
+  const env = serializeAnamnesisSnapshot({
+    alphaSeed: 3,
+    atmosphere: 'twilight',
+    isMuted: false,
+    exploredBiomes: ['meadow', 'sanctuary'],
+    manifold: neuro.universalManifold,
+    plants: gardenPlants,
+    selfHostGenerationId: 'gen-2',
+    selfHostTreeKappa: 'c0ffee'.repeat(10) + '1234',
+  });
+  assert.equal(env.payload.selfHostGenerationId, 'gen-2');
+  const sharedLink = encodeShareableUorcGardenHash(env);
+  const decodedLink = decodeShareableUorcGardenHash(sharedLink.hashFragment);
+  assert.equal(decodedLink.verified, true);
+  assert.equal(decodedLink.roundTripDriftCount, 0);
+  assert.equal(decodedLink.envelope?.payload.selfHostGenerationId, 'gen-2');
+  assert.equal(decodedLink.envelope?.payload.selfHostTreeKappa, 'c0ffee'.repeat(10) + '1234');
+});
+
+test('80. Complete Verdant Holistic Organism Closure: Multi-Modal gen-N World Projection, Player Spore-Drop UX & 24/24 Autonomous KPIs', () => {
+  // 1. Holistic structural & runtime invariants across all 30 modules, 193 Wasm roots, 172 W5H structures & 0 residue
+  assert.equal(GENERATED_PRISM_MECHANIZED_MANIFEST.moduleCount, 30);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 193);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 190);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allKernelChecked, true);
+  assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.groundedModuleCount, 30);
+  assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.totalStructureCount, 172);
+  assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.uncertifiedStructureCount, 0);
+
+  // 2. Verify multi-modal gen-N optical + botanical + acoustic world coupling & player Foundry/Ontology/spore-drop UX
+  const canvasSrc = fs.readFileSync('src/components/GardenCanvas.tsx', 'utf8');
+  assert.equal(canvasSrc.includes('shIridescenceScale'), true);
+  assert.equal(canvasSrc.includes('shGlowMul'), true);
+  assert.ok(canvasSrc.split('\n').length < 5400);
+
+  const appSrc = fs.readFileSync('src/App.tsx', 'utf8');
+  assert.equal(appSrc.includes('handleSporeFileDrop'), true);
+  assert.equal(appSrc.includes('onCircadianAtmosphereAdvance={cycleAtmosphere}'), true);
+  assert.equal(appSrc.includes('data-testid="hud-selfhost-badge"'), false);
+  assert.equal(appSrc.includes("openInspectorAtTab('foundry')"), false);
+  assert.equal(appSrc.includes("openInspectorAtTab('ontology')"), false);
+
+  // 2b. Browser boot-order invariant: `src/main.tsx` must NEVER statically import `App` or `selfhost`
+  // before `await initCertifiedWasmRuntime(...)` resolves, and `vite.config.ts` must isolate
+  // `generatedCertifiedWasmBridge` into its own zero-dependency Rollup chunk so browsers never
+  // hit `NoCertifiedRoot` during static ESM evaluation (`#0b1612` blank green screen guard).
+  const mainSrc = fs.readFileSync('src/main.tsx', 'utf8');
+  assert.equal(/^\s*import\s+.*from\s+['"]\.\/App/m.test(mainSrc), false);
+  assert.equal(/^\s*import\s+.*from\s+['"]\.\/selfhost/m.test(mainSrc), false);
+  assert.equal(mainSrc.includes('await initCertifiedWasmRuntime('), true);
+  assert.equal(mainSrc.includes("await import('./App.tsx')"), true);
+
+  const viteCfgSrc = fs.readFileSync('vite.config.ts', 'utf8');
+  assert.equal(viteCfgSrc.includes("return 'certified-wasm-bridge';"), true);
+
+  // 3. Verify all 6/6 Executive KPIs and 24/24 Reflexive Holon Facet KPIs + Player-Referenced Optimization Closure
+  const kpis = evaluateVerdantAutonomousKpis(
+    { busWeight: 12 },
+    { driftCount: 0, coldCompileMs: 420, maxBundleChunkKb: 575 },
+  );
+  assert.equal(kpis.verified, true);
+  assert.equal(kpis.satisfiedFacetKpiCount, 24);
+  assert.equal(kpis.executiveKpis.every((k) => k.satisfied), true);
+
+  const opt = runAutonomousHolonSelfOptimization(8, 10);
+  assert.equal(opt.monotonicQualityAscentVerified, true);
+  assert.equal(opt.playerInclusionRequiredVerified, true);
+});
+
+test('81. Holistic Autonomous Observer + Player Co-Evolution & Serene Gameplay-First UI Lifecycle', async () => {
+  // 1. Verify live bar-by-bar Observer co-evolution autonomously evolves ALL 22 standard models,
+  //    ALL 10 Prism manifold domains, ALL 11 parts of the Observer (including 'player-user'),
+  //    playerRealm embodiment/listening aura/locus ring, organicRealm, inorganicRealm, and supraDirective!
+  let neuro = createInitialNeuromorphicState(1);
+  let coEvo = createInitialLiveCoEvolutionState(8);
+  const plants = generateGardenPlants({ alphaSeed: 1 });
+
+  const initialPlayerRealm = neuro.observer.cosmogenesis.playerRealm;
+  const initialOrganicVitality = neuro.observer.cosmogenesis.organicRealm.organicVitalityPermille;
+  const initialInorganicScale = neuro.observer.cosmogenesis.inorganicRealm.inorganicScalePermille;
+  const initialFidelity = neuro.universalManifold.globalFidelityIndex;
+
+  for (let bar = 1; bar <= 10; bar++) {
+    coEvo = stepLiveObserverPlayerCoEvolutionBar(coEvo, {
+      harmonyPct: 35 + bar * 4,
+      velocityDm: bar % 3 === 0 ? 0 : 6,
+      isStillness: bar % 3 === 0,
+      hasFocalTarget: true,
+      focalTargetAttuned: bar >= 3,
+      nearestFeatureDistanceM: 5,
+      restStepCount: 7,
+      activeVoiceCount: 3,
+      tenneyConsonancePurity01: 0.92,
+      awakenedSpeciesCount: Math.min(5, 1 + Math.floor(bar / 2)),
+      exploredBiomesCount: Math.min(5, 1 + Math.floor(bar / 3)),
+      coerciveDarkPatternCount: 0,
+    });
+    if (coEvo.lastBarAdmitted) {
+      neuro = applyContinuousGameplayMicroPlasticity(
+        neuro,
+        0.25,
+        'golden',
+        coEvo.modelWeights22,
+        {
+          biome: 'meadow',
+          species: 'chime-lily',
+          action: bar % 3 === 0 ? 'stillness' : 'observe',
+          velocityDm: bar % 3 === 0 ? 0 : 6,
+          agitationPct: 0,
+          harmonyPct: 35 + bar * 4,
+          playerX: bar * 0.8,
+          playerZ: -bar * 0.6,
+          playerYaw: 0.2,
+          plants,
+          exploredBiomes: ['meadow', 'grove'],
+          barIndex: bar,
+        },
+      );
+    }
+  }
+
+  assert.ok(coEvo.admittedMutationCount >= 4, `Expected >=4 admitted co-evolution bars, got ${coEvo.admittedMutationCount}`);
+  // Every single one of the 11 parts of the Observer (Player + 10 Prism domains) must advance beyond base directive (w > 8)!
+  for (const partId of OBSERVER_PART_ORDER) {
+    const part = neuro.observer.parts[partId];
+    assert.ok(
+      part.synapticWeight > 8 && part.exceedsBaseDirective,
+      `Observer part '${partId}' failed to evolve autonomously (w=${part.synapticWeight})`,
+    );
+  }
+  // Player self-model (`playerRealm`), organic biota, inorganic monuments, and Supra-Directive all co-evolve!
+  const evolvedPlayerRealm = neuro.observer.cosmogenesis.playerRealm;
+  assert.ok(evolvedPlayerRealm.embodimentPermille > initialPlayerRealm.embodimentPermille);
+  assert.ok(evolvedPlayerRealm.coObserverLocusOuterRadiusMeters > initialPlayerRealm.coObserverLocusOuterRadiusMeters);
+  assert.ok(evolvedPlayerRealm.embodimentScaleMultiplier > initialPlayerRealm.embodimentScaleMultiplier);
+  assert.ok(evolvedPlayerRealm.coObserverLocusLuminance > initialPlayerRealm.coObserverLocusLuminance);
+  assert.ok(neuro.observer.cosmogenesis.organicRealm.organicVitalityPermille > initialOrganicVitality);
+  assert.ok(neuro.observer.cosmogenesis.inorganicRealm.inorganicScalePermille > initialInorganicScale);
+  assert.ok(neuro.universalManifold.globalFidelityIndex > initialFidelity);
+  assert.ok(neuro.observer.supraDirective.tier >= 1);
+  assert.ok(neuro.observer.supraDirective.runtimeSynthesizedModels.length >= 1);
+
+  // 2. Verify multi-generation autonomous browser self-hosting (`gen-0 -> gen-1 -> gen-2`) + `playerEmbodimentScale`
+  const diskUorc = new Uint8Array(fs.readFileSync('public/genesis/verdant_gen0_sources.uorc'));
+  const diskManifest = JSON.parse(
+    fs.readFileSync('public/genesis/verdant_gen0_manifest.json', 'utf8'),
+  ) as GenSporeManifest;
+  const vfs = createMemorySelfHostFs();
+  await unpackSporeIntoSelfHostFs(vfs, diskManifest, diskUorc);
+
+  const g1 = await stepAutonomousBrowserEvolution(vfs, {
+    playerStillnessPermille: 820,
+    playerGazeDwellPermille: 760,
+    playerHarmonicComfortPermille: 900,
+    incumbentDissonancePermille: 30,
+    busWeight: 10,
+    observedFrameMicros: 6400,
+  });
+  assert.equal(g1.admitted, true, `gen-1 refused: ${g1.refusalReasons.join('; ')}`);
+  assert.equal(g1.generationId, 'gen-1');
+  const g1Proj = g1.hotTsProjection!(1);
+  assert.ok(g1Proj.playerEmbodimentScale > 1.0 && g1Proj.playerEmbodimentScale <= 1.18);
+
+  const g2 = await stepAutonomousBrowserEvolution(vfs, {
+    playerStillnessPermille: 860,
+    playerGazeDwellPermille: 810,
+    playerHarmonicComfortPermille: 930,
+    incumbentDissonancePermille: 20,
+    busWeight: 12,
+    observedFrameMicros: 6200,
+  });
+  assert.equal(g2.admitted, true, `gen-2 refused: ${g2.refusalReasons.join('; ')}`);
+  assert.equal(g2.generationId, 'gen-2');
+  assert.ok(g2.telosLossCandidate < g1.telosLossCandidate);
+  const g2Proj = g2.hotTsProjection!(2);
+  assert.ok(g2Proj.playerEmbodimentScale > g1Proj.playerEmbodimentScale);
+});
+
+test('82. Live Played UORC Session Hydration & Read-Only Telemetry & Evolution Observatory Page', () => {
+  const playedSessionHash =
+    '#uorc=VU9SQwEBAwAP__-Uai0nFYCLgMlbzFRr9i4vShUIh7b0jwVigbXTmJTJxsWGAcUb2hz8DfQeDfElzZrMm5qdf5udzs6emZzv-v_OnJnPzsbJyf_GnsqcnMqezf4N-QfIyMrHzsCC0SSnziZkZEmG5P65oGsDVLBBIKEC8U9dfIvw_D8AUOiDJndq66KPNZWUQAhBr79Wfl3Q0y87JK4p8H3jzQUGQ5T78O_Qaxl-stqF_HYGy5HaTEALBR9xdoacFYJ_v6oj39k4HTUqclVKCculZugm3mD9Njl66h2mi5wjmSF2X2aqvfVHYYOiMIjJGKi-vqNqADkdlqyuYH1l_Ol504fiFziqkvITE8i-QVe988B7UszwPvQhhc7iG2s4ac8hzCpvGkg1o_zt_d2h_ojGnScPn1Xmnst3LL9TTXgqEQSgZwdjUgYODBT8dQ4nCdX9N0TVlV8fRtbIssAoRGsoNxk9G2P89U9cTloEj4UsfSSteZlPtUKxO0pTibvPC6hzug9Jnza_Lywh38exWye9OYZ89bQCPIDYoVBcePkmpC7f_RJoFdvmLd5g8M_kbZDQ6au-kpuDDZSL2jrcNNcB7Bi3cN4x8cDPJ9erWodblLXRfjHm36xHYWCTnC2lFybUTvBMM3tX-1w9zU7GljUDkEQ79jujMBn3oYZwbvGbF_OFcCeFsdC-GBqtV-qDZ1RpHJFiZ2k5vDTwuHQU6dl56SYFS8o6dy4C6EzlXMxV3-WKUug2rFikMPjFmCF1ofLiiChgCJynr5N1rAzWlcajKDu04r_XLIx1MqRu9fy4pR-2byDoo9JNB2lwjnmQl5NpGAMVsNa9YcSF985y08JKbUlDrSpYJS9_y4yanbMfkqwdDwxj4Peet_DeODu0D0Ydd3nudNenGm2oldQH0H7e6En6S9SiZaPp_c2XmqfYJ0l1voQuS0Y-Qjrqmz1fO-mPALnOafVk81SXLsSL2w5rkGI1QjSe8_Teb_I5r3n5-cV6OoP_YoPvk_zQB5RmCMxjEGvUFxsOnq0jnjJBUolX-699hboB2zPpqu_39k0hLl8YqdIj_nrrOlYtHAAHqtkwTAOMr-LO3X8GX_oG2z-O3_bNqag6L8nG-4by-eDQ--2zSkirIm4hCPQfctu4mi_6GsvFxXA310knjm0UWlI-A8F7jitxgLCaIr11cocw9HIGslPigZhZimi8zOAdrgx3BP2_pqQ7xQQj4UVtiEFat9x_2v-1HDsWFHZ3bSQl5m0TLW0JUvVNn1FLUfrAEfhpu_x_zKBJnM1QtdV9GCyjrpxkPEd2Z0nvDGWqm5Yz4Nurklkt5DlzKomZrLq-OkR9BUPM1-ArelVyEib4NRBWlBKsA674m1RBiJ8L5HNDS2-uzdmpREyXWsOyk4tNNEIGINLoQqJm9BEed5t0qjuzoTPMFPAj-99giwh-Yi63qbN55q0y_im8VeG8cScugvjhAX3V1mrwEJxCdEMPLGv-xqpETkyvTgNamkRqr6nhMvGwauZpIo54zJsMOkso_ooK934njGkLoQbspaysgOl-Vz3smY1N7QC2fWQbKSmN9dS5oRp3J_cRLdHTxZ-fqDSGw6QVSeX2dCOBUOa_xn57M41OjBSYDVCcMelum2wBeDMiYDzgKajsn8vzSoZ3Y09UAvL1RMQKxD7Mz3MMuyx5XNqveHmkC8xH7j_sI2RMKEeKZKdG0MFWV6elS6gLZj6la6AFA66bL22Ivr3gdpmhEKhD9IzvGZrZSZGfeuqh8w0p76EfI1ljc_1TV682ZRBEp1xaxbYAnBpcK2-70HfCzstNfKF-XtT15DifuB_XBYadhJ2Vw77dTNOwj940RuwHGtXYFSPca82bARNLJW1mNict3DaXGhutnHwGbEH5kv5j4i6qR2r-bjTCO5Ab8CKOGg6QXVLEhma2poMl7NDFupz3LMkEAXSMuTKbLJQFUK47mAMtrTQPxh-mk1AWRPXJYdqQsVWBuYJ9QJ4SYU5wX8WCPXkIjH-Eo3aaYJJdQ7LyCLodN5CiM-2lXKL6ioUy5OPit6Dtli1129OrMDzlAWjg-EGHU_4mkxUfDF-UIYgw1gWz7eYJx5TS5jjmqJMZRp7sUOPX4gfLVe2kEKUfEM4E2PZeJeOrpiHsV7e7zp4Xu1gIESX3P3ZeE4fSkG__fD8ZgfWU59XkM6ZEBwP73gl0Yepqi76yNpbHTYA0ls7avdQAhsxI-Se1xwkchlToRXB_M_iib_KSfUARPi206neXjrA9mP-7B99RKy7J6YQiAKgc1NmnQDmDS3_4tRls5IF_bFOqlC46Chh6lkaYGScZmsy-0_bVUbhKROZx7KDANM2qCADruvG39dOiBM-WhcYFDiA-ufmkZsHK8EHXI1olgQPwNGQ8CiM3fMyTw4P1--nZzNFqBF6vGJJfNEBV2vmY9cAp5z6oCfOQhfPM3J29TP3zLV3ETTDF_RvG5-WdXeMbGnCxglxlv2acIiW7MvZyUzV3QfGUS756izlak3SsQ6ap0H-Qo6W9Da6WsdLkJLwAsYfEp_KB_Nlaht6BI9ckgbCtlWjHRi2jxmSaevgeQ8T6v6WwaHN_9scjL-8wmRGideSkQ2FSLTjQ918W5NoWpD6JPrZbE0LJizQHUhlu-PtyrpyBtsdkZ0-fBmLnawcP8tWEnZ8RJCme3NdagKhKJF3cZ05O11bxcfXr0yUaDEUwERY5PznfhvnHJDE5S4gYiYswHGAl0vHC6Rbw_ulm_ckmDyGFwu2qYcpFlOO9_IwDx1qOYHn9RdNSZbB92D4GtTAcbxrSj34qgzweeFnkwTCjhCQEw2DcG3T3M6LGGVzB6m4iSov7eNT9PzRvSLxkF03lcqHGwC9slo67GwNZ73qRBk_EfqJ6jvLHLQLs8Fffw_jB4l8hM-uoRlvDdxdKaerjBcAt1qyBH3fs-jwIt6hTWbYkaAXVgqOCoXX4pNc_elHFrRFJwovpfzg-ddxa0CuzHBoZJhQN-bsWRw55TqbXGOHXEgNG_3fCBnlyyYSdixksYNcxxwbS9R6g4mvEA5R7G9Dd-r1b1SartYYoblZXZOOyNexn71fA5uV9pHoyPzatVvUytTetwRkqu-ApDZ5z8NVhcQD2efylPDbGYBmIMUB6c967ZwCHPNEol2HMORoqqu1sPRD7nPd3WJKWJQT6oqs05yshOOPwyiIYV-l14TIzlxJ9IfT9srTdDF5rcB_wENO26sAwmWQyb8qnU2MqB5UIzDSOnkD4Oz9_yWFzJBNnU4ZcY3wfdQWStdCPW0hBEyZhvWRvD2_mJAi0OsOU9x8oRxE0x-074ZHZqKypfvwZTRK8OnO_Kasbt4_J4nIyR3-uiHOkSupQAi37JEdKWGshjYyXo00IOPIsD2XA6BTRmYwVXtPKhTnTXTz4RJt4aXTktBq2KcQe0H5b0ckWwrltyhIv8EMBDbL5s50Lo73jobufhGkuHhevxp-kcp4PSu3DeAwv504X1MT6pml4BFLWbrsMyFzUiQkWs_XaucwuXPpAlvyUKNGX9DncsfOJr8rMU0Y3KEePNkBl56RB5V49DF7MZkZ528miBu1KuRmmh4SsiYZGJcxVa9zLfOVdgRHlQZ4X-AxlODz2FNhEUeKP8Cx71p6QJZ3fsUZgApnr3-Wnrc06mOcJDHeMegK48djfH-TBnh9pwNDaIfRopQ_3mvvGcK24s8qkqi6E0zQNM0MT5C5D7K_zM52Ozf0B90-LBMMhCW7PuwbLVfHjZLCJu622yG0OKcFvzpfikH_4yZplYuQw76abvzF_xnB7y2lS2eC2_EQ7UTJdx5uKYQaXshR2QyOJu1EfpE2tIjaHr6iKCH7_MyE-qysvryscC099XfgE8LM3pr87nIkKzbbhhb1NSvZW7QYTzCl64X-w2CcoUF9Vj_6NpqDnfltvb6HluPWGgoZmmCQ6tDugvKrxlmh5ugqh7bS-WQkFdguNhqhPCDsseYeBl5fTcffmCNH7eR9Nh-yjc8dm1JmG2RxgQyGBSHWTKUw72_8YbidupA97dro2BMDVUmNsV5EyNV3CIqPKKN-3JWfIV4bl8frKixQLlfSdmlVSZrDsUjMXSmYwQ-N1aHLVT5cC3TNTO02FyU3QedWgudjoWYnD8IqH_Nxk1FOi294951bc641ikXWOmdisw2t47pTC2ExkfVGt6cMACCUN0BajV_3egbPby-WJXI8JwQOR0g5zmBLNfm1JvIkGB_ksRxGKBGP716nfHlYqshqn2N7w0sDkeh592mB1Byc1_MeVmTHQJd7-EBWRLNBjPzdJYKIU838957Ym87th45Eu4VVJ82tKEPgjyN5V-4FFySHS8oXoeA2Q9vwTdeMc_isHML8Tp7uJKM9DNOY3oRg_EgTzdNNHDTeXB5ASgM6hkAtNpGCOnR_crgczYl57HO4GNUIK8eZ7MxqCQt1LvL1q1BdvhWtpSC4KA9-amUareFuqhwAXWnVgqiDaFHy7ZwH894Tl5IPXiJyAoNg-8xY8N2sBHTfZcPop8hHYnSVdo7ZSNhoOjYhyTmG_y8VKPzx4MI546MByVdaClVGonYaVC8c11wKEW7WP6wm3DSlcup5LmoApyIBJUN7GsJtjOixuSqT43NDCeffS1r7u7Vxqns7tPMHrrzpRnH3nqu-DRXuOZeaueqMhE3WlawAxd8ED8x_Wc5kcITEX22B7QkpT8LzO8d0e78gjxJEQvALj7veAFvjLvXDzESeo7tds6mkAHWIwTKD1eVQ_G1LQ9u-k3kCIZyjjjx9FigWv855QSmA';
+
+  const decoded = decodeShareableUorcGardenHash(playedSessionHash);
+  assert.equal(decoded.verified, true);
+  assert.equal(decoded.roundTripDriftCount, 0);
+  const payload = decoded.envelope!.payload;
+  assert.equal(payload.atmosphere, 'starlight');
+  assert.equal(payload.exploredBiomes.length, 5);
+  assert.equal(payload.selfHostGenerationId, 'gen-4');
+  assert.ok(payload.selfHostTreeKappa && payload.selfHostTreeKappa.length === 64);
+
+  const hydratedPlants = hydratePlantsFromAnamnesis(
+    generateGardenPlants({ alphaSeed: payload.alphaSeed }),
+    payload,
+  );
+  assert.ok(hydratedPlants.filter((p) => p.attuned).length >= 65);
+  assert.ok(hydratedPlants.some((p) => p.id.startsWith('offshoot-')));
+
+  const restoredNeuro = restoreNeuromorphicStateFromAnamnesis(payload);
+  const restoredCoEvo = restoreLiveCoEvolutionStateFromAnamnesis(payload.coEvolutionState);
+  assert.ok(restoredNeuro.tickCount >= 880);
+  assert.equal(restoredNeuro.universalManifold.globalFidelityIndex, 1.25);
+  assert.equal(restoredNeuro.observer.supraDirective.tier, 4);
+  assert.equal(restoredCoEvo.triadicCoherencePermille, 994);
+  assert.equal(restoredCoEvo.incumbentDissonancePermille, 0);
+  for (const m of restoredNeuro.observer.canonicalStandardModelsContext.models) {
+    assert.equal(m.synapticWeight, 16, `Expected model ${m.modelKey} hydrated at 16/16`);
+  }
+
+  // Verify the read-only Telemetry & Evolution menu page is wired cleanly without manual controls
+  const modalSrc = fs.readFileSync('src/components/PrismInspectorModal.tsx', 'utf8');
+  assert.equal(modalSrc.includes('Telemetry & Evolution'), true);
+  assert.equal(modalSrc.includes('data-testid="inspector-telemetry-panel"'), true);
+  assert.equal(modalSrc.includes('data-testid="telemetry-lineage-card"'), true);
+  assert.equal(modalSrc.includes('data-testid="telemetry-observer-card"'), true);
+  assert.equal(modalSrc.includes('data-testid="telemetry-models-card"'), true);
+  assert.equal(modalSrc.includes('data-testid="telemetry-ontology-card"'), true);
+});
+
+
+
+
+
