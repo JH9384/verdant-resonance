@@ -6969,6 +6969,10 @@ test('63. Universal Prism LexLean-to-TypeScript Mechanizer, Differential Dispatc
   assert.equal(driftCheck.specReport.specMdInSync, true);
   assert.equal(driftCheck.specReport.lexParsersAndRulesInSync, true);
 
+  const primeSync = ensurePrismMechanizedArtifacts(process.cwd(), { force: false });
+  assert.equal(primeSync.constantsChanged, false);
+  assert.equal(primeSync.runtimeChanged, false);
+
   const warmSync = ensurePrismMechanizedArtifacts(process.cwd(), { force: false });
   assert.equal(warmSync.fromCache, true);
   assert.equal(warmSync.constantsChanged, false);
