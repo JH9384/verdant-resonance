@@ -539,6 +539,15 @@ import {
   AtmosphereId,
 } from './prismModel';
 import {
+  captureVerdantEngineSnapshot,
+  evaluateVerdantEngineBinauralCue,
+  getVerdantEngineTelemetrySnapshot,
+  initVerdantEngineSubstrate,
+  isVerdantEngineReady,
+  restoreVerdantEngineSnapshot,
+  stepVerdantEngineFrame,
+} from '../selfhost/verdantEngineSubstrate';
+import {
   ALL_14_BRAVAIS_CRYSTAL_HABITS,
   bravaisPearsonToCrystalHabitId,
   buildImmanentObserverWitnessGroup,
@@ -7817,11 +7826,11 @@ test('69. Single Certified Wasm Runtime Cutover, Zero-Residue Codebase Lift & Li
     );
   }
 
-  // 193 Certified Production Roots (`190` `#![no_std]` `rust-core` + `3` `rust-std`) with 3-way parity
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 190);
+  // 194 Certified Production Roots (`191` `#![no_std]` `rust-core` + `3` `rust-std`) with 3-way parity
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 191);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustStdRootCount, 3);
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 193);
-  assert.equal(CERTIFIED_WASM_CORE_ROOT_NAMES.length, 190);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 194);
+  assert.equal(CERTIFIED_WASM_CORE_ROOT_NAMES.length, 191);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allKernelChecked, true);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allForbidUnsafeCode, true);
 
@@ -8036,7 +8045,7 @@ test('71. Universal 5W+H Ontology Completeness: 30/30 Grounded Modules, 172/172 
   const ledger = GENERATED_ONTOLOGY_5WH_LEDGER;
   assert.equal(ledger.groundedModuleCount, 30);
   assert.equal(ledger.ungroundedModuleCount, 0);
-  assert.equal(ledger.totalStructureCount, 172);
+  assert.equal(ledger.totalStructureCount, 173);
   assert.equal(ledger.uncertifiedStructureCount, 0);
   assert.equal(ledger.eightStrata.length, 8);
 
@@ -8192,7 +8201,7 @@ test('72. Live Parametric OntologicalTelosLoss Coordinate Descent, Non-Coercive 
 
 test('73. Browser Host Runtime API Saturation Laws & 3-Way Certified Wasm Parity (Foundation.Host.V1.Model)', async () => {
   const hostTheorems = GENERATED_PRISM_THEOREMS_BY_MODULE['Foundation.Host.V1.Model'];
-  assert.equal(hostTheorems.length, 7);
+  assert.equal(hostTheorems.length, 8);
   assert.deepEqual(hostTheorems, [
     'granuleWithinWorkingSetAndCacheMovementExact',
     'ceilingCoversBothLanesAndZeroesDistanceAtCeiling',
@@ -8201,6 +8210,7 @@ test('73. Browser Host Runtime API Saturation Laws & 3-Way Certified Wasm Parity
     'hostRuntimeSaturationAndWorkerPoolVectorsHold',
     'quotaPolicyRejectsSingleLaneOverrunEvenWhenSumFits',
     'capabilityReceiptAndFalsifierPolicyVectorsHold',
+    'verdantEngineSubstrateCoherenceVectorsHold',
   ]);
 
   const runner = new CertifiedRustRunner(process.cwd());
@@ -8657,13 +8667,13 @@ test('79. Zero-Classical-Choice Lean Attestation Provenance, Dynamic 30-Module C
 });
 
 test('80. Complete Verdant Holistic Organism Closure: Multi-Modal gen-N World Projection, Player Spore-Drop UX & 24/24 Autonomous KPIs', () => {
-  // 1. Holistic structural & runtime invariants across all 30 modules, 193 Wasm roots, 172 W5H structures & 0 residue
+  // 1. Holistic structural & runtime invariants across all 30 modules, 194 Wasm roots, 173 W5H structures & 0 residue
   assert.equal(GENERATED_PRISM_MECHANIZED_MANIFEST.moduleCount, 30);
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 193);
-  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 190);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.roots.length, 194);
+  assert.equal(CERTIFIED_PRODUCTION_MANIFEST.rustCoreNoStdRootCount, 191);
   assert.equal(CERTIFIED_PRODUCTION_MANIFEST.allKernelChecked, true);
   assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.groundedModuleCount, 30);
-  assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.totalStructureCount, 172);
+  assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.totalStructureCount, 173);
   assert.equal(GENERATED_ONTOLOGY_5WH_LEDGER.uncertifiedStructureCount, 0);
 
   // 2. Verify multi-modal gen-N optical + botanical + acoustic world coupling & player Foundry/Ontology/spore-drop UX
@@ -8854,6 +8864,84 @@ test('82. Live Played UORC Session Hydration & Read-Only Telemetry & Evolution O
   assert.equal(modalSrc.includes('data-testid="telemetry-observer-card"'), true);
   assert.equal(modalSrc.includes('data-testid="telemetry-models-card"'), true);
   assert.equal(modalSrc.includes('data-testid="telemetry-ontology-card"'), true);
+});
+
+test('83. Verdant Engine Standalone Wasm Substrate Integration, Builder Blueprints, Rover Patrol & VDNT Snapshot', async () => {
+  const initSnap = await initVerdantEngineSubstrate(undefined, 7);
+  assert.equal(initSnap.ready, true);
+  assert.equal(initSnap.substrateCoherent, true);
+  assert.equal(isVerdantEngineReady(), true);
+  assert.equal(initSnap.epochRank, 3);
+  assert.equal(initSnap.blueprintCount, 7);
+  assert.equal(initSnap.blueprints.length, 7);
+  assert.ok(initSnap.walkableNavPolygons >= 2048);
+  assert.equal(initSnap.audioQuantumFrames, 128);
+  assert.equal(initSnap.audioStereoChannels, 2);
+  assert.equal(initSnap.workerRingCapacity, 64);
+  assert.equal(initSnap.snapshotMaxBytes, 32768);
+  assert.equal(initSnap.sabineRt60Millis, 3000);
+  assert.deepEqual(initSnap.chimeModeRatios, ['9/9', '25/9', '49/9', '81/9', '121/9']);
+  assert.ok(initSnap.snapshotBytes > 0 && initSnap.snapshotBytes <= 32768);
+  assert.equal(initSnap.snapshotSha256Hex.length, 64);
+  for (const bp of initSnap.blueprints) {
+    assert.ok(bp.safetyFactor >= 2.0, `Blueprint ${bp.name} must satisfy Heyman safety factor >= 2.0`);
+    assert.ok(bp.modalHz > 0, `Blueprint ${bp.name} must carry positive modal resonance frequency`);
+  }
+
+  // Step 30 deterministic frames and verify Perimeter Sentinel Rover patrol & SAH BVH frustum culling
+  let latestSnap = initSnap;
+  for (let frame = 0; frame < 30; frame++) {
+    latestSnap = stepVerdantEngineFrame({
+      dtSeconds: 1 / 60,
+      moveForward: 1,
+      moveStrafe: 0,
+      walkYawRad: 0,
+      eyeX: 0,
+      eyeY: 2.4,
+      eyeZ: 16,
+      fwdX: 0,
+      fwdY: -0.05,
+      fwdZ: -1,
+      aspect: 1.6,
+    });
+  }
+  assert.equal(latestSnap.substrateCoherent, true);
+  assert.ok(latestSnap.roverDistanceMeters > 0.5, 'Perimeter Sentinel Rover must advance along boundary spline');
+  assert.ok(latestSnap.bvhVisibleEntities > 0, 'SAH BVH frustum query must yield visible sanctuary entities');
+  assert.equal(getVerdantEngineTelemetrySnapshot().substrateCoherent, true);
+
+  // Verify Woodworth spherical-head 3D binaural spatializer via `verdant-engine` Wasm
+  const rightEarCue = evaluateVerdantEngineBinauralCue({
+    sourceX: 6.0,
+    sourceY: 1.5,
+    sourceZ: 12.0,
+    listenerX: 0.0,
+    listenerY: 1.7,
+    listenerZ: 16.0,
+    listenerYaw: 0.0,
+    listenerPitch: 0.0,
+  });
+  assert.ok(rightEarCue.stereoPan > 0 && rightEarCue.stereoPan <= 1.0);
+  assert.ok(rightEarCue.directGain > 0 && rightEarCue.directGain <= 1.0);
+  assert.ok(Math.abs(rightEarCue.itdMicros) > 0);
+
+  // Verify `VDNT` + SHA-256 binary world snapshot capture, lossless restore, and tamper refusal
+  const wire = captureVerdantEngineSnapshot();
+  assert.ok(wire.byteLength > 64 && wire.byteLength <= 32768);
+  assert.equal(String.fromCharCode(wire[0], wire[1], wire[2], wire[3]), 'VDNT');
+  assert.equal(restoreVerdantEngineSnapshot(wire), true);
+
+  const tampered = new Uint8Array(wire);
+  tampered[tampered.length - 1] ^= 0xff;
+  assert.equal(
+    restoreVerdantEngineSnapshot(tampered),
+    false,
+    'Tampered VDNT SHA-256 digest must be deterministically refused',
+  );
+
+  // Verify read-only Telemetry & Evolution substrate card wiring
+  const modalSrc = fs.readFileSync('src/components/PrismInspectorModal.tsx', 'utf8');
+  assert.equal(modalSrc.includes('data-testid="telemetry-engine-substrate-card"'), true);
 });
 
 

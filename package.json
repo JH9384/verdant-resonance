@@ -10,6 +10,7 @@
     "clean": "rm -rf dist server.js",
     "extract:prism": "tsx scripts/prismCli.ts sync",
     "prism:mechanize": "tsx scripts/prismCli.ts sync",
+    "prism:sync-engine": "tsx scripts/syncVerdantEngine.ts",
     "prism:production": "tsx scripts/prismCli.ts production",
     "prism:engine-tick": "tsx scripts/prismCli.ts tick",
     "prism:hooks": "tsx scripts/prismCli.ts hooks",

@@ -1159,6 +1159,19 @@
     },
     {
       "package": {
+        "name": "verdant_host_verify_verdant_engine_substrate_coherence",
+        "version": "0.1.0"
+      },
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyVerdantEngineSubstrateCoherence",
+      "targets": [
+        {
+          "digest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+          "id": "rust-core"
+        }
+      ]
+    },
+    {
+      "package": {
         "name": "verdant_humane_evaluate_gaze_target_in_forward_cone",
         "version": "0.1.0"
       },

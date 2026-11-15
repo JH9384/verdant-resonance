@@ -255,6 +255,7 @@ const FILE_LEXLEAN_BINDING: Record<string, string> = {
   'src/selfhost/browserLexLeanWasmCompiler.ts': 'Foundation.Host.V1.Model',
   'src/selfhost/browserRuntimeSaturation.ts': 'Foundation.Host.V1.Model',
   'src/selfhost/browserSelfHostEngine.ts': 'Foundation.Host.V1.Model',
+  'src/selfhost/verdantEngineSubstrate.ts': 'Foundation.Host.V1.Model',
 };
 
 function classifyFunctionRouteAndLift(fn: ExtractedTsFunction): {

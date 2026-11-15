@@ -1778,6 +1778,15 @@ export interface Foundation_Host_V1_Model_BoundCapabilityReceipt {
   readonly confinedPathVerified: boolean;
 }
 
+export interface Foundation_Host_V1_Model_VerdantEngineSubstrateReceipt {
+  readonly blueprintCount: bigint;
+  readonly walkableNavPolygons: bigint;
+  readonly audioQuantumFrames: bigint;
+  readonly snapshotBytes: bigint;
+  readonly bvhVisibleCount: bigint;
+  readonly substrateCoherent: boolean;
+}
+
 export interface Foundation_Mechanization_V1_Model_FoundryRouteAndLiftSpec {
   readonly routeSlotCount: bigint;
   readonly derivedRouteMaskLimit: bigint;
@@ -5415,6 +5424,14 @@ export function Foundation_Host_V1_Model_breaksIndependentQuotaCapIsolation(reqB
   return (Foundation_Host_V1_Model_verifyIndependentQuotaCaps(reqBytes, reqMax, guestBytes, guestMax, respBytes, respMax) && (((reqMax < reqBytes) || (guestMax < guestBytes)) || (respMax < respBytes)));
 }
 
+export function Foundation_Host_V1_Model_verifyVerdantEngineSubstrateCoherence(blueprintCount: bigint, walkableNavPolygons: bigint, audioQuantumFrames: bigint, snapshotBytes: bigint): boolean {
+  return (() => { const two = ((_dup0) => (_dup0 + _dup0))(1n); const three = (two + 1n); const four = Foundation_Ontology_V1_Model_pow2Constructive(two); const eight = Foundation_Ontology_V1_Model_pow2Constructive(three); const seven = _natSub(eight, 1n); const eleven = (eight + three); const minWalkablePolys = Foundation_Ontology_V1_Model_pow2Constructive(eleven); const audioQuantum = Foundation_Ontology_V1_Model_pow2Constructive(seven); const sixteen = Foundation_Ontology_V1_Model_pow2Constructive(four); const fifteen = _natSub(sixteen, 1n); const maxSnapshotBytes = Foundation_Ontology_V1_Model_pow2Constructive(fifteen); return (((blueprintCount === seven) && (minWalkablePolys <= walkableNavPolygons)) && ((audioQuantumFrames === audioQuantum) && ((0n < snapshotBytes) && (snapshotBytes <= maxSnapshotBytes)))); })();
+}
+
+export function Foundation_Host_V1_Model_breaksVerdantEngineSubstrateCoherence(blueprintCount: bigint, walkableNavPolygons: bigint, audioQuantumFrames: bigint, snapshotBytes: bigint): boolean {
+  return (Foundation_Host_V1_Model_verifyVerdantEngineSubstrateCoherence(blueprintCount, walkableNavPolygons, audioQuantumFrames, snapshotBytes) && ((blueprintCount === 0n) || (snapshotBytes === 0n)));
+}
+
 let _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime: bigint | undefined;
 export function Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime(): bigint {
   return _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime !== undefined ? _c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime : (_c_Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime = 193n);
@@ -8094,6 +8111,8 @@ export const PRISM_COMPILED_MODULES = {
     "breaksGenerationAdmissionSafetyAndDominance": Foundation_Host_V1_Model_breaksGenerationAdmissionSafetyAndDominance,
     "breaksWatchdogFaultImmediateRollback": Foundation_Host_V1_Model_breaksWatchdogFaultImmediateRollback,
     "breaksIndependentQuotaCapIsolation": Foundation_Host_V1_Model_breaksIndependentQuotaCapIsolation,
+    "verifyVerdantEngineSubstrateCoherence": Foundation_Host_V1_Model_verifyVerdantEngineSubstrateCoherence,
+    "breaksVerdantEngineSubstrateCoherence": Foundation_Host_V1_Model_breaksVerdantEngineSubstrateCoherence,
   },
   "Foundation.Mechanization.V1.Model": {
     "verdantMechanizationBasisPrime": Foundation_Mechanization_V1_Model_verdantMechanizationBasisPrime,
@@ -8534,12 +8553,12 @@ export const PRISM_COMPILED_MODULES = {
 export type PrismCompiledModuleName = keyof typeof PRISM_COMPILED_MODULES;
 
 export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
-  "sourceTreeDigestSha256": "d469e26ae36fdf99a925ec7b77fe4f9a2b4aa168cc7c7123aec990dee9704069",
+  "sourceTreeDigestSha256": "6e3dd447147dd3230caaa7e0ebe2503f77c02eaabe374204e966ac0290f86cdd",
   "moduleCount": 30,
   "inductiveCount": 2,
-  "structureCount": 172,
-  "definitionCount": 1204,
-  "theoremCount": 195,
+  "structureCount": 173,
+  "definitionCount": 1206,
+  "theoremCount": 196,
   "modules": [
     {
       "moduleName": "Foundation.MetaModel.V1.Model",
@@ -8857,9 +8876,9 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
         "Foundation.Ontology.V1.Model"
       ],
       "inductiveCount": 0,
-      "structureCount": 5,
-      "definitionCount": 23,
-      "theoremCount": 7
+      "structureCount": 6,
+      "definitionCount": 25,
+      "theoremCount": 8
     },
     {
       "moduleName": "Foundation.Mechanization.V1.Model",
@@ -11075,6 +11094,29 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
       "resultType": "Bool"
     },
     {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "breaksVerdantEngineSubstrateCoherence",
+      "parameters": [
+        {
+          "name": "blueprintCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "walkableNavPolygons",
+          "lexType": "Nat"
+        },
+        {
+          "name": "audioQuantumFrames",
+          "lexType": "Nat"
+        },
+        {
+          "name": "snapshotBytes",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
       "moduleName": "Foundation.Mechanization.V1.Model",
       "name": "breaksMonotonicLiftRatchetAndOpenDistance",
       "parameters": [
@@ -12287,6 +12329,29 @@ export const GENERATED_PRISM_MECHANIZED_MANIFEST = {
         },
         {
           "name": "receiptErrorCode",
+          "lexType": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
+      "moduleName": "Foundation.Host.V1.Model",
+      "name": "verifyVerdantEngineSubstrateCoherence",
+      "parameters": [
+        {
+          "name": "blueprintCount",
+          "lexType": "Nat"
+        },
+        {
+          "name": "walkableNavPolygons",
+          "lexType": "Nat"
+        },
+        {
+          "name": "audioQuantumFrames",
+          "lexType": "Nat"
+        },
+        {
+          "name": "snapshotBytes",
           "lexType": "Nat"
         }
       ],

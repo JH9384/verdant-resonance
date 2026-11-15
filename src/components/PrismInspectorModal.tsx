@@ -28,6 +28,11 @@ import {
   subscribeSelfHostOrganismState,
   type LiveSelfHostOrganismState,
 } from '../selfhost/browserSelfHostEngine';
+import {
+  getVerdantEngineTelemetrySnapshot,
+  subscribeVerdantEngineTelemetry,
+  type VerdantEngineTelemetrySnapshot,
+} from '../selfhost/verdantEngineSubstrate';
 
 export type PrismInspectorTabId = 'herbarium' | 'biomes' | 'sanctuary' | 'telemetry';
 
@@ -176,8 +181,12 @@ export const PrismInspectorModal: React.FC<PrismInspectorModalProps> = ({
   const [selfHostState, setSelfHostState] = useState<LiveSelfHostOrganismState>(() =>
     getLiveSelfHostOrganismState(),
   );
+  const [engineSubstrate, setEngineSubstrate] = useState<VerdantEngineTelemetrySnapshot>(() =>
+    getVerdantEngineTelemetrySnapshot(),
+  );
 
   useEffect(() => subscribeSelfHostOrganismState((st) => setSelfHostState(st)), []);
+  useEffect(() => subscribeVerdantEngineTelemetry((snap) => setEngineSubstrate(snap)), []);
 
   const cosmoParams = useMemo(
     () => ({
@@ -1365,6 +1374,90 @@ export const PrismInspectorModal: React.FC<PrismInspectorModalProps> = ({
                     </div>
                   )}
                 </div>
+              </div>
+
+              {/* SECTION 5: STANDALONE VERDANT-ENGINE WASM SUBSTRATE & 7 BUILDER BLUEPRINTS */}
+              <div
+                data-testid="telemetry-engine-substrate-card"
+                className="rounded-xl border border-emerald-400/20 bg-emerald-950/45 p-5 space-y-4"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <div className="text-[11px] font-mono text-teal-300/85 uppercase tracking-wider">
+                      Standalone Commercial 3D Engine Substrate · Foundation.Host.V1.Model
+                    </div>
+                    <h3 className="font-display text-xl font-semibold text-amber-100">
+                      Verdant Engine Wasm Runtime &amp; Builder Guild Blueprints
+                    </h3>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono border border-teal-300/30 bg-slate-950/60 text-teal-200">
+                    {engineSubstrate.substrateCoherent
+                      ? `Coherent · Epoch t_obs (Rank ${engineSubstrate.epochRank})`
+                      : 'Standby · Initializing Wasm Bridge'}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs font-mono">
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3">
+                    <div className="text-[10px] text-emerald-300/75 uppercase">
+                      SAH BVH &amp; NavMesh
+                    </div>
+                    <div className="text-sm text-amber-100 mt-0.5">
+                      {engineSubstrate.bvhVisibleEntities} Vis ·{' '}
+                      {engineSubstrate.walkableNavPolygons.toLocaleString()} Polys
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3">
+                    <div className="text-[10px] text-emerald-300/75 uppercase">
+                      AudioWorklet &amp; Sabine
+                    </div>
+                    <div className="text-sm text-teal-200 mt-0.5">
+                      {engineSubstrate.audioQuantumFrames}f · {engineSubstrate.sabineRt60Millis}ms RT60
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3">
+                    <div className="text-[10px] text-emerald-300/75 uppercase">
+                      Perimeter Sentinel Rover
+                    </div>
+                    <div className="text-sm text-emerald-200 mt-0.5">
+                      ({engineSubstrate.roverX.toFixed(1)}, {engineSubstrate.roverZ.toFixed(1)}) ·{' '}
+                      {engineSubstrate.roverDistanceMeters.toFixed(1)}m
+                    </div>
+                  </div>
+                  <div className="rounded-lg border border-emerald-400/15 bg-slate-950/50 p-3">
+                    <div className="text-[10px] text-emerald-300/75 uppercase">
+                      VDNT SHA-256 Snapshot
+                    </div>
+                    <div className="text-sm text-amber-200 mt-0.5">
+                      {engineSubstrate.snapshotBytes.toLocaleString()} B ·{' '}
+                      {shortHex(engineSubstrate.snapshotSha256Hex, 8)}
+                    </div>
+                  </div>
+                </div>
+
+                {engineSubstrate.blueprints.length > 0 && (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                    {engineSubstrate.blueprints.map((bp) => (
+                      <div
+                        key={bp.index}
+                        className="rounded-lg border border-emerald-400/15 bg-slate-950/45 p-3 text-xs space-y-1"
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold text-amber-100 truncate">{bp.name}</span>
+                          <span className="font-mono text-[10px] text-teal-200 shrink-0">
+                            {bp.safetyFactor.toFixed(2)}× SF
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-[11px] font-mono text-emerald-200/80">
+                          <span className="truncate">{bp.guild}</span>
+                          <span className="shrink-0">
+                            ({bp.x.toFixed(1)}, {bp.z.toFixed(1)}) · {bp.modalHz.toFixed(1)} Hz
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}

@@ -2,12 +2,12 @@
   "schema": "verdant-resonance/lift-register/1",
   "domain": "verdant-resonance/function/1",
   "summary": {
-    "totalFunctions": 431,
-    "liftedCount": 382,
+    "totalFunctions": 440,
+    "liftedCount": 390,
     "residueCount": 0,
-    "foreignCount": 31,
+    "foreignCount": 32,
     "effectCount": 18,
-    "unliftedOpenDistance": 49
+    "unliftedOpenDistance": 50
   },
   "rows": [
     {
@@ -76,6 +76,13 @@
     {
       "kappa": "ac2d50f9f9fce0ffa8fd410734e4bf2908a90c279bfb9d8df453dd352165dd23",
       "functionPath": "src/components/gardenMonuments.ts::buildMeadowSundial",
+      "routeId": "VR-R05",
+      "status": "foreign",
+      "detail": "three package with no LexLean model"
+    },
+    {
+      "kappa": "87eb019306e4c4ccea276c176d032d1104dd1f34a54f3beb2c7677390ef59887",
+      "functionPath": "src/components/gardenMonuments.ts::buildPerimeterSentinelRover",
       "routeId": "VR-R05",
       "status": "foreign",
       "detail": "three package with no LexLean model"
@@ -3026,6 +3033,62 @@
       "routeId": "VR-R04",
       "status": "lifted",
       "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyUorcArchiveBounds)"
+    },
+    {
+      "kappa": "85f951ad5f07f5ada735e60573874914c50663924505c65a2c2e78021d9c01db",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::captureVerdantEngineSnapshot",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "08ebc1c9350eb1970ef301f6bbc94154bd7e13c4d9a2517757806ae0a787faef",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::evaluateVerdantEngineBinauralCue",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "1b112f86026ca79b6b32aaa45fed27ee8672e6131a645dad9130678dd8f556af",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::getVerdantEngineTelemetrySnapshot",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "ec7e406a86da354f5abf181638e0fc8d9949a72beb6b4c9f65cfc9085d4e99ab",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::initVerdantEngineSubstrate",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "5764aa4906d8f278124b85c777ffd6649d7038c9e36f592d65467efe8720b806",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::isVerdantEngineReady",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "520321c80c17249c937c9aa5cd2d373b012564f86798b589f4666767bd524131",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::restoreVerdantEngineSnapshot",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "7a4eda40377555b492d592317c95f827ee56065e0148d29d615daa3634bbe732",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::stepVerdantEngineFrame",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
+    },
+    {
+      "kappa": "3883ffe6a8287d88fcd30122e4780b63debc626ec1b5743d8dd2132f3cf736ba",
+      "functionPath": "src/selfhost/verdantEngineSubstrate.ts::subscribeVerdantEngineTelemetry",
+      "routeId": "VR-R04",
+      "status": "lifted",
+      "definition": "Foundation.Host.V1.Model (certifiedWasmCore_verifyVerdantEngineSubstrateCoherence)"
     }
   ]
 }

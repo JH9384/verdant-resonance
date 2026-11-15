@@ -68,6 +68,8 @@ async function bootCertifiedConservatory(): Promise<void> {
       );
       return;
     }
+    const {initVerdantEngineSubstrate} = await import('./selfhost/verdantEngineSubstrate');
+    await initVerdantEngineSubstrate(`${cleanBase}wasm/verdant_engine.wasm`);
     const {default: App} = await import('./App.tsx');
     root.render(
       <SanctuaryErrorBoundary>

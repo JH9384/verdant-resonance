@@ -12,6 +12,7 @@
  */
 
 import { GENERATED_PRISM_STANDARDS } from './generatedPrismConstants';
+import { evaluateVerdantEngineBinauralCue, isVerdantEngineReady } from '../selfhost/verdantEngineSubstrate';
 import {
   certifiedWasmCore_stepAcousticsBusModulation,
   certifiedWasmCore_stepEarlyReflectionTapCount,
@@ -899,17 +900,13 @@ export class BotanicalSoundscapeEngine {
     this.listenerYaw = playerYaw;
     this.listenerPitch = playerPitch;
     const cue3D = computeWoodworth3DBinauralSpatializer({
-      listenerX: playerX,
-      listenerY: playerY,
-      listenerZ: playerZ,
-      listenerYaw: playerYaw,
-      listenerPitch: playerPitch,
-      sourceX: nearestPlantX,
-      sourceY: nearestPlantY,
-      sourceZ: nearestPlantZ,
+      listenerX: playerX, listenerY: playerY, listenerZ: playerZ, listenerYaw: playerYaw, listenerPitch: playerPitch,
+      sourceX: nearestPlantX, sourceY: nearestPlantY, sourceZ: nearestPlantZ,
     });
     this.lastBinauralCue = cue3D;
-    this.currentPan = computeBinauralPan(playerX, playerZ, playerYaw, nearestPlantX, nearestPlantZ);
+    this.currentPan = isVerdantEngineReady()
+      ? Number(Math.max(-0.85, Math.min(0.85, evaluateVerdantEngineBinauralCue({ sourceX: nearestPlantX, sourceY: nearestPlantY, sourceZ: nearestPlantZ, listenerX: playerX, listenerY: playerY, listenerZ: playerZ, listenerYaw: playerYaw, listenerPitch: playerPitch }).stereoPan * 0.85)).toFixed(3))
+      : computeBinauralPan(playerX, playerZ, playerYaw, nearestPlantX, nearestPlantZ);
     this.lastNearestDistanceMeters = cue3D.distance3DMeters;
     this.lastAcousticOcclusion = acousticOcclusion;
 

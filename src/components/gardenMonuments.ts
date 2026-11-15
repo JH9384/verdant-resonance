@@ -1110,3 +1110,51 @@ export function disposeMonumentGroup(
     }
   });
 }
+
+export interface PerimeterSentinelRoverGroup {
+  readonly group: THREE.Group;
+  readonly beaconMesh: THREE.Mesh;
+}
+
+/**
+ * Builds the articulated autonomous Perimeter Sentinel Rover (`verdant-engine` Builder Artifact #7).
+ */
+export function buildPerimeterSentinelRover(
+  sharedStoneMat: THREE.Material,
+  sharedGoldTrimMat: THREE.Material,
+  sharedCrystalMat: THREE.Material,
+): PerimeterSentinelRoverGroup {
+  const group = new THREE.Group();
+  group.name = 'verdant-engine-sentinel-rover';
+  const hullMesh = new THREE.Mesh(new THREE.BoxGeometry(0.92, 0.28, 1.36), sharedStoneMat);
+  hullMesh.position.y = 0.16;
+  hullMesh.castShadow = true;
+  group.add(hullMesh);
+  const deckMesh = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.32, 0.38, 0.12, 8),
+    sharedGoldTrimMat,
+  );
+  deckMesh.position.y = 0.36;
+  group.add(deckMesh);
+  const beaconMesh = new THREE.Mesh(
+    createBravaisCrystalHabitGeometry({ habit: 'hP-quartz', radius: 0.14, height: 0.34 }),
+    sharedCrystalMat,
+  );
+  beaconMesh.position.y = 0.56;
+  group.add(beaconMesh);
+  const wheelGeo = new THREE.CylinderGeometry(0.16, 0.16, 0.1, 12);
+  wheelGeo.rotateZ(Math.PI / 2);
+  for (const [wx, wz] of [
+    [-0.5, -0.46],
+    [0.5, -0.46],
+    [-0.5, 0],
+    [0.5, 0],
+    [-0.5, 0.46],
+    [0.5, 0.46],
+  ] as const) {
+    const wheel = new THREE.Mesh(wheelGeo, sharedGoldTrimMat);
+    wheel.position.set(wx, 0.02, wz);
+    group.add(wheel);
+  }
+  return { group, beaconMesh };
+}

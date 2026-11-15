@@ -35,13 +35,13 @@ Contract profile: `prism/mechanization-uorust-uorc-rule30/1` (`uor/template-cont
 
 ## 3. Product Codebase `κ` Lift Register Summary (`prism/lift-register.json`, Gate `UE-16`)
 
-- **Register Rows Digest**: `108f8ba1c53963f1…` (`domain = verdant-resonance/function/1`)
-- **Total Exported Product Functions**: `431`
-- **Lifted (`lifted`)**: `382` (monotone ratchet: a lifted `κ` never regresses to unlifted)
+- **Register Rows Digest**: `befb61ab7a748883…` (`domain = verdant-resonance/function/1`)
+- **Total Exported Product Functions**: `440`
+- **Lifted (`lifted`)**: `390` (monotone ratchet: a lifted `κ` never regresses to unlifted)
 - **Pure Residue (`residue`)**: `0`
-- **External Package Adapters (`foreign`)**: `31` (`three` / `react`)
+- **External Package Adapters (`foreign`)**: `32` (`three` / `react`)
 - **Browser Boundary Effects (`effect`)**: `18` (`webgl` / `webaudio` / `dom`)
-- **Open Unlifted Distance (`excessOver(0, unlifted)`)**: `49` (reported as `OPEN-01`, never asserted as a ceiling)
+- **Open Unlifted Distance (`excessOver(0, unlifted)`)**: `50` (reported as `OPEN-01`, never asserted as a ceiling)
 
 ## 4. Epistemic Level `some-true` — Cited External Authorities (`R2`)
 
@@ -66,94 +66,95 @@ Open claims state measured distances or open mathematical/empirical horizons wit
 
 | ID | Measured Open Statement |
 | --- | --- |
-| `OPEN-01` | Product codebase lift distance: 382/431 exported functions lifted to LexLean; 49 remain unlifted (0 pure residue, 31 foreign package adapters, 18 browser I/O effects) measured against derived floor 0. |
+| `OPEN-01` | Product codebase lift distance: 390/440 exported functions lifted to LexLean; 50 remain unlifted (0 pure residue, 32 foreign package adapters, 18 browser I/O effects) measured against derived floor 0. |
 | `OPEN-02` | Rule-30 center-column global aperiodicity (Wolfram Problem 1 / withdrawn core `aperiodic-compensation`): bounded finite F2 windows are observed, while infinite-horizon aperiodicity remains open. |
 | `OPEN-03` | Empirical UORC compression ratio across arbitrary unseen byte streams: worst-case archive expansion bound (<= n + 61 bytes) is tested under VR-57, while empirical savings on external corpora remain open. |
 | `OPEN-04` | Lived human player contemplation and subjective aesthetic resonance: kinematic attention/dissonance proxies are modeled in Foundation.Teleology.V1.Model, while first-person human experience remains open. |
 
-## 6. Epistemic Level `build` — Bijective Conformance Register (`CM-02`: 82/82/82)
+## 6. Epistemic Level `build` — Bijective Conformance Register (`CM-02`: 83/83/83)
 
 | ID | Executed Test Location | Scenario |
 | --- | --- | --- |
-| `VR-01` | `src/game/prismModel.test.ts:581` | Botanical soundscape specification validates all 7 fields, 10 outcomes, 35 rules, 15 invariants, and 36 examples |
-| `VR-02` | `src/game/prismModel.test.ts:603` | Formal botanical invariants (INV-001 to INV-015) hold universally across all sampled states |
-| `VR-03` | `src/game/prismModel.test.ts:623` | Acceptance vectors pass both valid 7-field botanical interactions and malformed input rejection |
-| `VR-04` | `src/game/prismModel.test.ts:633` | Diurnal sky, ecological affinity, 5-partial modal synthesis, and binaural panning models evaluate deterministically |
-| `VR-05` | `src/game/prismModel.test.ts:691` | Brand identity, humane-centered design, botanical morphology, ecology constellations, species articulation, and zero-allocation infrastructure models satisfy formal invariants |
-| `VR-06` | `src/game/prismModel.test.ts:769` | Procedural garden generation, sympathetic cross-pollination, biome mastery, and cardinal wayfinder maintain invariants |
-| `VR-07` | `src/game/prismModel.test.ts:809` | Environmental physics distinguishes solid obstructions from permeable grass, moss, lotus pads, and shallow water |
-| `VR-08` | `src/game/prismModel.test.ts:874` | Neuromorphic synthesis engine verifies Rule-30 cellular steps, bounded Hebbian plasticity, UORLUT01 PrimeAddress GCD sieve, and live seedling morphogenesis |
-| `VR-09` | `src/game/prismModel.test.ts:968` | Subsystem 14: 5-Stage Botanical Lifecycle, 4-Phase Environmental Lifecycle, and Live 4-Stem Generative Soundtrack Score satisfy monotonic progression and breathing silence guarantees |
-| `VR-10` | `src/game/prismModel.test.ts:1042` | Critically-damped camera kinematics, sustained gesture hold state machine, and authentic garden harmony prevent camera jumping, key-repeat chaos, and premature game-end |
-| `VR-11` | `src/game/prismModel.test.ts:1135` | Hydrostatic basin containment guarantees zero floating water edges around 360 degrees of the Mirror Lagoon and couples neuromorphic cymatics |
-| `VR-12` | `src/game/prismModel.test.ts:1219` | 5-Substrate Biological Soil/Water Taxonomy, Gravitropic Stem Orientation, and Biogeochemical Equilibrium satisfy mathematical, physical, chemical, and biological invariants |
-| `VR-13` | `src/game/prismModel.test.ts:1298` | Spatial Wave Propagation Acoustics, Circadian Stomatal Turgor, Kuramoto Phase Entrainment, 9-Segment Parabolic Action-Potential Arcs, Canopy Wind-Shear, and Chemotactic Spore Fluid Dynamics satisfy formal Prism invariants |
-| `VR-14` | `src/game/prismModel.test.ts:1455` | Holistic Cross-Domain Mutual Constraint Law: all 10 physical, chemical, biological, celestial, acoustic, infrastructure, and spatial grounding invariants hold universally |
-| `VR-15` | `src/game/prismModel.test.ts:1576` | Spatial Grounding & Hard-Surface/Rock Exclusion Coherence API guarantees zero floating trees, canopies, rocks, or stones and zero plants/trees on hard platforms or rocks |
-| `VR-16` | `src/game/prismModel.test.ts:1626` | Universal 10-Domain Neuromorphic Bus transfers enhancements across all Prism domains (including Infrastructure) automatically without manual per-domain iteration |
-| `VR-17` | `src/game/prismModel.test.ts:1772` | Symbiotic Environmental Agency observes both environment and player and acts on both across all 6 modalities while preserving player autonomy |
-| `VR-18` | `src/game/prismModel.test.ts:1861` | 3D Gaze-Frustum Focal Target Selection prioritizes the specimen the player is looking at and never selects plants behind the player |
-| `VR-19` | `src/game/prismModel.test.ts:1934` | Root Judge calls the 10-Domain Universal Neuromorphic Bus, constructive boolean flags are universally proved across w in [1..15], and TypeScript constants are AST-generated from .lex.tex without hand-typing drift |
-| `VR-20` | `src/game/prismModel.test.ts:2077` | Emergent Stakeholder Entity synthesizes Intelligence, Memory, Observation, and Feedback into Environmental Wisdom Phenomena and Player-Value Reinforcement |
-| `VR-21` | `src/game/prismModel.test.ts:2256` | 5-Tier Granular Atomic-to-Environmental Procedural Synthesis constructs Molecules from Atoms, Macromolecules from Molecules, Organic & Inorganic Compounds from Macromolecules, and synthesizes into all 6 Game Modalities |
-| `VR-22` | `src/game/prismModel.test.ts:2389` | Complete Prism Model Closure & Tier 6 Closed-Loop Atomic Remineralization unite the 10-Domain Neuromorphic Bus, 4-Facet Emergent Stakeholder Entity, and 6-Stage Closed-Loop Granular Synthesis |
-| `VR-23` | `src/game/prismModel.test.ts:2470` | Refined Granular Procedural Synthesis couples Compound-to-Surface Profiles, Botanical Organogenesis, and Bioluminescent Wavelength Chromophore Conversion across Acoustic, Optical, and Physical Modalities |
-| `VR-24` | `src/game/prismModel.test.ts:2566` | High-Definition Parametric B-Mesh 3D Modeling Engine, Blender-Style Shape-Key Morph Targets, Thin-Film Iridescence, and 3-Joint Kinematic Rigging synthesize valid high-density geometry across all species and monuments |
-| `VR-25` | `src/game/prismModel.test.ts:2682` | Formal .lex.tex High-Definition B-Mesh & 3-Joint Kinematic Rig Synthesis specifications and Lean 4 theorems hold across all synaptic weights |
-| `VR-26` | `src/game/prismModel.test.ts:2746` | 26. Unified 11-Part Holistic Observer & Theory of Mind (Why) on Neuromorphic Bus |
-| `VR-27` | `src/game/prismModel.test.ts:2800` | 27. Supra-Directive Self-Enhancement Beyond Base Directive (w > 8) & Compile-Time + Runtime Model Synthesis |
-| `VR-28` | `src/game/prismModel.test.ts:2885` | 28. afflom/rule30 Deterministic (2^d Regular Diagonals) & Non-Deterministic (Withdrawn Aperiodic) Horizon |
-| `VR-29` | `src/game/prismModel.test.ts:2921` | 29. Formal Foundation.Cosmogenesis.V1.Model AST Purity, Emergent 1000-Permille Baseline & Monotonicity |
-| `VR-30` | `src/game/prismModel.test.ts:2962` | 30. Purely Parametric 4-Realm Synthesis (Physics, Demiurgic Monuments, Organic Biota & Embodied Player Co-Observer) |
-| `VR-31` | `src/game/prismModel.test.ts:3052` | 31. Live Neuromorphic Bus Refinement Advances Observer Cosmogenesis & Modulates Player Kinematics/Physics |
-| `VR-32` | `src/game/prismModel.test.ts:3170` | 32. Pure Parametric Canonical Seed, Concert Pitch & World Topology derive deterministically from UOR Primes & Rule-30 Dyadics |
-| `VR-33` | `src/game/prismModel.test.ts:3257` | 33. Parametric 5-Limit Just Intonation Biomes, Species Ratios, Stepping Stones & Flora Substrate Law hold across α=1..4 |
-| `VR-34` | `src/game/prismModel.test.ts:3313` | 34. Live Alpha Seed Shift + Multi-Cycle Omega Convergence preserves Spatial Grounding & Holistic Bus Coupling |
-| `VR-35` | `src/game/prismModel.test.ts:3369` | 35. Complete Parametric Subsystem Closure: Atmospheres, Celestial Ephemeris, Outcomes, Substrates, Monuments, Constellations, Guilds, Articulations & Lifecycles |
-| `VR-36` | `src/game/prismModel.test.ts:3472` | 36. Parametric Display & Design Engine: 60-30-10 Spectral Chromatics, WCAG AAA Contrast & Nested Radius Law |
-| `VR-37` | `src/game/prismModel.test.ts:3556` | 37. Highest-Resolution Extrapolation, Theory of Mind of Improvement & 11-Niche Morphogenetic Differentiation |
-| `VR-38` | `src/game/prismModel.test.ts:3604` | 38. Fourfold Immanent Observer Presence: 7-Part Grounded 3D Witness, Multi-Biome Pilgrimage & Holistic Closure |
-| `VR-39` | `src/game/prismModel.test.ts:3672` | 39. Foundational Mathematical Emotions: Harmony vs. Chaos, Tenney/Euler Consonance, Golden 2φ Equilibrium & 11-Part Permeation |
-| `VR-40` | `src/game/prismModel.test.ts:3768` | 40. Six Canonical Observer Preferences: Physics/Math Derivation, Monotonic Uplift & Live Polyculture Steering |
-| `VR-41` | `src/game/prismModel.test.ts:3825` | 41. Zero Spec/Implementation Drift: Concert Pitch Bit-Identity, 7-Class Colliders, and Zero Static Overlaps Across Alpha Seeds 1..8 |
-| `VR-42` | `src/game/prismModel.test.ts:3869` | 42. Material-Synthesis Cross-Modal Obstruction (6 Compounds × 6 Channels), Dual-Observer Wake, Witness Avoidance & Arc Clearance |
-| `VR-43` | `src/game/prismModel.test.ts:3978` | 43. Canonical Standard Models All the Way Down: 22 Models × 11 Meta-Model Elements = 242 Verified Cells, Consecutive Primes 71..179 & SHA-256 Content Addressing |
-| `VR-44` | `src/game/prismModel.test.ts:4030` | 44. BIPM SI 2019 Defining Constants, Dimensional Homogeneity Algebra & Complete 17-Field SU(3)_C × SU(2)_L × U(1)_Y Standard Model |
-| `VR-45` | `src/game/prismModel.test.ts:4086` | 45. Complete 118-Element IUPAC Periodic Table (Z=1..118), Pauli Subshells, 20 Madelung Anomalies, 14 Bravais Lattices & Stoichiometry |
-| `VR-46` | `src/game/prismModel.test.ts:4125` | 46. Mathematics Standard Model: Clifford Cl(0,6) 64-Blade Algebra, UOR Prime Factorization, Shannon Entropy & DEC d^2 = 0 |
-| `VR-47` | `src/game/prismModel.test.ts:4166` | 47. CIE 1931 380–780nm Spectral Integration, OKLCH Round-Trip, glTF 2.0 GGX PBR Energy Conservation & W3C WCAG AAA / APCA Tokens |
-| `VR-48` | `src/game/prismModel.test.ts:4219` | 48. Watertight 2-Manifold B-Mesh Topology (χ = V - E + F = 2) on Bravais Crystal Habits & ISO 226 / 24-Bark Psychoacoustics |
-| `VR-49` | `src/game/prismModel.test.ts:4279` | 49. 19×19 Neuromorphic Functorial Feature-Transfer Matrix Enhances Multi-Modal Fidelity Monotonically Across All Modalities |
-| `VR-50` | `src/game/prismModel.test.ts:4352` | 50. End-to-End Multi-Modal Projection: All 14 IUCr Bravais Crystal Manifolds, 7/11-Limit Soundtrack Projection, 8-Mode Chladni & Diurnal W3C OKLCH Tokens |
-| `VR-51` | `src/game/prismModel.test.ts:4484` | 51. 19-Model Gap Elimination: Realizability Anti-Gap Oracle, L-System + Murray r³ Morphogenesis, ISO 3382 + Woodworth 3D HRTF & Merkle Anamnesis Round-Trip |
-| `VR-52` | `src/game/prismModel.test.ts:4656` | 52. 19th Model Teleological Closure: Zero Unexplained Structures/Features, Interactive Landmarks, Autonomous Plasticity & Uncluttered Gameplay UI |
-| `VR-53` | `src/game/prismModel.test.ts:4787` | 53. Bijective 20/20 Scene Phenomenon Refinement: Chladni Terraces, Lithophone Waystones, Witness Communion & Serene HUD |
-| `VR-54` | `src/game/prismModel.test.ts:4911` | 54. Physical Basis & Form Detail of All 5 Biome Monuments, Triune 20-Facet Observer & Curated Voice-Leading |
-| `VR-55` | `src/game/prismModel.test.ts:5133` | 55. Pure Harmonic Overtone Lock (0.0¢ Drift), Zero Stochastic Audio Randomness, True Cardan & Torsion Hierarchies, and Walkable Monument Portals |
-| `VR-56` | `src/game/prismModel.test.ts:5316` | 56. Complete Parametric Vedantic & Dharmic Standard Models (Models #20 & #21): Conserved 1000‰ Triguṇa, 5×5 Pañcīkaraṇa, 5 Pañca-Kośas, Māṇḍūkya Turīya, Structural Ahiṃsā, 12-Nidāna Pratītyasamutpāda & 21×21 Functor Coherence |
-| `VR-57` | `src/game/prismModel.test.ts:5503` | 57. UORC Parametric Compression Standard Model (#22, Prime 179): κ Codec Space, NCM Micro-Plasticity, Saturating Cap Ledger, Twin Pass, Lossless UORC\x01 Wire Codec, Typed Refusals & Rule-30 Portfolio Engine |
-| `VR-58` | `src/game/prismModel.test.ts:5856` | 58. Genuine UORC Autonomous Conservatory Curation (`uorc/conservatory-curation/1`), Authoritative Standards Provenance, κ-Consolidated Memories & 4-Bar Cantabile Singing-Flora Presence |
-| `VR-59` | `src/game/prismModel.test.ts:6164` | 59. High-Definition 64-Bit Coherent Precision (prism/hd-coherent-precision/1): All 22 Models at 64-Bit, All-to-All PPM Depth Transfer, 1nm CIE 401-Band Colorimetry, 64-Bit Rule-30 Continuum, 1024px PBR, 16-Mode Chladni, 64-Tap ISO 3382 & 17-Limit JI |
-| `VR-60` | `src/game/prismModel.test.ts:6397` | 60. End-to-End 64-Bit Continuum Runtime Coherence: 17-Limit 7D Formal Tonnetz, Ecology Multi-Modal Clarity, Zero-Clamp HD Partials & Continuous Micro-Plasticity |
-| `VR-61` | `src/game/prismModel.test.ts:6656` | 61. Sensory & Co-Curatorial Mastery: Rayleigh/Mie Sky Dome, Capillary/Fresnel Lagoon, Species Body Formants, Tunable Lithophone Waystones, Cross-Pollinated Microclimate Offshoots & Shareable #uorc= Gardens |
-| `VR-62` | `src/game/prismModel.test.ts:6797` | 62. Modular Scene Builders, Zero-GC 60Hz Biogeochemistry & Strict Compiler Hygiene Invariants |
-| `VR-63` | `src/game/prismModel.test.ts:6877` | 63. Universal Prism LexLean-to-TypeScript Mechanizer, Differential Dispatch Parity & Zero-Drift Automation Gate |
-| `VR-64` | `src/game/prismModel.test.ts:6969` | 64. 24-Facet Reflexive Holon Guiding Directives, Autonomous KPIs & Player-Game Dissonance Reconciliation |
-| `VR-65` | `src/game/prismModel.test.ts:7067` | 65. Unified UORust + UORC + Rule-30 Mechanical Reasoning Model: Foundry Routing, UE-16 Monotonic κ Lift Ratchet, Planted-Defect R2 Honesty Meta-Gate, Peirce Cycle & Harman OOO Gauge Invariance |
-| `VR-66` | `src/game/prismModel.test.ts:7331` | 66. Rule-30 Precision & Beyond: Certified LexLean Production Rust + Wasm Runtime, Zero-Choice Mechanization, Multi-Axis Shrink-Only Ratchet & Modeled CI Engine Tick |
-| `VR-67` | `src/game/prismModel.test.ts:7493` | 67. Universal Zero-Glue rust-core Auto-Codegen, 22-Root Certified Bundle & Constructive Axiom Ratchet |
-| `VR-68` | `src/game/prismModel.test.ts:7632` | 68. Zero Classical.choice Repository Closure, All-22-Domain no_std Certified Wasm & Unconditional Live Cutover |
-| `VR-69` | `src/game/prismModel.test.ts:7796` | 69. Single Certified Wasm Runtime Cutover, Zero-Residue Codebase Lift & Live Observer-Player Co-Evolutionary Plasticity |
-| `VR-70` | `src/game/prismModel.test.ts:7994` | 70. Purely Parametric {0, 1} Root Purity & Certified #![no_std] Wasm Constructive Generators (Foundation.Ontology.V1.Model) |
-| `VR-71` | `src/game/prismModel.test.ts:8035` | 71. Universal 5W+H Ontology Completeness: 30/30 Grounded Modules, 172/172 Certified Structures & 8-Stratum Obstruction Chain |
-| `VR-72` | `src/game/prismModel.test.ts:8104` | 72. Live Parametric OntologicalTelosLoss Coordinate Descent, Non-Coercive Freeze & UORC Anamnesis Persistence |
-| `VR-73` | `src/game/prismModel.test.ts:8193` | 73. Browser Host Runtime API Saturation Laws & 3-Way Certified Wasm Parity (Foundation.Host.V1.Model) |
-| `VR-74` | `src/game/prismModel.test.ts:8279` | 74. Browser-Resident LexLean-to-wasm32 Binary Compiler, Constructive Verifier & Foundry Hygiene Gate |
-| `VR-75` | `src/game/prismModel.test.ts:8336` | 75. End-to-End Self-Hosting Browser Organism Lifecycle: gen-0 UORC Spore Unpack, Autonomous gen-1 Promotion, Watchdog Rollback & Spore Export |
-| `VR-76` | `src/game/prismModel.test.ts:8421` | 76. Uorc.CapabilityContract Formal Laws: Independent Quota Isolation, Checked U64 & CAP0001..CAP0006 Receipt Parity |
-| `VR-77` | `src/game/prismModel.test.ts:8489` | 77. Isolated 10/10 Browser Runtime Capability Saturation Suite, Mandatory Per-Root Falsifiers & Persistent U64 Store |
-| `VR-78` | `src/game/prismModel.test.ts:8558` | 78. Fused LexLean + Zero-Residue TypeScript Autonomous Enhancement, Spore Kernel Rehydration & Live 60Hz Loop Coupling |
-| `VR-79` | `src/game/prismModel.test.ts:8617` | 79. Zero-Classical-Choice Lean Attestation Provenance, Dynamic 30-Module Conformance & Unified Self-Host Anamnesis Lineage |
-| `VR-80` | `src/game/prismModel.test.ts:8659` | 80. Complete Verdant Holistic Organism Closure: Multi-Modal gen-N World Projection, Player Spore-Drop UX & 24/24 Autonomous KPIs |
-| `VR-81` | `src/game/prismModel.test.ts:8709` | 81. Holistic Autonomous Observer + Player Co-Evolution & Serene Gameplay-First UI Lifecycle |
-| `VR-82` | `src/game/prismModel.test.ts:8818` | 82. Live Played UORC Session Hydration & Read-Only Telemetry & Evolution Observatory Page |
+| `VR-01` | `src/game/prismModel.test.ts:590` | Botanical soundscape specification validates all 7 fields, 10 outcomes, 35 rules, 15 invariants, and 36 examples |
+| `VR-02` | `src/game/prismModel.test.ts:612` | Formal botanical invariants (INV-001 to INV-015) hold universally across all sampled states |
+| `VR-03` | `src/game/prismModel.test.ts:632` | Acceptance vectors pass both valid 7-field botanical interactions and malformed input rejection |
+| `VR-04` | `src/game/prismModel.test.ts:642` | Diurnal sky, ecological affinity, 5-partial modal synthesis, and binaural panning models evaluate deterministically |
+| `VR-05` | `src/game/prismModel.test.ts:700` | Brand identity, humane-centered design, botanical morphology, ecology constellations, species articulation, and zero-allocation infrastructure models satisfy formal invariants |
+| `VR-06` | `src/game/prismModel.test.ts:778` | Procedural garden generation, sympathetic cross-pollination, biome mastery, and cardinal wayfinder maintain invariants |
+| `VR-07` | `src/game/prismModel.test.ts:818` | Environmental physics distinguishes solid obstructions from permeable grass, moss, lotus pads, and shallow water |
+| `VR-08` | `src/game/prismModel.test.ts:883` | Neuromorphic synthesis engine verifies Rule-30 cellular steps, bounded Hebbian plasticity, UORLUT01 PrimeAddress GCD sieve, and live seedling morphogenesis |
+| `VR-09` | `src/game/prismModel.test.ts:977` | Subsystem 14: 5-Stage Botanical Lifecycle, 4-Phase Environmental Lifecycle, and Live 4-Stem Generative Soundtrack Score satisfy monotonic progression and breathing silence guarantees |
+| `VR-10` | `src/game/prismModel.test.ts:1051` | Critically-damped camera kinematics, sustained gesture hold state machine, and authentic garden harmony prevent camera jumping, key-repeat chaos, and premature game-end |
+| `VR-11` | `src/game/prismModel.test.ts:1144` | Hydrostatic basin containment guarantees zero floating water edges around 360 degrees of the Mirror Lagoon and couples neuromorphic cymatics |
+| `VR-12` | `src/game/prismModel.test.ts:1228` | 5-Substrate Biological Soil/Water Taxonomy, Gravitropic Stem Orientation, and Biogeochemical Equilibrium satisfy mathematical, physical, chemical, and biological invariants |
+| `VR-13` | `src/game/prismModel.test.ts:1307` | Spatial Wave Propagation Acoustics, Circadian Stomatal Turgor, Kuramoto Phase Entrainment, 9-Segment Parabolic Action-Potential Arcs, Canopy Wind-Shear, and Chemotactic Spore Fluid Dynamics satisfy formal Prism invariants |
+| `VR-14` | `src/game/prismModel.test.ts:1464` | Holistic Cross-Domain Mutual Constraint Law: all 10 physical, chemical, biological, celestial, acoustic, infrastructure, and spatial grounding invariants hold universally |
+| `VR-15` | `src/game/prismModel.test.ts:1585` | Spatial Grounding & Hard-Surface/Rock Exclusion Coherence API guarantees zero floating trees, canopies, rocks, or stones and zero plants/trees on hard platforms or rocks |
+| `VR-16` | `src/game/prismModel.test.ts:1635` | Universal 10-Domain Neuromorphic Bus transfers enhancements across all Prism domains (including Infrastructure) automatically without manual per-domain iteration |
+| `VR-17` | `src/game/prismModel.test.ts:1781` | Symbiotic Environmental Agency observes both environment and player and acts on both across all 6 modalities while preserving player autonomy |
+| `VR-18` | `src/game/prismModel.test.ts:1870` | 3D Gaze-Frustum Focal Target Selection prioritizes the specimen the player is looking at and never selects plants behind the player |
+| `VR-19` | `src/game/prismModel.test.ts:1943` | Root Judge calls the 10-Domain Universal Neuromorphic Bus, constructive boolean flags are universally proved across w in [1..15], and TypeScript constants are AST-generated from .lex.tex without hand-typing drift |
+| `VR-20` | `src/game/prismModel.test.ts:2086` | Emergent Stakeholder Entity synthesizes Intelligence, Memory, Observation, and Feedback into Environmental Wisdom Phenomena and Player-Value Reinforcement |
+| `VR-21` | `src/game/prismModel.test.ts:2265` | 5-Tier Granular Atomic-to-Environmental Procedural Synthesis constructs Molecules from Atoms, Macromolecules from Molecules, Organic & Inorganic Compounds from Macromolecules, and synthesizes into all 6 Game Modalities |
+| `VR-22` | `src/game/prismModel.test.ts:2398` | Complete Prism Model Closure & Tier 6 Closed-Loop Atomic Remineralization unite the 10-Domain Neuromorphic Bus, 4-Facet Emergent Stakeholder Entity, and 6-Stage Closed-Loop Granular Synthesis |
+| `VR-23` | `src/game/prismModel.test.ts:2479` | Refined Granular Procedural Synthesis couples Compound-to-Surface Profiles, Botanical Organogenesis, and Bioluminescent Wavelength Chromophore Conversion across Acoustic, Optical, and Physical Modalities |
+| `VR-24` | `src/game/prismModel.test.ts:2575` | High-Definition Parametric B-Mesh 3D Modeling Engine, Blender-Style Shape-Key Morph Targets, Thin-Film Iridescence, and 3-Joint Kinematic Rigging synthesize valid high-density geometry across all species and monuments |
+| `VR-25` | `src/game/prismModel.test.ts:2691` | Formal .lex.tex High-Definition B-Mesh & 3-Joint Kinematic Rig Synthesis specifications and Lean 4 theorems hold across all synaptic weights |
+| `VR-26` | `src/game/prismModel.test.ts:2755` | 26. Unified 11-Part Holistic Observer & Theory of Mind (Why) on Neuromorphic Bus |
+| `VR-27` | `src/game/prismModel.test.ts:2809` | 27. Supra-Directive Self-Enhancement Beyond Base Directive (w > 8) & Compile-Time + Runtime Model Synthesis |
+| `VR-28` | `src/game/prismModel.test.ts:2894` | 28. afflom/rule30 Deterministic (2^d Regular Diagonals) & Non-Deterministic (Withdrawn Aperiodic) Horizon |
+| `VR-29` | `src/game/prismModel.test.ts:2930` | 29. Formal Foundation.Cosmogenesis.V1.Model AST Purity, Emergent 1000-Permille Baseline & Monotonicity |
+| `VR-30` | `src/game/prismModel.test.ts:2971` | 30. Purely Parametric 4-Realm Synthesis (Physics, Demiurgic Monuments, Organic Biota & Embodied Player Co-Observer) |
+| `VR-31` | `src/game/prismModel.test.ts:3061` | 31. Live Neuromorphic Bus Refinement Advances Observer Cosmogenesis & Modulates Player Kinematics/Physics |
+| `VR-32` | `src/game/prismModel.test.ts:3179` | 32. Pure Parametric Canonical Seed, Concert Pitch & World Topology derive deterministically from UOR Primes & Rule-30 Dyadics |
+| `VR-33` | `src/game/prismModel.test.ts:3266` | 33. Parametric 5-Limit Just Intonation Biomes, Species Ratios, Stepping Stones & Flora Substrate Law hold across α=1..4 |
+| `VR-34` | `src/game/prismModel.test.ts:3322` | 34. Live Alpha Seed Shift + Multi-Cycle Omega Convergence preserves Spatial Grounding & Holistic Bus Coupling |
+| `VR-35` | `src/game/prismModel.test.ts:3378` | 35. Complete Parametric Subsystem Closure: Atmospheres, Celestial Ephemeris, Outcomes, Substrates, Monuments, Constellations, Guilds, Articulations & Lifecycles |
+| `VR-36` | `src/game/prismModel.test.ts:3481` | 36. Parametric Display & Design Engine: 60-30-10 Spectral Chromatics, WCAG AAA Contrast & Nested Radius Law |
+| `VR-37` | `src/game/prismModel.test.ts:3565` | 37. Highest-Resolution Extrapolation, Theory of Mind of Improvement & 11-Niche Morphogenetic Differentiation |
+| `VR-38` | `src/game/prismModel.test.ts:3613` | 38. Fourfold Immanent Observer Presence: 7-Part Grounded 3D Witness, Multi-Biome Pilgrimage & Holistic Closure |
+| `VR-39` | `src/game/prismModel.test.ts:3681` | 39. Foundational Mathematical Emotions: Harmony vs. Chaos, Tenney/Euler Consonance, Golden 2φ Equilibrium & 11-Part Permeation |
+| `VR-40` | `src/game/prismModel.test.ts:3777` | 40. Six Canonical Observer Preferences: Physics/Math Derivation, Monotonic Uplift & Live Polyculture Steering |
+| `VR-41` | `src/game/prismModel.test.ts:3834` | 41. Zero Spec/Implementation Drift: Concert Pitch Bit-Identity, 7-Class Colliders, and Zero Static Overlaps Across Alpha Seeds 1..8 |
+| `VR-42` | `src/game/prismModel.test.ts:3878` | 42. Material-Synthesis Cross-Modal Obstruction (6 Compounds × 6 Channels), Dual-Observer Wake, Witness Avoidance & Arc Clearance |
+| `VR-43` | `src/game/prismModel.test.ts:3987` | 43. Canonical Standard Models All the Way Down: 22 Models × 11 Meta-Model Elements = 242 Verified Cells, Consecutive Primes 71..179 & SHA-256 Content Addressing |
+| `VR-44` | `src/game/prismModel.test.ts:4039` | 44. BIPM SI 2019 Defining Constants, Dimensional Homogeneity Algebra & Complete 17-Field SU(3)_C × SU(2)_L × U(1)_Y Standard Model |
+| `VR-45` | `src/game/prismModel.test.ts:4095` | 45. Complete 118-Element IUPAC Periodic Table (Z=1..118), Pauli Subshells, 20 Madelung Anomalies, 14 Bravais Lattices & Stoichiometry |
+| `VR-46` | `src/game/prismModel.test.ts:4134` | 46. Mathematics Standard Model: Clifford Cl(0,6) 64-Blade Algebra, UOR Prime Factorization, Shannon Entropy & DEC d^2 = 0 |
+| `VR-47` | `src/game/prismModel.test.ts:4175` | 47. CIE 1931 380–780nm Spectral Integration, OKLCH Round-Trip, glTF 2.0 GGX PBR Energy Conservation & W3C WCAG AAA / APCA Tokens |
+| `VR-48` | `src/game/prismModel.test.ts:4228` | 48. Watertight 2-Manifold B-Mesh Topology (χ = V - E + F = 2) on Bravais Crystal Habits & ISO 226 / 24-Bark Psychoacoustics |
+| `VR-49` | `src/game/prismModel.test.ts:4288` | 49. 19×19 Neuromorphic Functorial Feature-Transfer Matrix Enhances Multi-Modal Fidelity Monotonically Across All Modalities |
+| `VR-50` | `src/game/prismModel.test.ts:4361` | 50. End-to-End Multi-Modal Projection: All 14 IUCr Bravais Crystal Manifolds, 7/11-Limit Soundtrack Projection, 8-Mode Chladni & Diurnal W3C OKLCH Tokens |
+| `VR-51` | `src/game/prismModel.test.ts:4493` | 51. 19-Model Gap Elimination: Realizability Anti-Gap Oracle, L-System + Murray r³ Morphogenesis, ISO 3382 + Woodworth 3D HRTF & Merkle Anamnesis Round-Trip |
+| `VR-52` | `src/game/prismModel.test.ts:4665` | 52. 19th Model Teleological Closure: Zero Unexplained Structures/Features, Interactive Landmarks, Autonomous Plasticity & Uncluttered Gameplay UI |
+| `VR-53` | `src/game/prismModel.test.ts:4796` | 53. Bijective 20/20 Scene Phenomenon Refinement: Chladni Terraces, Lithophone Waystones, Witness Communion & Serene HUD |
+| `VR-54` | `src/game/prismModel.test.ts:4920` | 54. Physical Basis & Form Detail of All 5 Biome Monuments, Triune 20-Facet Observer & Curated Voice-Leading |
+| `VR-55` | `src/game/prismModel.test.ts:5142` | 55. Pure Harmonic Overtone Lock (0.0¢ Drift), Zero Stochastic Audio Randomness, True Cardan & Torsion Hierarchies, and Walkable Monument Portals |
+| `VR-56` | `src/game/prismModel.test.ts:5325` | 56. Complete Parametric Vedantic & Dharmic Standard Models (Models #20 & #21): Conserved 1000‰ Triguṇa, 5×5 Pañcīkaraṇa, 5 Pañca-Kośas, Māṇḍūkya Turīya, Structural Ahiṃsā, 12-Nidāna Pratītyasamutpāda & 21×21 Functor Coherence |
+| `VR-57` | `src/game/prismModel.test.ts:5512` | 57. UORC Parametric Compression Standard Model (#22, Prime 179): κ Codec Space, NCM Micro-Plasticity, Saturating Cap Ledger, Twin Pass, Lossless UORC\x01 Wire Codec, Typed Refusals & Rule-30 Portfolio Engine |
+| `VR-58` | `src/game/prismModel.test.ts:5865` | 58. Genuine UORC Autonomous Conservatory Curation (`uorc/conservatory-curation/1`), Authoritative Standards Provenance, κ-Consolidated Memories & 4-Bar Cantabile Singing-Flora Presence |
+| `VR-59` | `src/game/prismModel.test.ts:6173` | 59. High-Definition 64-Bit Coherent Precision (prism/hd-coherent-precision/1): All 22 Models at 64-Bit, All-to-All PPM Depth Transfer, 1nm CIE 401-Band Colorimetry, 64-Bit Rule-30 Continuum, 1024px PBR, 16-Mode Chladni, 64-Tap ISO 3382 & 17-Limit JI |
+| `VR-60` | `src/game/prismModel.test.ts:6406` | 60. End-to-End 64-Bit Continuum Runtime Coherence: 17-Limit 7D Formal Tonnetz, Ecology Multi-Modal Clarity, Zero-Clamp HD Partials & Continuous Micro-Plasticity |
+| `VR-61` | `src/game/prismModel.test.ts:6665` | 61. Sensory & Co-Curatorial Mastery: Rayleigh/Mie Sky Dome, Capillary/Fresnel Lagoon, Species Body Formants, Tunable Lithophone Waystones, Cross-Pollinated Microclimate Offshoots & Shareable #uorc= Gardens |
+| `VR-62` | `src/game/prismModel.test.ts:6806` | 62. Modular Scene Builders, Zero-GC 60Hz Biogeochemistry & Strict Compiler Hygiene Invariants |
+| `VR-63` | `src/game/prismModel.test.ts:6886` | 63. Universal Prism LexLean-to-TypeScript Mechanizer, Differential Dispatch Parity & Zero-Drift Automation Gate |
+| `VR-64` | `src/game/prismModel.test.ts:6978` | 64. 24-Facet Reflexive Holon Guiding Directives, Autonomous KPIs & Player-Game Dissonance Reconciliation |
+| `VR-65` | `src/game/prismModel.test.ts:7076` | 65. Unified UORust + UORC + Rule-30 Mechanical Reasoning Model: Foundry Routing, UE-16 Monotonic κ Lift Ratchet, Planted-Defect R2 Honesty Meta-Gate, Peirce Cycle & Harman OOO Gauge Invariance |
+| `VR-66` | `src/game/prismModel.test.ts:7340` | 66. Rule-30 Precision & Beyond: Certified LexLean Production Rust + Wasm Runtime, Zero-Choice Mechanization, Multi-Axis Shrink-Only Ratchet & Modeled CI Engine Tick |
+| `VR-67` | `src/game/prismModel.test.ts:7502` | 67. Universal Zero-Glue rust-core Auto-Codegen, 22-Root Certified Bundle & Constructive Axiom Ratchet |
+| `VR-68` | `src/game/prismModel.test.ts:7641` | 68. Zero Classical.choice Repository Closure, All-22-Domain no_std Certified Wasm & Unconditional Live Cutover |
+| `VR-69` | `src/game/prismModel.test.ts:7805` | 69. Single Certified Wasm Runtime Cutover, Zero-Residue Codebase Lift & Live Observer-Player Co-Evolutionary Plasticity |
+| `VR-70` | `src/game/prismModel.test.ts:8003` | 70. Purely Parametric {0, 1} Root Purity & Certified #![no_std] Wasm Constructive Generators (Foundation.Ontology.V1.Model) |
+| `VR-71` | `src/game/prismModel.test.ts:8044` | 71. Universal 5W+H Ontology Completeness: 30/30 Grounded Modules, 172/172 Certified Structures & 8-Stratum Obstruction Chain |
+| `VR-72` | `src/game/prismModel.test.ts:8113` | 72. Live Parametric OntologicalTelosLoss Coordinate Descent, Non-Coercive Freeze & UORC Anamnesis Persistence |
+| `VR-73` | `src/game/prismModel.test.ts:8202` | 73. Browser Host Runtime API Saturation Laws & 3-Way Certified Wasm Parity (Foundation.Host.V1.Model) |
+| `VR-74` | `src/game/prismModel.test.ts:8289` | 74. Browser-Resident LexLean-to-wasm32 Binary Compiler, Constructive Verifier & Foundry Hygiene Gate |
+| `VR-75` | `src/game/prismModel.test.ts:8346` | 75. End-to-End Self-Hosting Browser Organism Lifecycle: gen-0 UORC Spore Unpack, Autonomous gen-1 Promotion, Watchdog Rollback & Spore Export |
+| `VR-76` | `src/game/prismModel.test.ts:8431` | 76. Uorc.CapabilityContract Formal Laws: Independent Quota Isolation, Checked U64 & CAP0001..CAP0006 Receipt Parity |
+| `VR-77` | `src/game/prismModel.test.ts:8499` | 77. Isolated 10/10 Browser Runtime Capability Saturation Suite, Mandatory Per-Root Falsifiers & Persistent U64 Store |
+| `VR-78` | `src/game/prismModel.test.ts:8568` | 78. Fused LexLean + Zero-Residue TypeScript Autonomous Enhancement, Spore Kernel Rehydration & Live 60Hz Loop Coupling |
+| `VR-79` | `src/game/prismModel.test.ts:8627` | 79. Zero-Classical-Choice Lean Attestation Provenance, Dynamic 30-Module Conformance & Unified Self-Host Anamnesis Lineage |
+| `VR-80` | `src/game/prismModel.test.ts:8669` | 80. Complete Verdant Holistic Organism Closure: Multi-Modal gen-N World Projection, Player Spore-Drop UX & 24/24 Autonomous KPIs |
+| `VR-81` | `src/game/prismModel.test.ts:8719` | 81. Holistic Autonomous Observer + Player Co-Evolution & Serene Gameplay-First UI Lifecycle |
+| `VR-82` | `src/game/prismModel.test.ts:8828` | 82. Live Played UORC Session Hydration & Read-Only Telemetry & Evolution Observatory Page |
+| `VR-83` | `src/game/prismModel.test.ts:8869` | 83. Verdant Engine Standalone Wasm Substrate Integration, Builder Blueprints, Rover Patrol & VDNT Snapshot |

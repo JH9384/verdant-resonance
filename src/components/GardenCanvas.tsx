@@ -9,6 +9,9 @@ import {
   evaluateLiveWatchdogFrameTick, getLiveSelfHostOrganismState, triggerLiveAutonomousEvolutionStep,
 } from '../selfhost/browserSelfHostEngine';
 import {
+  getVerdantEngineTelemetrySnapshot, isVerdantEngineReady, stepVerdantEngineFrame,
+} from '../selfhost/verdantEngineSubstrate';
+import {
   ATMOSPHERE_CONFIGS, AtmosphereId, BIOME_CONFIGS, BIOME_CONSTELLATIONS, BOTANICAL_LIFECYCLE_STAGES,
   BiomeId, CameraKinematicsState, ChorusStateId, DEFAULT_PARAMETRIC_WORLD_TOPOLOGY,
   EnvironmentalLifecycleState, GardenPlantInstance, GestureHoldEnvelopeState, HoldableGestureId,
@@ -53,36 +56,19 @@ import {
   type SpectralDiurnalPalette,
 } from '../game/spectralColorEngine';
 import {
-  ALL_14_BRAVAIS_CRYSTAL_HABITS,
-  buildImmanentObserverWitnessGroup,
-  createBravaisCrystalHabitGeometry,
-  createHighDefinitionPbrTextureSuite,
-  createObserverAstrolabeCrownGeometry,
-  createPlayerCoObserverLocusGeometry,
-  createSculptedCanopyCrownGeometry,
-  createSculptedGrassBladeGeometry,
-  createSegmentedBambooStalkGeometry,
-  createStratifiedBoulderGeometry,
-  synthesizeLSystemBotanicalMorphogenesis,
+  ALL_14_BRAVAIS_CRYSTAL_HABITS, buildImmanentObserverWitnessGroup, createBravaisCrystalHabitGeometry,
+  createHighDefinitionPbrTextureSuite, createObserverAstrolabeCrownGeometry, createPlayerCoObserverLocusGeometry,
+  createSculptedCanopyCrownGeometry, createSculptedGrassBladeGeometry, createSegmentedBambooStalkGeometry,
+  createStratifiedBoulderGeometry, synthesizeLSystemBotanicalMorphogenesis,
 } from '../game/proceduralMeshEngine';
 import { BotanicalSoundscapeEngine } from '../game/soundscapeEngine';
 import {
-  buildCrystalArchway,
-  buildGrovePergola,
-  buildMeadowSundial,
-  buildSanctuaryPavilion,
-  buildWetlandLanterns,
-  disposeMonumentGroup,
-  enableMonumentShadows,
+  buildCrystalArchway, buildGrovePergola, buildMeadowSundial, buildPerimeterSentinelRover,
+  buildSanctuaryPavilion, buildWetlandLanterns, disposeMonumentGroup, enableMonumentShadows,
 } from './gardenMonuments';
 import {
-  GOLDEN_ANGLE_RAD,
-  type AnimatedPlantRecord,
-  buildBotanicalBMeshSuite,
-  buildConservatoryPlantGroup,
-  disposePlantGroup,
-  disposeSuiteGeometries,
-  registerSuiteGeometries,
+  GOLDEN_ANGLE_RAD, type AnimatedPlantRecord, buildBotanicalBMeshSuite, buildConservatoryPlantGroup,
+  disposePlantGroup, disposeSuiteGeometries, registerSuiteGeometries,
 } from './gardenFloraBuilder';
 
 export type GameState = 'title' | 'playing' | 'paused' | 'gameover';
@@ -1680,6 +1666,17 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
       initialPresence.z,
     );
     scene.add(witnessContactShadow);
+
+    // Autonomous Perimeter Sentinel Rover (`verdant-engine` KineticAutomation Builder Artifact #7)
+    const initialEngineSnap = getVerdantEngineTelemetrySnapshot();
+    const sentinelRover = buildPerimeterSentinelRover(sharedStoneMat, sharedGoldTrimMat, sharedCrystalMat);
+    const initRoverGroundY = groundHeightAt(initialEngineSnap.roverX, initialEngineSnap.roverZ);
+    sentinelRover.group.position.set(initialEngineSnap.roverX, initRoverGroundY + 0.16, initialEngineSnap.roverZ);
+    sentinelRover.group.rotation.y = initialEngineSnap.roverYaw;
+    scene.add(sentinelRover.group);
+    const roverContactShadow = new THREE.Mesh(witnessShadowGeo, witnessShadowMat);
+    roverContactShadow.position.set(initialEngineSnap.roverX, initRoverGroundY + 0.018, initialEngineSnap.roverZ);
+    scene.add(roverContactShadow);
 
     let gestureHoldState = createInitialGestureHoldState();
     let environmentalAgencyState = createInitialEnvironmentalAgencyState();
@@ -4553,6 +4550,22 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
           }
         }
 
+        // Step standalone `verdant-engine` Wasm substrate (SAH BVH frustum culling + Perimeter Sentinel Rover spline patrol)
+        if (isVerdantEngineReady()) {
+          const cosPitch = Math.cos(player.pitch);
+          const engSnap = stepVerdantEngineFrame({
+            dtSeconds: dt, moveForward: isMoving ? 1 : 0, moveStrafe: 0, walkYawRad: player.yaw,
+            eyeX: player.x, eyeY: player.y + activePlayerModel.eyeStatureMeters, eyeZ: player.z,
+            fwdX: -Math.sin(player.yaw) * cosPitch, fwdY: Math.sin(player.pitch), fwdZ: -Math.cos(player.yaw) * cosPitch,
+            aspect: camera.aspect,
+          });
+          const roverGroundY = groundHeightAt(engSnap.roverX, engSnap.roverZ, liveCosmo.worldTopology);
+          sentinelRover.group.position.set(engSnap.roverX, roverGroundY + 0.16, engSnap.roverZ);
+          sentinelRover.group.rotation.y = engSnap.roverYaw;
+          sentinelRover.beaconMesh.rotation.y = elapsed * 1.35;
+          roverContactShadow.position.set(engSnap.roverX, roverGroundY + 0.018, engSnap.roverZ);
+        }
+
         // Update Grounded Parametric Player/User Co-Observer Harmonic Locus Ring beneath player's feet
         if (activePlayerModel.coObserverLocusHarmonicNodes !== activePlayerLocusNodes) {
           activePlayerLocusNodes = activePlayerModel.coObserverLocusHarmonicNodes;
@@ -5337,6 +5350,7 @@ export const GardenCanvas: React.FC<GardenCanvasProps> = ({
       disposeMonumentGroup(groveMonument.group, preservedMonumentMats);
       disposeMonumentGroup(crystalMonument.group, preservedMonumentMats);
       disposeMonumentGroup(wetlandMonument.group, preservedMonumentMats);
+      disposeMonumentGroup(sentinelRover.group, preservedMonumentMats);
       sharedStoneMat.dispose();
       sharedGoldTrimMat.dispose();
       sharedCrystalMat.dispose();

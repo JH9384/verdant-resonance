@@ -3,14 +3,14 @@
   "generationId": "gen-0",
   "generationIndex": 0,
   "parentGenerationId": null,
-  "fileCount": 57,
-  "totalSourceBytes": 2840612,
-  "archiveBytes": 2840862,
-  "corpusKappa": "81f0802fed40ded68e38e92c421581c25008244f05a31beb214f11d00bf2eac9",
-  "treeKappa": "0c98ab78c1c676cba29e7d3cb7b3d4f4e54ae8560d1bac9ac89978ad417428b3",
+  "fileCount": 58,
+  "totalSourceBytes": 2873137,
+  "archiveBytes": 2873391,
+  "corpusKappa": "43ab0e8b0ff290ea831ebb5de1c8ae3a0a1516754aa74cc0e6f2d15b39760867",
+  "treeKappa": "3126e6ccd54e9821056bddaccadadd220a01452687ab1395cedfb59e814ba063",
   "telosLoss": 180,
   "computeSteps": 4096,
-  "compiledWasmBytes": 85471,
+  "compiledWasmBytes": 86067,
   "evolvedCoordinates": {
     "alphaSeed": 108,
     "primeCeilingRank": 3,
@@ -108,8 +108,8 @@
     {
       "index": 14,
       "path": "prism/src/Foundation/Host/V1/Model.lex.tex",
-      "bytes": 16837,
-      "sha256Kappa": "59c8e47799adab718160d437f391925132cb08b4237a44864283ee7328e00d76"
+      "bytes": 20355,
+      "sha256Kappa": "68ab6d72ab3c6629cf469975e16a74d6b5261715534aab822e603b5a596c8448"
     },
     {
       "index": 15,
@@ -228,8 +228,8 @@
     {
       "index": 34,
       "path": "src/components/GardenCanvas.tsx",
-      "bytes": 226961,
-      "sha256Kappa": "9cf242b79426a4a65304c67d84574053285e0a9071aa18bed351872c39e14f93"
+      "bytes": 229052,
+      "sha256Kappa": "d72fda8a01fb132efac920f543f7b6e470953e2ad4f808a72cf4a306e40bf755"
     },
     {
       "index": 35,
@@ -240,14 +240,14 @@
     {
       "index": 36,
       "path": "src/components/gardenMonuments.ts",
-      "bytes": 35685,
-      "sha256Kappa": "922e806a53bddc2adb7165920c32f21d609d9920b9b4bc828adac37937d1d46e"
+      "bytes": 37142,
+      "sha256Kappa": "7caa848946727b3bdad8cf6c1844822e96126806d9757234662c0afb2944e421"
     },
     {
       "index": 37,
       "path": "src/components/PrismInspectorModal.tsx",
-      "bytes": 69265,
-      "sha256Kappa": "5b827032a212373d057ae6967fcda22db433803314d9daff699a669e0cd72a2f"
+      "bytes": 74413,
+      "sha256Kappa": "102e1f989156a157d5d98aa755f75d29cf8ca90f5e52a95ff2ce45eca36ad40c"
     },
     {
       "index": 38,
@@ -306,8 +306,8 @@
     {
       "index": 47,
       "path": "src/game/soundscapeEngine.ts",
-      "bytes": 145180,
-      "sha256Kappa": "0ca5f9ad1aebc78146f5638f9396b5224b739170cd979bb5f1ec681b6ab50ebc"
+      "bytes": 145582,
+      "sha256Kappa": "1ddb8d0b85acbd118cbd8a0d63ae40d3292e58a08c06f253ab7d549636f4a255"
     },
     {
       "index": 48,
@@ -336,8 +336,8 @@
     {
       "index": 52,
       "path": "src/main.tsx",
-      "bytes": 4023,
-      "sha256Kappa": "3466ce7821bb32a771bf641c464cda073a5129a758bf4b7edbac0f7a73113b51"
+      "bytes": 4193,
+      "sha256Kappa": "fcac9c6aeddfa028306b51926e21f5f0396f3b075d0aa776c64c72b6858efbfb"
     },
     {
       "index": 53,
@@ -362,6 +362,12 @@
       "path": "src/selfhost/browserSelfHostEngine.ts",
       "bytes": 63048,
       "sha256Kappa": "bebc39667d1f149eb2adb8d2a3775cb39bd91e67d99dd52bcfd0c9998af08e89"
+    },
+    {
+      "index": 57,
+      "path": "src/selfhost/verdantEngineSubstrate.ts",
+      "bytes": 19739,
+      "sha256Kappa": "330d7531413332fb7a5b08d4bc24e97e2dc88b51c9ffaf68b21f14064a176e8e"
     }
   ]
 }

@@ -88,6 +88,20 @@ structure{
   ]
 }
 
+structure{
+  name: VerdantEngineSubstrateReceipt,
+  type_parameters: [],
+  parameters: [],
+  fields: [
+    {name: blueprintCount, type: Nat},
+    {name: walkableNavPolygons, type: Nat},
+    {name: audioQuantumFrames, type: Nat},
+    {name: snapshotBytes, type: Nat},
+    {name: bvhVisibleCount, type: Nat},
+    {name: substrateCoherent, type: Bool}
+  ]
+}
+
 definition{
   name: powConstructive,
   parameters: [base : Nat, exp : Nat],
@@ -383,6 +397,31 @@ theorem{
   name: capabilityReceiptAndFalsifierPolicyVectorsHold,
   parameters: [],
   statement: (((((((classifyCapabilityReceiptError true true true true true true true true true) =? 0) && ((classifyCapabilityReceiptError false true true true true true true true true) =? 1)) && (((classifyCapabilityReceiptError true true true true true false true true true) =? ((((1 + 1) + 1) + 1) + 1)) && ((classifyCapabilityReceiptError true true true true true true true true false) =? (((((1 + 1) + 1) + 1) + 1) + 1)))) && ((verifyIsolatedCapabilitySaturation ((1 + 1) + 1) ((1 + 1) + 1) ((1 + 1) + 1) 0) && (not (verifyIsolatedCapabilitySaturation ((1 + 1) + 1) ((1 + 1) + 1) (1 + 1) 0)))) && ((verifyCheckedU64NoOverflow 1 1 (1 + 1)) && (not (verifyCheckedU64NoOverflow (1 + 1) 1 (1 + 1))))) = true),
+  proof: decide{},
+  axioms: []
+}
+
+definition{
+  name: verifyVerdantEngineSubstrateCoherence,
+  parameters: [blueprintCount : Nat, walkableNavPolygons : Nat, audioQuantumFrames : Nat, snapshotBytes : Nat],
+  result: Bool,
+  body: (let two : Nat := (1 + 1); (let three : Nat := (two + 1); (let four : Nat := (Foundation.Ontology.V1.Model::pow2Constructive two); (let eight : Nat := (Foundation.Ontology.V1.Model::pow2Constructive three); (let seven : Nat := (prim subtract eight 1 : Nat); (let eleven : Nat := (eight + three); (let minWalkablePolys : Nat := (Foundation.Ontology.V1.Model::pow2Constructive eleven); (let audioQuantum : Nat := (Foundation.Ontology.V1.Model::pow2Constructive seven); (let sixteen : Nat := (Foundation.Ontology.V1.Model::pow2Constructive four); (let fifteen : Nat := (prim subtract sixteen 1 : Nat); (let maxSnapshotBytes : Nat := (Foundation.Ontology.V1.Model::pow2Constructive fifteen); (((blueprintCount =? seven) && (minWalkablePolys <=? walkableNavPolygons)) && ((audioQuantumFrames =? audioQuantum) && ((0 <? snapshotBytes) && (snapshotBytes <=? maxSnapshotBytes))))))))))))))),
+  axioms: [],
+  executable: true,
+  production: {effects: [overflow, recursion], targets: [rust-core]}
+}
+
+definition{
+  name: breaksVerdantEngineSubstrateCoherence,
+  parameters: [blueprintCount : Nat, walkableNavPolygons : Nat, audioQuantumFrames : Nat, snapshotBytes : Nat],
+  result: Bool,
+  body: ((verifyVerdantEngineSubstrateCoherence blueprintCount walkableNavPolygons audioQuantumFrames snapshotBytes) && ((blueprintCount =? 0) || (snapshotBytes =? 0)))
+}
+
+theorem{
+  name: verdantEngineSubstrateCoherenceVectorsHold,
+  parameters: [],
+  statement: ((let two : Nat := (1 + 1); (let three : Nat := (two + 1); (let four : Nat := (Foundation.Ontology.V1.Model::pow2Constructive two); (let eight : Nat := (Foundation.Ontology.V1.Model::pow2Constructive three); (let seven : Nat := (prim subtract eight 1 : Nat); (let six : Nat := (prim subtract seven 1 : Nat); (let ten : Nat := (eight + two); (let eleven : Nat := (eight + three); (let minPolys : Nat := (Foundation.Ontology.V1.Model::pow2Constructive eleven); (let subPolys : Nat := (Foundation.Ontology.V1.Model::pow2Constructive ten); (let quantum : Nat := (Foundation.Ontology.V1.Model::pow2Constructive seven); (let fourteen : Nat := (prim subtract (Foundation.Ontology.V1.Model::pow2Constructive four) two : Nat); (let fifteen : Nat := (prim subtract (Foundation.Ontology.V1.Model::pow2Constructive four) 1 : Nat); (let validSnap : Nat := (Foundation.Ontology.V1.Model::pow2Constructive fourteen); (let overSnap : Nat := ((Foundation.Ontology.V1.Model::pow2Constructive fifteen) + 1); (((verifyVerdantEngineSubstrateCoherence seven minPolys quantum validSnap) && (not (verifyVerdantEngineSubstrateCoherence six minPolys quantum validSnap))) && (((not (verifyVerdantEngineSubstrateCoherence seven subPolys quantum validSnap)) && (not (verifyVerdantEngineSubstrateCoherence seven minPolys six validSnap))) && ((not (verifyVerdantEngineSubstrateCoherence seven minPolys quantum 0)) && (not (verifyVerdantEngineSubstrateCoherence seven minPolys quantum overSnap)))))))))))))))))))) = true),
   proof: decide{},
   axioms: []
 }

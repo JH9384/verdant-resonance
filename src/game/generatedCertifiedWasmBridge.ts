@@ -121,6 +121,7 @@ interface CertifiedWasmExports {
   core_verdant_host_verify_checked_u64_no_overflow(p0: bigint, p1: bigint, p2: bigint): number;
   core_verdant_host_verify_independent_quota_caps(p0: bigint, p1: bigint, p2: bigint, p3: bigint, p4: bigint, p5: bigint): number;
   core_verdant_host_verify_isolated_capability_saturation(p0: bigint, p1: bigint, p2: bigint, p3: bigint): number;
+  core_verdant_host_verify_verdant_engine_substrate_coherence(p0: bigint, p1: bigint, p2: bigint, p3: bigint): number;
   core_verdant_humane_evaluate_gaze_target_in_forward_cone(p0: bigint, p1: bigint): number;
   core_verdant_humane_resolve_compass_octant_index(p0: bigint): bigint;
   core_verdant_humane_step_diurnal_sky_luminance_permille(p0: bigint, p1: bigint): bigint;
@@ -226,18 +227,18 @@ interface CertifiedWasmExports {
 
 export const CERTIFIED_PRODUCTION_MANIFEST = {
   "schema": "verdant-resonance/certified-production-manifest/1",
-  "bundleResultId": "cf2e5496c535749c9c77acee48116798e7249f67e824325573b1e2da235556b3",
-  "semanticId": "c0b506ed61c0eed4c3d06e9b619c153a730fa14cff395f5702ad30eeff2e63d4",
-  "attestationId": "ad6fb10b5f92bf482b25c2eb27ce17c0f8f59f25d771b32eebab0bcfe009067d",
+  "bundleResultId": "2927ac4b2a138015da64c932cb378143d356a1507fb1f32c5090652eb1cfcfbf",
+  "semanticId": "adc27b4a3104311bc3612b1b7d1eb55770749e65faa1d3cbac5247b17d971a0b",
+  "attestationId": "1ab15b75897ff794df931d68ff249ef1abfd3e0458e3b08a82d0d51d35f35ccf",
   "compilerSemanticsDigest": "5262e5b4c8b5668ae7066ad686757a6bb7f80c941d515fb9d586894fbc7de69a",
   "sdkImageRef": "ghcr.io/uor-foundation/prismpm-sdk-candidate@sha256:cd3b47d7a370c4a26b8285f5e9c3bb15e639973c55505c3809ddbe55352fea58",
-  "requestSha256": "68379f9db0530233065613280fc236ad031881f9282fa5cf9ecdfd71e0c4164e",
+  "requestSha256": "30350466e16a2be866274e209a55c80f4e207a84df4b294715a56a1565746af0",
   "wasmRelativePath": "public/wasm/verdant_certified_runtime.wasm",
-  "wasmBytes": 85471,
-  "wasmSha256": "69739b02338d3327ba676aea2cf0333d280158a3ac2c7912d52642ae1e878fef",
+  "wasmBytes": 86067,
+  "wasmSha256": "794037ac07a11fd75fb17f8c9c3da6abbb6234da997f9afaf7f8a9a5e573a7dd",
   "allKernelChecked": true,
   "allForbidUnsafeCode": true,
-  "rustCoreNoStdRootCount": 190,
+  "rustCoreNoStdRootCount": 191,
   "rustStdRootCount": 3,
   "roots": [
     {
@@ -249,11 +250,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4286996fc722bc3ad2a68dab204f73114a2dceed373c17a2bcd0f2ead22096ac",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R0.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R0.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R0.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R0/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R0/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R0.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R0/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R0/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -278,11 +279,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "300373322c79e3da950862978220f3d88a5c4e239cc99717780c7c552e9d6218",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R2.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R2.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R2.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R2/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R2/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R2.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R2/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R2/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -307,11 +308,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "57b007c0532e677116f2b7c9cf34731cff73751d740f8d3fc6aafd7d20255bf8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R1.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R1.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R1.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R1/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R1/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R1.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R1/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R1/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -336,11 +337,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e59d69de65a0eac464e9528eebabac5521d654afebc57d4daa34d0fd1552fdac",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R3.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R3.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R3.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R3/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R3/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R3.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R3/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R3/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -367,11 +368,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "13fbea4037db9adfe2744fbe22f3fc901d0a95947c548cce4cc339b2c8734788",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R7.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R7.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R7.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R7/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R7/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R7.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R7/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R7/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -396,11 +397,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8666096e00ac6763b1c2c7ab5ecb1d6e482db2c8088c7358ba7ad6cfa78c7f06",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R4.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R4.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R4.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R4/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R4/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R4.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R4/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R4/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -425,11 +426,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "64c8113a2c5aa056c4a51391c074c18e0ffa84d603f38c6ffd8f31aa6ed78474",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R5.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R5.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R5.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R5/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R5/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R5.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R5/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R5/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -454,11 +455,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ee3e06c30310aa2dcbbdedb9796638ae0fbf13928ae2d34aba528db6ffbd422a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R10.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R10.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R10.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R10/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R10/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R10.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R10/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R10/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -487,11 +488,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "93f3ccf38f7582b654797e390792719a4812adfebf637b9ef7c2ae81f1969b4e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R6.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R6.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R6.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R6/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R6/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R6.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R6/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R6/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -516,11 +517,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "42ed31543975f007aec272e80ceb313dd0f31729799136a93cea690ca20c5e3d",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R9.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R9.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R9.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R9/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R9/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R9.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R9/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R9/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -549,11 +550,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "d41233d6c2c0b2809b43880e0deadbeebcaaa8f6b645df1c530b72b393b4a0eb",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R8.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R8.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R8.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R8/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R8/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R8.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R8/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R8/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -578,11 +579,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ab299cae9a1aba90a0512ce070c216677fc4f8b9d643ab8f8ef97991734993c4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R15.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R15.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R15.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R15/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R15/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R15.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R15/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R15/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -617,11 +618,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "a94e305f42fc4482a22bfeb7984a019a88f6d62d6c742a4b8b3eb298fe67add8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R12.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R12.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R12.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R12/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R12/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R12.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R12/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R12/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -646,11 +647,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fbfd19db99162d11066c2406e5209e3c8df55c7f932d40897a813a71781010c4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R17.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R17.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R17.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R17/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R17/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R17.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R17/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R17/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -683,11 +684,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "75dc69a89d807d3c1fd0726f1d3bf5ecc73ac4ac019112827648a22336035974",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R11.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R11.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R11.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R11/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R11/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R11.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R11/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R11/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -712,11 +713,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "5a0c0493c50ec25fbd046fda66c80a656160f2dfc64c4a4026b0adc2d822f0e8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R16.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R16.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R16.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R16/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R16/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R16.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R16/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R16/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -745,11 +746,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "be92177cda9103f8168b7d6c35676ed7198dfce9c614d0e9dfa6da7c91167258",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R13.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R13.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R13.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R13/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R13/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R13.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R13/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R13/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -774,11 +775,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e4e7a788469851c4fd5cf999cf5c7fc791a9bc3482ec846e95380bf7f34e7637",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R14.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R14.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R14.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R14/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R14/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R14.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R14/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R14/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -803,11 +804,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "66ff1a5b9ec9b67dc0d7434d0c8be82507fbac072b9c76d0ced3f32fa48522f0",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R18.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R18.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R18.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R18/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R18/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R18.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R18/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R18/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -832,11 +833,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9a2e703c6f3082a8b5464a011c8fb7178a38d0d8f65b69b47459dbc0dd396594",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R19.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R19.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R19.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R19/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R19/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R19.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R19/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R19/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -859,11 +860,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "07bc781431d377d55dd91d31f800bf3399b63064fbd003c7be8ed12a7299be3f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R22.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R22.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R22.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R22/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R22/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R22.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R22/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R22/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -886,11 +887,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8dd03aeba322fc24c25a43adec12d5c04b9dafc79828ea98bbff0b6e5935b0c8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R20.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R20.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R20.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R20/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R20/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R20.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R20/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R20/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -915,11 +916,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "99f273ccc4411c2e17dbdabc4af691692a531e906949f506915abe1c83627897",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R21.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R21.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R21.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R21/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R21/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R21.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R21/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R21/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -942,11 +943,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4a60abce5e6f1c38961187abb1f76d1750e2629101917a963f3282bd1bfaeff1",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R23.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R23.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R23.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R23/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R23/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R23.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R23/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R23/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -971,11 +972,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f271489e28f505d18a0dad53aa182f9c9028a8cebf1648f982242398a0fa76d1",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R38.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R38.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R38.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R38/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R38/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R38.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R38/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R38/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1004,11 +1005,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "171ee815228bf3e653e9039fecb39410dce9586ba6305ec6470253a146cd3854",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R26.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R26.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R26.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R26/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R26/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R26.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R26/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R26/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1039,11 +1040,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ff755876bb9e76869f2945e637d0ee26e4ed7aa8bbc672310776c5bb33dbc794",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R30.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R30.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R30.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R30/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R30/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R30.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R30/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R30/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1080,11 +1081,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fcd36b547ab8c71781c00b789720f36c6d96e623e446e9ad45da0b6fa7ff4f9e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R29.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R29.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R29.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R29/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R29/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R29.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R29/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R29/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1119,11 +1120,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "47320215ea271707f49e8a75631baae5e7c9c33d8926cc39aecbbca9c2261f05",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R32.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R32.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R32.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R32/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R32/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R32.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R32/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R32/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1150,11 +1151,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e9894379a4b9e99accc34ff4c456ab9fe8690f6cbd6f8855ed8f01bab2af7143",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R33.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R33.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R33.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R33/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R33/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R33.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R33/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R33/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1181,11 +1182,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "7ea0e1c9bd29618ddc3f9ae012ed84accf15364789a8247ea6f0cb0fcd9d8c06",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R37.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R37.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R37.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R37/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R37/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R37.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R37/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R37/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1210,11 +1211,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "43bde3f30e6af0d7cd7253f4e6d84aaf8295c9d7e8d8ecd9750bb9b0c37cd671",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R27.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R27.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R27.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R27/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R27/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R27.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R27/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R27/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1249,11 +1250,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "627361a6441436b4d983e91ae1a8008892142f59ed5ea12eac5fee36770d50f8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R28.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R28.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R28.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R28/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R28/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R28.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R28/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R28/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1288,11 +1289,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fbb1fbab829c12870c3ebcb3bea2a882dc43dbf35d167279ef66ae46ecc18216",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R25.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R25.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R25.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R25/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R25/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R25.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R25/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R25/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1325,11 +1326,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "56020c73cabc59bd66a7d8c2cff6e4a2e0c9525b5577c23d3598ae61fb7b8ea6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R35.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R35.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R35.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R35/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R35/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R35.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R35/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R35/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -1355,11 +1356,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "249f7b4172a2de7f8488fffaea3a9da195ea775bcddecb6dd2affd29cb9ce57e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R31.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R31.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R31.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R31/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R31/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R31.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R31/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R31/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1386,11 +1387,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "a5721288f67a8ef1098693c8abce5710782956fafa380f2bcb2ab17bc54b47e6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R24.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R24.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R24.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R24/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R24/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R24.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R24/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R24/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1413,11 +1414,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "934cca7094b12281cb5198e0a9ed4c92ede7757834095b5cc834232e53fbc65d",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R34.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R34.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R34.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R34/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R34/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R34.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R34/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R34/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1450,11 +1451,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4bbcaae6d8a5c6c0e75e69abd2aa01408cd5a3feffe16826e1aa6cd09e61601e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R36.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R36.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R36.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R36/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R36/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R36.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R36/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R36/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1483,11 +1484,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "44512f460f70532c789db6c66f0fabe20a67bfc0642743b3bbf5ca2a4e8fa160",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R39.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R39.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R39.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R39/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R39/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R39.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R39/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R39/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -1510,11 +1511,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "58cf1e96b4323ef95e4877c802d3e0556d87648683c4f7f7a681ebd13a94a742",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R47.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R47.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R47.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R47/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R47/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R47.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R47/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R47/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1543,11 +1544,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "6b1eb3e187a65114498538b1164493d44a979ab3566d1437442654da78973d2b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R46.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R46.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R46.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R46/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R46/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R46.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R46/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R46/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1576,11 +1577,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f8b84b921f283c889bbf6db20bdbb94d24131517f729ed639f2fb5c780fc09f5",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R40.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R40.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R40.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R40/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R40/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R40.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R40/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R40/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1609,11 +1610,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "090c7f65fa498fe53298aa4533973d4db821f97c0416cc9f2b1f422fb6d6dd3b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R52.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R52.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R52.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R52/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R52/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R52.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R52/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R52/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1638,11 +1639,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f0bdd7f84f2beb302f11c7e848db8ee9596d330ee2bce665f77fdb653968cc5b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R51.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R51.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R51.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R51/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R51/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R51.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R51/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R51/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1671,11 +1672,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ca027c172936c3044c2862a28718263a0d15edf0dc812ac0099dd42617dd3366",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R50.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R50.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R50.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R50/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R50/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R50.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R50/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R50/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1704,11 +1705,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "bf36432b960dcf7a3ea063213ce418c5839d68de92ded6a00b321954e91fc48b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R53.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R53.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R53.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R53/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R53/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R53.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R53/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R53/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1737,11 +1738,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "a770c10871476fde196b4a5c294e2618684e8f87197f2eec52826da4749543f5",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R48.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R48.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R48.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R48/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R48/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R48.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R48/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R48/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1774,11 +1775,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "838ca657e1bfb30d7402ec16c98db35abe8be5701a4a3551467866753443d138",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R41.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R41.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R41.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R41/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R41/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R41.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R41/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R41/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1807,11 +1808,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "a8fdb197d1cb17b681e15af2c0c35aeec8d76040b531051f4a1b8e8d6c0a4a22",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R42.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R42.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R42.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R42/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R42/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R42.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R42/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R42/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1840,11 +1841,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "5f3d9504b20c1f5cdc1de55666583ae1b7e1b84b8f9a6310ebed55269bc8fabd",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R43.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R43.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R43.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R43/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R43/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R43.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R43/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R43/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1877,11 +1878,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "6e2d4f24e87cc18454f135d500810794b3d13628be1df947e2049dfd31c89a9a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R44.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R44.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R44.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R44/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R44/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R44.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R44/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R44/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1914,11 +1915,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ceb6ef91dbf35335e543e1dca5f2af08b9e8bda5c882e77dd959234b12f52583",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R45.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R45.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R45.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R45/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R45/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R45.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R45/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R45/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1951,11 +1952,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8ac2e6ba9e0b7111e39dee71e4e5e56368da12fb1285a81393d481996934cb98",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R54.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R54.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R54.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R54/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R54/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R54.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R54/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R54/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -1984,11 +1985,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8c170d921b94d513ba72f163c2df9e3a8875e01d69fbcabad8bdc35b2384edb4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R49.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R49.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R49.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R49/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R49/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R49.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R49/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R49/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2017,11 +2018,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e1255cf2d9e88b190e06c8f2d149ba2e38cefa3f07b33155cd7597f9dfadc17c",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R57.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R57.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R57.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R57/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R57/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R57.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R57/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R57/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2050,11 +2051,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0e92e70ae041816a82ab6f956a42ded503c5889f8b1dd897d8d9badebdf85c36",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R59.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R59.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R59.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R59/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R59/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R59.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R59/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R59/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2079,11 +2080,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "cca9fb348b483416843c7983f3ddb129af82a0589e91bda32bfca8f7293aa274",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R58.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R58.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R58.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R58/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R58/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R58.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R58/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R58/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2112,11 +2113,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "31b2018fe873b7905ad24be47d759da51e450dd63d5fd3c1ebb2ecbef2cea1ab",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R56.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R56.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R56.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R56/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R56/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R56.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R56/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R56/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2141,11 +2142,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9c35c184d480a4fc03cb9f960a0fc65fe33bb052a23cbb7a852165eb85632166",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R55.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R55.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R55.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R55/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R55/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R55.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R55/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R55/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2174,11 +2175,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "084be926d982dddd1131b4586d0c81e484fddb1a71264fb36088aa319f684451",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R66.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R66.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R66.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R66/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R66/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R66.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R66/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R66/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2203,11 +2204,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "396f617969ff5f4055585042d0aa1e9a013c8f00dce104750777b4a14462f9ae",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R61.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R61.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R61.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R61/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R61/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R61.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R61/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R61/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2232,11 +2233,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "414dc07761b5f14f48173f620e268edd02bced3e267d67e1f3a6b15444d3c264",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R64.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R64.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R64.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R64/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R64/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R64.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R64/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R64/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2261,11 +2262,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0977d4c0316ae1b3b857298c10bc09f154f50e555b37bcb9d2a168407e22bb98",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R60.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R60.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R60.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R60/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R60/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R60.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R60/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R60/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2290,11 +2291,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ee0134eba89dc677b33923d231f7e044642a11decbc6d72cbf73f6d33d440674",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R65.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R65.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R65.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R65/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R65/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R65.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R65/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R65/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2319,11 +2320,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e6fc0b6dec76b641524b908b9d8e9735420ce0edf0b0ace1448d3b0e3b018ec8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R63.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R63.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R63.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R63/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R63/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R63.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R63/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R63/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2348,11 +2349,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "acc7d75744672632ee2105a208bcd9c24fb9b74ec26f1bd350da66fb0ea5b9f5",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R70.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R70.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R70.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R70/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R70/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R70.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R70/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R70/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2381,11 +2382,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "76983b168d6d3211b64dca9080827ff173c763d5e6de91c002172bcb4efbf9a9",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R62.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R62.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R62.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R62/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R62/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R62.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R62/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R62/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2410,11 +2411,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "c0def8d1e789a1db38cd9dda013f957f694a29e9fa9c8ff7ace0a51a509e8752",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R68.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R68.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R68.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R68/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R68/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R68.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R68/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R68/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2439,11 +2440,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ca512766f8d4356571515594fe91438d0de8a37bc12b8e2234d4ed92eebc52fd",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R69.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R69.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R69.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R69/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R69/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R69.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R69/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R69/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2468,11 +2469,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8b44cdfa1cad996a60632ea6a9e6a738e89b41ff3f3394b5a5d096388b4959eb",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R67.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R67.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R67.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R67/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R67/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R67.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R67/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R67/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2497,11 +2498,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "15d2fd36800a26e698f65d4df212da788486b260d0a0b3fae183dcd7e3758eea",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R71.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R71.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R71.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R71/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R71/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R71.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R71/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R71/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2526,11 +2527,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "7ff7d3e5463a919cd50ace99f640e5f80c538e11f7eb2e9346dd60d003fbf2d7",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R72.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R72.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R72.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R72/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R72/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R72.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R72/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R72/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2563,11 +2564,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e1b5a84ba94f80bd512e52a66e5f0fe9923f33ff36669109a519de6ae599e716",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R87.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R87.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R87.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R87/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R87/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R87.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R87/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R87/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2624,11 +2625,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "1b18f585352561d1c31b7fac5b9ad089955bfd634cacf535df81175050bad743",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R82.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R82.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R82.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R82/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R82/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R82.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R82/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R82/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -2674,11 +2675,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "05576926f72380db62d934c4733868e0e436b9ba1bdcdbd78ef999f80396157f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R79.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R79.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R79.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R79/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R79/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R79.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R79/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R79/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -2720,11 +2721,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "96bab31b3c67b7c29d5660167736280d9356e0cb650edfd804a21406a71460b7",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R73.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R73.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R73.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R73/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R73/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R73.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R73/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R73/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -2755,11 +2756,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "b870f678699f44dd26d7caa525a89239f8bd248813974e5c0adf994219aa30e1",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R78.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R78.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R78.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R78/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R78/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R78.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R78/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R78/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -2789,11 +2790,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ea1793b496ecff1b4cb4864b9342aa79ba0f2454b242959fc09a567ab92e42a6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R75.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R75.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R75.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R75/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R75/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R75.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R75/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R75/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -2824,11 +2825,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9f9d0851bd14a08c64e2a280fdb72d81a411f5545caafea98d5e0bae12cf1d6d",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R74.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R74.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R74.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R74/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R74/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R74.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R74/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R74/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -2857,11 +2858,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "47320215ea271707f49e8a75631baae5e7c9c33d8926cc39aecbbca9c2261f05",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R80.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R80.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R80.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R80/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R80/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R80.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R80/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R80/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -2888,11 +2889,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "36d9eaabb193f9a88223d535e4a3e2b832cf1d9a3111cdded00557e7c82ac73c",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R76.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R76.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R76.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R76/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R76/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R76.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R76/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R76/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -2919,11 +2920,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "eb86e2608ab3ba0db20166e1ba573dc35c91344453e5fd1dad5e1abd73103f2b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R77.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R77.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R77.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R77/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R77/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R77.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R77/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R77/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -2957,11 +2958,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "51b84b98705f3ca3454b9d98187a65a707a39344ef1f0d8e05cfa46d5311e36f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R81.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R81.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R81.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R81/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R81/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R81.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R81/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R81/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -2987,11 +2988,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "175717ff4a9051e2784e3dd85a6b5a7dfa7230bdf0be1405df41fc5220e36534",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R84.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R84.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R84.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R84/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R84/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R84.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R84/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R84/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3022,11 +3023,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "72cab2225f61a5aea35b1ddf5cda11442433d5cea85549d73b05fe1d72706b09",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R83.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R83.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R83.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R83/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R83/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R83.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R83/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R83/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3089,11 +3090,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ae23331fc0528dc19f147ac76082c45a8a2b013cc05d5b5c5b88fa28e0fe3cd9",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R85.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R85.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R85.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R85/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R85/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R85.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R85/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R85/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3124,11 +3125,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "09c9847d1fe5866bfdb4b41a7c53d08a6f379111a8ebb47472d2bd179843dfdc",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R86.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R86.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R86.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R86/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R86/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R86.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R86/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R86/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3171,11 +3172,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "2589c0c18a1565b19fd654e0a084061b0fe4b7d855c68c4666f77235d79e0f17",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R88.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R88.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R88.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R88/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R88/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R88.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R88/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R88/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3202,6 +3203,48 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "resultType": "Bool"
     },
     {
+      "root": "PrismVerdantResonance.Foundation.Host.V1.Model.verifyVerdantEngineSubstrateCoherence",
+      "moduleName": "Foundation.Host.V1.Model",
+      "defName": "verifyVerdantEngineSubstrateCoherence",
+      "packageName": "verdant_host_verify_verdant_engine_substrate_coherence",
+      "targetId": "rust-core",
+      "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
+      "artifactDigest": "62956f9ea57e124048488e3ab8db7356f898f92b3f7cbe8436ddee9711d2e791",
+      "certificationStatus": "kernel-checked",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R89.Compose.RustCore.root",
+      "certificateFiles": [
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R89.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R89/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R89/Compose/RustCore.lex.tex"
+      ],
+      "effects": [
+        "overflow",
+        "recursion"
+      ],
+      "returnsResultOverflow": true,
+      "forbidsUnsafeCode": true,
+      "isNoStd": true,
+      "parameters": [
+        {
+          "name": "blueprintCount",
+          "type": "Nat"
+        },
+        {
+          "name": "walkableNavPolygons",
+          "type": "Nat"
+        },
+        {
+          "name": "audioQuantumFrames",
+          "type": "Nat"
+        },
+        {
+          "name": "snapshotBytes",
+          "type": "Nat"
+        }
+      ],
+      "resultType": "Bool"
+    },
+    {
       "root": "PrismVerdantResonance.Foundation.Humane.V1.Model.evaluateGazeTargetInForwardCone",
       "moduleName": "Foundation.Humane.V1.Model",
       "defName": "evaluateGazeTargetInForwardCone",
@@ -3210,11 +3253,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "6eb84ceae8f33f492d9928c40fe3764af229fd09d45a57aa24a41122d37f37b1",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R90.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R91.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R90.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R90/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R90/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R91.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R91/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R91/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3241,11 +3284,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f3d6d7210ae630f846c4001a4d6a2eac393e9c5e99baf628d5bcc185027d451f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R91.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R92.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R91.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R91/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R91/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R92.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R92/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R92/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3270,11 +3313,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "63553382c7c17a6df0de3921dbff0e791a0d9a4f4c69516be22f7cbde630c190",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R92.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R93.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R92.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R92/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R92/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R93.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R93/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R93/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3303,11 +3346,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0a95f05283501a2bf58463934ba15bc0a299e48b89c065bd8177da9ebae590d8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R89.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R90.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R89.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R89/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R89/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R90.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R90/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R90/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3332,11 +3375,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "70afd28b4984b614eab5ce23d3dcad5e73957bf45fd2985d429866adecd1f9e7",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R93.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R94.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R93.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R93/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R93/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R94.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R94/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R94/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3361,11 +3404,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "db627151bbab185a723de42d07bcbc7b5ae49084cc8f648040a8f9b40c8dd9d3",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R94.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R95.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R94.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R94/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R94/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R95.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R95/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R95/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3398,11 +3441,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "3407aee95fad345ada6f430b90844a507e7b290f74da7c605f7d6b87c96732cf",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R95.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R96.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R95.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R95/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R95/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R96.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R96/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R96/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3427,11 +3470,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fea23bf64101348ae3e0fbc5f62e008536a6bb1c92749b1d2a694d1cb4b1c491",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R100.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R101.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R100.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R100/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R100/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R101.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R101/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R101/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3470,11 +3513,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fcb8895f21666cba0f3ee4a3172be4de4a895177915161e9ccb8070e88dbfb64",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R98.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R99.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R98.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R98/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R98/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R99.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R99/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R99/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3505,11 +3548,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "81e9cd5d677fac5e50a9a15ef1696c47456f273412ecb9936e5fdc30536fb9e4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R96.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R97.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R96.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R96/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R96/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R97.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R97/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R97/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3534,11 +3577,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e72b8fadf757e3ab712e6eeb37b7f8412a38c64b68a6a958528b6576df746cf6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R102.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R103.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R102.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R102/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R102/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R103.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R103/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R103/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3569,11 +3612,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "dd9459062806b2c286beba18a5ca1fdb7e2355b6534e5092f955c66521ba1c4a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R106.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R107.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R106.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R106/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R106/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R107.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R107/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R107/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3600,11 +3643,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4464b7b229053a7d40dab200b8fd504b7fad5248e19214b3580e477564d901fa",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R104.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R105.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R104.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R104/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R104/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R105.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R105/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R105/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3633,11 +3676,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "76b692eb08f9aacb92aa7840df632d4a7078bc73fc31fe57c05b423a01636ba0",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R107.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R108.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R107.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R107/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R107/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R108.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R108/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R108/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3666,11 +3709,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "7fed0550b26b21f03bfe807a583c34ec76ca8738b6f5ef44ea8a3825ff43df41",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R109.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R110.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R109.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R109/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R109/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R110.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R110/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R110/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3699,11 +3742,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "76b692eb08f9aacb92aa7840df632d4a7078bc73fc31fe57c05b423a01636ba0",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R108.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R109.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R108.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R108/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R108/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R109.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R109/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R109/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3732,11 +3775,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "2ab7e98605c8c6366e8c9686eb3a5f253bce4be16d78c1a39bc60d9c50c3fa3a",
       "artifactDigest": "ff46154d9320cc258fa1deac6f5a49bca1c11a43f737e92b6cdf6d6cf76d1699",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R110.Compose.RustStd.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R111.Compose.RustStd.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R110.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R110/RustStd.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R110/Compose/RustStd.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R111.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R111/RustStd.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R111/Compose/RustStd.lex.tex"
       ],
       "effects": [
         "allocation",
@@ -3769,11 +3812,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ba2c716684c6e67f2bbf010d3e4d7b022bb7acd18744faadea39b584ff6255b8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R103.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R104.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R103.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R103/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R103/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R104.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R104/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R104/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3804,11 +3847,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9cadfd637dc12f61e4092877a34869470f8daf0d476eef511469ecba88b7cdcc",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R105.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R106.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R105.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R105/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R105/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R106.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R106/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R106/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3835,11 +3878,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e21180a1d00863c426bd6e89cdc9b827c4a792d0ac6ca7525989e015644059ea",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R97.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R98.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R97.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R97/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R97/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R98.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R98/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R98/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3862,11 +3905,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "2ab7e98605c8c6366e8c9686eb3a5f253bce4be16d78c1a39bc60d9c50c3fa3a",
       "artifactDigest": "90a3c9e56e6c8289893b22fdc06fd3c9d2ba8ae8ecde093324deae54aa268d2a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R111.Compose.RustStd.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R112.Compose.RustStd.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R111.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R111/RustStd.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R111/Compose/RustStd.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R112.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R112/RustStd.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R112/Compose/RustStd.lex.tex"
       ],
       "effects": [
         "allocation",
@@ -3901,11 +3944,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "5b34989ce5cbb734c4f5559b07e4a556ddf3c5db7552cc1f176784bf6abb739f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R99.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R100.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R99.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R99/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R99/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R100.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R100/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R100/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -3938,11 +3981,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "10a12b94715a14ab588226a699a22a1a63d66bcec480320767f9827714e8fd9b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R101.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R102.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R101.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R101/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R101/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R102.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R102/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R102/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -3969,11 +4012,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "1f4679adef2db70aa99be11f1b3b56736f43f5eddc33905922f8cf22c9dc48e4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R112.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R113.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R112.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R112/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R112/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R113.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R113/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R113/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4002,11 +4045,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ded0e08dc723cb1b3233d39e59cf4403aa742ad637aa01920065777655d5a7d2",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R113.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R114.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R113.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R113/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R113/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R114.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R114/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R114/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4035,11 +4078,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "fd2d0db4fb234ef9e1f81379c2a5cee4a3e9c2ba131facdb14cdbae09190b74f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R114.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R115.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R114.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R114/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R114/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R115.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R115/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R115/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4072,11 +4115,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ef9ca224c14d5b7e3b416579674bc57365ccd512a613031e1f569a0b3eb8b791",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R115.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R116.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R115.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R115/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R115/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R116.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R116/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R116/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4101,11 +4144,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "5c1e360d9a4abb98f23d445719434fc14f41debcab56cc60bfad529e5ac8c969",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R116.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R117.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R116.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R116/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R116/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R117.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R117/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R117/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4128,11 +4171,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "847e5172b8a3a17546990bdf08eb7f66192a1ba337090dd906f05b20f4158905",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R138.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R139.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R138.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R138/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R138/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R139.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R139/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R139/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4173,11 +4216,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0f5c67bbca155df22918699d7b744085997d0c60bb4ab9907df90576bc54d5ed",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R140.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R141.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R140.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R140/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R140/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R141.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R141/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R141/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4228,11 +4271,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "af3e3b7e0024ab04902ec8dd941eb4476dfaef62596ee95e2977b67f79d208ea",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R139.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R140.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R139.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R139/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R139/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R140.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R140/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R140/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4265,11 +4308,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "777f0149272630fff2cb0efb2bd0b6dec5fa2951b216e19046fd9dba4fa67202",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R118.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R119.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R118.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R118/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R118/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R119.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R119/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R119/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4298,11 +4341,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "22b851c3a29c79bb5f6bae8549961e6b3ccdfb1e6cdcc394a32ba46a46f3699c",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R117.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R118.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R117.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R117/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R117/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R118.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R118/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R118/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4325,11 +4368,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f4b9ad20e129bfced65b65f61222c0257f95b63aa22d66c84d8c82d74ac07933",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R136.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R137.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R136.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R136/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R136/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R137.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R137/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R137/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4354,11 +4397,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "51125c793be270d5b809dac3f8ba384df15949a27b9f731bb509e135142fd056",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R137.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R138.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R137.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R137/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R137/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R138.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R138/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R138/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4383,11 +4426,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f1d155fa277fc97a1edc202187466dbbcd860498cc723ae7a1fa9e178d9902c8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R120.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R121.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R120.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R120/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R120/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R121.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R121/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R121/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4414,11 +4457,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8e16959c029e63cd39186e3264b601f9a6b19629c76892788b26fcf777226078",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R132.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R133.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R132.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R132/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R132/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R133.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R133/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R133/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4447,11 +4490,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "095e399744737ac21806354b2466123e45307f2a9eaec4a164c94eacb6e84427",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R131.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R132.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R131.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R131/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R131/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R132.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R132/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R132/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4476,11 +4519,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "7be27c869f467ee2d29e7c7b4b43b34f7549b7dcabdf3b1a5ed85a27cab491d8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R123.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R124.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R123.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R123/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R123/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R124.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R124/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R124/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4507,11 +4550,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "b6a7388a8df6d51a39c055affb949030092afb401440550a2ea0ce1876644e78",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R129.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R130.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R129.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R129/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R129/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R130.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R130/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R130/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4536,11 +4579,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f7f91ec522f622bd337dfa72cbda9a70c57b5b26cb2619118e6dcf664c42526f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R130.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R131.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R130.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R130/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R130/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R131.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R131/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R131/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4565,11 +4608,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "d273d6783eb811e9265be47722ab78e669ec59050f22c39711bb3bf1c41a6c49",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R127.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R128.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R127.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R127/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R127/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R128.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R128/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R128/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4594,11 +4637,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "48e647e8ddaed683ff790dee925e04b885ecbb7780488ce49840b7bd7ea3c6d3",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R128.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R129.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R128.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R128/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R128/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R129.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R129/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R129/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4623,11 +4666,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "7f430023d1e43fa77182f066ac5017f4c250b5687a682d9ce734752f6502ec58",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R126.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R127.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R126.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R126/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R126/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R127.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R127/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R127/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4652,11 +4695,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "1bdb2a33554fe66f29a37c01a7bdced61e6a0bfd864f9d9184e5230584b846b6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R124.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R125.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R124.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R124/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R124/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R125.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R125/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R125/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4681,11 +4724,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "eb985b1ba6f7e8dd93e4e583646eeced157055429dfe10f1128506793dd58585",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R119.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R120.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R119.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R119/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R119/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R120.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R120/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R120/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4712,11 +4755,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "760179ab6fa3d336765e9d4b8f4eb70097778f793ddbd02efaa934093da99854",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R122.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R123.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R122.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R122/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R122/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R123.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R123/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R123/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4739,11 +4782,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4fe0dfe88549e28162a80f84564a89350141924e67f06b3d875eeb9c8e406304",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R125.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R126.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R125.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R125/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R125/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R126.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R126/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R126/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4768,11 +4811,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9f31fb39b24b6d14a581f804e4b8dd45443e6b6da126ac533e42f39af600144f",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R135.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R136.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R135.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R135/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R135/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R136.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R136/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R136/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4797,11 +4840,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "99f0f83167969253f29c0600a6b32116c278ecc6f3fc2a60b0372859a48d26d4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R134.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R135.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R134.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R134/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R134/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R135.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R135/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R135/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4826,11 +4869,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "2ed07a93ff0a5dcad3b1ced31c0e0b02585caf29978976e13919da001739cb01",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R133.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R134.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R133.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R133/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R133/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R134.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R134/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R134/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4855,11 +4898,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "1104762ba1628e51e5289ca0e29b1d3e6d84f4219e812f5795f380cd34593ffb",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R121.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R122.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R121.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R121/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R121/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R122.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R122/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R122/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4882,11 +4925,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0e3bbb86630b03bc0a9ab92175e42ced844aad53f959275a35cd0e37be086f02",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R143.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R144.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R143.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R143/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R143/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R144.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R144/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R144/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -4912,11 +4955,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "f2e4ccccfaf4693fe0de185f36454ecd01f4b7a194ef998587056e6c9d9614d6",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R151.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R152.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R151.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R151/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R151/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R152.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R152/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R152/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -4953,11 +4996,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "47320215ea271707f49e8a75631baae5e7c9c33d8926cc39aecbbca9c2261f05",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R152.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R153.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R152.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R152/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R152/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R153.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R153/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R153/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -4984,11 +5027,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "447660ca08a59054e70e0bd6f26b6d425422b9934715b0816f3946e2fee1f268",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R141.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R142.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R141.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R141/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R141/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R142.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R142/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R142/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -5011,11 +5054,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ba4b7b2ead9a89100c0bc5652bd8a82f7fccf6f60f85f50e8352a1096125a1e4",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R153.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R154.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R153.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R153/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R153/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R154.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R154/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R154/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5052,11 +5095,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "dc6600dabdf871d64b31050a09eba41e21e8556ea1c9090af018d769c1b726a7",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R144.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R145.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R144.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R144/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R144/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R145.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R145/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R145/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5081,11 +5124,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "565c46554d7dd4195990bd76e256b820aa217b69220ad2be372fd9457b5e3c1b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R147.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R148.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R147.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R147/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R147/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R148.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R148/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R148/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5114,11 +5157,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ef2befd2c8adb2076a8874f6297332c6c449c66387e7e8f50c2f9d66407ce060",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R145.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R146.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R145.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R145/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R145/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R146.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R146/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R146/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5143,11 +5186,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "85959d484c6520d3960ab493458905675d7b068df285a14e6beea2da0642e800",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R146.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R147.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R146.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R146/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R146/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R147.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R147/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R147/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -5173,11 +5216,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ad0c02c53b968c6a1ab06ae5a6a667d02caa5845900a34a23f8b00177aef3ed8",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R142.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R143.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R142.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R142/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R142/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R143.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R143/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R143/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -5203,11 +5246,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "78c9c6d60d3f921c1f637f0b9806e85cbe9884e75b8c7de2a21ae91097d876ab",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R154.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R155.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R154.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R154/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R154/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R155.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R155/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R155/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5256,11 +5299,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4601c61962e06d21110313e6bc49863698b330c154441561895461bafdbe6e10",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R148.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R149.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R148.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R148/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R148/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R149.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R149/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R149/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -5294,11 +5337,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "4e138ed9d5b7b2a65a4fb0d9499ff9a4ad6d3aa5177a192821db26d4ed8753ec",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R149.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R150.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R149.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R149/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R149/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R150.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R150/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R150/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -5340,11 +5383,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "05be458adc8703d9e6a37a72207ccad635d661f346159eb3df88ca48041a5710",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R150.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R151.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R150.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R150/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R150/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R151.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R151/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R151/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow",
@@ -5398,11 +5441,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "06caf55f6cd813cb7c6fddff9aeb1c2a576836417c801590e73d8f28ff898d74",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R164.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R165.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R164.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R164/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R164/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R165.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R165/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R165/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5431,11 +5474,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "65b674e053c79aecddb1a823a1e1093a02beee7b77071d03c5967730d1021200",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R156.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R157.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R156.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R156/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R156/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R157.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R157/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R157/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5460,11 +5503,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "329d777e7a3d4665eeea091efb362bea53d808464ec85c68eafd532285c260dc",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R155.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R156.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R155.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R155/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R155/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R156.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R156/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R156/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5489,11 +5532,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9c9e0f830d25c6cfcd96b5dea285134117e753d86a7a7b91f1f5d6ae1964656d",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R162.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R163.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R162.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R162/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R162/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R163.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R163/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R163/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5522,11 +5565,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "acc9f7763cfc622ad51ef994a70c4cc70e30f68f8c5966b5d8d676986541b6dc",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R158.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R159.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R158.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R158/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R158/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R159.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R159/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R159/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5551,11 +5594,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "090687107fd07b8031f5436fa139972d99f7e90ed56c44f6f838b24e75637073",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R160.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R161.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R160.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R160/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R160/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R161.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R161/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R161/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5584,11 +5627,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "16a4c3d9f2cf612a271d2ad9e9f3c5ef093a60bacc0d31643c1965c153ae70fc",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R163.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R164.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R163.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R163/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R163/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R164.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R164/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R164/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5617,11 +5660,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "201065b0070f50412ae1fb5da0f796c0fa110a02e16acf640bdd0adddbb4693a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R159.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R160.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R159.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R159/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R159/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R160.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R160/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R160/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5650,11 +5693,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "dd3e2b43852e9af083b5d737d3610ad3d082ad42ade3508fefdc2f8cdb6d4798",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R161.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R162.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R161.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R161/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R161/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R162.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R162/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R162/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5683,11 +5726,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "141464e3ee126a48ad1156cfbe2f7271273800ec8b40854d497bb7b110aed1ee",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R157.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R158.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R157.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R157/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R157/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R158.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R158/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R158/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5712,11 +5755,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0e92e70ae041816a82ab6f956a42ded503c5889f8b1dd897d8d9badebdf85c36",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R165.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R166.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R165.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R165/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R165/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R166.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R166/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R166/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5741,11 +5784,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "5bae16c063238fe9fcbe1eedccf5f4e3664e89c512e430b62326869b358e6c08",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R166.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R167.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R166.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R166/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R166/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R167.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R167/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R167/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5774,11 +5817,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9d67a43d0638d9f935231ae7f18069222f886713a96fb53ff92782f3659a6d2e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R169.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R170.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R169.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R169/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R169/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R170.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R170/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R170/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5807,11 +5850,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "cb9cdd17e3ce59113bc35a44635a419918db215da617d3d969f8b6d2964f72ef",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R168.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R169.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R168.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R168/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R168/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R169.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R169/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R169/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -5834,11 +5877,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8038b2391b332387a4aa07843a3f21eb39083e88e7d183e34955738ba88d3169",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R167.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R168.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R167.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R167/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R167/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R168.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R168/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R168/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5863,11 +5906,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "114f03a72609d6c0f27d2e42933dbe5c99c6637849902e0a4b19f7e4b2e82b08",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R170.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R171.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R170.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R170/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R170/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R171.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R171/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R171/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5892,11 +5935,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "430e849b4d455c1b5752c8dcbb98825364d484705cc546c4239c6da098f4d505",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R172.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R173.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R172.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R172/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R172/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R173.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R173/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R173/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5921,11 +5964,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "edd8061b2b6699689d1e27db3ebeccb2ab538d47780123df47ac2395c969c172",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R171.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R172.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R171.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R171/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R171/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R172.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R172/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R172/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -5950,11 +5993,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "e92fab137a1c18be69b658d86cc8d5a6e342ddc5264ccfdc431edb13af7fdf7a",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R181.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R182.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R181.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R181/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R181/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R182.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R182/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R182/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -5997,11 +6040,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "929e74d53671e9a262cb7fa7cb7d9c6d4820845a487879bbd497f45a9b989a12",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R180.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R181.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R180.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R180/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R180/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R181.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R181/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R181/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -6036,11 +6079,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "0671abd7fed690c593d061f2bbab5722d11b6c41e7b3d14df5876aba3288d42b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R182.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R183.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R182.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R182/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R182/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R183.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R183/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R183/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6073,11 +6116,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "9cad2365080c0ed3ca425ae3bf6f4e6fdacbca517c49b40e1685b061e4a3bc56",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R179.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R180.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R179.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R179/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R179/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R180.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R180/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R180/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6106,11 +6149,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "b0fbd494e67b847cd1acf80df75c930bc697dff782542e399014836af65ca6f9",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R178.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R179.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R178.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R178/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R178/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R179.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R179/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R179/Compose/RustCore.lex.tex"
       ],
       "effects": [],
       "returnsResultOverflow": false,
@@ -6133,11 +6176,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "dcaf84a57243ffdd6f7d77f67f3a9a44a6faeb6c7e8226663e53c62f434d5108",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R177.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R178.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R177.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R177/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R177/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R178.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R178/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R178/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6170,11 +6213,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "1d9eefc849c852373ea87d342b98ad0d0ba8ec00e28cbffc3bedf78a23c71272",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R175.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R176.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R175.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R175/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R175/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R176.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R176/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R176/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6211,11 +6254,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "66421a258a6227433b0cdfea1cca6ef0ffee071f5ea205b48d6d835fb5e483ac",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R174.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R175.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R174.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R174/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R174/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R175.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R175/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R175/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6248,11 +6291,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "bbe127e8315d86266b4652d537ffa801802c5f26b716079e2731fabf79bf7442",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R173.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R174.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R173.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R173/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R173/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R174.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R174/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R174/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6285,11 +6328,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "ef9ca224c14d5b7e3b416579674bc57365ccd512a613031e1f569a0b3eb8b791",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R183.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R184.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R183.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R183/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R183/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R184.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R184/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R184/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6314,11 +6357,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "286d49396d5436164b10558133ba76ca0332e9b5d051e2a4611c5fdc36c48a60",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R176.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R177.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R176.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R176/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R176/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R177.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R177/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R177/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6355,11 +6398,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "335d3fd7cd8c479f5013eaf23f3ff1fe1d2248abbb5972020a4ee8fc350a787e",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R187.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R188.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R187.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R187/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R187/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R188.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R188/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R188/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6388,11 +6431,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "22d9aabd22e82c272ef9aee4756414f4cca78ecd35604786dd1ec1def0d6a0ce",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R185.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R186.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R185.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R185/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R185/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R186.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R186/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R186/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6417,11 +6460,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "881ce741dae448d861f596c72cf82a6cac6292e8442ffaaf047bad07c464cdc2",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R184.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R185.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R184.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R184/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R184/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R185.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R185/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R185/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6454,11 +6497,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "415de5f29ce528f0bc7c79d84017d3d3d9d28bbe1bebb6059741cd87fef1b5e9",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R186.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R187.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R186.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R186/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R186/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R187.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R187/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R187/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6491,11 +6534,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "bf30e46ce45c873e94151a43eadb3e48ed41d5ad9c01b1b3e190bdd79b54cb30",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R188.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R189.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R188.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R188/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R188/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R189.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R189/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R189/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6524,11 +6567,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "15d2fd36800a26e698f65d4df212da788486b260d0a0b3fae183dcd7e3758eea",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R189.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R190.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R189.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R189/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R189/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R190.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R190/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R190/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6553,11 +6596,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "04198d6663018a4639558dd48d518eddca094bdaf27325543a428719ddd34685",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R190.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R191.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R190.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R190/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R190/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R191.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R191/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R191/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6590,11 +6633,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "2ab7e98605c8c6366e8c9686eb3a5f253bce4be16d78c1a39bc60d9c50c3fa3a",
       "artifactDigest": "8a52ce83816c5576bf7977362812db901cae0e834ae4b9110d9dbf425deb076b",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R192.Compose.RustStd.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R193.Compose.RustStd.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R192.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R192/RustStd.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R192/Compose/RustStd.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R193.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R193/RustStd.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R193/Compose/RustStd.lex.tex"
       ],
       "effects": [
         "allocation",
@@ -6620,11 +6663,11 @@ export const CERTIFIED_PRODUCTION_MANIFEST = {
       "targetDigest": "56a68eab0175d92fd4e6156e35e04095125a17b731b4cd60d1f6a6b56df5b6d0",
       "artifactDigest": "8f3c24524a08a3b827e588cede26c277e3ca50ba8460017976ed3113c4c6d920",
       "certificationStatus": "kernel-checked",
-      "theoremName": "LexLeanPreserve.Cc0b506ed61c0eed4c3d06e9b619c153a.R191.Compose.RustCore.root",
+      "theoremName": "LexLeanPreserve.Cadc27b4a3104311bc3612b1b7d1eb557.R192.Compose.RustCore.root",
       "certificateFiles": [
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R191.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R191/RustCore.lex.tex",
-        "evidence/certificates/LexLeanPreserve/Cc0b506ed61c0eed4c3d06e9b619c153a/R191/Compose/RustCore.lex.tex"
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R192.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R192/RustCore.lex.tex",
+        "evidence/certificates/LexLeanPreserve/Cadc27b4a3104311bc3612b1b7d1eb557/R192/Compose/RustCore.lex.tex"
       ],
       "effects": [
         "overflow"
@@ -6863,7 +6906,7 @@ function _toU64Arg(value: number | bigint): bigint {
   return BigInt.asUintN(64, BigInt(Math.round(value)));
 }
 
-export const CERTIFIED_WASM_CORE_ROOT_NAMES = ["stepAcousticsBusModulation","stepAnamnesisBusModulation","stepConsolidatedMemoryHorizon","verifyLosslessMerkleRoundTrip","stepApicalCorollaGimbalMilli","stepArticulationBusModulation","stepBasalJointTorqueMilli","stepGestureAttackMillis","stepMidCulmFlexureMilli","stepSympatheticArcApexCm","verifyThreeJointKinematicHierarchy","classifyGrowthSubstrateCode","stepBMeshSubdivisionDensity","stepBotanicalTurgorPermille","stepBotanyBusModulation","stepKuramotoCouplingPermille","stepThinFilmIridescenceSpanNm","verifyHighDefinitionBMeshSynthesis","stepBrandBusModulation","clampAtomicNumberZ","iupacPeriodOfZ","pauliSubshellCapacity","resolveBravaisPearsonIndex","stepChemistryBusModulation","admitMintCode","admitZeroDefectBytes","consolidateCost","dominates","excessOver","lackUnder","loserWeight","pickBytes","pickSteps","profileStepsPerByte","rule30Step","saturate","ulebLength","verifyUorcArchiveBounds","winnerWeight","clampAlphaSeed","extrapolateHighestResolutionPermille","extrapolateHighestResolutionSubdiv","stepAlphaOmegaFieldPotential","stepFoundationalAffectValencePermille","stepFoundationalChaosPermille","stepFoundationalHarmonyPermille","stepObserverPreferenceFulfillmentPermille","stepPartDifferentiationNicheIndex","synthesizeParametricCanonicalSeed","synthesizeParametricConcertPitchCentiHz","synthesizeParametricInorganicScalePermille","synthesizeParametricOrganicVitalityPermille","synthesizeParametricPlayerEmbodimentPermille","verifyAlphaOmegaParametricClosure","verifyObserverCreatesAllThreeRealms","stepBrahmaviharaEquanimityPermille","stepDharmaBusModulation","stepLokasangrahaWorldWelfarePermille","stepPratityasamutpadaCausalCoherencePermille","stepRtaCosmicOrderPermille","stepAtomicRemineralizationFlux","stepAtomicValenceActivity","stepCompoundManifestation","stepEcologyBusModulation","stepEnvironmentalModalSynthesis","stepMacromolecularPolymerization","stepMicroclimateIso9613ClarityPermille","stepMolecularBondCoherence","verifyClosedLoopMatterConservation","verifyCompleteGranularSynthesisClosure","verifyGranularAtomicToEnvironmentalChain","stepGraphicsBusModulation","verifyPassivePbrEnergyConservation","classifyCapabilityReceiptError","computeBrowserApiSaturationPermille","hostCeilingNanos","hostGranuleBytes","hostLineNanos","hostMovedBytes","hostRoundUp","hostSaturationDistanceNanos","hostSlowerNanos","hostStepNanos","optimalBrowserWorkerCount","shouldRollbackGenerationWatchdog","verifyBrowserGenerationAdmission","verifyCheckedU64NoOverflow","verifyIndependentQuotaCaps","verifyIsolatedCapabilitySaturation","evaluateGazeTargetInForwardCone","resolveCompassOctantIndex","stepDiurnalSkyLuminancePermille","stepHumaneBusModulation","stepInfrastructureBusModulation","eulerPoincareBiasedCharacteristic","stepMathematicsBusModulation","admitEpistemicClaim","admitLiftKappaTransition","classifyFoundryTagMask","decideHypothesisMint","deductiveSearchShareAfterGate","engineLearnWeight","gaugeTransformRealQualityMask","gaugeTransformSensualQualityId","gaugeTransformWithdrawnCoreId","remainingBudgetAfterMint","reserveHomeostasisGateShare","resolveRouteSlotFromBit","unliftedExcessOverFloor","validPeircePhaseStep","composeCoherentModelDepthScore","stepLSystemDerivationDepth","stepMeristemOrganCount","stepMorphogenesisBusModulation","clampBusWeight","conservatoryCurationDefect","conservatoryCurationDominates","conservatoryCurationLyapunovCost","learnHebbianWeight","learnWeightPotentiated","ncmPlasticity","ncmSlotRate","refineDomainWeightAutopoietic","stepRule30AperiodicCompensationIndex","stepRule30LeftDiagonalPeriod","stepStakeholderValueReinforcement","stepSupraDirectiveDefinitionSubdiv","stepSupraDirectiveFeatureUnlockCount","stepSupraDirectiveFidelityPermille","stepSupraDirectiveQualityPermille","stepTheoryOfMindCoherencePermille","stepWisdomPhenomenonModulation","transferWeightCrossDomain","verifyAutopoieticSingleCallAdvancesAllTenDomains","verifyEmergentEntitySynthesizesFacets","verifyObserverHolisticWhyClosure","verifyObserverSupraDirectiveTranscendence","verifyRule30DeterministicAndWithdrawnDuality","verifySingleCallPropagatesAllTenDomains","bitMaskConstructive","computeEpistemicOpacityDebt","computeHostCeilingExcess","distinctionBitsForCardinality","evaluateOntologicalTelosLoss","fibonacciConstructive","harmonicConsonanceComplexity","isPrimeConstructive","nthPrimeConstructive","pow2Constructive","stepParametricOntologyCoordinate","triadicAgencyPrimeProduct","verifyStratumObstructionResolved","verifyW5HCertificateComplete","gellMannNishijimaBiasedSixQ","stepCrossModalAcousticShadowPermille","stepCrossModalPhaseObstructionPermille","stepGroundWaveAttenuationPermille","stepPhysicsBusModulation","stepSlopeEmbedmentDepthMm","stepSporeBuoyancyDriftMmPerSec","stepTerrainSlopeSpeedPermille","stepWindGustEnvelopePermille","verifyMaterialSynthesisCrossModalObstruction","stepRealizabilityBusModulation","advanceLifecycleStage","stepCuratedConsonancePurityPermille","stepPrimeLimitHarmonicCeiling","stepSoundtrackBusModulation","stepEarlyReflectionTapCount","stepSpatialAcousticsBusModulation","stepWoodworthItdMicros","admitLivePlayerCoEvolutionStep","inferPlayerTheoryOfMindCode","proposeLiveCoEvolvedDomainWeight","stepCuratorialAffinityPermille","stepEmergentOffshootColonizationCap","stepHealthyGratifyingQualityPermille","stepObserverDissonanceReconciliationPermille","stepPlayerGameDissonancePermille","stepReflexiveFacetNicheIndex","stepTeleologyBusModulation","stepTriadicPlayerGameObserverCoherencePermille","stepAtmanBrahmanNonDualPermille","stepRajasActivityPermille","stepSattvaClarityPermille","stepTamasGroundingPermille","stepTuriyaSilentWitnessPermille","stepVedantaBusModulation","verifyTrigunaConservationLaw","verifyBusModulationsScalar"] as const;
+export const CERTIFIED_WASM_CORE_ROOT_NAMES = ["stepAcousticsBusModulation","stepAnamnesisBusModulation","stepConsolidatedMemoryHorizon","verifyLosslessMerkleRoundTrip","stepApicalCorollaGimbalMilli","stepArticulationBusModulation","stepBasalJointTorqueMilli","stepGestureAttackMillis","stepMidCulmFlexureMilli","stepSympatheticArcApexCm","verifyThreeJointKinematicHierarchy","classifyGrowthSubstrateCode","stepBMeshSubdivisionDensity","stepBotanicalTurgorPermille","stepBotanyBusModulation","stepKuramotoCouplingPermille","stepThinFilmIridescenceSpanNm","verifyHighDefinitionBMeshSynthesis","stepBrandBusModulation","clampAtomicNumberZ","iupacPeriodOfZ","pauliSubshellCapacity","resolveBravaisPearsonIndex","stepChemistryBusModulation","admitMintCode","admitZeroDefectBytes","consolidateCost","dominates","excessOver","lackUnder","loserWeight","pickBytes","pickSteps","profileStepsPerByte","rule30Step","saturate","ulebLength","verifyUorcArchiveBounds","winnerWeight","clampAlphaSeed","extrapolateHighestResolutionPermille","extrapolateHighestResolutionSubdiv","stepAlphaOmegaFieldPotential","stepFoundationalAffectValencePermille","stepFoundationalChaosPermille","stepFoundationalHarmonyPermille","stepObserverPreferenceFulfillmentPermille","stepPartDifferentiationNicheIndex","synthesizeParametricCanonicalSeed","synthesizeParametricConcertPitchCentiHz","synthesizeParametricInorganicScalePermille","synthesizeParametricOrganicVitalityPermille","synthesizeParametricPlayerEmbodimentPermille","verifyAlphaOmegaParametricClosure","verifyObserverCreatesAllThreeRealms","stepBrahmaviharaEquanimityPermille","stepDharmaBusModulation","stepLokasangrahaWorldWelfarePermille","stepPratityasamutpadaCausalCoherencePermille","stepRtaCosmicOrderPermille","stepAtomicRemineralizationFlux","stepAtomicValenceActivity","stepCompoundManifestation","stepEcologyBusModulation","stepEnvironmentalModalSynthesis","stepMacromolecularPolymerization","stepMicroclimateIso9613ClarityPermille","stepMolecularBondCoherence","verifyClosedLoopMatterConservation","verifyCompleteGranularSynthesisClosure","verifyGranularAtomicToEnvironmentalChain","stepGraphicsBusModulation","verifyPassivePbrEnergyConservation","classifyCapabilityReceiptError","computeBrowserApiSaturationPermille","hostCeilingNanos","hostGranuleBytes","hostLineNanos","hostMovedBytes","hostRoundUp","hostSaturationDistanceNanos","hostSlowerNanos","hostStepNanos","optimalBrowserWorkerCount","shouldRollbackGenerationWatchdog","verifyBrowserGenerationAdmission","verifyCheckedU64NoOverflow","verifyIndependentQuotaCaps","verifyIsolatedCapabilitySaturation","verifyVerdantEngineSubstrateCoherence","evaluateGazeTargetInForwardCone","resolveCompassOctantIndex","stepDiurnalSkyLuminancePermille","stepHumaneBusModulation","stepInfrastructureBusModulation","eulerPoincareBiasedCharacteristic","stepMathematicsBusModulation","admitEpistemicClaim","admitLiftKappaTransition","classifyFoundryTagMask","decideHypothesisMint","deductiveSearchShareAfterGate","engineLearnWeight","gaugeTransformRealQualityMask","gaugeTransformSensualQualityId","gaugeTransformWithdrawnCoreId","remainingBudgetAfterMint","reserveHomeostasisGateShare","resolveRouteSlotFromBit","unliftedExcessOverFloor","validPeircePhaseStep","composeCoherentModelDepthScore","stepLSystemDerivationDepth","stepMeristemOrganCount","stepMorphogenesisBusModulation","clampBusWeight","conservatoryCurationDefect","conservatoryCurationDominates","conservatoryCurationLyapunovCost","learnHebbianWeight","learnWeightPotentiated","ncmPlasticity","ncmSlotRate","refineDomainWeightAutopoietic","stepRule30AperiodicCompensationIndex","stepRule30LeftDiagonalPeriod","stepStakeholderValueReinforcement","stepSupraDirectiveDefinitionSubdiv","stepSupraDirectiveFeatureUnlockCount","stepSupraDirectiveFidelityPermille","stepSupraDirectiveQualityPermille","stepTheoryOfMindCoherencePermille","stepWisdomPhenomenonModulation","transferWeightCrossDomain","verifyAutopoieticSingleCallAdvancesAllTenDomains","verifyEmergentEntitySynthesizesFacets","verifyObserverHolisticWhyClosure","verifyObserverSupraDirectiveTranscendence","verifyRule30DeterministicAndWithdrawnDuality","verifySingleCallPropagatesAllTenDomains","bitMaskConstructive","computeEpistemicOpacityDebt","computeHostCeilingExcess","distinctionBitsForCardinality","evaluateOntologicalTelosLoss","fibonacciConstructive","harmonicConsonanceComplexity","isPrimeConstructive","nthPrimeConstructive","pow2Constructive","stepParametricOntologyCoordinate","triadicAgencyPrimeProduct","verifyStratumObstructionResolved","verifyW5HCertificateComplete","gellMannNishijimaBiasedSixQ","stepCrossModalAcousticShadowPermille","stepCrossModalPhaseObstructionPermille","stepGroundWaveAttenuationPermille","stepPhysicsBusModulation","stepSlopeEmbedmentDepthMm","stepSporeBuoyancyDriftMmPerSec","stepTerrainSlopeSpeedPermille","stepWindGustEnvelopePermille","verifyMaterialSynthesisCrossModalObstruction","stepRealizabilityBusModulation","advanceLifecycleStage","stepCuratedConsonancePurityPermille","stepPrimeLimitHarmonicCeiling","stepSoundtrackBusModulation","stepEarlyReflectionTapCount","stepSpatialAcousticsBusModulation","stepWoodworthItdMicros","admitLivePlayerCoEvolutionStep","inferPlayerTheoryOfMindCode","proposeLiveCoEvolvedDomainWeight","stepCuratorialAffinityPermille","stepEmergentOffshootColonizationCap","stepHealthyGratifyingQualityPermille","stepObserverDissonanceReconciliationPermille","stepPlayerGameDissonancePermille","stepReflexiveFacetNicheIndex","stepTeleologyBusModulation","stepTriadicPlayerGameObserverCoherencePermille","stepAtmanBrahmanNonDualPermille","stepRajasActivityPermille","stepSattvaClarityPermille","stepTamasGroundingPermille","stepTuriyaSilentWitnessPermille","stepVedantaBusModulation","verifyTrigunaConservationLaw","verifyBusModulationsScalar"] as const;
 
 export function certifiedWasmCore_stepAcousticsBusModulation(busWeight: number | bigint): number {
   return Number(BigInt.asUintN(64, (_certifiedCoreCallCount += 1, requireExports().core_verdant_acoustics_step_acoustics_bus_modulation(_toU64Arg(busWeight)))));
@@ -7219,6 +7262,10 @@ export function certifiedWasmCore_verifyIndependentQuotaCaps(reqBytes: number | 
 
 export function certifiedWasmCore_verifyIsolatedCapabilitySaturation(saturatedCount: number | bigint, requiredCount: number | bigint, falsifiersRejectedCount: number | bigint, receiptErrorCode: number | bigint): boolean {
   return (_certifiedCoreCallCount += 1, requireExports().core_verdant_host_verify_isolated_capability_saturation(_toU64Arg(saturatedCount), _toU64Arg(requiredCount), _toU64Arg(falsifiersRejectedCount), _toU64Arg(receiptErrorCode))) !== 0;
+}
+
+export function certifiedWasmCore_verifyVerdantEngineSubstrateCoherence(blueprintCount: number | bigint, walkableNavPolygons: number | bigint, audioQuantumFrames: number | bigint, snapshotBytes: number | bigint): boolean {
+  return (_certifiedCoreCallCount += 1, requireExports().core_verdant_host_verify_verdant_engine_substrate_coherence(_toU64Arg(blueprintCount), _toU64Arg(walkableNavPolygons), _toU64Arg(audioQuantumFrames), _toU64Arg(snapshotBytes))) !== 0;
 }
 
 export function certifiedWasmCore_evaluateGazeTargetInForwardCone(angleDeg: number | bigint, distMeters: number | bigint): boolean {

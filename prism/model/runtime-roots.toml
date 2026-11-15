@@ -91,6 +91,7 @@ roots = [
   "PrismVerdantResonance.Foundation.Host.V1.Model.verifyCheckedU64NoOverflow",
   "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIndependentQuotaCaps",
   "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIsolatedCapabilitySaturation",
+  "PrismVerdantResonance.Foundation.Host.V1.Model.verifyVerdantEngineSubstrateCoherence",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.evaluateGazeTargetInForwardCone",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.resolveCompassOctantIndex",
   "PrismVerdantResonance.Foundation.Humane.V1.Model.stepDiurnalSkyLuminancePermille",
@@ -730,6 +731,12 @@ name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyIsolatedCapabilityS
 package = "verdant_host_verify_isolated_capability_saturation"
 targets = ["rust-core"]
 effects = []
+
+[[root]]
+name = "PrismVerdantResonance.Foundation.Host.V1.Model.verifyVerdantEngineSubstrateCoherence"
+package = "verdant_host_verify_verdant_engine_substrate_coherence"
+targets = ["rust-core"]
+effects = ["overflow", "recursion"]
 
 [[root]]
 name = "PrismVerdantResonance.Foundation.Humane.V1.Model.evaluateGazeTargetInForwardCone"

@@ -1,0 +1,8 @@
+{
+  "schema": "verdant-resonance/engine-substrate-meta/1",
+  "enginePackage": "verdant-wasm",
+  "upstreamRepository": "https://github.com/afflom/verdant-engine",
+  "wasmRelativePath": "wasm/verdant_engine.wasm",
+  "wasmBytes": 183723,
+  "wasmSha256": "58e384e97395fc8fe34cbce2007ff5dcb780b22d066feebc16328e85b25ab13b"
+}
