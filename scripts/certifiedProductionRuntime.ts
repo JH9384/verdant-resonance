@@ -1382,22 +1382,48 @@ export function buildAndVerifyCertifiedProductionBundle(projectRoot: string = pr
   };
 }
 
+interface CertifiedWasmRawExports {
+  readonly memory: WebAssembly.Memory;
+  certified_total_work(): bigint;
+  wasm_prepare_input(len: number): number;
+  wasm_output_ptr(): number;
+  wasm_output_len(): number;
+  certified_rule30_step(state: bigint): bigint;
+  certified_admit_lift(incumbentPresent: number, incumbentClass: bigint, candidateClass: bigint): number;
+  certified_foundry_route(tagMask: bigint): bigint;
+  certified_decide_mint(contradictory: number, knownKappa: number, remainingBudget: bigint): bigint;
+  certified_triadic_coherence(
+    busWeight: bigint,
+    rule30Entropy: bigint,
+    playerAttentionPermille: bigint,
+    residualDissonancePermille: bigint,
+  ): bigint;
+  certified_dispatch(): number;
+  certified_learn_all(): number;
+  certified_schedule(): number;
+  readonly [key: string]: unknown;
+}
+
 /**
- * Fail-closed runner over the certified Rust binary (`verdant_certified_harness`).
- * Mirrors `afflom/rule30` `EngineRust` (`NoRoot`): if the certified production bundle or binary
- * is missing, raises `NoCertifiedRootError` immediately — never falls back to uncertified JS.
+ * Fail-closed runner over the certified Rust production artifacts (`verdant_certified_harness`
+ * native binary when `prism/.lexlean` is present, or SHA-256-attested `verdant_certified_runtime.wasm`
+ * compiled from the exact same kernel-checked `#![forbid(unsafe_code)]` LexLean crates in clean CI).
+ * Mirrors `afflom/rule30` `EngineRust` (`NoRoot`): if certified artifacts are missing or tampered,
+ * raises `NoCertifiedRootError` immediately — never falls back to uncertified JS.
  */
 export class CertifiedRustRunner {
   readonly projectRoot: string;
   readonly bundleDir: string;
   readonly resultId: string;
   readonly harnessBinaryPath: string;
+  readonly manifest: CertifiedProductionManifest | null;
+  private readonly _wasmExports: CertifiedWasmRawExports | null;
 
-  constructor(projectRoot: string = process.cwd(), options?: { productionRoot?: string }) {
+  constructor(
+    projectRoot: string = process.cwd(),
+    options?: { productionRoot?: string; forceCertifiedWasm?: boolean },
+  ) {
     this.projectRoot = projectRoot;
-    const found = findLatestProductionBundleDir(projectRoot, options?.productionRoot);
-    this.bundleDir = found.bundleDir;
-    this.resultId = found.resultId;
     const binPath = path.join(
       projectRoot,
       'prism',
@@ -1407,18 +1433,85 @@ export class CertifiedRustRunner {
       'release',
       'verdant_certified_harness',
     );
-    if (!fs.existsSync(binPath)) {
+    const defaultProdDir = path.join(projectRoot, 'prism', '.lexlean', 'production');
+    const canTryCertifiedWasm =
+      options?.productionRoot === undefined &&
+      (options?.forceCertifiedWasm === true ||
+        !fs.existsSync(defaultProdDir) ||
+        !fs.existsSync(binPath));
+
+    if (!canTryCertifiedWasm) {
+      const found = findLatestProductionBundleDir(projectRoot, options?.productionRoot);
+      this.bundleDir = found.bundleDir;
+      this.resultId = found.resultId;
+      if (!fs.existsSync(binPath)) {
+        throw new NoCertifiedRootError(
+          `Certified Rust harness binary missing at ${binPath}; run 'npm run prism:production'.`,
+        );
+      }
+      this.harnessBinaryPath = binPath;
+      this.manifest = null;
+      this._wasmExports = null;
+      const info = this.invokeJson<{ bundleResultId: string }>(['info']);
+      if (info.bundleResultId !== this.resultId) {
+        throw new NoCertifiedRootError(
+          `Certified harness binary (${info.bundleResultId}) is out of sync with bundle (${this.resultId}).`,
+        );
+      }
+      return;
+    }
+
+    const wasmPath = path.join(projectRoot, 'public', 'wasm', 'verdant_certified_runtime.wasm');
+    const manifestPath = path.join(projectRoot, 'public', 'wasm', 'verdant_certified_manifest.json');
+    if (!fs.existsSync(wasmPath) || !fs.existsSync(manifestPath)) {
       throw new NoCertifiedRootError(
-        `Certified Rust harness binary missing at ${binPath}; run 'npm run prism:production'.`,
+        `Certified Rust bundle and attested Wasm runtime missing at ${wasmPath}; run 'npm run prism:production'.`,
       );
     }
-    this.harnessBinaryPath = binPath;
-    const info = this.invokeJson<{ bundleResultId: string }>(['info']);
-    if (info.bundleResultId !== this.resultId) {
+    let parsedManifest: CertifiedProductionManifest;
+    try {
+      parsedManifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8')) as CertifiedProductionManifest;
+    } catch (err: any) {
       throw new NoCertifiedRootError(
-        `Certified harness binary (${info.bundleResultId}) is out of sync with bundle (${this.resultId}).`,
+        `Certified manifest unreadable at ${manifestPath}: ${String(err?.message || err)}`,
       );
     }
+    const wasmBytes = fs.readFileSync(wasmPath);
+    const actualSha = sha256Hex(wasmBytes);
+    if (
+      !parsedManifest.bundleResultId ||
+      actualSha !== parsedManifest.wasmSha256 ||
+      !parsedManifest.allKernelChecked ||
+      !parsedManifest.allForbidUnsafeCode
+    ) {
+      throw new NoCertifiedRootError(
+        `Certified Wasm attestation failed for ${wasmPath} (sha256=${actualSha}, expected=${parsedManifest.wasmSha256}).`,
+      );
+    }
+    try {
+      const mod = new WebAssembly.Module(wasmBytes as unknown as BufferSource);
+      const inst = new WebAssembly.Instance(mod, {});
+      this._wasmExports = inst.exports as unknown as CertifiedWasmRawExports;
+    } catch (err: any) {
+      throw new NoCertifiedRootError(
+        `Certified Wasm instantiation failed: ${String(err?.message || err)}`,
+      );
+    }
+    this.bundleDir = path.dirname(manifestPath);
+    this.resultId = parsedManifest.bundleResultId;
+    this.harnessBinaryPath = wasmPath;
+    this.manifest = parsedManifest;
+  }
+
+  private writeWasmBytes(exp: CertifiedWasmRawExports, bytes: Uint8Array): void {
+    const ptr = exp.wasm_prepare_input(bytes.length) >>> 0;
+    new Uint8Array(exp.memory.buffer, ptr, bytes.length).set(bytes);
+  }
+
+  private readWasmBytes(exp: CertifiedWasmRawExports): Buffer {
+    const ptr = exp.wasm_output_ptr() >>> 0;
+    const len = exp.wasm_output_len() >>> 0;
+    return Buffer.from(new Uint8Array(exp.memory.buffer, ptr, len));
   }
 
   private invokeJson<T>(args: string[]): T {
@@ -1436,6 +1529,13 @@ export class CertifiedRustRunner {
   }
 
   rule30Step(state64: bigint): { nextState: bigint; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const w0 = exp.certified_total_work();
+      const next = BigInt.asUintN(64, exp.certified_rule30_step(BigInt.asUintN(64, state64)));
+      const w1 = exp.certified_total_work();
+      return { nextState: next, work: Number(w1 - w0) };
+    }
     const res = this.invokeJson<{ nextState: string; work: number }>([
       'rule30-step',
       BigInt.asUintN(64, state64).toString(),
@@ -1448,10 +1548,29 @@ export class CertifiedRustRunner {
     incumbentClass: number,
     candidateClass: number,
   ): { admitted: boolean; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const w0 = exp.certified_total_work();
+      const admitted =
+        exp.certified_admit_lift(
+          incumbentPresent ? 1 : 0,
+          BigInt(incumbentClass),
+          BigInt(candidateClass),
+        ) !== 0;
+      const w1 = exp.certified_total_work();
+      return { admitted, work: Number(w1 - w0) };
+    }
     return this.invokeJson(['admit-lift', incumbentPresent ? '1' : '0', String(incumbentClass), String(candidateClass)]);
   }
 
   foundryRoute(tagMask: number): { classification: number; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const w0 = exp.certified_total_work();
+      const classification = Number(exp.certified_foundry_route(BigInt(tagMask)));
+      const w1 = exp.certified_total_work();
+      return { classification, work: Number(w1 - w0) };
+    }
     return this.invokeJson(['foundry-route', String(tagMask)]);
   }
 
@@ -1460,6 +1579,19 @@ export class CertifiedRustRunner {
     known: boolean,
     remainingBudget: number,
   ): { outcome: number; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const w0 = exp.certified_total_work();
+      const outcome = Number(
+        exp.certified_decide_mint(
+          contradictory ? 1 : 0,
+          known ? 1 : 0,
+          BigInt(remainingBudget),
+        ),
+      );
+      const w1 = exp.certified_total_work();
+      return { outcome, work: Number(w1 - w0) };
+    }
     return this.invokeJson([
       'decide-mint',
       contradictory ? '1' : '0',
@@ -1474,6 +1606,20 @@ export class CertifiedRustRunner {
     playerAttentionPermille: number,
     residualDissonancePermille: number,
   ): { coherencePermille: number; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const w0 = exp.certified_total_work();
+      const coherencePermille = Number(
+        exp.certified_triadic_coherence(
+          BigInt(busWeight),
+          BigInt(rule30Entropy),
+          BigInt(playerAttentionPermille),
+          BigInt(residualDissonancePermille),
+        ),
+      );
+      const w1 = exp.certified_total_work();
+      return { coherencePermille, work: Number(w1 - w0) };
+    }
     return this.invokeJson([
       'triadic-coherence',
       String(busWeight),
@@ -1485,10 +1631,28 @@ export class CertifiedRustRunner {
 
   dispatchText(requestText: string): { responseHex: string; responseUtf8: string; work: number } {
     const reqHex = Buffer.from(requestText, 'utf8').toString('hex');
-    return this.invokeJson(['dispatch', reqHex]);
+    return this.dispatchHex(reqHex);
   }
 
   dispatchHex(requestHex: string): { responseHex: string; responseUtf8: string; work: number } {
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      const clean = requestHex.trim().replace(/^0x/i, '');
+      if (clean.length % 2 !== 0 || !/^[0-9a-fA-F]*$/.test(clean)) {
+        throw new NoCertifiedRootError(`Invalid hex payload for certified dispatch: ${requestHex}`);
+      }
+      const reqBytes = Buffer.from(clean, 'hex');
+      this.writeWasmBytes(exp, reqBytes);
+      const w0 = exp.certified_total_work();
+      exp.certified_dispatch();
+      const w1 = exp.certified_total_work();
+      const outBuf = this.readWasmBytes(exp);
+      return {
+        responseHex: outBuf.toString('hex'),
+        responseUtf8: outBuf.toString('utf8'),
+        work: Number(w1 - w0),
+      };
+    }
     return this.invokeJson(['dispatch', requestHex]);
   }
 
@@ -1500,6 +1664,21 @@ export class CertifiedRustRunner {
     const oSpec = outcomes
       .map((o) => `${o.strategy}|${o.family}|${o.success ? '1' : '0'}`)
       .join(';');
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      this.writeWasmBytes(exp, Buffer.from(`${wSpec}\n${oSpec}`, 'utf8'));
+      const w0 = exp.certified_total_work();
+      exp.certified_learn_all();
+      const w1 = exp.certified_total_work();
+      const out = this.readWasmBytes(exp).toString('utf8');
+      const parsedWeights = out
+        ? out.split(';').map((row) => {
+            const [strategy, family, v] = row.split('|');
+            return { strategy, family, value: Number(v) };
+          })
+        : [];
+      return { weights: parsedWeights, work: Number(w1 - w0) };
+    }
     return this.invokeJson(['learn-all', wSpec, oSpec]);
   }
 
@@ -1509,6 +1688,15 @@ export class CertifiedRustRunner {
     applicable: ReadonlyArray<string>,
   ): { scheduled: string[]; work: number } {
     const wSpec = weights.map((w) => `${w.strategy}|${w.family}|${Math.floor(w.value)}`).join(';');
+    if (this._wasmExports) {
+      const exp = this._wasmExports;
+      this.writeWasmBytes(exp, Buffer.from(`${wSpec}\n${family}\n${applicable.join(',')}`, 'utf8'));
+      const w0 = exp.certified_total_work();
+      exp.certified_schedule();
+      const w1 = exp.certified_total_work();
+      const out = this.readWasmBytes(exp).toString('utf8');
+      return { scheduled: out ? out.split(',') : [], work: Number(w1 - w0) };
+    }
     return this.invokeJson(['schedule', wSpec, family, applicable.join(',')]);
   }
 
@@ -1516,6 +1704,51 @@ export class CertifiedRustRunner {
     selector: string,
     args: ReadonlyArray<number | bigint | boolean>,
   ): { root: string; value: string | boolean; work: number } {
+    if (this._wasmExports && this.manifest) {
+      const exp = this._wasmExports;
+      const summary = this.manifest.roots.find(
+        (s) =>
+          isAutoCodegenScalarCoreRoot(s) &&
+          (s.root === selector || s.packageName === selector || s.defName === selector),
+      );
+      if (!summary) {
+        throw new NoCertifiedRootError(`unknown scalar rust-core root: ${selector}`);
+      }
+      const fnExport = exp[`core_${summary.packageName}`];
+      if (typeof fnExport !== 'function') {
+        throw new NoCertifiedRootError(`missing certified Wasm export core_${summary.packageName}`);
+      }
+      const wasmArgs = summary.parameters.map((p, idx) => {
+        const rawArg = args[idx];
+        if (rawArg === undefined) {
+          throw new NoCertifiedRootError(`missing ${p.name}`);
+        }
+        if (p.type === 'Bool') {
+          return rawArg === true || rawArg === 1 || rawArg === 1n ? 1 : 0;
+        }
+        let u64Val: bigint;
+        if (typeof rawArg === 'boolean') {
+          u64Val = rawArg ? 1n : 0n;
+        } else if (typeof rawArg === 'bigint') {
+          u64Val = rawArg <= 0n ? 0n : BigInt.asUintN(64, rawArg);
+        } else if (!Number.isFinite(rawArg) || rawArg <= 0) {
+          u64Val = 0n;
+        } else {
+          u64Val = BigInt.asUintN(64, BigInt(Math.round(rawArg)));
+        }
+        return wasmExternScalarType(p.type) === 'u32' ? Number(u64Val) >>> 0 : u64Val;
+      });
+      const w0 = exp.certified_total_work();
+      const rawRes = (fnExport as (...a: Array<number | bigint>) => number | bigint)(...wasmArgs);
+      const w1 = exp.certified_total_work();
+      const value =
+        summary.resultType === 'Bool'
+          ? Number(rawRes) !== 0
+          : wasmExternScalarType(summary.resultType) === 'u32'
+            ? String(Number(rawRes) >>> 0)
+            : BigInt.asUintN(64, BigInt(rawRes)).toString();
+      return { root: summary.root, value, work: Number(w1 - w0) };
+    }
     const serialized = args.map((a) => {
       if (typeof a === 'boolean') return a ? '1' : '0';
       if (typeof a === 'bigint') return (a <= 0n ? 0n : BigInt.asUintN(64, a)).toString();
@@ -1555,9 +1788,9 @@ export interface CertifiedEngineTickReport {
  */
 export async function runCertifiedEngineTick(
   projectRoot: string = process.cwd(),
-  options?: { productionRoot?: string },
+  options?: { productionRoot?: string; forceCertifiedWasm?: boolean },
 ): Promise<CertifiedEngineTickReport> {
-  // Fail-closed instantiation: throws `NoCertifiedRootError` if bundle or binary is missing
+  // Fail-closed instantiation: throws `NoCertifiedRootError` if bundle/binary and attested Wasm are missing
   const runner = new CertifiedRustRunner(projectRoot, options);
 
   const runtimeMod: any = await import('../src/game/generatedPrismRuntime.ts');
@@ -1587,12 +1820,16 @@ export async function runCertifiedEngineTick(
 
   const prismDir = path.join(projectRoot, 'prism');
   const { roots: catalogRoots } = extractProductionRootCatalog(prismDir);
-  const foundBundle = findLatestProductionBundleDir(projectRoot, options?.productionRoot);
-  const rootSummaries = inspectCertifiedBundleSummaries(
-    foundBundle.bundleDir,
-    foundBundle.resultJson,
-    catalogRoots,
-  );
+  const rootSummaries: ReadonlyArray<CertifiedRootArtifactSummary> = runner.manifest
+    ? runner.manifest.roots
+    : (() => {
+        const foundBundle = findLatestProductionBundleDir(projectRoot, options?.productionRoot);
+        return inspectCertifiedBundleSummaries(
+          foundBundle.bundleDir,
+          foundBundle.resultJson,
+          catalogRoots,
+        );
+      })();
 
   const stageResults: CertifiedEngineStageResult[] = [];
   let totalCertifiedWorkUnits = 0;

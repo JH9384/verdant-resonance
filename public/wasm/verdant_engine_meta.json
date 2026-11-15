@@ -3,6 +3,6 @@
   "enginePackage": "verdant-wasm",
   "upstreamRepository": "https://github.com/afflom/verdant-engine",
   "wasmRelativePath": "wasm/verdant_engine.wasm",
-  "wasmBytes": 183723,
-  "wasmSha256": "58e384e97395fc8fe34cbce2007ff5dcb780b22d066feebc16328e85b25ab13b"
+  "wasmBytes": 188544,
+  "wasmSha256": "b0038efbe37d140ce10176770f5e5d88ad6b5f7aff900f6f4d8d1a44385a8df0"
 }

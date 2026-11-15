@@ -7497,6 +7497,18 @@ test('66. Rule-30 Precision & Beyond: Certified LexLean Production Rust + Wasm R
   assert.equal(tickReport.gateShareMinutes, 10);
   assert.ok(tickReport.gateShareMinutes >= tickReport.gateMinimumMinutes);
   assert.ok(tickReport.totalCertifiedWorkUnits > 8000);
+
+  // 6. Clean-CI Attested Certified Wasm Runner Parity (`forceCertifiedWasm: true` when `.lexlean` is absent)
+  const wasmRunner = new CertifiedRustRunner(process.cwd(), { forceCertifiedWasm: true });
+  assert.equal(wasmRunner.resultId, tickReport.bundleResultId);
+  assert.equal(
+    wasmRunner.evalCoreRoot('clampBusWeight', [15]).value,
+    runner.evalCoreRoot('clampBusWeight', [15]).value,
+  );
+  const wasmTickReport = await runCertifiedEngineTick(process.cwd(), { forceCertifiedWasm: true });
+  assert.equal(wasmTickReport.allPassed, true);
+  assert.equal(wasmTickReport.bundleResultId, tickReport.bundleResultId);
+  assert.equal(wasmTickReport.totalCertifiedWorkUnits, tickReport.totalCertifiedWorkUnits);
 });
 
 test('67. Universal Zero-Glue rust-core Auto-Codegen, 22-Root Certified Bundle & Constructive Axiom Ratchet', async () => {
